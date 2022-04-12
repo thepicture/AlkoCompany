@@ -1,4 +1,5 @@
 ﻿using AlkoCompanyNew.Models.Entities;
+using AlkoCompanyNew.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,18 +10,12 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class WorkOrdinary : Page
     {
-        private readonly Zayavka zayavka = new Zayavka();
-        public WorkOrdinary(Zayavka setterzayvka)
+        public WorkOrdinary(Zayavka zayavka)
         {
             InitializeComponent();
+            DataContext = new WorkViewModel(zayavka);
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            if (setterzayvka != null)
-            {
-                zayavka = setterzayvka;
-            }
-
-            DataContext = zayavka;
         }
 
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
@@ -33,6 +28,36 @@ namespace AlkoCompanyNew.Views.Pages
         {
             ButtonOpen.Visibility = Visibility.Visible;
             ButtonClose.Visibility = Visibility.Collapsed;
+        }
+
+        private void OnCalculatingClick(object sender, RoutedEventArgs e)
+        {
+            if (CalculatingControl.Visibility == Visibility.Visible)
+            {
+                CalculatingControl.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CalculatingControl.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OnAddAnalogueCommand(object sender, RoutedEventArgs e)
+        {
+            ((dynamic)DataContext).CalculationItems
+                .Add(new ObjectAssessmentHouse
+                {
+                    IsAnalogue = true,
+                    City = "г. Москва",
+                    Correction = 1.00
+                });
+        }
+
+        private void OnDeleteAnalogue(object sender, RoutedEventArgs e)
+        {
+            ((dynamic)DataContext).CalculationItems
+                .Remove(
+                    (sender as Button).DataContext as ObjectAssessmentHouse);
         }
     }
 }
