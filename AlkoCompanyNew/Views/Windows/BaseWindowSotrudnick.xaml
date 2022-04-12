@@ -1,0 +1,319 @@
+﻿<Window x:Class="AlkoCompanyNew.Views.Windows.BaseWindowSotrudnick"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlkoCompanyNew"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="BaseWindowSotrudnick"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        Width="1920"
+        Height="1080"
+        Icon="/AlkoCompanyNew;component/Resources/logo.png">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="300" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock1">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock2">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock3">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock4">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                      Value="70" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                        Value="{x:Static Visibility.Hidden}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock1">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                        Value="{x:Static Visibility.Hidden}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock2">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                        Value="{x:Static Visibility.Hidden}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock3">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                        Value="{x:Static Visibility.Hidden}" />
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="textBlock4">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                        Value="{x:Static Visibility.Hidden}" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="ListButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="ListButtonClose">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Background="#FF383838">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="Hi"
+                       Text="Здравствуйте "
+                       FontSize="20"
+                       Width="Auto"
+                       Height="Auto"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="#FFBDBDBD"
+                       Margin="20,0,0,0"
+                       FontFamily="Dubai Light" />
+            <Image Source="D:\Учеба\Диплом\AlkoCompanyNew/logo.png"
+                   Grid.Column="2"
+                   Width="200"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,20,0" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <!--<Grid x:Name="grid" Width="300" Height="Auto"  HorizontalAlignment="Left" Background="#FF491111"  >
+                <Grid x:Name="gridlist" Width="300" Height="Auto" HorizontalAlignment="Left" Background="#0000">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <Button Width="70" Grid.Row="0" Height="70" Background="#00000000" BorderBrush="#00000000" Foreground="#00000000" HorizontalAlignment="Left">
+                        <StackPanel>
+                            <materialDesign:PackIcon Kind="Menu" Width="40" Height="40" VerticalAlignment="Center" Foreground="#FF0A0202"  />
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Width="300" Grid.Row="1" Height="70" Background="#00000000" BorderBrush="#00000000" Foreground="#00000000" HorizontalAlignment="Left"  >
+
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Menu" Width="40" Height="40" VerticalAlignment="Center" Foreground="#FF0A0202"    />
+                            <TextBlock x:Name="textBlock"  Text="Добавить заяввку"  Foreground="Black" FontSize="25"     />
+                        </StackPanel>
+                         
+                    </Button>
+                    
+                </Grid>
+            </Grid>-->
+
+            <Grid x:Name="grid"
+                  Width="70"
+                  Height="Auto"
+                  HorizontalAlignment="Left"
+                  Background="#FFC33535"
+                  Panel.ZIndex="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0"
+                        Background="#00000000"
+                        Width="50"
+                        Height="50"
+                        Name="ListButtonOpen"
+                        HorizontalAlignment="Right"
+                        BorderBrush="#00000000"
+                        Foreground="#00000000"
+                        Padding="0,0,0,0"
+                        Click="ListButtonOpen_Click"
+                        Margin="0,0,10,0">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <materialDesign:PackIcon Kind="Menu"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Button Grid.Row="0"
+                        Background="#00000000"
+                        Name="ListButtonClose"
+                        Width="50"
+                        Height="50"
+                        HorizontalAlignment="Right"
+                        BorderBrush="#00000000"
+                        Foreground="#00000000"
+                        Padding="0,0,0,0"
+                        Visibility="Collapsed"
+                        Click="ListButtonClose_Click"
+                        Margin="0,0,10,0">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <materialDesign:PackIcon Kind="Menu"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+
+                <ListView Grid.Row="1"
+                          Name="Menu"
+                          Width="300"
+                          HorizontalAlignment="Left"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem x:Name="ElementAddZayvki"
+                                  Height="90"
+                                  PreviewMouseDown="TextBlock_PreviewMouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon  Kind="Plus"
+                                                      Width="50"
+                                                      Height="50"
+                                                      VerticalAlignment="Center"
+                                                      Foreground="#FFCDCDCD" />
+                            <TextBlock x:Name="textBlock"
+                                       Text="Добавить заяввку"
+                                       Foreground="#FFCDCDCD"
+                                       FontSize="25"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="30,0,0,0"
+                                       Visibility="Hidden" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="ElementZayvki"
+                                  Height="90"
+                                  PreviewMouseDown="ElementZayvki_PreviewMouseDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BellRing"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                            <TextBlock x:Name="textBlock1"
+                                       Text="Заявки"
+                                       Foreground="#FFCDCDCD"
+                                       FontSize="25"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="30,0,0,0"
+                                       Visibility="Hidden" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="ElementZayvkiProsmotr"
+                                  Height="90">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Eye"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                            <TextBlock x:Name="textBlock2"
+                                       Text="Просмотр"
+                                       Foreground="#FFCDCDCD"
+                                       FontSize="25"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="30,0,0,0"
+                                       Visibility="Hidden" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="ElementZayvkiSotrudnicki"
+                                  Height="90">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Person"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                            <TextBlock x:Name="textBlock3"
+                                       Text="Сотрудники"
+                                       Foreground="#FFCDCDCD"
+                                       FontSize="25"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="30,0,0,0"
+                                       Visibility="Hidden" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="ElementBack"
+                                  Height="90">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ArrowBack"
+                                                     Width="50"
+                                                     Height="50"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCDCDCD" />
+                            <TextBlock x:Name="textBlock4"
+                                       Text="Выйти"
+                                       Foreground="#FFCDCDCD"
+                                       FontSize="25"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="30,0,0,0"
+                                       Visibility="Hidden" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
+
+            <Frame x:Name="Frame"
+                   NavigationUIVisibility="Hidden" />
+
+        </Grid>
+
+
+
+
+    </Grid>
+</Window>

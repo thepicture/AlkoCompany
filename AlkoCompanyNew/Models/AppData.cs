@@ -1,0 +1,17 @@
+﻿using AlkoCompanyNew.Models.Entities;
+using AlkoCompanyNew.Views.Pages;
+using System.Collections.Generic;
+
+namespace AlkoCompanyNew.Models
+{
+    public class AppData
+    {
+        public static AlkoCompanyEntities Context = new AlkoCompanyEntities();
+        public static AddZayvki AddZayvki_ { get; set; }
+        public static Zayavki Zayvki_ { get; set; }
+        public static AddZayvkiForm AddZayvkiForm_ { get; set; }
+        public static List<Zayavka> Glob = new List<Zayavka>();
+        public static Zayavka Zayavka1 = new Zayavka();
+        public static Klient Klient1 = new Klient();
+    }
+}

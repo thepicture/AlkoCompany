@@ -1,0 +1,27 @@
+﻿<Application x:Class="AlkoCompanyNew.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AlkoCompanyNew"
+             StartupUri="Views/Windows/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--PRIMARY-->
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#FF5AC3FF"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Purple"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#FF8B1A1A"/>
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="Purple"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Purple"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="Purple"/>
+            <!--ACCENT-->
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#689f38"/>
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
+
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
