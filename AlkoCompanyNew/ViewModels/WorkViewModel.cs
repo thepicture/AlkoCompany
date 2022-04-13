@@ -150,19 +150,25 @@ namespace AlkoCompanyNew.ViewModels
             }
         }
 
-        private void ChangeAssessmentObjectPicture()
+        private bool? GetImageFromWindowsOS(out string fileName)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Title = "Выберите фото объекта оценки"
+                Title = "Выберите фото"
             };
             bool? result = openFileDialog.ShowDialog();
+            fileName = openFileDialog.FileName;
+            return result;
+        }
+
+        private void ChangeAssessmentObjectPicture()
+        {
+            bool? result = GetImageFromWindowsOS(out string fileName);
             if (result.HasValue && result.Value)
             {
                 AssessmentObject.OH_Photo = File
-                    .ReadAllBytes(openFileDialog.FileName);
-                _ = MessageBox.Show("Изображение фото объекта оценки " +
-                    "изменено");
+                    .ReadAllBytes(fileName);
+                _ = MessageBox.Show("Фото объекта оценки изменено");
             }
         }
 
@@ -173,6 +179,33 @@ namespace AlkoCompanyNew.ViewModels
         {
             get => additionalBuildingTypes;
             set => SetProperty(ref additionalBuildingTypes, value);
+        }
+
+        private Command changeAnalogueHousePictureCommand;
+
+        public ICommand ChangeAnalogueHousePictureCommand
+        {
+            get
+            {
+                if (changeAnalogueHousePictureCommand == null)
+                {
+                    changeAnalogueHousePictureCommand
+                        = new Command(ChangeAnalogueHousePicture);
+                }
+
+                return changeAnalogueHousePictureCommand;
+            }
+        }
+
+        private void ChangeAnalogueHousePicture(object parameter)
+        {
+            bool? result = GetImageFromWindowsOS(out string fileName);
+            if (result.HasValue && result.Value)
+            {
+                (parameter as AnalogiHouse).AH_Photo = File
+                   .ReadAllBytes(fileName);
+                _ = MessageBox.Show("Фото аналога изменено");
+            }
         }
     }
 }
