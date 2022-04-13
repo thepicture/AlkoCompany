@@ -174,7 +174,7 @@
                                     BorderThickness="1">
                                 <Grid>
                                     <TextBox Text="{Binding AssessmentObject.OH_Adress,
-                                                            Mode=TwoWay}"
+                                                            UpdateSourceTrigger=PropertyChanged}"
                                              HorizontalAlignment="Stretch" />
                                 </Grid>
                             </Border>
@@ -304,7 +304,7 @@
                                         </Border>
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
-                                            <TextBox Text="{Binding AH_Adress, Mode=TwoWay}"
+                                            <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}"
                                                      HorizontalAlignment="Stretch"/>
                                         </Border>
                                         <Border BorderBrush="Black"
@@ -331,7 +331,7 @@
                                         </Border>
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
-                                            <TextBox Text="{Binding AH_Correction, StringFormat={}{0:F2}, Mode=TwoWay}" />
+                                            <TextBox Text="{Binding AH_Correction, StringFormat={}{0:F2}, UpdateSourceTrigger=PropertyChanged}" />
                                         </Border>
                                     </StackPanel>
                                 </DataTemplate>
