@@ -58,6 +58,41 @@ namespace AlkoCompanyNew.ViewModels
             }
         }
 
+        /// <summary>
+        /// Выполняется, если изменяется любое свойство 
+        /// объекта оценки или если изменяются аналоги.
+        /// Вычисление происходит в регионе <see langword="calculation"/>.
+        /// Все аналоги и объект оценки, относящийся к этим аналогам, 
+        /// будут сохранены в базу данных после любого изменения свойств 
+        /// в реальном времени без необходимости нажатия кнопки "Сохранить".
+        /// Доступ к аналогам объекта оценки происходит по индексу.
+        /// 
+        /// Вычисляемые свойства помечаются с префиксом "C": OH_C_Correction.
+        /// 
+        /// Если необходим мнгновенный пересчёт ячеек, необходимо поставить режим 
+        /// <see langword="UpdateSourceTrigger"/> в режим <see langword="PropertyChanged"/>:
+        /// &lt;TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+        /// </summary>
+        /// <example>
+        /// Автоматическое изменение корректировки объекта оценки 
+        /// на основе вычисления среднего значения между корректировкой аналогов:
+        /// 
+        ///  #region calculation
+        ///    AssessmentObject.OH_C_Correction = AssessmentObject
+        ///         .AnalogiHouse
+        ///         .Average(ah => ah.AH_Correction);
+        ///  #endregion
+        /// </example>
+        /// <example>
+        /// Получение первого, второго и третьего аналогов:
+        /// 
+        ///  #region calculation
+        ///      AssessmentObject.OH_C_Correction
+        ///      = AnalogueHouses[0].AH_Correction
+        ///      + AnalogueHouses[1].AH_Correction 
+        ///      + AnalogueHouses[2].AH_Correction;
+        ///  #endregion
+        /// </example>
         private void OnAssessmentObjectChanged(object sender,
                                                PropertyChangedEventArgs e)
         {

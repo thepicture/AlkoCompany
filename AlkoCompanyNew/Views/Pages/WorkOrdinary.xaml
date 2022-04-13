@@ -173,7 +173,8 @@
                             <Border BorderBrush="Black"
                                     BorderThickness="1">
                                 <Grid>
-                                    <TextBox Text="{Binding AssessmentObject.OH_Adress}"
+                                    <TextBox Text="{Binding AssessmentObject.OH_Adress,
+                                                            Mode=TwoWay}"
                                              HorizontalAlignment="Stretch" />
                                 </Grid>
                             </Border>
@@ -303,8 +304,8 @@
                                         </Border>
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
-                                            <TextBox Text="{Binding City}"
-                                                     HorizontalAlignment="Stretch" />
+                                            <TextBox Text="{Binding AH_Adress, Mode=TwoWay}"
+                                                     HorizontalAlignment="Stretch"/>
                                         </Border>
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
@@ -330,7 +331,7 @@
                                         </Border>
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
-                                            <TextBox Text="{Binding AH_Correction, StringFormat={}{0:F2}}" />
+                                            <TextBox Text="{Binding AH_Correction, StringFormat={}{0:F2}, Mode=TwoWay}" />
                                         </Border>
                                     </StackPanel>
                                 </DataTemplate>
