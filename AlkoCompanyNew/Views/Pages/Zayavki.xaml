@@ -148,7 +148,7 @@
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"
                                                FontFamily="Dubai Light" />
-                                    <TextBlock Text="{Binding Z_Klient, StringFormat={} Клиент: {0}}"
+                                    <TextBlock Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
                                                TextWrapping="Wrap"
                                                Grid.Row="1"
                                                VerticalAlignment="Center"

@@ -6,7 +6,7 @@ namespace AlkoCompanyNew.Models
 {
     public class AppData
     {
-        public static AlkoCompanyEntities Context = new AlkoCompanyEntities();
+        public static Entities.Entities Context = new Entities.Entities();
         public static AddZayvki AddZayvki_ { get; set; }
         public static Zayavki Zayvki_ { get; set; }
         public static AddZayvkiForm AddZayvkiForm_ { get; set; }

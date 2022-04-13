@@ -4,8 +4,10 @@ using System.ComponentModel;
 namespace AlkoCompanyNew.Models.Entities
 {
     [AddINotifyPropertyChangedInterface]
-    public partial class ObjectAssessmentHouse : INotifyPropertyChanged
+    public partial class AnalogiHouse : INotifyPropertyChanged
     {
+        public int NumberOfAnalogue { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

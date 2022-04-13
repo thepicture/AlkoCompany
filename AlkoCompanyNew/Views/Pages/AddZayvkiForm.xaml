@@ -1,114 +1,248 @@
 ﻿<Page x:Class="AlkoCompanyNew.Views.Pages.AddZayvkiForm"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AlkoCompanyNew"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d" 
-       Width="850" Height="700"
+      mc:Ignorable="d"
+      Width="850"
+      Height="700"
       Title="AddZayvkiForm">
-    
-    <Border Width="850" Height="700" Background="#FFC5C5C5"  CornerRadius="40">
+
+    <Border Width="850"
+            Height="700"
+            Background="#FFC5C5C5"
+            CornerRadius="40">
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Border BorderThickness="0,0,0,1" BorderBrush="#FF970000" Width="300" Height="44"    VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" >
-                <TextBlock Grid.Row="0" Text="Добавление заявки"   FontSize="30" Foreground="#FF575757" FontFamily="Dubai Light"  />
+            <Border BorderThickness="0,0,0,1"
+                    BorderBrush="#FF970000"
+                    Width="300"
+                    Height="44"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="20,0,0,0">
+                <TextBlock Grid.Row="0"
+                           Text="Добавление заявки"
+                           FontSize="30"
+                           Foreground="#FF575757"
+                           FontFamily="Dubai Light" />
             </Border>
 
-           
+
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="750"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="750" />
+                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
-
-
 
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Row="0" Text="{Binding Z_Adress}" Name="TextBoxAdress" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Адрес" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light"/>
-                            <TextBox Grid.Row="1" Text="{Binding Z_Klient}" Name="TextBoxklient" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Клиент" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light"/>
-                            <TextBox Grid.Row="2" Text="{Binding Z_TelNumber}" Name="TextBoxTelNumber" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Номер телефона" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light"/>
+                            <TextBox Grid.Row="0"
+                                     Text="{Binding Z_Adress}"
+                                     Name="TextBoxAdress"
+                                     Height="60"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     materialDesign:HintAssist.Hint="Адрес"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     FontFamily="Dubai Light" />
+                            <TextBox Grid.Row="1"
+                                     Text="{Binding Klient.K_Fio}"
+                                     Name="TextBoxklient"
+                                     Height="60"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     materialDesign:HintAssist.Hint="Клиент"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     FontFamily="Dubai Light" />
+                            <TextBox Grid.Row="2"
+                                     Text="{Binding Z_TelNumber}"
+                                     Name="TextBoxTelNumber"
+                                     Height="60"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     materialDesign:HintAssist.Hint="Номер телефона"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     FontFamily="Dubai Light" />
                         </Grid>
-                        <Image Grid.Column="1" x:Name="Photo" Source="{Binding Z_PhotoPreview}" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                        <Image Grid.Column="1"
+                               x:Name="Photo"
+                               Source="{Binding Z_PhotoPreview}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </Grid>
 
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
-                            <TextBox Grid.Column="0" Height="60" Width="350" HorizontalAlignment="Left" Text="{Binding Z_Hotelka}" Name="TextBoxHotelka" materialDesign:HintAssist.Hint="Клиент хочет:" materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Top" FontFamily="Dubai Light" />
+                            <TextBox Grid.Column="0"
+                                     Height="60"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     Text="{Binding Z_Hotelka}"
+                                     Name="TextBoxHotelka"
+                                     materialDesign:HintAssist.Hint="Клиент хочет:"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     VerticalAlignment="Top"
+                                     FontFamily="Dubai Light" />
 
-                            <Button Grid.Column="1" x:Name="AddOnePhoto" Height="40" Width="210" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Center" Click="AddOnePhoto_Click" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Plus" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
-                                    <TextBlock x:Name="textBlockAddOnePhoto" Text="Добавить фото" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                            <Button Grid.Column="1"
+                                    x:Name="AddOnePhoto"
+                                    Height="40"
+                                    Width="210"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Center"
+                                    Click="AddOnePhoto_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Plus"
+                                                             Width="35"
+                                                             Height="35"
+                                                             VerticalAlignment="Center"
+                                                             Foreground="#FFCB0000" />
+                                    <TextBlock x:Name="textBlockAddOnePhoto"
+                                               Text="Добавить фото"
+                                               Foreground="#FF252525"
+                                               FontSize="20"
+                                               FontFamily="Dubai Light"
+                                               VerticalAlignment="Center"
+                                               Margin="10,0,0,0" />
                                 </StackPanel>
                             </Button>
-                            <TextBox Grid.Column="1" Height="60" Text="{Binding Z_Sotrudnick}"  Width="350" HorizontalAlignment="Left" Name="TextBoxSotrudnick" materialDesign:HintAssist.Hint="Сотрудник" materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Bottom" FontFamily="Dubai Light" Loaded="TextBoxSotrudnick_Loaded"/>
-                             
+                            <TextBox Grid.Column="1"
+                                     Height="60"
+                                     Text="{Binding Sotrudnick.S_Fio}"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     Name="TextBoxSotrudnick"
+                                     materialDesign:HintAssist.Hint="Сотрудник"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     VerticalAlignment="Bottom"
+                                     FontFamily="Dubai Light"
+                                     Loaded="TextBoxSotrudnick_Loaded" />
+
                             <!--<TextBox Text="{Binding Path=Z_DataSostavlenia, Source={x:Static sys:DateTime.Now}, Mode=OneWay,  StringFormat='yyyy-MM-dd'}" Grid.Column="1" Height="60" Width="350" HorizontalAlignment="Left" Name="TextBoxData1" materialDesign:HintAssist.Hint="Дата"   materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Bottom" FontFamily="Dubai Light"/>-->
-                            <TextBox Text="{Binding Z_DataSostavlenia}" Grid.Column="1" Height="60" Width="350" HorizontalAlignment="Left" Name="TextBoxData1" materialDesign:HintAssist.Hint="Дата"   materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Bottom" FontFamily="Dubai Light" Loaded="TextBoxData1_Loaded"/>
+                            <TextBox Text="{Binding Z_DataSostavlenia}"
+                                     Grid.Column="1"
+                                     Height="60"
+                                     Width="350"
+                                     HorizontalAlignment="Left"
+                                     Name="TextBoxData1"
+                                     materialDesign:HintAssist.Hint="Дата"
+                                     materialDesign:HintAssist.IsFloating="True"
+                                     FontSize="20"
+                                     VerticalAlignment="Bottom"
+                                     FontFamily="Dubai Light"
+                                     Loaded="TextBoxData1_Loaded" />
 
                         </Grid>
-                        <TextBox Grid.Row="1" Text="{Binding Z_Primichania}" Name="TextBoxPrimichania" Height="60" materialDesign:HintAssist.Hint="Примечания к заявке" materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Top" FontFamily="Dubai Light"/>
+                        <TextBox Grid.Row="1"
+                                 Text="{Binding Z_Primichania}"
+                                 Name="TextBoxPrimichania"
+                                 Height="60"
+                                 materialDesign:HintAssist.Hint="Примечания к заявке"
+                                 materialDesign:HintAssist.IsFloating="True"
+                                 FontSize="20"
+                                 VerticalAlignment="Top"
+                                 FontFamily="Dubai Light" />
                     </Grid>
 
 
-                    <Button Grid.Row="3" x:Name="Continue" Height="Auto" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Click="Continue_Click" >
-                        <StackPanel Orientation="Horizontal" >
-                            <materialDesign:PackIcon Kind="ContentSave" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
-                            <TextBlock x:Name="textBlockaSave" Text="Сохранить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0"    />
+                    <Button Grid.Row="3"
+                            x:Name="Continue"
+                            Height="Auto"
+                            Width="Auto"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Click="Continue_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave"
+                                                     Width="35"
+                                                     Height="35"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="#FFCB0000" />
+                            <TextBlock x:Name="textBlockaSave"
+                                       Text="Сохранить"
+                                       Foreground="#FF252525"
+                                       FontSize="20"
+                                       FontFamily="Dubai Light"
+                                       VerticalAlignment="Center"
+                                       Margin="10,0,0,0" />
                         </StackPanel>
                     </Button>
 
-                    <Button Grid.Row="3" x:Name="Back" Height="Auto" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Click="Back_Click"  >
-                        <materialDesign:PackIcon Kind="ArrowBack" Width="40" Height="40" VerticalAlignment="Center" Foreground="#FFCB0000" />
+                    <Button Grid.Row="3"
+                            x:Name="Back"
+                            Height="Auto"
+                            Width="Auto"
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Click="Back_Click">
+                        <materialDesign:PackIcon Kind="ArrowBack"
+                                                 Width="40"
+                                                 Height="40"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="#FFCB0000" />
                     </Button>
 
                 </Grid>
 
-                
+
 
             </Grid>
-            
-         
-            
+
+
+
         </Grid>
     </Border>
 </Page>

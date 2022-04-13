@@ -18,19 +18,22 @@ namespace AlkoCompanyNew.Models.Entities
         public Sotrudnick()
         {
             this.Klient = new HashSet<Klient>();
+            this.Zayavka = new HashSet<Zayavka>();
         }
     
         public int S_ID { get; set; }
-        public string S_Fio { get; set; }
-        public System.DateTime S_Born { get; set; }
-        public string S_TelNumber { get; set; }
-        public string S_Post { get; set; }
-        public string S_Login { get; set; }
-        public string S_Password { get; set; }
-        public byte[] S_Photo { get; set; }
-        public string S_Email { get; set; }
+        public virtual string S_Fio { get; set; }
+        public virtual System.DateTime S_Born { get; set; }
+        public virtual string S_TelNumber { get; set; }
+        public virtual string S_Post { get; set; }
+        public virtual string S_Login { get; set; }
+        public virtual string S_Password { get; set; }
+        public virtual byte[] S_Photo { get; set; }
+        public virtual string S_Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Klient> Klient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zayavka> Zayavka { get; set; }
     }
 }

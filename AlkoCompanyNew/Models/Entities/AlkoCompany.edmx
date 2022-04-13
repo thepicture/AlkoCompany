@@ -36,41 +36,42 @@
             <PropertyRef Name="AH_ID" />
           </Key>
           <Property Name="AH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AH_Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_IstochnickInf" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_Contact" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="AH_Ploshad" Type="real" Nullable="false" />
-          <Property Name="AH_CenaProdazhiVse" Type="real" Nullable="false" />
-          <Property Name="AH_CenaProdazhiKvm" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaUsloviaFinansirovania" Type="real" Nullable="false" />
-          <Property Name="AH_KorTorg" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaDatuProdazhi" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaMesto" Type="real" Nullable="false" />
-          <Property Name="AH_TypeDopPostroyki" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaDopPostroyki" Type="real" Nullable="false" />
-          <Property Name="AH_TypeBlogoustroistva" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaBlagoustroistvo" Type="real" Nullable="false" />
-          <Property Name="AH_Mebel" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaMebel" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaPravaZemli" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaMashtabZemli" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaPravaDom" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaEtage" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaMaterialSten" Type="real" Nullable="false" />
-          <Property Name="AH_TypeOtoplenie" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaOtoplenie" Type="real" Nullable="false" />
-          <Property Name="AH_TypeVoda" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaVoda" Type="real" Nullable="false" />
-          <Property Name="AH_TypeCanalizacia" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaKanalizacia" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaTechSostoyanie" Type="real" Nullable="false" />
-          <Property Name="AH_KorNaPloshad" Type="real" Nullable="false" />
-          <Property Name="AH_TypeNarugnyuOtdelky" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaNarugnyuOtdelky" Type="real" Nullable="false" />
-          <Property Name="AH_TypeVnutrenyuOtdelky" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="AH_KorNaVnutrenyuOtdelky" Type="real" Nullable="false" />
-          <Property Name="AH_Photo" Type="varbinary(max)" Nullable="false" />
+          <Property Name="AH_Adress" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_IstochnickInf" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_Contact" Type="nvarchar" MaxLength="20" />
+          <Property Name="AH_Ploshad" Type="real" />
+          <Property Name="AH_CenaProdazhiVse" Type="real" />
+          <Property Name="AH_CenaProdazhiKvm" Type="real" />
+          <Property Name="AH_KorNaUsloviaFinansirovania" Type="real" />
+          <Property Name="AH_KorTorg" Type="real" />
+          <Property Name="AH_KorNaDatuProdazhi" Type="real" />
+          <Property Name="AH_KorNaMesto" Type="real" />
+          <Property Name="AH_TypeDopPostroyki" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaDopPostroyki" Type="real" />
+          <Property Name="AH_TypeBlogoustroistva" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaBlagoustroistvo" Type="real" />
+          <Property Name="AH_Mebel" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaMebel" Type="real" />
+          <Property Name="AH_KorNaPravaZemli" Type="real" />
+          <Property Name="AH_KorNaMashtabZemli" Type="real" />
+          <Property Name="AH_KorNaPravaDom" Type="real" />
+          <Property Name="AH_KorNaEtage" Type="real" />
+          <Property Name="AH_KorNaMaterialSten" Type="real" />
+          <Property Name="AH_TypeOtoplenie" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaOtoplenie" Type="real" />
+          <Property Name="AH_TypeVoda" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaVoda" Type="real" />
+          <Property Name="AH_TypeCanalizacia" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaKanalizacia" Type="real" />
+          <Property Name="AH_KorNaTechSostoyanie" Type="real" />
+          <Property Name="AH_KorNaPloshad" Type="real" />
+          <Property Name="AH_TypeNarugnyuOtdelky" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaNarugnyuOtdelky" Type="real" />
+          <Property Name="AH_TypeVnutrenyuOtdelky" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_KorNaVnutrenyuOtdelky" Type="real" />
+          <Property Name="AH_Photo" Type="varbinary(max)" />
           <Property Name="OH_ID" Type="int" Nullable="false" />
+          <Property Name="AH_Correction" Type="decimal" Precision="20" Scale="2" />
         </EntityType>
         <EntityType Name="Klient">
           <Key>
@@ -85,7 +86,6 @@
           <Property Name="K_NomerPasporta" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="K_DataVidachiPasporta" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="K_Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="K_Sotrudnick" Type="nvarchar" MaxLength="50" />
           <Property Name="OA_ID" Type="int" />
           <Property Name="S_ID" Type="int" />
         </EntityType>
@@ -123,13 +123,14 @@
             <PropertyRef Name="OH_ID" />
           </Key>
           <Property Name="OH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OH_Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="OH_KadNomer" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="OH_Ploshad" Type="real" Nullable="false" />
-          <Property Name="OH_CenaKvm" Type="real" Nullable="false" />
-          <Property Name="OH_CenaVse" Type="real" Nullable="false" />
-          <Property Name="OH_Photo" Type="varbinary(max)" Nullable="false" />
-          <Property Name="K_ID" Type="int" Nullable="false" />
+          <Property Name="OH_Adress" Type="nvarchar" MaxLength="100" />
+          <Property Name="OH_KadNomer" Type="nvarchar" MaxLength="100" />
+          <Property Name="OH_Ploshad" Type="real" />
+          <Property Name="OH_CenaKvm" Type="real" />
+          <Property Name="OH_CenaVse" Type="real" />
+          <Property Name="OH_Photo" Type="varbinary(max)" />
+          <Property Name="OH_C_Correction" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="OH_AdditionalBuildingState" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Sotrudnick">
           <Key>
@@ -153,12 +154,12 @@
           <Property Name="Z_Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_Hotelka" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_PhotoPreview" Type="varbinary(max)" Nullable="false" />
-          <Property Name="Z_Klient" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_TelNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Z_Primichania" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Z_Sotrudnick" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Z_DataSostavlenia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="S_ID" Type="int" />
+          <Property Name="S_ID" Type="int" Nullable="false" />
+          <Property Name="K_ID" Type="int" Nullable="false" />
+          <Property Name="OAH_ID" Type="int" />
         </EntityType>
         <Association Name="FK__AnalogiGr__OG_ID__30F848ED">
           <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="1" />
@@ -173,7 +174,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__AnalogiHo__OH_ID__31EC6D26">
-          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="1" />
+          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="AnalogiHouse" Type="Self.AnalogiHouse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentHouse">
@@ -208,18 +211,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ObjectAsse__K_ID__2E1BDC42">
-          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
-          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klient">
-              <PropertyRef Name="K_ID" />
-            </Principal>
-            <Dependent Role="ObjectAssessmentHouse">
-              <PropertyRef Name="K_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ObjectAsse__K_ID__30F848ED">
           <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
           <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="*" />
@@ -229,6 +220,42 @@
             </Principal>
             <Dependent Role="ObjectAssessmentGround">
               <PropertyRef Name="K_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="K_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="K_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_ObjectAssessmentHouse">
+          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="0..1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectAssessmentHouse">
+              <PropertyRef Name="OH_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="OAH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Sotrudnick">
+          <End Role="Sotrudnick" Type="Self.Sotrudnick" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnick">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="S_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -257,13 +284,21 @@
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
             <End Role="Klient" EntitySet="Klient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ObjectAsse__K_ID__2E1BDC42" Association="Self.FK__ObjectAsse__K_ID__2E1BDC42">
-            <End Role="Klient" EntitySet="Klient" />
-            <End Role="ObjectAssessmentHouse" EntitySet="ObjectAssessmentHouse" />
-          </AssociationSet>
           <AssociationSet Name="FK__ObjectAsse__K_ID__30F848ED" Association="Self.FK__ObjectAsse__K_ID__30F848ED">
             <End Role="Klient" EntitySet="Klient" />
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Klient" Association="Self.FK_Zayavka_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ObjectAssessmentHouse" Association="Self.FK_Zayavka_ObjectAssessmentHouse">
+            <End Role="ObjectAssessmentHouse" EntitySet="ObjectAssessmentHouse" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Sotrudnick" Association="Self.FK_Zayavka_Sotrudnick">
+            <End Role="Sotrudnick" EntitySet="Sotrudnick" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -295,13 +330,21 @@
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
             <End Role="Klient" EntitySet="Klient" />
           </AssociationSet>
-          <AssociationSet Name="FK__ObjectAsse__K_ID__2E1BDC42" Association="AlkoCompanyModel.FK__ObjectAsse__K_ID__2E1BDC42">
-            <End Role="Klient" EntitySet="Klient" />
-            <End Role="ObjectAssessmentHouse" EntitySet="ObjectAssessmentHouse" />
-          </AssociationSet>
           <AssociationSet Name="FK__ObjectAsse__K_ID__30F848ED" Association="AlkoCompanyModel.FK__ObjectAsse__K_ID__30F848ED">
             <End Role="Klient" EntitySet="Klient" />
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Klient" Association="AlkoCompanyModel.FK_Zayavka_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ObjectAssessmentHouse" Association="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse">
+            <End Role="ObjectAssessmentHouse" EntitySet="ObjectAssessmentHouse" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_Sotrudnick" Association="AlkoCompanyModel.FK_Zayavka_Sotrudnick">
+            <End Role="Sotrudnick" EntitySet="Sotrudnick" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AnalogiGround">
@@ -336,41 +379,42 @@
             <PropertyRef Name="AH_ID" />
           </Key>
           <Property Name="AH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AH_Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_IstochnickInf" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_Contact" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="AH_Ploshad" Type="Single" Nullable="false" />
-          <Property Name="AH_CenaProdazhiVse" Type="Single" Nullable="false" />
-          <Property Name="AH_CenaProdazhiKvm" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaUsloviaFinansirovania" Type="Single" Nullable="false" />
-          <Property Name="AH_KorTorg" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaDatuProdazhi" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaMesto" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeDopPostroyki" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaDopPostroyki" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeBlogoustroistva" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaBlagoustroistvo" Type="Single" Nullable="false" />
-          <Property Name="AH_Mebel" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaMebel" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaPravaZemli" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaMashtabZemli" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaPravaDom" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaEtage" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaMaterialSten" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeOtoplenie" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaOtoplenie" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeVoda" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaVoda" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeCanalizacia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaKanalizacia" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaTechSostoyanie" Type="Single" Nullable="false" />
-          <Property Name="AH_KorNaPloshad" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeNarugnyuOtdelky" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaNarugnyuOtdelky" Type="Single" Nullable="false" />
-          <Property Name="AH_TypeVnutrenyuOtdelky" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AH_KorNaVnutrenyuOtdelky" Type="Single" Nullable="false" />
-          <Property Name="AH_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="AH_Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_IstochnickInf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AH_Ploshad" Type="Single" />
+          <Property Name="AH_CenaProdazhiVse" Type="Single" />
+          <Property Name="AH_CenaProdazhiKvm" Type="Single" />
+          <Property Name="AH_KorNaUsloviaFinansirovania" Type="Single" />
+          <Property Name="AH_KorTorg" Type="Single" />
+          <Property Name="AH_KorNaDatuProdazhi" Type="Single" />
+          <Property Name="AH_KorNaMesto" Type="Single" />
+          <Property Name="AH_TypeDopPostroyki" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaDopPostroyki" Type="Single" />
+          <Property Name="AH_TypeBlogoustroistva" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaBlagoustroistvo" Type="Single" />
+          <Property Name="AH_Mebel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaMebel" Type="Single" />
+          <Property Name="AH_KorNaPravaZemli" Type="Single" />
+          <Property Name="AH_KorNaMashtabZemli" Type="Single" />
+          <Property Name="AH_KorNaPravaDom" Type="Single" />
+          <Property Name="AH_KorNaEtage" Type="Single" />
+          <Property Name="AH_KorNaMaterialSten" Type="Single" />
+          <Property Name="AH_TypeOtoplenie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaOtoplenie" Type="Single" />
+          <Property Name="AH_TypeVoda" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaVoda" Type="Single" />
+          <Property Name="AH_TypeCanalizacia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaKanalizacia" Type="Single" />
+          <Property Name="AH_KorNaTechSostoyanie" Type="Single" />
+          <Property Name="AH_KorNaPloshad" Type="Single" />
+          <Property Name="AH_TypeNarugnyuOtdelky" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaNarugnyuOtdelky" Type="Single" />
+          <Property Name="AH_TypeVnutrenyuOtdelky" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaVnutrenyuOtdelky" Type="Single" />
+          <Property Name="AH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OH_ID" Type="Int32" Nullable="false" />
+          <Property Name="AH_Correction" Type="Decimal" Precision="20" Scale="2" />
           <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" FromRole="AnalogiHouse" ToRole="ObjectAssessmentHouse" />
         </EntityType>
         <EntityType Name="Klient">
@@ -386,13 +430,12 @@
           <Property Name="K_NomerPasporta" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="K_DataVidachiPasporta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="K_Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="K_Sotrudnick" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OA_ID" Type="Int32" />
           <Property Name="S_ID" Type="Int32" />
           <NavigationProperty Name="ObjectAssessmentAll" Relationship="AlkoCompanyModel.FK__Klient__OA_ID__2A4B4B5E" FromRole="Klient" ToRole="ObjectAssessmentAll" />
           <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK__Klient__S_ID__2B3F6F97" FromRole="Klient" ToRole="Sotrudnick" />
-          <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK__ObjectAsse__K_ID__2E1BDC42" FromRole="Klient" ToRole="ObjectAssessmentHouse" />
           <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__ObjectAsse__K_ID__30F848ED" FromRole="Klient" ToRole="ObjectAssessmentGround" />
+          <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_Klient" FromRole="Klient" ToRole="Zayavka" />
         </EntityType>
         <EntityType Name="ObjectAssessmentAll">
           <Key>
@@ -431,15 +474,16 @@
             <PropertyRef Name="OH_ID" />
           </Key>
           <Property Name="OH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OH_Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="OH_KadNomer" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="OH_Ploshad" Type="Single" Nullable="false" />
-          <Property Name="OH_CenaKvm" Type="Single" Nullable="false" />
-          <Property Name="OH_CenaVse" Type="Single" Nullable="false" />
-          <Property Name="OH_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="K_ID" Type="Int32" Nullable="false" />
+          <Property Name="OH_Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OH_KadNomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Ploshad" Type="Single" />
+          <Property Name="OH_CenaKvm" Type="Single" />
+          <Property Name="OH_CenaVse" Type="Single" />
+          <Property Name="OH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OH_C_Correction" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="OH_AdditionalBuildingState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AnalogiHouse" Relationship="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" FromRole="ObjectAssessmentHouse" ToRole="AnalogiHouse" />
-          <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK__ObjectAsse__K_ID__2E1BDC42" FromRole="ObjectAssessmentHouse" ToRole="Klient" />
+          <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" FromRole="ObjectAssessmentHouse" ToRole="Zayavka" />
         </EntityType>
         <EntityType Name="Sotrudnick">
           <Key>
@@ -455,6 +499,7 @@
           <Property Name="S_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="S_Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK__Klient__S_ID__2B3F6F97" FromRole="Sotrudnick" ToRole="Klient" />
+          <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_Sotrudnick" FromRole="Sotrudnick" ToRole="Zayavka" />
         </EntityType>
         <EntityType Name="Zayavka">
           <Key>
@@ -464,12 +509,15 @@
           <Property Name="Z_Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_Hotelka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_PhotoPreview" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="Z_Klient" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_TelNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Z_Primichania" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Z_Sotrudnick" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Z_DataSostavlenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="S_ID" Type="Int32" />
+          <Property Name="S_ID" Type="Int32" Nullable="false" />
+          <Property Name="K_ID" Type="Int32" Nullable="false" />
+          <Property Name="OAH_ID" Type="Int32" />
+          <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK_Zayavka_Klient" FromRole="Zayavka" ToRole="Klient" />
+          <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" FromRole="Zayavka" ToRole="ObjectAssessmentHouse" />
+          <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK_Zayavka_Sotrudnick" FromRole="Zayavka" ToRole="Sotrudnick" />
         </EntityType>
         <Association Name="FK__AnalogiGr__OG_ID__30F848ED">
           <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="1" />
@@ -484,7 +532,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__AnalogiHo__OH_ID__31EC6D26">
-          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.AnalogiHouse" Role="AnalogiHouse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentHouse">
@@ -519,18 +569,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ObjectAsse__K_ID__2E1BDC42">
-          <End Type="AlkoCompanyModel.Klient" Role="Klient" Multiplicity="1" />
-          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klient">
-              <PropertyRef Name="K_ID" />
-            </Principal>
-            <Dependent Role="ObjectAssessmentHouse">
-              <PropertyRef Name="K_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ObjectAsse__K_ID__30F848ED">
           <End Type="AlkoCompanyModel.Klient" Role="Klient" Multiplicity="1" />
           <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="*" />
@@ -543,7 +581,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Zayavka_Klient">
+          <End Type="AlkoCompanyModel.Klient" Role="Klient" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="K_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="K_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_ObjectAssessmentHouse">
+          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="0..1" />
+          <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObjectAssessmentHouse">
+              <PropertyRef Name="OH_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="OAH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_Sotrudnick">
+          <End Type="AlkoCompanyModel.Sotrudnick" Role="Sotrudnick" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnick">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -579,6 +653,7 @@
           <EntitySetMapping Name="AnalogiHouse">
             <EntityTypeMapping TypeName="AlkoCompanyModel.AnalogiHouse">
               <MappingFragment StoreEntitySet="AnalogiHouse">
+                <ScalarProperty Name="AH_Correction" ColumnName="AH_Correction" />
                 <ScalarProperty Name="OH_ID" ColumnName="OH_ID" />
                 <ScalarProperty Name="AH_Photo" ColumnName="AH_Photo" />
                 <ScalarProperty Name="AH_KorNaVnutrenyuOtdelky" ColumnName="AH_KorNaVnutrenyuOtdelky" />
@@ -623,7 +698,6 @@
               <MappingFragment StoreEntitySet="Klient">
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
                 <ScalarProperty Name="OA_ID" ColumnName="OA_ID" />
-                <ScalarProperty Name="K_Sotrudnick" ColumnName="K_Sotrudnick" />
                 <ScalarProperty Name="K_Email" ColumnName="K_Email" />
                 <ScalarProperty Name="K_DataVidachiPasporta" ColumnName="K_DataVidachiPasporta" />
                 <ScalarProperty Name="K_NomerPasporta" ColumnName="K_NomerPasporta" />
@@ -670,7 +744,8 @@
           <EntitySetMapping Name="ObjectAssessmentHouse">
             <EntityTypeMapping TypeName="AlkoCompanyModel.ObjectAssessmentHouse">
               <MappingFragment StoreEntitySet="ObjectAssessmentHouse">
-                <ScalarProperty Name="K_ID" ColumnName="K_ID" />
+                <ScalarProperty Name="OH_AdditionalBuildingState" ColumnName="OH_AdditionalBuildingState" />
+                <ScalarProperty Name="OH_C_Correction" ColumnName="OH_C_Correction" />
                 <ScalarProperty Name="OH_Photo" ColumnName="OH_Photo" />
                 <ScalarProperty Name="OH_CenaVse" ColumnName="OH_CenaVse" />
                 <ScalarProperty Name="OH_CenaKvm" ColumnName="OH_CenaKvm" />
@@ -699,12 +774,12 @@
           <EntitySetMapping Name="Zayavka">
             <EntityTypeMapping TypeName="AlkoCompanyModel.Zayavka">
               <MappingFragment StoreEntitySet="Zayavka">
+                <ScalarProperty Name="OAH_ID" ColumnName="OAH_ID" />
+                <ScalarProperty Name="K_ID" ColumnName="K_ID" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
                 <ScalarProperty Name="Z_DataSostavlenia" ColumnName="Z_DataSostavlenia" />
-                <ScalarProperty Name="Z_Sotrudnick" ColumnName="Z_Sotrudnick" />
                 <ScalarProperty Name="Z_Primichania" ColumnName="Z_Primichania" />
                 <ScalarProperty Name="Z_TelNumber" ColumnName="Z_TelNumber" />
-                <ScalarProperty Name="Z_Klient" ColumnName="Z_Klient" />
                 <ScalarProperty Name="Z_PhotoPreview" ColumnName="Z_PhotoPreview" />
                 <ScalarProperty Name="Z_Hotelka" ColumnName="Z_Hotelka" />
                 <ScalarProperty Name="Z_Adress" ColumnName="Z_Adress" />

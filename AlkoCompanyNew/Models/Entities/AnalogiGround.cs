@@ -15,25 +15,25 @@ namespace AlkoCompanyNew.Models.Entities
     public partial class AnalogiGround
     {
         public int AG_ID { get; set; }
-        public string AG_Adress { get; set; }
-        public string AG_IstochnickInf { get; set; }
-        public string AG_Contact { get; set; }
-        public float AG_Ploshad { get; set; }
-        public float AG_CenaProdazhiVse { get; set; }
-        public float AG_CenaProdazhiKvm { get; set; }
-        public float AG_KorTorg { get; set; }
-        public float AG_KorNaPrava { get; set; }
-        public float AG_KorNaDatuProdazhi { get; set; }
-        public float AG_KorNaMesto { get; set; }
-        public string AG_VozmognostPodklucheniaGas { get; set; }
-        public float AG_KorNaGas { get; set; }
-        public string AG_VozmognostPodklucheniaVoda { get; set; }
-        public float AG_KorNaVoda { get; set; }
-        public string AG_VozmognostPodklucheniaElectric { get; set; }
-        public float AG_KorNaElecric { get; set; }
-        public string AG_CategoriaZemel { get; set; }
-        public string AG_RazreshennoeIspolzovanie { get; set; }
-        public byte[] AG_Photo { get; set; }
+        public virtual string AG_Adress { get; set; }
+        public virtual string AG_IstochnickInf { get; set; }
+        public virtual string AG_Contact { get; set; }
+        public virtual float AG_Ploshad { get; set; }
+        public virtual float AG_CenaProdazhiVse { get; set; }
+        public virtual float AG_CenaProdazhiKvm { get; set; }
+        public virtual float AG_KorTorg { get; set; }
+        public virtual float AG_KorNaPrava { get; set; }
+        public virtual float AG_KorNaDatuProdazhi { get; set; }
+        public virtual float AG_KorNaMesto { get; set; }
+        public virtual string AG_VozmognostPodklucheniaGas { get; set; }
+        public virtual float AG_KorNaGas { get; set; }
+        public virtual string AG_VozmognostPodklucheniaVoda { get; set; }
+        public virtual float AG_KorNaVoda { get; set; }
+        public virtual string AG_VozmognostPodklucheniaElectric { get; set; }
+        public virtual float AG_KorNaElecric { get; set; }
+        public virtual string AG_CategoriaZemel { get; set; }
+        public virtual string AG_RazreshennoeIspolzovanie { get; set; }
+        public virtual byte[] AG_Photo { get; set; }
         public int OG_ID { get; set; }
     
         public virtual ObjectAssessmentGround ObjectAssessmentGround { get; set; }

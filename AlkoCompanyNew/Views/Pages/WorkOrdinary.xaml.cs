@@ -41,23 +41,5 @@ namespace AlkoCompanyNew.Views.Pages
                 CalculatingControl.Visibility = Visibility.Visible;
             }
         }
-
-        private void OnAddAnalogueCommand(object sender, RoutedEventArgs e)
-        {
-            ((dynamic)DataContext).CalculationItems
-                .Add(new ObjectAssessmentHouse
-                {
-                    IsAnalogue = true,
-                    City = "г. Москва",
-                    Correction = 1.00
-                });
-        }
-
-        private void OnDeleteAnalogue(object sender, RoutedEventArgs e)
-        {
-            ((dynamic)DataContext).CalculationItems
-                .Remove(
-                    (sender as Button).DataContext as ObjectAssessmentHouse);
-        }
     }
 }

@@ -15,14 +15,18 @@ namespace AlkoCompanyNew.Models.Entities
     public partial class Zayavka
     {
         public int Z_ID { get; set; }
-        public string Z_Adress { get; set; }
-        public string Z_Hotelka { get; set; }
-        public byte[] Z_PhotoPreview { get; set; }
-        public string Z_Klient { get; set; }
-        public string Z_TelNumber { get; set; }
-        public string Z_Primichania { get; set; }
-        public string Z_Sotrudnick { get; set; }
-        public string Z_DataSostavlenia { get; set; }
-        public Nullable<int> S_ID { get; set; }
+        public virtual string Z_Adress { get; set; }
+        public virtual string Z_Hotelka { get; set; }
+        public virtual byte[] Z_PhotoPreview { get; set; }
+        public virtual string Z_TelNumber { get; set; }
+        public virtual string Z_Primichania { get; set; }
+        public virtual string Z_DataSostavlenia { get; set; }
+        public int S_ID { get; set; }
+        public int K_ID { get; set; }
+        public Nullable<int> OAH_ID { get; set; }
+    
+        public virtual Klient Klient { get; set; }
+        public virtual ObjectAssessmentHouse ObjectAssessmentHouse { get; set; }
+        public virtual Sotrudnick Sotrudnick { get; set; }
     }
 }

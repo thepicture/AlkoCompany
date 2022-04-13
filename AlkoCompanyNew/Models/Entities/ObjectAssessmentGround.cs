@@ -21,14 +21,14 @@ namespace AlkoCompanyNew.Models.Entities
         }
     
         public int OG_ID { get; set; }
-        public string OG_Adress { get; set; }
-        public string OG_KadNomer { get; set; }
-        public float OG_Ploshad { get; set; }
-        public string OG_KategoriaZemel { get; set; }
-        public string OG_RazreshennoeIspolzovanie { get; set; }
-        public float OG_CenaKvm { get; set; }
-        public float OG_CenaVse { get; set; }
-        public byte[] OG_Photo { get; set; }
+        public virtual string OG_Adress { get; set; }
+        public virtual string OG_KadNomer { get; set; }
+        public virtual float OG_Ploshad { get; set; }
+        public virtual string OG_KategoriaZemel { get; set; }
+        public virtual string OG_RazreshennoeIspolzovanie { get; set; }
+        public virtual float OG_CenaKvm { get; set; }
+        public virtual float OG_CenaVse { get; set; }
+        public virtual byte[] OG_Photo { get; set; }
         public int K_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

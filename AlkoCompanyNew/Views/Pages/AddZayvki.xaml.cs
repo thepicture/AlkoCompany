@@ -92,7 +92,7 @@ namespace AlkoCompanyNew.Views.Pages
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             var poisk = AppData.Context.Zayavka.ToList();
-            poisk = poisk.Where(d => d.Z_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Z_Klient.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Z_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            poisk = poisk.Where(d => d.Z_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Klient.K_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Z_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
             ListViewAddZayvka.ItemsSource = poisk;
         }
     }

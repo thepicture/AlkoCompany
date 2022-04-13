@@ -12,19 +12,19 @@ namespace AlkoCompanyNew.Models.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class AlkoCompanyEntities : DbContext
+    
+    public partial class Entities : DbContext
     {
-        public AlkoCompanyEntities()
-            : base("name=AlkoCompanyEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<AnalogiGround> AnalogiGround { get; set; }
         public virtual DbSet<AnalogiHouse> AnalogiHouse { get; set; }
         public virtual DbSet<Klient> Klient { get; set; }

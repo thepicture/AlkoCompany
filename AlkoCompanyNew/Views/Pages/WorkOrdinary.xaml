@@ -11,7 +11,8 @@
       mc:Ignorable="d"
       Title="WorkOrdinary"
       Width="1920"
-      Height="1080">
+      Height="1080"
+      Name="Page">
     <Page.Resources>
         <Storyboard x:Key="Storyboard1">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
@@ -66,205 +67,276 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding CalculationItems}"
-                              VerticalAlignment="Top"
-                              Margin="5"
-                              Name="CalculationView"
-                              AlternationCount="128">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                            <ContentPresenter />
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextAlignment"
+                                        Value="Center" />
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center" />
+                                <Setter Property="FontFamily"
+                                        Value="Dubai Light" />
+                                <Setter Property="FontSize"
+                                        Value="19" />
+                                <Setter Property="Foreground"
+                                        Value="#FF252525" />
                                 <Setter Property="Margin"
-                                        Value="0" />
-                                <Setter Property="Padding"
-                                        Value="0" />
-                                <Setter Property="BorderThickness"
-                                        Value="0" />
-                                <Setter Property="HorizontalContentAlignment"
-                                        Value="Stretch" />
+                                        Value="5" />
                             </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView},
-                                                               Path=DataContext.CalculationItems.Count}" />
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <DataTemplate.Resources>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="TextAlignment"
-                                                Value="Center" />
-                                        <Setter Property="VerticalAlignment"
-                                                Value="Center" />
-                                        <Setter Property="FontFamily"
-                                                Value="Dubai Light" />
-                                        <Setter Property="FontSize"
-                                                Value="19" />
-                                        <Setter Property="Foreground"
-                                                Value="#FF252525" />
-                                        <Setter Property="Margin"
-                                                Value="5" />
-                                    </Style>
-                                    <Style TargetType="TextBox"
-                                           BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
-                                        <Setter Property="TextAlignment"
-                                                Value="Center" />
-                                        <Setter Property="VerticalAlignment"
-                                                Value="Center" />
-                                        <Setter Property="FontFamily"
-                                                Value="Dubai Light" />
-                                        <Setter Property="FontSize"
-                                                Value="19" />
-                                        <Setter Property="Foreground"
-                                                Value="#FF252525" />
-                                        <Setter Property="Margin"
-                                                Value="5" />
-                                        <Setter Property="Panel.ZIndex"
-                                                Value="1" />
-                                    </Style>
-                                    <Style TargetType="ComboBox"
-                                           BasedOn="{StaticResource MaterialDesignComboBox}">
-                                        <Setter Property="Panel.ZIndex"
-                                                Value="1" />
-                                        <Setter Property="FontFamily"
-                                                Value="Dubai Light" />
-                                        <Setter Property="FontSize"
-                                                Value="19" />
-                                        <Setter Property="Margin"
-                                                Value="5" />
-                                    </Style>
-                                    <Style TargetType="Button"
-                                           BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
-                                        <Setter Property="Panel.ZIndex"
-                                                Value="1" />
-                                    </Style>
-                                </DataTemplate.Resources>
-                                <StackPanel IsHitTestVisible="{Binding IsEditable}">
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1"
-                                            Background="LightGray">
-                                        <TextBlock FontStyle="Italic"
-                                                   FontWeight="Bold">
-                                            <TextBlock.Inlines>
-                                                <Run>
-                                                    <Run.Style>
-                                                        <Style TargetType="Run">
-                                                            <Setter Property="Text"
-                                                                    Value="{Binding Criterion}" />
-                                                            <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding IsAnalogue}"
-                                                                             Value="True">
-                                                                    <Setter Property="Text"
-                                                                            Value="Аналог" />
-                                                                </DataTrigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Run.Style>
-                                                </Run>
-                                            </TextBlock.Inlines>
-                                        </TextBlock>
-                                    </Border>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1">
-                                        <Grid>
+                            <Style TargetType="TextBox"
+                                   BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+                                <Setter Property="TextAlignment"
+                                        Value="Center" />
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center" />
+                                <Setter Property="FontFamily"
+                                        Value="Dubai Light" />
+                                <Setter Property="FontSize"
+                                        Value="19" />
+                                <Setter Property="Foreground"
+                                        Value="#FF252525" />
+                                <Setter Property="Margin"
+                                        Value="5" />
+                                <Setter Property="Panel.ZIndex"
+                                        Value="1" />
+                            </Style>
+                            <Style TargetType="ComboBox"
+                                   BasedOn="{StaticResource MaterialDesignComboBox}">
+                                <Setter Property="Panel.ZIndex"
+                                        Value="1" />
+                                <Setter Property="FontFamily"
+                                        Value="Dubai Light" />
+                                <Setter Property="FontSize"
+                                        Value="19" />
+                                <Setter Property="Margin"
+                                        Value="5" />
+                            </Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                <Setter Property="Panel.ZIndex"
+                                        Value="1" />
+                            </Style>
+                        </Grid.Resources>
+                        <StackPanel IsHitTestVisible="False">
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Background="LightGray">
+                                <TextBlock FontStyle="Italic"
+                                           FontWeight="Bold"
+                                           Text="Критерий" />
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Grid>
+                                    <TextBox Opacity="0"
+                                             HorizontalAlignment="Stretch" />
+                                    <TextBlock Text="Местоположение" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Grid Height="110">
+                                    <TextBlock Text="Фото" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Background="LightGray">
+                                <Grid>
+                                    <ComboBox Opacity="0" />
+                                    <TextBlock Text="Доп.постройки"
+                                               FontStyle="Italic"
+                                               FontWeight="Bold" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Grid>
+                                    <TextBox Opacity="0" />
+                                    <TextBlock Text="Корректировка" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Background="LightGray">
+                                <TextBlock FontStyle="Italic"
+                                           FontWeight="Bold"
+                                           Text="Объект оценки" />
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Grid>
+                                    <TextBox Text="{Binding AssessmentObject.OH_Adress}"
+                                             HorizontalAlignment="Stretch" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Image Height="100"
+                                       Width="100"
+                                       Stretch="UniformToFill"
+                                       Margin="5">
+                                    <Image.InputBindings>
+                                        <MouseBinding Gesture="LeftClick"
+                                                      Command="{Binding ChangeAssessmentObjectPictureCommand}" />
+                                    </Image.InputBindings>
+                                    <Image.Source>
+                                        <Binding Path="AssessmentObject.OH_Photo">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/Resources/logo.png</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1"
+                                    Background="LightGray">
+                                <Grid>
+                                    <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
+                                              SelectedItem="{Binding AssessmentObject.OH_AdditionalBuildingState}" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="1">
+                                <Grid>
+                                    <TextBox Visibility="Hidden" />
+                                    <TextBlock Text="{Binding AssessmentObject.OH_C_Correction, StringFormat={}{0:F2}}" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                        <ListView ItemsSource="{Binding AnalogueHouses}"
+                                  VerticalAlignment="Top"
+                                  Name="CalculationView"
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  Grid.Column="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Margin"
+                                            Value="0" />
+                                    <Setter Property="Padding"
+                                            Value="0" />
+                                    <Setter Property="BorderThickness"
+                                            Value="0" />
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="3"
+                                                 Rows="1" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <DataTemplate.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="TextAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="VerticalAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="FontFamily"
+                                                    Value="Dubai Light" />
+                                            <Setter Property="FontSize"
+                                                    Value="19" />
+                                            <Setter Property="Foreground"
+                                                    Value="#FF252525" />
+                                            <Setter Property="Margin"
+                                                    Value="5" />
+                                        </Style>
+                                        <Style TargetType="TextBox"
+                                               BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+                                            <Setter Property="TextAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="VerticalAlignment"
+                                                    Value="Center" />
+                                            <Setter Property="FontFamily"
+                                                    Value="Dubai Light" />
+                                            <Setter Property="FontSize"
+                                                    Value="19" />
+                                            <Setter Property="Foreground"
+                                                    Value="#FF252525" />
+                                            <Setter Property="Margin"
+                                                    Value="5" />
+                                            <Setter Property="Panel.ZIndex"
+                                                    Value="1" />
+                                        </Style>
+                                        <Style TargetType="ComboBox"
+                                               BasedOn="{StaticResource MaterialDesignComboBox}">
+                                            <Setter Property="Panel.ZIndex"
+                                                    Value="1" />
+                                            <Setter Property="FontFamily"
+                                                    Value="Dubai Light" />
+                                            <Setter Property="FontSize"
+                                                    Value="19" />
+                                            <Setter Property="Margin"
+                                                    Value="5" />
+                                        </Style>
+                                        <Style TargetType="Button"
+                                               BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                            <Setter Property="Panel.ZIndex"
+                                                    Value="1" />
+                                        </Style>
+                                    </DataTemplate.Resources>
+                                    <StackPanel>
+                                        <Border BorderBrush="Black"
+                                                BorderThickness="1"
+                                                Background="LightGray">
+                                            <TextBlock FontStyle="Italic"
+                                                       FontWeight="Bold"
+                                                       Text="{Binding NumberOfAnalogue, StringFormat={}Аналог {0}}" />
+                                        </Border>
+                                        <Border BorderBrush="Black"
+                                                BorderThickness="1">
                                             <TextBox Text="{Binding City}"
-                                                     Opacity="{Binding IsEditable}"
-                                                     HorizontalAlignment="Stretch"/>
-                                            <TextBlock Text="Местоположение"
-                                                       Opacity="{Binding IsHeader}" />
-                                        </Grid>
-                                    </Border>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1">
-                                        <Grid>
-                                            <Image Height="60"
-                                                   Width="60"
+                                                     HorizontalAlignment="Stretch" />
+                                        </Border>
+                                        <Border BorderBrush="Black"
+                                                BorderThickness="1">
+                                            <Image Height="100"
+                                                   Width="100"
                                                    Stretch="UniformToFill"
-                                                   Margin="5"
-                                                   Opacity="{Binding IsEditable}">
+                                                   Margin="5">
                                                 <Image.Source>
-                                                    <Binding Path="Image">
+                                                    <Binding Path="AH_Photo">
                                                         <Binding.TargetNullValue>
                                                             <ImageSource>/Resources/logo.png</ImageSource>
                                                         </Binding.TargetNullValue>
                                                     </Binding>
                                                 </Image.Source>
                                             </Image>
-                                            <TextBlock Text="Фото"
-                                                       Opacity="{Binding IsHeader}" />
-                                        </Grid>
-                                    </Border>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1"
-                                            Background="LightGray">
-                                        <Grid>
-                                            <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
-                                                      SelectedItem="{Binding SelectedAdditionalBuilding}"
-                                                      Opacity="{Binding IsEditable}"/>
-                                            <TextBlock Text="Доп.постройки"
-                                                       Opacity="{Binding IsHeader}" 
-                                                       FontStyle="Italic"
-                                                       FontWeight="Bold"/>
-                                        </Grid>
-                                    </Border>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1">
-                                        <Grid>
-                                            <TextBox Text="{Binding Correction, StringFormat={}{0:F2}}"
-                                                       Opacity="{Binding IsEditable}" />
-                                            <TextBlock Text="Корректировка"
-                                                       Opacity="{Binding IsHeader}" />
-                                        </Grid>
-                                    </Border>
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1">
-                                        <Grid>
-                                            <Button Click="OnDeleteAnalogue"
-                                                    Content="Удалить"
-                                                    Opacity="{Binding IsEditable}"
-                                                    Background="Red"
-                                                    Foreground="White"
-                                                    Margin="5"
-                                                    FontSize="11"
-                                                    Height="22">
-                                                <Button.Style>
-                                                    <Style TargetType="Button"
-                                                           BasedOn="{StaticResource {x:Type Button}}">
-                                                        <Setter Property="Visibility"
-                                                                Value="Collapsed" />
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsAnalogue}"
-                                                                         Value="True">
-                                                                <Setter Property="Visibility"
-                                                                        Value="Visible" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Button.Style>
-                                            </Button>
-                                            <TextBlock Text="Действие"
-                                                       Opacity="{Binding IsHeader}" />
-                                        </Grid>
-                                    </Border>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <Button Content="Добавить аналог"
-                            Click="OnAddAnalogueCommand"
-                            Grid.Row="1"
-                            Background="white"
-                            BorderBrush="Black"
-                            Margin="5"
-                            Foreground="Black" />
+                                        </Border>
+                                        <Border BorderBrush="Black"
+                                                BorderThickness="1"
+                                                Background="LightGray">
+                                            <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.AdditionalBuildingTypes}"
+                                                      SelectedItem="{Binding AH_TypeDopPostroyki}" />
+                                        </Border>
+                                        <Border BorderBrush="Black"
+                                                BorderThickness="1">
+                                            <TextBox Text="{Binding AH_Correction, StringFormat={}{0:F2}}" />
+                                        </Border>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
                 </Grid>
                 <!--End of calculating markup.-->
 
@@ -430,7 +502,7 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="2"
-                                       Text="{Binding Zayavka.Z_Klient, StringFormat={} Клиент: {0}}"
+                                       Text="{Binding Zayavka.Klient.K_Fio, StringFormat={} Клиент: {0}}"
                                        Name="TextBoxklient"
                                        Height="Auto"
                                        Width="Auto"
@@ -497,7 +569,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"
-                                       Text="{Binding Zayavka.Z_Sotrudnick, StringFormat={} Составитель заявки: {0}}"
+                                       Text="{Binding Zayavka.Sotrudnick.S_Fio, StringFormat={} Составитель заявки: {0}}"
                                        Name="TextBoxSotrudnick"
                                        TextWrapping="Wrap"
                                        materialDesign:HintAssist.IsFloating="True"

@@ -5,20 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="20c5a3f118f149d1ba3d88b82938c38b" Name="Diagram1">
-        <EntityTypeShape EntityType="AlkoCompanyModel.AnalogiGround" Width="1.5" PointX="7.5" PointY="1.5" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.AnalogiHouse" Width="1.5" PointX="7.5" PointY="7.5" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.Klient" Width="1.5" PointX="3" PointY="6.5" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentAll" Width="1.5" PointX="0.75" PointY="3.125" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentGround" Width="1.5" PointX="5.25" PointY="2.5" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentHouse" Width="1.5" PointX="5.25" PointY="10.125" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.Sotrudnick" Width="1.5" PointX="0.75" PointY="7.125" />
-        <EntityTypeShape EntityType="AlkoCompanyModel.Zayavka" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.AnalogiGround" Width="1.5" PointX="7.5" PointY="9" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.AnalogiHouse" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.Klient" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentAll" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentGround" Width="1.5" PointX="5.25" PointY="9.875" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.ObjectAssessmentHouse" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.Sotrudnick" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AlkoCompanyModel.Zayavka" Width="1.5" PointX="5.25" PointY="5.5" />
         <AssociationConnector Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__30F848ED" />
         <AssociationConnector Association="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" />
         <AssociationConnector Association="AlkoCompanyModel.FK__Klient__OA_ID__2A4B4B5E" />
         <AssociationConnector Association="AlkoCompanyModel.FK__Klient__S_ID__2B3F6F97" />
-        <AssociationConnector Association="AlkoCompanyModel.FK__ObjectAsse__K_ID__2E1BDC42" />
         <AssociationConnector Association="AlkoCompanyModel.FK__ObjectAsse__K_ID__30F848ED" />
+        <AssociationConnector Association="AlkoCompanyModel.FK_Zayavka_Klient" />
+        <AssociationConnector Association="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" />
+        <AssociationConnector Association="AlkoCompanyModel.FK_Zayavka_Sotrudnick" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

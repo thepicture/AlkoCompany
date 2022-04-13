@@ -18,19 +18,22 @@ namespace AlkoCompanyNew.Models.Entities
         public ObjectAssessmentHouse()
         {
             this.AnalogiHouse = new HashSet<AnalogiHouse>();
+            this.Zayavka = new HashSet<Zayavka>();
         }
     
         public int OH_ID { get; set; }
-        public string OH_Adress { get; set; }
-        public string OH_KadNomer { get; set; }
-        public float OH_Ploshad { get; set; }
-        public float OH_CenaKvm { get; set; }
-        public float OH_CenaVse { get; set; }
-        public byte[] OH_Photo { get; set; }
-        public int K_ID { get; set; }
+        public virtual string OH_Adress { get; set; }
+        public virtual string OH_KadNomer { get; set; }
+        public virtual Nullable<float> OH_Ploshad { get; set; }
+        public virtual Nullable<float> OH_CenaKvm { get; set; }
+        public virtual Nullable<float> OH_CenaVse { get; set; }
+        public virtual byte[] OH_Photo { get; set; }
+        public virtual Nullable<decimal> OH_C_Correction { get; set; }
+        public virtual string OH_AdditionalBuildingState { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnalogiHouse> AnalogiHouse { get; set; }
-        public virtual Klient Klient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zayavka> Zayavka { get; set; }
     }
 }

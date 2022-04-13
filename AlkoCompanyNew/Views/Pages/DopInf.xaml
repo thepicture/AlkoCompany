@@ -50,7 +50,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}" TextWrapping="Wrap" Name="TextBoxAdress" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Адрес" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light" Foreground="#FF575757"/>
-                            <TextBlock Grid.Row="1" Text="{Binding Z_Klient, StringFormat={} Клиент: {0}}" Name="TextBoxklient" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Клиент" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light" Foreground="#FF575757"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}" Name="TextBoxklient" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Клиент" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light" Foreground="#FF575757"/>
                             <TextBlock Grid.Row="2" Text="{Binding Z_TelNumber, StringFormat={} Номер телефона: {0}}" Name="TextBoxTelNumber" Height="60" Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Номер телефона" materialDesign:HintAssist.IsFloating="True" FontSize="20" FontFamily="Dubai Light" Foreground="#FF575757"/>
                         </Grid>
                         <Image Grid.Column="1" x:Name="Photo" Source="{Binding Z_PhotoPreview}" VerticalAlignment="Center" HorizontalAlignment="Center"  />
@@ -72,7 +72,7 @@
                             </ScrollViewer>
                         </Border>
                         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Z_Sotrudnick, StringFormat={}{0} от}" Name="TextBoxSotrudnick" materialDesign:HintAssist.IsFloating="True" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontFamily="Dubai Light" Foreground="#FF575757"/>
+                            <TextBlock Text="{Binding Sotrudnick.S_Fio, StringFormat={}{0} от}" Name="TextBoxSotrudnick" materialDesign:HintAssist.IsFloating="True" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontFamily="Dubai Light" Foreground="#FF575757"/>
                             <TextBlock Text="{Binding Z_DataSostavlenia, StringFormat= {} {0} }" Name="TextBoxDataSostavlenia" materialDesign:HintAssist.IsFloating="True" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontFamily="Dubai Light" Foreground="#FF575757"/>
                         </StackPanel>
                     </Grid>
