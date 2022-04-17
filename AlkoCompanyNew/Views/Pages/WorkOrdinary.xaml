@@ -813,7 +813,7 @@
                                         </Border>
                                             <Border BorderBrush="Black"
                                                 BorderThickness="1">
-                                                <TextBox Text="{Binding MyProperty, UpdateSourceTrigger=PropertyChanged}"
+                                                <TextBox Text="{Binding AH_NewCenaProdaji, UpdateSourceTrigger=PropertyChanged}"
                                                      HorizontalAlignment="Stretch"/>
                                             </Border>
                                             <Border BorderBrush="Black"

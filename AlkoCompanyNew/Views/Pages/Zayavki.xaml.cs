@@ -29,7 +29,9 @@ namespace AlkoCompanyNew.Views.Pages
         public void Reload()
         {
             AppData.Context.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList();
+            ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka
+                .ToList()
+                .OrderBy(z => z.Z_StatusId);
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -38,7 +40,9 @@ namespace AlkoCompanyNew.Views.Pages
             if (Visibility == Visibility.Visible)
             {
                 AppData.Context.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList();
+                ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka
+                    .ToList()
+                    .OrderBy(z => z.Z_StatusId);
             }
 
         }
@@ -46,8 +50,10 @@ namespace AlkoCompanyNew.Views.Pages
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             var poisk = AppData.Context.Zayavka.ToList();
-            poisk = poisk.Where(d => d.Z_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Klient.K_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Z_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
-            ListViewAddZayvka.ItemsSource = poisk;
+            poisk = poisk.Where(d => d.Z_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
+            || d.Klient.K_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
+            || d.Z_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            ListViewAddZayvka.ItemsSource = poisk.OrderBy(z => z.Z_StatusId);
         }
 
         private void PodrobnyProsmotr_Click(object sender, RoutedEventArgs e)

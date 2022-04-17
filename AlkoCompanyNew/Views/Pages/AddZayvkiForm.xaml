@@ -67,7 +67,7 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBox Grid.Row="0"
-                                     Text="{Binding Z_Adress}"
+                                     Text="{Binding Zayavka.Z_Adress}"
                                      Name="TextBoxAdress"
                                      Height="60"
                                      Width="350"
@@ -77,9 +77,10 @@
                                      materialDesign:HintAssist.IsFloating="True"
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
-                            <TextBox Grid.Row="1"
-                                     Text="{Binding Klient.K_Fio}"
-                                     Name="TextBoxklient"
+                            <ComboBox Grid.Row="1"
+                                     DisplayMemberPath="K_Fio"
+                                     SelectedIndex="0"
+                                     Name="ComboBoxClient"
                                      Height="60"
                                      Width="350"
                                      HorizontalAlignment="Left"
@@ -89,7 +90,7 @@
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
                             <TextBox Grid.Row="2"
-                                     Text="{Binding Z_TelNumber}"
+                                     Text="{Binding Zayavka.Z_TelNumber}"
                                      Name="TextBoxTelNumber"
                                      Height="60"
                                      Width="350"
@@ -102,7 +103,7 @@
                         </Grid>
                         <Image Grid.Column="1"
                                x:Name="Photo"
-                               Source="{Binding Z_PhotoPreview}"
+                               Source="{Binding Zayavka.Z_PhotoPreview}"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center" />
                     </Grid>
@@ -122,7 +123,7 @@
                                      Height="60"
                                      Width="350"
                                      HorizontalAlignment="Left"
-                                     Text="{Binding Z_Hotelka}"
+                                     Text="{Binding Zayavka.Z_Hotelka}"
                                      Name="TextBoxHotelka"
                                      materialDesign:HintAssist.Hint="Клиент хочет:"
                                      materialDesign:HintAssist.IsFloating="True"
@@ -154,21 +155,21 @@
                                                Margin="10,0,0,0" />
                                 </StackPanel>
                             </Button>
-                            <TextBox Grid.Column="1"
+                            <ComboBox Grid.Column="1"
                                      Height="60"
-                                     Text="{Binding Sotrudnick.S_Fio}"
+                                     DisplayMemberPath="S_Fio"
+                                     SelectedIndex="0"
                                      Width="350"
                                      HorizontalAlignment="Left"
-                                     Name="TextBoxSotrudnick"
+                                     Name="ComboBoxSotrudnick"
                                      materialDesign:HintAssist.Hint="Сотрудник"
                                      materialDesign:HintAssist.IsFloating="True"
                                      FontSize="20"
                                      VerticalAlignment="Bottom"
-                                     FontFamily="Dubai Light"
-                                     Loaded="TextBoxSotrudnick_Loaded" />
+                                     FontFamily="Dubai Light" />
 
                             <!--<TextBox Text="{Binding Path=Z_DataSostavlenia, Source={x:Static sys:DateTime.Now}, Mode=OneWay,  StringFormat='yyyy-MM-dd'}" Grid.Column="1" Height="60" Width="350" HorizontalAlignment="Left" Name="TextBoxData1" materialDesign:HintAssist.Hint="Дата"   materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Bottom" FontFamily="Dubai Light"/>-->
-                            <TextBox Text="{Binding Z_DataSostavlenia}"
+                            <TextBox Text="{Binding Zayavka.Z_DataSostavlenia}"
                                      Grid.Column="1"
                                      Height="60"
                                      Width="350"
@@ -183,7 +184,7 @@
 
                         </Grid>
                         <TextBox Grid.Row="1"
-                                 Text="{Binding Z_Primichania}"
+                                 Text="{Binding Zayavka.Z_Primichania}"
                                  Name="TextBoxPrimichania"
                                  Height="60"
                                  materialDesign:HintAssist.Hint="Примечания к заявке"

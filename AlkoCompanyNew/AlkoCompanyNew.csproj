@@ -117,7 +117,11 @@
     <Compile Include="Models\Entities\Zayavka.cs">
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Partial\AnalogiHouse.cs" />
+    <Compile Include="Models\Entities\ZayavkaStatus.cs">
+      <DependentUpon>AlkoCompany.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enums\ZayavkaStatuses.cs" />
+    <Compile Include="Models\Partial\PartialAnalogiHouse.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />

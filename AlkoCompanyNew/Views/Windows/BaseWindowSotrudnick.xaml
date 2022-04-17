@@ -222,7 +222,7 @@
                                                       VerticalAlignment="Center"
                                                       Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock"
-                                       Text="Добавить заяввку"
+                                       Text="Добавить заявку"
                                        Foreground="#FFCDCDCD"
                                        FontSize="25"
                                        FontFamily="Dubai Light"
