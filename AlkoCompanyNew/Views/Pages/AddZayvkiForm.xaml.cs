@@ -17,8 +17,8 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class AddZayvkiForm : Page
     {
-        private readonly Zayavka zayavka = new Zayavka();
-        private readonly Klient kl = new Klient();
+        private Zayavka zayavka = new Zayavka();
+        private Klient kl = new Klient();
 
         public AddZayvkiForm(Zayavka setterzayvka)
         {

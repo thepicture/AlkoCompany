@@ -11,7 +11,7 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class Zayavki : Page
     {
-        private readonly Zayavka zayavka = new Zayavka();
+        private Zayavka zayavka = new Zayavka();
         public Zayavki(Zayavka setterzayvka)
         {
             InitializeComponent();

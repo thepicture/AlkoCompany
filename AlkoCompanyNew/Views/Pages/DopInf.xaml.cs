@@ -10,7 +10,7 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class DopInf : Page
     {
-        private readonly Zayavka zayavka = new Zayavka();
+        private Zayavka zayavka = new Zayavka();
         public DopInf(Zayavka setterzayvka)
         {
             InitializeComponent();

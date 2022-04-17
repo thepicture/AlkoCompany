@@ -12,7 +12,7 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class Sotrudnicki : Page
     {
-        private readonly Sotrudnick sotr = new Sotrudnick();
+        private Sotrudnick sotr = new Sotrudnick();
         public Sotrudnicki(Sotrudnick settersotr)
         {
             InitializeComponent();

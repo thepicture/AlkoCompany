@@ -443,7 +443,7 @@
                             <Border BorderBrush="Black"
                                     BorderThickness="1">
                                 <Image Height="100"
-                                       Width="100"
+                                       Width="120"
                                        Stretch="UniformToFill"
                                        Margin="5">
                                     <Image.InputBindings>
@@ -772,7 +772,7 @@
                                         <Border BorderBrush="Black"
                                                 BorderThickness="1">
                                             <Image Height="100"
-                                                   Width="100"
+                                                   Width="120"
                                                    Stretch="UniformToFill"
                                                    Margin="5">
                                                 <Image.InputBindings>
