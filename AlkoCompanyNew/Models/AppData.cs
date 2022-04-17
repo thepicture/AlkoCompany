@@ -8,6 +8,7 @@ namespace AlkoCompanyNew.Models
     {
         public static Entities.Entities Context = new Entities.Entities();
         public static AddZayvki AddZayvki_ { get; set; }
+        public static Sotrudnicki Sotrudnicki_ { get; set; }
         public static Zayavki Zayvki_ { get; set; }
         public static AddZayvkiForm AddZayvkiForm_ { get; set; }
         public static List<Zayavka> Glob = new List<Zayavka>();

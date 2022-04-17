@@ -7,5 +7,6 @@ namespace AlkoCompanyNew.Models.Entities
     public partial class ObjectAssessmentHouse : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public double MyProperty { get; set; }
     }
 }

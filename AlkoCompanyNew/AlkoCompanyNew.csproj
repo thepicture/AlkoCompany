@@ -127,6 +127,9 @@
     <Compile Include="Views\Pages\AddZayvkiForm.xaml.cs">
       <DependentUpon>AddZayvkiForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\Sotrudnicki.xaml.cs">
+      <DependentUpon>Sotrudnicki.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\BaseWindowSotrudnick.xaml.cs">
       <DependentUpon>BaseWindowSotrudnick.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Pages\AddZayvkiForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Sotrudnicki.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

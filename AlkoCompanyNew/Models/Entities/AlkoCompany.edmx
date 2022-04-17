@@ -42,7 +42,6 @@
           <Property Name="AH_Ploshad" Type="real" />
           <Property Name="AH_CenaProdazhiVse" Type="real" />
           <Property Name="AH_CenaProdazhiKvm" Type="real" />
-          <Property Name="AH_KorNaUsloviaFinansirovania" Type="real" />
           <Property Name="AH_KorTorg" Type="real" />
           <Property Name="AH_KorNaDatuProdazhi" Type="real" />
           <Property Name="AH_KorNaMesto" Type="real" />
@@ -52,18 +51,18 @@
           <Property Name="AH_KorNaBlagoustroistvo" Type="real" />
           <Property Name="AH_Mebel" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaMebel" Type="real" />
-          <Property Name="AH_KorNaPravaZemli" Type="real" />
-          <Property Name="AH_KorNaMashtabZemli" Type="real" />
-          <Property Name="AH_KorNaPravaDom" Type="real" />
+          <Property Name="AH_TypeEtage" Type="nvarchar" MaxLength="50" />
           <Property Name="AH_KorNaEtage" Type="real" />
+          <Property Name="AH_TypeMaterialSten" Type="nvarchar" MaxLength="50" />
           <Property Name="AH_KorNaMaterialSten" Type="real" />
           <Property Name="AH_TypeOtoplenie" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaOtoplenie" Type="real" />
           <Property Name="AH_TypeVoda" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaVoda" Type="real" />
-          <Property Name="AH_TypeCanalizacia" Type="nvarchar" MaxLength="100" />
+          <Property Name="AH_TypeKanalizacia" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaKanalizacia" Type="real" />
-          <Property Name="AH_KorNaTechSostoyanie" Type="real" />
+          <Property Name="AH_TypeFizSostoyanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="AH_KorNaFizSostoyanie" Type="real" />
           <Property Name="AH_KorNaPloshad" Type="real" />
           <Property Name="AH_TypeNarugnyuOtdelky" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaNarugnyuOtdelky" Type="real" />
@@ -129,8 +128,17 @@
           <Property Name="OH_CenaKvm" Type="real" />
           <Property Name="OH_CenaVse" Type="real" />
           <Property Name="OH_Photo" Type="varbinary(max)" />
-          <Property Name="OH_C_Correction" Type="decimal" Precision="20" Scale="2" />
-          <Property Name="OH_AdditionalBuildingState" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_DopPosroyki" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_TypeBlogoustroistva" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_Mebel" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_Etagi" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_MaterialSten" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_Otoplenie" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_Voda" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_Kanalizacia" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_FizSostoyanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_NarugnayaOtdelka" Type="nvarchar" MaxLength="50" />
+          <Property Name="OH_TypeVnutrenyuOtdelky" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Sotrudnick">
           <Key>
@@ -161,7 +169,7 @@
           <Property Name="K_ID" Type="int" Nullable="false" />
           <Property Name="OAH_ID" Type="int" />
         </EntityType>
-        <Association Name="FK__AnalogiGr__OG_ID__30F848ED">
+        <Association Name="FK__AnalogiGr__OG_ID__31EC6D26">
           <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="1" />
           <End Role="AnalogiGround" Type="Self.AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +276,7 @@
           <EntitySet Name="ObjectAssessmentHouse" EntityType="Self.ObjectAssessmentHouse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sotrudnick" EntityType="Self.Sotrudnick" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AnalogiGr__OG_ID__30F848ED" Association="Self.FK__AnalogiGr__OG_ID__30F848ED">
+          <AssociationSet Name="FK__AnalogiGr__OG_ID__31EC6D26" Association="Self.FK__AnalogiGr__OG_ID__31EC6D26">
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
             <End Role="AnalogiGround" EntitySet="AnalogiGround" />
           </AssociationSet>
@@ -314,7 +322,7 @@
           <EntitySet Name="ObjectAssessmentHouse" EntityType="AlkoCompanyModel.ObjectAssessmentHouse" />
           <EntitySet Name="Sotrudnick" EntityType="AlkoCompanyModel.Sotrudnick" />
           <EntitySet Name="Zayavka" EntityType="AlkoCompanyModel.Zayavka" />
-          <AssociationSet Name="FK__AnalogiGr__OG_ID__30F848ED" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__30F848ED">
+          <AssociationSet Name="FK__AnalogiGr__OG_ID__31EC6D26" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__31EC6D26">
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
             <End Role="AnalogiGround" EntitySet="AnalogiGround" />
           </AssociationSet>
@@ -372,7 +380,7 @@
           <Property Name="AG_RazreshennoeIspolzovanie" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AG_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="OG_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__30F848ED" FromRole="AnalogiGround" ToRole="ObjectAssessmentGround" />
+          <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__31EC6D26" FromRole="AnalogiGround" ToRole="ObjectAssessmentGround" />
         </EntityType>
         <EntityType Name="AnalogiHouse">
           <Key>
@@ -385,7 +393,6 @@
           <Property Name="AH_Ploshad" Type="Single" />
           <Property Name="AH_CenaProdazhiVse" Type="Single" />
           <Property Name="AH_CenaProdazhiKvm" Type="Single" />
-          <Property Name="AH_KorNaUsloviaFinansirovania" Type="Single" />
           <Property Name="AH_KorTorg" Type="Single" />
           <Property Name="AH_KorNaDatuProdazhi" Type="Single" />
           <Property Name="AH_KorNaMesto" Type="Single" />
@@ -395,18 +402,18 @@
           <Property Name="AH_KorNaBlagoustroistvo" Type="Single" />
           <Property Name="AH_Mebel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaMebel" Type="Single" />
-          <Property Name="AH_KorNaPravaZemli" Type="Single" />
-          <Property Name="AH_KorNaMashtabZemli" Type="Single" />
-          <Property Name="AH_KorNaPravaDom" Type="Single" />
+          <Property Name="AH_TypeEtage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaEtage" Type="Single" />
+          <Property Name="AH_TypeMaterialSten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaMaterialSten" Type="Single" />
           <Property Name="AH_TypeOtoplenie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaOtoplenie" Type="Single" />
           <Property Name="AH_TypeVoda" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaVoda" Type="Single" />
-          <Property Name="AH_TypeCanalizacia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AH_TypeKanalizacia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaKanalizacia" Type="Single" />
-          <Property Name="AH_KorNaTechSostoyanie" Type="Single" />
+          <Property Name="AH_TypeFizSostoyanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AH_KorNaFizSostoyanie" Type="Single" />
           <Property Name="AH_KorNaPloshad" Type="Single" />
           <Property Name="AH_TypeNarugnyuOtdelky" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaNarugnyuOtdelky" Type="Single" />
@@ -466,7 +473,7 @@
           <Property Name="OG_CenaVse" Type="Single" Nullable="false" />
           <Property Name="OG_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="K_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AnalogiGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__30F848ED" FromRole="ObjectAssessmentGround" ToRole="AnalogiGround" />
+          <NavigationProperty Name="AnalogiGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__31EC6D26" FromRole="ObjectAssessmentGround" ToRole="AnalogiGround" />
           <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK__ObjectAsse__K_ID__30F848ED" FromRole="ObjectAssessmentGround" ToRole="Klient" />
         </EntityType>
         <EntityType Name="ObjectAssessmentHouse">
@@ -480,8 +487,17 @@
           <Property Name="OH_CenaKvm" Type="Single" />
           <Property Name="OH_CenaVse" Type="Single" />
           <Property Name="OH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="OH_C_Correction" Type="Decimal" Precision="20" Scale="2" />
-          <Property Name="OH_AdditionalBuildingState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_DopPosroyki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_TypeBlogoustroistva" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Mebel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Etagi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_MaterialSten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Otoplenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Voda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_Kanalizacia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_FizSostoyanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_NarugnayaOtdelka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OH_TypeVnutrenyuOtdelky" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AnalogiHouse" Relationship="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" FromRole="ObjectAssessmentHouse" ToRole="AnalogiHouse" />
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" FromRole="ObjectAssessmentHouse" ToRole="Zayavka" />
         </EntityType>
@@ -519,7 +535,7 @@
           <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" FromRole="Zayavka" ToRole="ObjectAssessmentHouse" />
           <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK_Zayavka_Sotrudnick" FromRole="Zayavka" ToRole="Sotrudnick" />
         </EntityType>
-        <Association Name="FK__AnalogiGr__OG_ID__30F848ED">
+        <Association Name="FK__AnalogiGr__OG_ID__31EC6D26">
           <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="1" />
           <End Type="AlkoCompanyModel.AnalogiGround" Role="AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
@@ -661,18 +677,18 @@
                 <ScalarProperty Name="AH_KorNaNarugnyuOtdelky" ColumnName="AH_KorNaNarugnyuOtdelky" />
                 <ScalarProperty Name="AH_TypeNarugnyuOtdelky" ColumnName="AH_TypeNarugnyuOtdelky" />
                 <ScalarProperty Name="AH_KorNaPloshad" ColumnName="AH_KorNaPloshad" />
-                <ScalarProperty Name="AH_KorNaTechSostoyanie" ColumnName="AH_KorNaTechSostoyanie" />
+                <ScalarProperty Name="AH_KorNaFizSostoyanie" ColumnName="AH_KorNaFizSostoyanie" />
+                <ScalarProperty Name="AH_TypeFizSostoyanie" ColumnName="AH_TypeFizSostoyanie" />
                 <ScalarProperty Name="AH_KorNaKanalizacia" ColumnName="AH_KorNaKanalizacia" />
-                <ScalarProperty Name="AH_TypeCanalizacia" ColumnName="AH_TypeCanalizacia" />
+                <ScalarProperty Name="AH_TypeKanalizacia" ColumnName="AH_TypeKanalizacia" />
                 <ScalarProperty Name="AH_KorNaVoda" ColumnName="AH_KorNaVoda" />
                 <ScalarProperty Name="AH_TypeVoda" ColumnName="AH_TypeVoda" />
                 <ScalarProperty Name="AH_KorNaOtoplenie" ColumnName="AH_KorNaOtoplenie" />
                 <ScalarProperty Name="AH_TypeOtoplenie" ColumnName="AH_TypeOtoplenie" />
                 <ScalarProperty Name="AH_KorNaMaterialSten" ColumnName="AH_KorNaMaterialSten" />
+                <ScalarProperty Name="AH_TypeMaterialSten" ColumnName="AH_TypeMaterialSten" />
                 <ScalarProperty Name="AH_KorNaEtage" ColumnName="AH_KorNaEtage" />
-                <ScalarProperty Name="AH_KorNaPravaDom" ColumnName="AH_KorNaPravaDom" />
-                <ScalarProperty Name="AH_KorNaMashtabZemli" ColumnName="AH_KorNaMashtabZemli" />
-                <ScalarProperty Name="AH_KorNaPravaZemli" ColumnName="AH_KorNaPravaZemli" />
+                <ScalarProperty Name="AH_TypeEtage" ColumnName="AH_TypeEtage" />
                 <ScalarProperty Name="AH_KorNaMebel" ColumnName="AH_KorNaMebel" />
                 <ScalarProperty Name="AH_Mebel" ColumnName="AH_Mebel" />
                 <ScalarProperty Name="AH_KorNaBlagoustroistvo" ColumnName="AH_KorNaBlagoustroistvo" />
@@ -682,7 +698,6 @@
                 <ScalarProperty Name="AH_KorNaMesto" ColumnName="AH_KorNaMesto" />
                 <ScalarProperty Name="AH_KorNaDatuProdazhi" ColumnName="AH_KorNaDatuProdazhi" />
                 <ScalarProperty Name="AH_KorTorg" ColumnName="AH_KorTorg" />
-                <ScalarProperty Name="AH_KorNaUsloviaFinansirovania" ColumnName="AH_KorNaUsloviaFinansirovania" />
                 <ScalarProperty Name="AH_CenaProdazhiKvm" ColumnName="AH_CenaProdazhiKvm" />
                 <ScalarProperty Name="AH_CenaProdazhiVse" ColumnName="AH_CenaProdazhiVse" />
                 <ScalarProperty Name="AH_Ploshad" ColumnName="AH_Ploshad" />
@@ -744,8 +759,17 @@
           <EntitySetMapping Name="ObjectAssessmentHouse">
             <EntityTypeMapping TypeName="AlkoCompanyModel.ObjectAssessmentHouse">
               <MappingFragment StoreEntitySet="ObjectAssessmentHouse">
-                <ScalarProperty Name="OH_AdditionalBuildingState" ColumnName="OH_AdditionalBuildingState" />
-                <ScalarProperty Name="OH_C_Correction" ColumnName="OH_C_Correction" />
+                <ScalarProperty Name="OH_TypeVnutrenyuOtdelky" ColumnName="OH_TypeVnutrenyuOtdelky" />
+                <ScalarProperty Name="OH_NarugnayaOtdelka" ColumnName="OH_NarugnayaOtdelka" />
+                <ScalarProperty Name="OH_FizSostoyanie" ColumnName="OH_FizSostoyanie" />
+                <ScalarProperty Name="OH_Kanalizacia" ColumnName="OH_Kanalizacia" />
+                <ScalarProperty Name="OH_Voda" ColumnName="OH_Voda" />
+                <ScalarProperty Name="OH_Otoplenie" ColumnName="OH_Otoplenie" />
+                <ScalarProperty Name="OH_MaterialSten" ColumnName="OH_MaterialSten" />
+                <ScalarProperty Name="OH_Etagi" ColumnName="OH_Etagi" />
+                <ScalarProperty Name="OH_Mebel" ColumnName="OH_Mebel" />
+                <ScalarProperty Name="OH_TypeBlogoustroistva" ColumnName="OH_TypeBlogoustroistva" />
+                <ScalarProperty Name="OH_DopPosroyki" ColumnName="OH_DopPosroyki" />
                 <ScalarProperty Name="OH_Photo" ColumnName="OH_Photo" />
                 <ScalarProperty Name="OH_CenaVse" ColumnName="OH_CenaVse" />
                 <ScalarProperty Name="OH_CenaKvm" ColumnName="OH_CenaKvm" />

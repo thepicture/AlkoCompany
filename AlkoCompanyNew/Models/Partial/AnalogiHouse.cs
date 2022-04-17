@@ -9,5 +9,6 @@ namespace AlkoCompanyNew.Models.Entities
         public int NumberOfAnalogue { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public double MyProperty { get; set; }
     }
 }
