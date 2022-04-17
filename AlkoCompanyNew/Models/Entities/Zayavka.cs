@@ -29,5 +29,6 @@ namespace AlkoCompanyNew.Models.Entities
         public virtual Klient Klient { get; set; }
         public virtual ObjectAssessmentHouse ObjectAssessmentHouse { get; set; }
         public virtual Sotrudnick Sotrudnick { get; set; }
+        public virtual ZayavkaStatus ZayavkaStatus { get; set; }
     }
 }

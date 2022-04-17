@@ -275,6 +275,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zayavka_ZayavkaStatus">
+          <End Role="ZayavkaStatus" Type="Self.ZayavkaStatus" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZayavkaStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Z_StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AlkoCompanyModelStoreContainer">
           <EntitySet Name="AnalogiGround" EntityType="Self.AnalogiGround" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnalogiHouse" EntityType="Self.AnalogiHouse" Schema="dbo" store:Type="Tables" />
@@ -315,6 +327,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Zayavka_Sotrudnick" Association="Self.FK_Zayavka_Sotrudnick">
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ZayavkaStatus" Association="Self.FK_Zayavka_ZayavkaStatus">
+            <End Role="ZayavkaStatus" EntitySet="ZayavkaStatus" />
             <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
@@ -362,6 +378,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Zayavka_Sotrudnick" Association="AlkoCompanyModel.FK_Zayavka_Sotrudnick">
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zayavka_ZayavkaStatus" Association="AlkoCompanyModel.FK_Zayavka_ZayavkaStatus">
+            <End Role="ZayavkaStatus" EntitySet="ZayavkaStatus" />
             <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
@@ -545,6 +565,7 @@
           <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK_Zayavka_Klient" FromRole="Zayavka" ToRole="Klient" />
           <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse" FromRole="Zayavka" ToRole="ObjectAssessmentHouse" />
           <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK_Zayavka_Sotrudnick" FromRole="Zayavka" ToRole="Sotrudnick" />
+          <NavigationProperty Name="ZayavkaStatus" Relationship="AlkoCompanyModel.FK_Zayavka_ZayavkaStatus" FromRole="Zayavka" ToRole="ZayavkaStatus" />
         </EntityType>
         <EntityType Name="ZayavkaStatus">
           <Key>
@@ -552,6 +573,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ZayavkaStatus" FromRole="ZayavkaStatus" ToRole="Zayavka" />
         </EntityType>
         <Association Name="FK__AnalogiGr__OG_ID__114A936A">
           <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="1" />
@@ -648,6 +670,18 @@
             </Principal>
             <Dependent Role="Zayavka">
               <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zayavka_ZayavkaStatus">
+          <End Type="AlkoCompanyModel.ZayavkaStatus" Role="ZayavkaStatus" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZayavkaStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="Z_StatusId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

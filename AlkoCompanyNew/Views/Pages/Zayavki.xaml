@@ -102,14 +102,26 @@
                             </Grid.RowDefinitions>
 
                             <Border CornerRadius="15"
-                                    Background="#FFFFCD75"
                                     Width="160"
                                     Height="30">
-                                <TextBlock Text="Обрабатывается"
+                                <TextBlock Text="{Binding ZayavkaStatus.Title}"
                                            Grid.Row="0"
                                            FontSize="15"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background"
+                                                Value="#FFFFCD75" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ZayavkaStatus.Title}"
+                                                         Value="Выполнена">
+                                                <Setter Property="Background"
+                                                        Value="GreenYellow" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
                             </Border>
 
                             <Grid Grid.Row="1">

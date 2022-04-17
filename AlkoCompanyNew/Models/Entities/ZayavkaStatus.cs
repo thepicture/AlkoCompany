@@ -14,7 +14,16 @@ namespace AlkoCompanyNew.Models.Entities
     
     public partial class ZayavkaStatus
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ZayavkaStatus()
+        {
+            this.Zayavka = new HashSet<Zayavka>();
+        }
+    
         public int Id { get; set; }
         public virtual string Title { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zayavka> Zayavka { get; set; }
     }
 }
