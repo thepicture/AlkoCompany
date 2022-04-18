@@ -55,7 +55,7 @@
                                    HorizontalAlignment="Right"
                                    d:LayoutOverrides="Width"
                                    Margin="0,0,20,0"
-                                   Source="Resources/logo.png" />
+                                   Source="/AlkoCompanyNew;component/Resources/logo.png" />
                             <TextBlock Text="Авторизация"
                                        FontSize="35"
                                        Foreground="#FFD11518"
@@ -128,8 +128,11 @@
                               Margin="200,0,0,0">
 
                     </CheckBox>
-
-
+                    <ProgressBar x:Name="LogInProgress"
+                                 Grid.Row="3" 
+                                 Margin="10 100 10 10"
+                                 IsIndeterminate="True"
+                                 Visibility="Collapsed"/>
                     <Button Name="ButtonVhod"
                             Width="200"
                             Height="50"
@@ -144,7 +147,7 @@
                             FontFamily="Dubai Light"
                             FontSize="30"
                             Style="{x:Null}"
-                            Click="ButtonVhod_Click">
+                            Click="ButtonVhod_ClickAsync">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius"

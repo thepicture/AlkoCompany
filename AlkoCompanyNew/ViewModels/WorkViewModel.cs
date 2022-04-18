@@ -244,8 +244,7 @@ namespace AlkoCompanyNew.ViewModels
         {
             IEnumerable<TextBlock> textBlocks = LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.SecondColumn)
                 .Union(LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()))
-                .Where(tb => !tb.Text.Contains("Критерий") && !tb.Text.Contains("Объект оценки") && !tb.Text.Contains("Аналог"))
-                .Where(tb => tb.InputBindings.Count > 0);
+                .Where(tb => !tb.Text.Contains("Критерий") && !tb.Text.Contains("Объект оценки") && !tb.Text.Contains("Аналог"));
             IEnumerable<TextBox> textBoxes = LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.SecondColumn)
                 .Union(LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()));
             IEnumerable<ComboBox> comboBoxes = LogicalChildrenFinder.Find<ComboBox>(App.WorkOrdinary.SecondColumn)
