@@ -73,7 +73,8 @@
                                FontFamily="Dubai Light"
                                FontSize="19"
                                Margin="5" />
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer Grid.Row="1"
+                                  HorizontalScrollBarVisibility="Visible">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
@@ -84,10 +85,17 @@
                                 <Style TargetType="Border">
                                     <Setter Property="Height"
                                             Value="70" />
+                                    <Setter Property="BorderBrush"
+                                            Value="Black" />
+                                    <Setter Property="BorderThickness"
+                                            Value="1" />
                                 </Style>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextAlignment"
                                             Value="Center" />
+                                    <Setter Property="VerticalAlignment"
+                                            Value="Center"
+                                            />
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
@@ -132,83 +140,61 @@
                             <StackPanel IsHitTestVisible="False"
                                         Name="FirstColumn">
                                 <!--1 колонка-->
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock FontStyle="Italic"
                                                FontWeight="Bold"
                                                Text="Критерий" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
-                                    <TextBlock Text="Местоположение"
-                                               Height="57" />
+                                <Border>
+                                    <TextBlock Text="Местоположение" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Ссылка" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Контакт" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Фото" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Площадь" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Цена продажи весь объект" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Цена за 1 кв.м" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Поправка на торг" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Цена за квм после" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на дату продажи" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на месторасположение" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Доп.постройки"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на доп. постройки" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Благоустройство участка"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на благоустройство" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <Grid>
                                         <ComboBox Opacity="0" />
                                         <TextBlock Text="Мебель"
@@ -216,43 +202,32 @@
                                                    FontWeight="Bold" />
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка мебель" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Количество этажей" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на этажность" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Материал стен"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на материал стен" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Тип отопления"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на отопление" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <Grid>
                                         <ComboBox Opacity="0" />
                                         <TextBlock Text="Тип водоснабжения"
@@ -260,88 +235,68 @@
                                                    FontWeight="Bold" />
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <Grid>
                                         <TextBox Opacity="0" />
                                         <TextBlock Text="Корректировка на водоснабжение" />
                                     </Grid>
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Тип канализации"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на канализацию" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Физическое состояние"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на физ. состояние" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на площадь" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Тип внутренней отделки"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка внутренней отделки" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock Text="Тип наружной отделки"
                                                FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBlock Text="Корректировка на наружную отделку" />
                                 </Border>
                             </StackPanel>
                             <StackPanel Grid.Column="1"
                                         Name="SecondColumn">
                                 <!--2 колонка-->
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <TextBlock FontStyle="Italic"
                                                FontWeight="Bold"
                                                Text="Объект оценки" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Adress,
                                                             UpdateSourceTrigger=PropertyChanged}"
                                              HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <Image Width="120"
                                            Stretch="UniformToFill"
                                            Margin="5">
@@ -358,158 +313,117 @@
                                         </Image.Source>
                                     </Image>
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Ploshad,
                                                             UpdateSourceTrigger=PropertyChanged}"
                                              HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch"
                                              Text="{Binding AssessmentObject.OH_NewCenaProdaji}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
                                               SelectedItem="{Binding AssessmentObject.OH_DopPosroyki}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeBlagoustroistva}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeBlogoustroistva}" />
                                 </Border>
                                 <!--благоустройство участка-->
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMebel}"
                                               SelectedItem="{Binding AssessmentObject.OH_Mebel}" />
                                 </Border>
                                 <!--мебель-->
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Etagi,
                                                             UpdateSourceTrigger=PropertyChanged}"
                                              HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMaterialSten}"
                                               SelectedItem="{Binding AssessmentObject.OH_MaterialSten}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeOtoplenia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Otoplenie}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVoda}"
                                               SelectedItem="{Binding AssessmentObject.OH_Voda}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeKanalizacia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Kanalizacia}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeFizSostoyanie}"
                                               SelectedItem="{Binding AssessmentObject.OH_FizSostoyanie}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
+                                <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
-                                        <ComboBox ItemsSource="{Binding TypeVnutrOtdelki}"
-                                                  SelectedItem="{Binding AssessmentObject.OH_TypeVnutrenyuOtdelky}" />
+                                <Border Background="LightGray">
+                                    <ComboBox ItemsSource="{Binding TypeVnutrOtdelki}"
+                                              SelectedItem="{Binding AssessmentObject.OH_TypeVnutrenyuOtdelky}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
-                                        <TextBox HorizontalAlignment="Stretch" />
+                                <Border>
+                                    <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1"
-                                        Background="LightGray">
-                                        <ComboBox ItemsSource="{Binding TypeNarugOtdelki}"
-                                                  SelectedItem="{Binding AssessmentObject.OH_NarugnayaOtdelka}" />
+                                <Border Background="LightGray">
+                                    <ComboBox ItemsSource="{Binding TypeNarugOtdelki}"
+                                              SelectedItem="{Binding AssessmentObject.OH_NarugnayaOtdelka}" />
                                 </Border>
-                                <Border BorderBrush="Black"
-                                        BorderThickness="1">
-                                        <TextBox HorizontalAlignment="Stretch" />
+                                <Border>
+                                    <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
                             </StackPanel>
                             <ListView ItemsSource="{Binding AnalogueHouses}"
                                       VerticalAlignment="Top"
                                       Name="CalculationView"
-                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                       Grid.Column="2">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
@@ -542,6 +456,10 @@
                                             <Style TargetType="Border">
                                                 <Setter Property="Height"
                                                         Value="70" />
+                                                <Setter Property="BorderBrush"
+                                                        Value="Black" />
+                                                <Setter Property="BorderThickness"
+                                                        Value="1" />
                                             </Style>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="TextAlignment"
@@ -593,30 +511,24 @@
                                         </DataTemplate.Resources>
                                         <StackPanel>
                                             <!--3 колонка-->
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <TextBlock FontStyle="Italic"
                                                            FontWeight="Bold"
                                                            Text="{Binding NumberOfAnalogue, StringFormat={}Аналог {0}}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_IstochnickInf, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_Contact, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <Image Width="120"
                                                        Stretch="UniformToFill"
                                                        Margin="5">
@@ -636,178 +548,138 @@
                                                     </Image.Source>
                                                 </Image>
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_Ploshad, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding NewCena}"
                                                          IsHitTestVisible="False"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.AdditionalBuildingTypes}"
                                                           SelectedItem="{Binding AH_TypeDopPostroyki}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaDopPostroyki, StringFormat={}{0:F2}, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeBlagoustroistva}"
                                                           SelectedItem="{Binding AH_TypeBlogoustroistva}" />
                                                 <!--благоустройство участка-->
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeMebel}"
                                                           SelectedItem="{Binding AH_Mebel}" />
                                                 <!--мебель-->
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeMaterialSten}"
                                                           SelectedItem="{Binding AH_TypeMaterialSten}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeOtoplenia}"
                                                           SelectedItem="{Binding AH_TypeOtoplenie}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
 
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeVoda}"
                                                           SelectedItem="{Binding AH_TypeVoda}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
 
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeKanalizacia}"
                                                           SelectedItem="{Binding AH_TypeKanalizacia}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
 
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeFizSostoyanie}"
                                                           SelectedItem="{Binding AH_TypeFizSostoyanie}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeVnutrOtdelki}"
                                                           SelectedItem="{Binding AH_TypeVnutrenyuOtdelky}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1"
-                                                    Background="LightGray">
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeNarugOtdelki}"
                                                           SelectedItem="{Binding AH_TypeNarugnyuOtdelky}" />
                                             </Border>
-                                            <Border BorderBrush="Black"
-                                                    BorderThickness="1">
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
