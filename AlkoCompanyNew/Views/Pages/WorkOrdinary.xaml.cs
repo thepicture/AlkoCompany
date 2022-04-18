@@ -1,9 +1,10 @@
 ﻿using AlkoCompanyNew.Models.Entities;
-using AlkoCompanyNew.Services;
 using AlkoCompanyNew.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace AlkoCompanyNew.Views.Pages
 {
@@ -17,15 +18,25 @@ namespace AlkoCompanyNew.Views.Pages
             InitializeComponent();
             App.WorkOrdinary = this;
             DataContext = new WorkViewModel(zayavka);
-            foreach (ComboBox comboBox 
-                in LogicalChildrenFinder.Find<ComboBox>(CalculatingControl))
+
+            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Normal)
             {
-                comboBox.SelectionChanged += (o, e) =>
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            timer.Tick += (_, __) =>
+            {
+                ((dynamic)DataContext).PerformChangeContext();
+            };
+            timer.Start();
+            Unloaded += (_, __) =>
+            {
+                if (timer.IsEnabled)
                 {
-                    ((dynamic)DataContext).PerformChangeContext();
-                };
-            }
-            Loaded += (o, e) =>
+                    timer.Stop();
+                }
+            };
+
+            Loaded += (_, __) =>
             {
                 ((dynamic)DataContext).UpdatePercentOfCompletion();
             };

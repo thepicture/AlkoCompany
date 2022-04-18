@@ -221,6 +221,10 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaNarugnyuOtdelky;
             AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaNarugnyuOtdelky;
             AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaNarugnyuOtdelky;
+            // новая цена (атрибута в бд нет)
+            AnalogueHouses[0].NewCena = AnalogueHouses[0].AH_CenaProdazhiKvm;
+            AnalogueHouses[1].NewCena = AnalogueHouses[1].AH_CenaProdazhiKvm;
+            AnalogueHouses[2].NewCena = AnalogueHouses[2].AH_CenaProdazhiKvm;
             #endregion
 
             UpdatePercentOfCompletion();

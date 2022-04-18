@@ -63,8 +63,8 @@
                       Grid.Row="1"
                       Margin="50,58,50,222"
                       Panel.ZIndex="1"
-                      PreviewMouseDown="OnMouseDown"
-                      PreviewKeyUp="OnKeyUp">
+                      MouseDown="OnMouseDown"
+                      KeyUp="OnKeyUp">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
