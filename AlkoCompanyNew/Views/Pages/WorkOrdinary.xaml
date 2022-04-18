@@ -94,8 +94,7 @@
                                     <Setter Property="TextAlignment"
                                             Value="Center" />
                                     <Setter Property="VerticalAlignment"
-                                            Value="Center"
-                                            />
+                                            Value="Center" />
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
@@ -137,8 +136,7 @@
                                             Value="1" />
                                 </Style>
                             </Grid.Resources>
-                            <StackPanel IsHitTestVisible="False"
-                                        Name="FirstColumn">
+                            <StackPanel Name="FirstColumn">
                                 <!--1 колонка-->
                                 <Border Background="LightGray">
                                     <TextBlock FontStyle="Italic"
@@ -228,18 +226,12 @@
                                     <TextBlock Text="Корректировка на отопление" />
                                 </Border>
                                 <Border Background="LightGray">
-                                    <Grid>
-                                        <ComboBox Opacity="0" />
-                                        <TextBlock Text="Тип водоснабжения"
-                                                   FontStyle="Italic"
-                                                   FontWeight="Bold" />
-                                    </Grid>
+                                    <TextBlock Text="Тип водоснабжения"
+                                               FontStyle="Italic"
+                                               FontWeight="Bold" />
                                 </Border>
                                 <Border>
-                                    <Grid>
-                                        <TextBox Opacity="0" />
-                                        <TextBlock Text="Корректировка на водоснабжение" />
-                                    </Grid>
+                                    <TextBlock Text="Корректировка на водоснабжение" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип канализации"
@@ -464,6 +456,8 @@
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="TextAlignment"
                                                         Value="Center" />
+                                                <Setter Property="HorizontalAlignment"
+                                                        Value="Stretch" />
                                                 <Setter Property="VerticalAlignment"
                                                         Value="Center" />
                                                 <Setter Property="FontFamily"
@@ -481,6 +475,8 @@
                                                         Value="Center" />
                                                 <Setter Property="VerticalAlignment"
                                                         Value="Center" />
+                                                <Setter Property="HorizontalAlignment"
+                                                        Value="Stretch" />
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
@@ -517,21 +513,17 @@
                                                            Text="{Binding NumberOfAnalogue, StringFormat={}Аналог {0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_IstochnickInf, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_IstochnickInf, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_Contact, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_Contact, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <Image Width="120"
-                                                       Stretch="UniformToFill"
-                                                       Margin="5">
+                                                       Stretch="UniformToFill">
                                                     <Image.InputBindings>
                                                         <MouseBinding Gesture="LeftClick"
                                                                       CommandParameter="{Binding .}"
@@ -549,33 +541,26 @@
                                                 </Image>
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_Ploshad, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_Ploshad, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding NewCena}"
-                                                         IsHitTestVisible="False"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBlock Text="{Binding NewCena}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}"
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -592,8 +577,7 @@
                                                 <!--благоустройство участка-->
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -602,16 +586,13 @@
                                                 <!--мебель-->
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -619,8 +600,7 @@
                                                           SelectedItem="{Binding AH_TypeMaterialSten}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -628,8 +608,7 @@
                                                           SelectedItem="{Binding AH_TypeOtoplenie}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
 
                                             <Border Background="LightGray">
@@ -638,8 +617,7 @@
                                                           SelectedItem="{Binding AH_TypeVoda}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
 
                                             <Border Background="LightGray">
@@ -648,8 +626,7 @@
                                                           SelectedItem="{Binding AH_TypeKanalizacia}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
 
                                             <Border Background="LightGray">
@@ -658,12 +635,10 @@
                                                           SelectedItem="{Binding AH_TypeFizSostoyanie}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -671,8 +646,7 @@
                                                           SelectedItem="{Binding AH_TypeVnutrenyuOtdelky}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -680,8 +654,7 @@
                                                           SelectedItem="{Binding AH_TypeNarugnyuOtdelky}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                         </StackPanel>
                                     </DataTemplate>

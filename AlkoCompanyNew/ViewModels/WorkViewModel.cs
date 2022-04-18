@@ -246,18 +246,38 @@ namespace AlkoCompanyNew.ViewModels
         /// </summary>
         public void UpdatePercentOfCompletion()
         {
-            IEnumerable<TextBlock> textBlocks = LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.SecondColumn)
-                .Union(LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()))
-                .Where(tb => !tb.Text.Contains("Критерий") && !tb.Text.Contains("Объект оценки") && !tb.Text.Contains("Аналог"));
-            IEnumerable<TextBox> textBoxes = LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.SecondColumn)
-                .Union(LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()));
-            IEnumerable<ComboBox> comboBoxes = LogicalChildrenFinder.Find<ComboBox>(App.WorkOrdinary.SecondColumn)
-                .Union(LogicalChildrenFinder.Find<ComboBox>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()));
-            int filledControlsCount = textBlocks.Count(tb => !string.IsNullOrWhiteSpace(tb.Text))
-                + textBoxes.Count(tb => !string.IsNullOrWhiteSpace(tb.Text))
+            IEnumerable<ListViewItem> analogueDependencyObjects =
+            App.WorkOrdinary.CalculationView.Find<ListViewItem>();
+            List<TextBox> analogueTextBoxes = new List<TextBox>();
+            List<ComboBox> analogueComboBoxes = new List<ComboBox>();
+            foreach (ListViewItem dependencyObject in analogueDependencyObjects)
+            {
+                analogueTextBoxes.AddRange(
+                   LogicalChildrenFinder.Find<TextBox>(dependencyObject));
+                analogueComboBoxes.AddRange(
+                   LogicalChildrenFinder.Find<ComboBox>(dependencyObject));
+            }
+
+            IEnumerable<TextBox> textBoxes = App.WorkOrdinary.SecondColumn
+                .Find<TextBox>()
+                .Union(analogueTextBoxes)
+                .Where(tb =>
+                {
+                    if (tb.TemplatedParent == null)
+                    {
+                        return true;
+                    }
+                    return tb.TemplatedParent.GetType() != typeof(ComboBox);
+                });
+            IEnumerable<ComboBox> comboBoxes = App.WorkOrdinary.SecondColumn
+                .Find<ComboBox>()
+                .Union(analogueComboBoxes);
+            int filledControlsCount = textBoxes.Count(tb =>
+            {
+                return !string.IsNullOrWhiteSpace(tb.Text);
+            })
                 + comboBoxes.Count(cb => cb.SelectedItem != null);
-            int totalControlsCount = textBlocks.Count()
-                + textBoxes.Count()
+            int totalControlsCount = textBoxes.Count()
                 + comboBoxes.Count();
 
             PercentOfCompletion = 1.0 * filledControlsCount
