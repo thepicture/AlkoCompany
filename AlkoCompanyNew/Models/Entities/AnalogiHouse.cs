@@ -9,9 +9,10 @@
 
 namespace AlkoCompanyNew.Models.Entities
 {
+    using PropertyChanged;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class AnalogiHouse
     {
         public int AH_ID { get; set; }

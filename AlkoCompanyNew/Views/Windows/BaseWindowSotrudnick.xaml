@@ -114,11 +114,11 @@
                        Foreground="#FFBDBDBD"
                        Margin="20,0,0,0"
                        FontFamily="Dubai Light" />
-            <Image Source="D:\Учеба\Диплом\AlkoCompanyNew/logo.png"
-                   Grid.Column="2"
+            <Image Grid.Column="2"
                    Width="200"
                    HorizontalAlignment="Right"
-                   Margin="0,0,20,0" />
+                   Margin="0,0,20,0"
+                   Source="/AlkoCompanyNew;component/Resources/logo.png" />
         </Grid>
 
         <Grid Grid.Row="1">

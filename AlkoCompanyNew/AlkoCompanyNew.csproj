@@ -123,6 +123,7 @@
     <Compile Include="Models\Enums\ZayavkaStatuses.cs" />
     <Compile Include="Models\Partial\PartialAnalogiHouse.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
+    <Compile Include="Services\LogicalChildrenFinder.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />
     <Compile Include="Views\Pages\AddZayvki.xaml.cs">
@@ -243,9 +244,7 @@
       <LastGenOutput>AlkoCompany.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

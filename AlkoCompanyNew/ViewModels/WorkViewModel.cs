@@ -1,12 +1,17 @@
 ﻿using AlkoCompanyNew.Commands;
 using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
+using AlkoCompanyNew.Models.Enums;
+using AlkoCompanyNew.Services;
 using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace AlkoCompanyNew.ViewModels
@@ -103,7 +108,7 @@ namespace AlkoCompanyNew.ViewModels
                     }
                     AppData.Context.SaveChanges();
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
                 }
@@ -115,11 +120,6 @@ namespace AlkoCompanyNew.ViewModels
             {
                 analogueHouse.NumberOfAnalogue
                     = AnalogueHouses.IndexOf(analogueHouse) + 1;
-            }
-            AssessmentObject.PropertyChanged += OnAssessmentObjectChanged;
-            foreach (AnalogiHouse analogueHouse in AnalogueHouses)
-            {
-                analogueHouse.PropertyChanged += OnAssessmentObjectChanged;
             }
         }
 
@@ -158,83 +158,128 @@ namespace AlkoCompanyNew.ViewModels
         ///      + AnalogueHouses[2].AH_Correction;
         ///  #endregion
         /// </example>
-        private void OnAssessmentObjectChanged(object sender,
-                                               PropertyChangedEventArgs e)
+        public void PerformChangeContext()
         {
             #region calculation
-            //AssessmentObject.OH_C_Correction = AssessmentObject
-            //    .AnalogiHouse
-            //    .Average(ah => ah.AH_Correction);
-
             // цена кв.м
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
             // корректировка на торг
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorTorg;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorTorg;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorTorg;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorTorg;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorTorg;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorTorg;
             // корректировка на дату продажи
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaDatuProdazhi;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaDatuProdazhi;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaDatuProdazhi;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaDatuProdazhi;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaDatuProdazhi;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaDatuProdazhi;
             // корректировка на месторасположение
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMesto;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMesto;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMesto;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMesto;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMesto;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMesto;
             // корректировка на дополнительные постройки 
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaDopPostroyki;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaDopPostroyki;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaDopPostroyki;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaDopPostroyki;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaDopPostroyki;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaDopPostroyki;
             // корректировка на благоустройство участка
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaBlagoustroistvo;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaBlagoustroistvo;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaBlagoustroistvo;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaBlagoustroistvo;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaBlagoustroistvo;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaBlagoustroistvo;
             // корректировка на мебель
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMebel;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMebel;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMebel;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMebel;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMebel;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMebel;
             // корректировка на этажность
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaEtage;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaEtage;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaEtage;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaEtage;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaEtage;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaEtage;
             // корректировка на материал стен
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMaterialSten;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMaterialSten;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMaterialSten;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaMaterialSten;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaMaterialSten;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaMaterialSten;
             // корректировка на тип отопления
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaOtoplenie;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaOtoplenie;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaOtoplenie;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaOtoplenie;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaOtoplenie;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaOtoplenie;
             // корректировка на тип воды
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaVoda;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaVoda;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaVoda;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaVoda;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaVoda;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaVoda;
             // корректировка на тип канализации
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaKanalizacia;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaKanalizacia;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaKanalizacia;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaKanalizacia;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaKanalizacia;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaKanalizacia;
             // корректировка на физическое состояние
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaFizSostoyanie;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaFizSostoyanie;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaFizSostoyanie;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaFizSostoyanie;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaFizSostoyanie;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaFizSostoyanie;
             // корректировка на внутреннюю отделку
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky;
             // корректировка на наружную отделку
-            AnalogueHouses[0].AH_NewCenaProdaji = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaNarugnyuOtdelky;
-            AnalogueHouses[1].AH_NewCenaProdaji = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaNarugnyuOtdelky;
-            AnalogueHouses[2].AH_NewCenaProdaji = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaNarugnyuOtdelky;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * AnalogueHouses[0].AH_KorNaNarugnyuOtdelky;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * AnalogueHouses[1].AH_KorNaNarugnyuOtdelky;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * AnalogueHouses[2].AH_KorNaNarugnyuOtdelky;
             #endregion
+
+            UpdatePercentOfCompletion();
 
             try
             {
                 AppData.Context.SaveChanges();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Обновляет процент выполнения заявки. 
+        /// В случае достижения ста процентов обновляет 
+        /// статус заявки на <see langword="Выполнено"/>.
+        /// </summary>
+        public void UpdatePercentOfCompletion()
+        {
+            IEnumerable<TextBlock> textBlocks = LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.SecondColumn)
+                .Union(LogicalChildrenFinder.Find<TextBlock>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()))
+                .Where(tb => !tb.Text.Contains("Критерий") && !tb.Text.Contains("Объект оценки") && !tb.Text.Contains("Аналог"))
+                .Where(tb => tb.InputBindings.Count > 0);
+            IEnumerable<TextBox> textBoxes = LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.SecondColumn)
+                .Union(LogicalChildrenFinder.Find<TextBox>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()));
+            IEnumerable<ComboBox> comboBoxes = LogicalChildrenFinder.Find<ComboBox>(App.WorkOrdinary.SecondColumn)
+                .Union(LogicalChildrenFinder.Find<ComboBox>(App.WorkOrdinary.CalculationView.ItemTemplate.LoadContent()));
+            int filledControlsCount = textBlocks.Count(tb => !string.IsNullOrWhiteSpace(tb.Text))
+                + textBoxes.Count(tb => !string.IsNullOrWhiteSpace(tb.Text))
+                + comboBoxes.Count(cb => cb.SelectedItem != null);
+            int totalControlsCount = textBlocks.Count()
+                + textBoxes.Count()
+                + comboBoxes.Count();
+
+            PercentOfCompletion = 1.0 * filledControlsCount
+                / totalControlsCount
+                * 100;
+
+            if (PercentOfCompletion > 100)
+            {
+                PercentOfCompletion = 100;
+            }
+            if (PercentOfCompletion == 100
+                && Zayavka.Z_StatusId == ZayavkaStatuses.V_Obrabotke)
+            {
+                Zayavka.Z_StatusId = ZayavkaStatuses.Vypolnena;
+                try
+                {
+                    AppData.Context.SaveChanges();
+                    MessageBox.Show("Заявка выполнена. Её статус изменён");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Статус заявки не изменён, " +
+                        "но она выполнена. " +
+                        "Проверьте подключение к базе данных");
+                }
             }
         }
 
@@ -294,7 +339,7 @@ namespace AlkoCompanyNew.ViewModels
             {
                 AssessmentObject.OH_Photo = File
                     .ReadAllBytes(fileName);
-                _ = MessageBox.Show("Фото объекта оценки изменено");
+                MessageBox.Show("Фото объекта оценки изменено");
             }
         }
 
@@ -341,6 +386,14 @@ namespace AlkoCompanyNew.ViewModels
                    .ReadAllBytes(fileName);
                 _ = MessageBox.Show("Фото аналога изменено");
             }
+        }
+
+        private double percentOfCompletion;
+
+        public double PercentOfCompletion
+        {
+            get => percentOfCompletion;
+            set => SetProperty(ref percentOfCompletion, value);
         }
     }
 }

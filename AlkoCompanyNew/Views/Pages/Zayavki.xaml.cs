@@ -64,9 +64,9 @@ namespace AlkoCompanyNew.Views.Pages
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-
-
-            AddZayvkaForm.Content = new WorkOrdinary((sender as Button).DataContext as Zayavka);
+            WorkOrdinary currentWorkOrdinary = new WorkOrdinary(
+                (sender as Button).DataContext as Zayavka);
+            AddZayvkaForm.Content = currentWorkOrdinary;
             Reload();
         }
     }

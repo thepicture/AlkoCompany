@@ -1,7 +1,9 @@
 ﻿using AlkoCompanyNew.Models.Entities;
+using AlkoCompanyNew.Services;
 using AlkoCompanyNew.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AlkoCompanyNew.Views.Pages
 {
@@ -13,7 +15,20 @@ namespace AlkoCompanyNew.Views.Pages
         public WorkOrdinary(Zayavka zayavka)
         {
             InitializeComponent();
+            App.WorkOrdinary = this;
             DataContext = new WorkViewModel(zayavka);
+            foreach (ComboBox comboBox 
+                in LogicalChildrenFinder.Find<ComboBox>(CalculatingControl))
+            {
+                comboBox.SelectionChanged += (o, e) =>
+                {
+                    ((dynamic)DataContext).PerformChangeContext();
+                };
+            }
+            Loaded += (o, e) =>
+            {
+                ((dynamic)DataContext).UpdatePercentOfCompletion();
+            };
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }
@@ -40,6 +55,16 @@ namespace AlkoCompanyNew.Views.Pages
             {
                 CalculatingControl.Visibility = Visibility.Visible;
             }
+        }
+
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ((dynamic)DataContext).PerformChangeContext();
+        }
+
+        private void OnKeyUp(object sender, KeyEventArgs e)
+        {
+            ((dynamic)DataContext).PerformChangeContext();
         }
     }
 }
