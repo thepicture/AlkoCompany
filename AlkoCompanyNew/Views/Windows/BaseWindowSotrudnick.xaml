@@ -228,7 +228,7 @@
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"
-                                       Visibility="Hidden" />
+                                       Visibility="Hidden"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvki"

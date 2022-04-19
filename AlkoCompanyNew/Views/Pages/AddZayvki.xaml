@@ -49,7 +49,6 @@
             <Button Grid.Column="1"
                     x:Name="ElementZayvki"
                     Height="40"
-                    Width="220"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     VerticalAlignment="Bottom"
@@ -66,7 +65,7 @@
                                FontSize="20"
                                FontFamily="Dubai Light"
                                VerticalAlignment="Center"
-                               Margin="10,0,0,0" />
+                               Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
 

@@ -21,9 +21,8 @@ namespace AlkoCompanyNew.Views.Pages
     public partial class AddZayvkiForm : Page
     {
         public Zayavka Zayavka { get; set; } = new Zayavka();
-        public Klient Kl { get; set; } = new Klient();
+        public Klient CurrentClient { get; set; } = new Klient();
         public ObservableCollection<Sotrudnick> Sotrudnicks { get; set; }
-        public ObservableCollection<Klient> Clients { get; set; }
 
         public AddZayvkiForm(Zayavka setterzayvka)
         {
@@ -31,17 +30,13 @@ namespace AlkoCompanyNew.Views.Pages
             DataContext = this;
             ComboBoxSotrudnick.ItemsSource = new ObservableCollection<Sotrudnick>(
                 AppData.Context.Sotrudnick.ToList());
-            ComboBoxClient.ItemsSource = new ObservableCollection<Klient>(
-                AppData.Context.Klient.ToList());
             if (setterzayvka != null)
             {
                 Zayavka = setterzayvka;
                 ComboBoxSotrudnick.SelectedItem = ComboBoxSotrudnick.Items
                     .Cast<Sotrudnick>()
                     .First(s => s.S_ID == Zayavka.S_ID);
-                ComboBoxClient.SelectedItem = ComboBoxClient.Items
-                    .Cast<Klient>()
-                    .First(c => c.K_ID == Zayavka.K_ID);
+                CurrentClient = setterzayvka.Klient;
             }
 
         }
@@ -76,9 +71,9 @@ namespace AlkoCompanyNew.Views.Pages
                 MessageBox.Show("Введите адрес");
                 return;
             }
-            else if (ComboBoxClient.SelectedItem == null)
+            else if (string.IsNullOrEmpty(CurrentClient.K_Fio))
             {
-                MessageBox.Show("Укажите клиента");
+                MessageBox.Show("Введите ФИО клиента");
                 return;
             }
             else if (ComboBoxSotrudnick.SelectedItem == null)
@@ -92,22 +87,39 @@ namespace AlkoCompanyNew.Views.Pages
                 return;
             }
 
-            Zayavka.K_ID = (ComboBoxClient.SelectedItem as Klient).K_ID;
             Zayavka.S_ID = (ComboBoxSotrudnick.SelectedItem as Sotrudnick).S_ID;
             Zayavka.Z_StatusId = ZayavkaStatuses.V_Obrabotke;
 
             if (Zayavka.Z_ID == 0)
             {
+                Zayavka.Klient = CurrentClient;
 
                 _ = AppData.Context.Zayavka.Add(Zayavka);
             }
+            else
+            {
+                Zayavka.Klient.K_Fio = CurrentClient.K_Fio;
+            }
             try
             {
-                AppData.Context.Entry(AppData.Context.Zayavka.Find(Zayavka.Z_ID)).CurrentValues.SetValues(Zayavka);
+                AppData.Context.Entry(AppData.Context.Zayavka.Find(Zayavka.Z_ID))
+                    .CurrentValues.SetValues(Zayavka);
                 _ = AppData.Context.SaveChanges();
                 _ = MessageBox.Show("Данные успешно внесены");
-                AppData.Context.ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
-                AppData.Context.ChangeTracker.Entries().ToList().ForEach(i => i.Reload());
+                AppData.Context.ChangeTracker
+                    .Entries()
+                    .ToList()
+                    .ForEach(entry =>
+                    {
+                        entry.Reload();
+                    });
+                AppData.Context.ChangeTracker
+                    .Entries()
+                    .ToList()
+                    .ForEach(i =>
+                    {
+                        i.Reload();
+                    });
                 AppData.AddZayvki_.Reload();
 
             }
