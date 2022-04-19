@@ -64,6 +64,7 @@ namespace AlkoCompanyNew.Views.Pages
             }
             else
             {
+                ClientInformationControl.Visibility = Visibility.Collapsed;
                 CalculatingControl.Visibility = Visibility.Visible;
             }
 
@@ -77,6 +78,19 @@ namespace AlkoCompanyNew.Views.Pages
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
             ((dynamic)DataContext).PerformChangeContext();
+        }
+
+        private void OnClientInformationClick(object sender, RoutedEventArgs e)
+        {
+            if (ClientInformationControl.Visibility == Visibility.Visible)
+            {
+                ClientInformationControl.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                CalculatingControl.Visibility = Visibility.Collapsed;
+                ClientInformationControl.Visibility = Visibility.Visible;
+            }
         }
     }
 }

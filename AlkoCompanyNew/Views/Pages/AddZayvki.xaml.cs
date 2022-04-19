@@ -1,6 +1,7 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,7 +42,7 @@ namespace AlkoCompanyNew.Views.Pages
         }
         private void AddZayvki_Click(object sender, RoutedEventArgs e)
         {
-            _ = AddZayvkaForm.Navigate(new AddZayvkiForm(null));
+            AddZayvkaForm.Navigate(new AddZayvkiForm(null));
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -79,7 +80,13 @@ namespace AlkoCompanyNew.Views.Pages
                 {
                     _ = AppData.Context.Zayavka.Remove(zay);
                     _ = AppData.Context.SaveChanges();
-                    AppData.Context.ChangeTracker.Entries().ToList().ForEach(i => i.Reload());
+                    AppData.Context.ChangeTracker
+                        .Entries()
+                        .ToList()
+                        .ForEach(i =>
+                        {
+                            i.Reload();
+                        });
                     ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList();
                 }
                 catch (Exception ex)
@@ -91,8 +98,14 @@ namespace AlkoCompanyNew.Views.Pages
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var poisk = AppData.Context.Zayavka.ToList();
-            poisk = poisk.Where(d => d.Z_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Klient.K_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Z_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            List<Zayavka> poisk = AppData.Context.Zayavka.ToList();
+            poisk = poisk.Where(d =>
+            {
+                return d.Z_Adress.ToLower().Contains(TextBoxSearch.Text.ToLower())
+                            || d.Klient.K_Fio.ToLower()
+                            .Contains(TextBoxSearch.Text.ToLower())
+                            || d.Z_TelNumber.ToLower().Contains(TextBoxSearch.Text.ToLower());
+            }).ToList();
             ListViewAddZayvka.ItemsSource = poisk;
         }
     }

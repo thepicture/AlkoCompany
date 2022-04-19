@@ -57,7 +57,6 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--Calculating markup.-->
-
                 <Grid Background="White"
                       Name="CalculatingControl"
                       Grid.Row="1"
@@ -326,7 +325,7 @@
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch"/>
+                                    <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
                                 <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
@@ -671,11 +670,133 @@
                         </Grid>
                     </ScrollViewer>
 
-                     
+
 
                 </Grid>
-
                 <!--End of calculating markup.-->
+                <!--Client markup.-->
+                <Grid Name="ClientInformationControl"
+                      Background="White"
+                      Visibility="Collapsed"
+                      Grid.Row="1"
+                      Margin="50,58,50,222"
+                      Panel.ZIndex="1"
+                      MouseDown="OnMouseDown"
+                      KeyUp="OnKeyUp">
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock"
+                               x:Key="CommonBlock">
+                            <Setter Property="TextAlignment"
+                                    Value="Right" />
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="FontFamily"
+                                    Value="Dubai Light" />
+                            <Setter Property="FontSize"
+                                    Value="19" />
+                            <Setter Property="Foreground"
+                                    Value="#FF252525" />
+                            <Setter Property="Margin"
+                                    Value="5" />
+                            <Setter Property="Width"
+                                    Value="200" />
+                        </Style>
+                        <Style TargetType="TextBox"
+                               BasedOn="{StaticResource MaterialDesignFilledTextBox}">
+                            <Setter Property="TextAlignment"
+                                    Value="Center" />
+                            <Setter Property="FontFamily"
+                                    Value="Dubai Light" />
+                            <Setter Property="FontSize"
+                                    Value="19" />
+                            <Setter Property="Foreground"
+                                    Value="#FF252525" />
+                            <Setter Property="Margin"
+                                    Value="5" />
+                            <Setter Property="Panel.ZIndex"
+                                    Value="1" />
+                            <Setter Property="Width"
+                                    Value="500" />
+                        </Style>
+                        <Style TargetType="ComboBox"
+                               BasedOn="{StaticResource MaterialDesignComboBox}">
+                            <Setter Property="Panel.ZIndex"
+                                    Value="1" />
+                            <Setter Property="FontFamily"
+                                    Value="Dubai Light" />
+                            <Setter Property="FontSize"
+                                    Value="19" />
+                            <Setter Property="Margin"
+                                    Value="5" />
+                            <Setter Property="Width"
+                                    Value="500" />
+                        </Style>
+                        <Style TargetType="DatePicker"
+                               BasedOn="{StaticResource MaterialDesignDatePicker}">
+                            <Setter Property="Panel.ZIndex"
+                                    Value="1" />
+                            <Setter Property="FontFamily"
+                                    Value="Dubai Light" />
+                            <Setter Property="FontSize"
+                                    Value="19" />
+                            <Setter Property="Margin"
+                                    Value="5" />
+                            <Setter Property="Width"
+                                    Value="500" />
+                        </Style>
+                        <Style TargetType="Button"
+                               BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                            <Setter Property="Panel.ZIndex"
+                                    Value="1" />
+                        </Style>
+                    </Grid.Resources>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                MouseDown="OnMouseDown"
+                                KeyUp="OnKeyUp">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ФИО"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_Fio, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Дата рождения"
+                                       Style="{StaticResource CommonBlock}" />
+                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_Born}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Номер телефона"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_TelNumber, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Серия паспорта"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_SeriaPasporta, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Номер паспорта"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_NomerPasporta, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Прописка"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_Propiska, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Дата выдачи паспорта"
+                                       Style="{StaticResource CommonBlock}" />
+                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_DataVidachiPasporta,UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Электронная почта"
+                                       Style="{StaticResource CommonBlock}" />
+                            <TextBox Text="{Binding Zayavka.Klient.K_Email, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <!--End of client markup.-->
 
                 <Grid Grid.Row="0"
                       Background="#FFEAEAEA"
@@ -755,11 +876,27 @@
                                     Height="Auto"
                                     FontFamily="Dubai Light"
                                     x:Name="Svedeniaokliente"
-                                    Content="Сведения о клиенте"
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
-                                    BorderBrush="{x:Null}" />
+                                    BorderBrush="{x:Null}"
+                                    Click="OnClientInformationClick">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="FontWeight"
+                                                Value="Medium" />
+                                        <Setter Property="Content"
+                                                Value="Сведения о клиенте" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Zayavka.Klient.IsInflated}"
+                                                         Value="True">
+                                                <Setter Property="Content"
+                                                        Value="Сведения о клиенте ✅" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
                             <Button Grid.Column="1"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
@@ -775,7 +912,7 @@
                             <Button Grid.Column="2"
                                     Click="OnCalculatingClick"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
+                                    HorizontalAlignment="Right"
                                     Width="Auto"
                                     Height="Auto"
                                     FontFamily="Dubai Light"
@@ -784,7 +921,8 @@
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
-                                    BorderBrush="{x:Null}" />
+                                    BorderBrush="{x:Null}"
+                                    Margin="0,22,180,22" />
                         </Grid>
                     </Border>
 
@@ -929,7 +1067,7 @@
                     </Grid>
                 </Border>
 
-                 
+
             </Grid>
         </Grid>
 

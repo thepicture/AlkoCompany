@@ -26,26 +26,6 @@
                 <ColumnDefinition Width="400" />
             </Grid.ColumnDefinitions>
 
-            <!--<Button Grid.Column="3" Background="#00000000" Width="50" Height="50" Name="ListButtonOpen" HorizontalAlignment="Right" BorderBrush="#00000000" Foreground="#00000000"  Padding="0,0,0,0"   Margin="0,0,30,0"   >
-                <Button.ContentTemplate >
-                    <DataTemplate >
-                        <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FFCDCDCD"  />
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>-->
-            <!--<MenuItem Grid.Column="3" x:Name="AddPresetButton" Click="AddPresetButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right"   >
-                <MenuItem.Header>
-                    <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FFCDCDCD"/>
-                </MenuItem.Header>
-                <MenuItem.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Добавить" HorizontalAlignment="Right"/>
-                        <MenuItem Header="Редактировать" HorizontalAlignment="Right"/>
-                        <MenuItem Header="Удалить" HorizontalAlignment="Right"/>
-                    </ContextMenu>
-                </MenuItem.ContextMenu>
-            </MenuItem>-->
-
             <Button Grid.Column="1"
                     x:Name="ElementZayvki"
                     Height="40"
