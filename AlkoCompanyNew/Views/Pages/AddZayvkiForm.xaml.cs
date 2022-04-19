@@ -2,7 +2,6 @@
 using AlkoCompanyNew.Models.Entities;
 using AlkoCompanyNew.Models.Enums;
 using Microsoft.Win32;
-using PropertyChanged;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -17,7 +16,6 @@ namespace AlkoCompanyNew.Views.Pages
     /// <summary>
     /// Логика взаимодействия для AddZayvkiForm.xaml
     /// </summary>
-    [AddINotifyPropertyChangedInterface]
     public partial class AddZayvkiForm : Page
     {
         public Zayavka Zayavka { get; set; } = new Zayavka();
@@ -92,9 +90,19 @@ namespace AlkoCompanyNew.Views.Pages
 
             if (Zayavka.Z_ID == 0)
             {
-                Zayavka.Klient = CurrentClient;
-
-                _ = AppData.Context.Zayavka.Add(Zayavka);
+                try
+                {
+                    CurrentClient = AppData.Context.Klient.Add(CurrentClient);
+                    Zayavka.K_ID = CurrentClient.K_ID;
+                    AppData.Context.Zayavka.Add(Zayavka);
+                    AppData.Context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при сохранении клиента. " +
+                        "Подробная информация будет показана далее");
+                    MessageBox.Show(ex.ToString());
+                }
             }
             else
             {
@@ -104,8 +112,8 @@ namespace AlkoCompanyNew.Views.Pages
             {
                 AppData.Context.Entry(AppData.Context.Zayavka.Find(Zayavka.Z_ID))
                     .CurrentValues.SetValues(Zayavka);
-                _ = AppData.Context.SaveChanges();
-                _ = MessageBox.Show("Данные успешно внесены");
+                AppData.Context.SaveChanges();
+                MessageBox.Show("Данные успешно внесены");
                 AppData.Context.ChangeTracker
                     .Entries()
                     .ToList()
@@ -137,7 +145,7 @@ namespace AlkoCompanyNew.Views.Pages
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            _ = NavigationService.Navigate(null);
+            NavigationService.Navigate(null);
         }
     }
 }
