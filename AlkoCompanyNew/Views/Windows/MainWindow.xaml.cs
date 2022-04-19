@@ -51,8 +51,7 @@ namespace AlkoCompanyNew.Views.Windows
                 return;
             }
 
-            ButtonVhod.Content = "Подождите...";
-            ButtonVhod.IsEnabled = false;
+            ButtonVhod.Visibility = Visibility.Collapsed;
             LogInProgress.Visibility = Visibility.Visible;
             Sotrudnick sotrudnick = await Task.Run(() =>
             {
@@ -60,8 +59,7 @@ namespace AlkoCompanyNew.Views.Windows
                 .FirstOrDefault(s =>
                     s.S_Login == login && s.S_Password == password);
             });
-            ButtonVhod.Content = "Вход";
-            ButtonVhod.IsEnabled = true;
+            ButtonVhod.Visibility = Visibility.Visible;
             LogInProgress.Visibility = Visibility.Collapsed;
 
             if (sotrudnick == null)
