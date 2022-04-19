@@ -39,5 +39,12 @@ namespace AlkoCompanyNew.Views.Windows
         {
             _ = Frame.Navigate(new Zayavki(null));
         }
+
+        private void ElementZayvkiSotrudnicki_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ = Frame.Navigate(new Sotrudnicki(null));
+        }
+
+       
     }
 }

@@ -66,6 +66,7 @@ namespace AlkoCompanyNew.Views.Pages
             {
                 CalculatingControl.Visibility = Visibility.Visible;
             }
+
         }
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)

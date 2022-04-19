@@ -10,6 +10,68 @@
       Height="1080"
       Title="Sotrudnicki">
 
+    <Page.Resources>
+        <Storyboard x:Key="Storyboard1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Add">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Add">
+                <SplineThicknessKeyFrame KeyTime="0:0:0.3" Value="0,0,600,0" KeySpline="0.49,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Edit">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.7" Value="0,0,350,0" KeySpline="0.49,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Del">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Del">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:1.1" Value="0,0,150,0" KeySpline="0.49,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Copy1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Add">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Add">
+                <SplineThicknessKeyFrame KeySpline="0.49,0,1,1" KeyTime="0" Value="0,0,600,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Edit">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,350,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.7" Value="0" KeySpline="0.49,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Del">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Del">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.8" Value="0,0,150,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:1.1" Value="0" KeySpline="0.49,0,0,1"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="OpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="CloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard_Copy1}" />
+        </EventTrigger>
+    </Page.Triggers>
+
     <Grid Background="#FFEAEAEA">
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
@@ -20,36 +82,42 @@
               Background="#FFEAEAEA">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
 
 
-            <Button Grid.Column="1"
-                    x:Name="ElementZayvki"
-                    Height="40"
-                    Width="220"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}"
-                    VerticalAlignment="Bottom"
-                    >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Plus"
-                                             Width="35"
-                                             Height="35"
-                                             VerticalAlignment="Center"
-                                             Foreground="#FFCB0000" />
-                    <TextBlock x:Name="textBlock1"
-                               Text="Добавить заявку"
-                               Foreground="#FF252525"
-                               FontSize="20"
-                               FontFamily="Dubai Light"
-                               VerticalAlignment="Center"
-                               Margin="10,0,0,0" />
-                </StackPanel>
+
+            <Button HorizontalAlignment="Right" Name="OpenMenu" Click="OpenMenu_Click"  Grid.Column="1" VerticalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FF4F4F4F">
+                <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FF939393"/>
             </Button>
+            <Button HorizontalAlignment="Right"  Name="CloseMenu" Click="CloseMenu_Click"  Grid.Column="1" VerticalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FF4F4F4F" Visibility="Hidden">
+                <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FF939393"/>
+            </Button>
+
+            <Grid x:Name="grid" Grid.Column="1" Width="Auto">
+                <Button Grid.Column="1" x:Name="Add" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Plus" Width="Auto" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
+                        <TextBlock x:Name="textBlockAdd" Text="Добавить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" x:Name="Edit" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Edit" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
+                        <TextBlock x:Name="textBlockEdit" Text="Редактировать" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" x:Name="Del" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Delete" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
+                        <TextBlock x:Name="textBlockDel" Text="Удалить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
 
 
 

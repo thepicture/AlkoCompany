@@ -12,7 +12,7 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class Sotrudnicki : Page
     {
-        private Sotrudnick sotr = new Sotrudnick();
+        private readonly Sotrudnick sotr = new Sotrudnick();
         public Sotrudnicki(Sotrudnick settersotr)
         {
             InitializeComponent();
@@ -25,7 +25,17 @@ namespace AlkoCompanyNew.Views.Pages
 
             DataContext = sotr;
             AppData.Sotrudnicki_ = this;
-       
+        }
+        private void OpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenu.Visibility = Visibility.Collapsed;
+            CloseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void CloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenu.Visibility = Visibility.Visible;
+            CloseMenu.Visibility = Visibility.Collapsed;
         }
     }
 }

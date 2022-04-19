@@ -174,6 +174,9 @@
                                     <TextBlock Text="Корректировка на дату продажи" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Корректировка на месторасположение" />
                                 </Border>
                                 <Border Background="LightGray">
@@ -320,8 +323,10 @@
                                     <TextBox HorizontalAlignment="Stretch" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch"
-                                             Text="{Binding AssessmentObject.OH_NewCenaProdaji}" />
+                                    <TextBox HorizontalAlignment="Stretch" />
+                                </Border>
+                                <Border>
+                                    <TextBox HorizontalAlignment="Stretch"/>
                                 </Border>
                                 <Border>
                                     <TextBox HorizontalAlignment="Stretch" />
@@ -560,6 +565,9 @@
                                                          HorizontalAlignment="Stretch" />
                                             </Border>
                                             <Border>
+                                                <TextBlock Text="{Binding NewKwm}" />
+                                            </Border>
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
@@ -662,6 +670,9 @@
                             </ListView>
                         </Grid>
                     </ScrollViewer>
+
+                     
+
                 </Grid>
 
                 <!--End of calculating markup.-->
@@ -756,7 +767,7 @@
                                     Height="Auto"
                                     FontFamily="Dubai Light"
                                     x:Name="Svedeniaoobject"
-                                    Content="Сведения о объекте"
+                                    Content="Земельный участок"
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
@@ -769,7 +780,7 @@
                                     Height="Auto"
                                     FontFamily="Dubai Light"
                                     x:Name="Raschet"
-                                    Content="Расчеты"
+                                    Content="Дом"
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
@@ -918,17 +929,7 @@
                     </Grid>
                 </Border>
 
-                <Grid Grid.Row="1"
-                      Background="#FFEAEAEA">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"
-                          Background="Aqua" />
-                    <Grid Grid.Column="1"
-                          Background="Bisque" />
-                </Grid>
+                 
             </Grid>
         </Grid>
 

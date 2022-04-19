@@ -9,5 +9,6 @@ namespace AlkoCompanyNew.Models.Entities
         public int NumberOfAnalogue { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public float? NewCena { get; set; }
+        public float? NewKwm { get; set; }
     }
 }

@@ -269,7 +269,8 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvkiSotrudnicki"
-                                  Height="90">
+                                  Height="90"
+                                  PreviewMouseDown="ElementZayvkiSotrudnicki_PreviewMouseDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person"
                                                      Width="50"

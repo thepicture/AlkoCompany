@@ -177,7 +177,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AnalogiGr__OG_ID__114A936A">
+        <Association Name="FK__AnalogiGr__OG_ID__34C8D9D1">
           <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="1" />
           <End Role="AnalogiGround" Type="Self.AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
@@ -297,7 +297,7 @@
           <EntitySet Name="Sotrudnick" EntityType="Self.Sotrudnick" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZayavkaStatus" EntityType="Self.ZayavkaStatus" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="Self.FK__AnalogiGr__OG_ID__114A936A">
+          <AssociationSet Name="FK__AnalogiGr__OG_ID__34C8D9D1" Association="Self.FK__AnalogiGr__OG_ID__34C8D9D1">
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
             <End Role="AnalogiGround" EntitySet="AnalogiGround" />
           </AssociationSet>
@@ -348,7 +348,7 @@
           <EntitySet Name="Sotrudnick" EntityType="AlkoCompanyModel.Sotrudnick" />
           <EntitySet Name="Zayavka" EntityType="AlkoCompanyModel.Zayavka" />
           <EntitySet Name="ZayavkaStatus" EntityType="AlkoCompanyModel.ZayavkaStatus" />
-          <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A">
+          <AssociationSet Name="FK__AnalogiGr__OG_ID__34C8D9D1" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__34C8D9D1">
             <End Role="ObjectAssessmentGround" EntitySet="ObjectAssessmentGround" />
             <End Role="AnalogiGround" EntitySet="AnalogiGround" />
           </AssociationSet>
@@ -410,7 +410,7 @@
           <Property Name="AG_RazreshennoeIspolzovanie" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AG_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="OG_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A" FromRole="AnalogiGround" ToRole="ObjectAssessmentGround" />
+          <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__34C8D9D1" FromRole="AnalogiGround" ToRole="ObjectAssessmentGround" />
         </EntityType>
         <EntityType Name="AnalogiHouse">
           <Key>
@@ -503,7 +503,7 @@
           <Property Name="OG_CenaVse" Type="Single" Nullable="false" />
           <Property Name="OG_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="K_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AnalogiGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A" FromRole="ObjectAssessmentGround" ToRole="AnalogiGround" />
+          <NavigationProperty Name="AnalogiGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__34C8D9D1" FromRole="ObjectAssessmentGround" ToRole="AnalogiGround" />
           <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK__ObjectAsse__K_ID__30F848ED" FromRole="ObjectAssessmentGround" ToRole="Klient" />
         </EntityType>
         <EntityType Name="ObjectAssessmentHouse">
@@ -575,7 +575,7 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ZayavkaStatus" FromRole="ZayavkaStatus" ToRole="Zayavka" />
         </EntityType>
-        <Association Name="FK__AnalogiGr__OG_ID__114A936A">
+        <Association Name="FK__AnalogiGr__OG_ID__34C8D9D1">
           <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="1" />
           <End Type="AlkoCompanyModel.AnalogiGround" Role="AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
