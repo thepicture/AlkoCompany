@@ -121,8 +121,10 @@
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enums\ZayavkaStatuses.cs" />
+    <Compile Include="Models\Partial\PartialAnalogiGround.cs" />
     <Compile Include="Models\Partial\PartialAnalogiHouse.cs" />
     <Compile Include="Models\Partial\PartialKlient.cs" />
+    <Compile Include="Models\Partial\PartialObjectAssessmentGround.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
     <Compile Include="Services\LogicalChildrenFinder.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

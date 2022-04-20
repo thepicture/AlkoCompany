@@ -24,6 +24,8 @@ public partial class ObjectAssessmentGround
 
         this.AnalogiGround = new HashSet<AnalogiGround>();
 
+        this.Zayavka = new HashSet<Zayavka>();
+
     }
 
 
@@ -33,19 +35,17 @@ public partial class ObjectAssessmentGround
 
     public virtual string OG_KadNomer { get; set; }
 
-    public virtual float OG_Ploshad { get; set; }
+    public virtual Nullable<float> OG_Ploshad { get; set; }
 
     public virtual string OG_KategoriaZemel { get; set; }
 
     public virtual string OG_RazreshennoeIspolzovanie { get; set; }
 
-    public virtual float OG_CenaKvm { get; set; }
+    public virtual Nullable<float> OG_CenaKvm { get; set; }
 
-    public virtual float OG_CenaVse { get; set; }
+    public virtual Nullable<float> OG_CenaVse { get; set; }
 
     public virtual byte[] OG_Photo { get; set; }
-
-    public int K_ID { get; set; }
 
 
 
@@ -53,7 +53,9 @@ public partial class ObjectAssessmentGround
 
     public virtual ICollection<AnalogiGround> AnalogiGround { get; set; }
 
-    public virtual Klient Klient { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Zayavka> Zayavka { get; set; }
 
 }
 

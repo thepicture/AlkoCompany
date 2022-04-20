@@ -36,6 +36,8 @@ public partial class Zayavka
 
     public int K_ID { get; set; }
 
+    public Nullable<int> OAG_ID { get; set; }
+
     public Nullable<int> OAH_ID { get; set; }
 
     public int Z_StatusId { get; set; }
@@ -43,6 +45,8 @@ public partial class Zayavka
 
 
     public virtual Klient Klient { get; set; }
+
+    public virtual ObjectAssessmentGround ObjectAssessmentGround { get; set; }
 
     public virtual ObjectAssessmentHouse ObjectAssessmentHouse { get; set; }
 

@@ -26,31 +26,31 @@ public partial class AnalogiGround
 
     public virtual string AG_Contact { get; set; }
 
-    public virtual float AG_Ploshad { get; set; }
+    public virtual Nullable<float> AG_Ploshad { get; set; }
 
-    public virtual float AG_CenaProdazhiVse { get; set; }
+    public virtual Nullable<float> AG_CenaProdazhiVse { get; set; }
 
-    public virtual float AG_CenaProdazhiKvm { get; set; }
+    public virtual Nullable<float> AG_CenaProdazhiKvm { get; set; }
 
-    public virtual float AG_KorTorg { get; set; }
+    public virtual Nullable<float> AG_KorTorg { get; set; }
 
-    public virtual float AG_KorNaPrava { get; set; }
+    public virtual Nullable<float> AG_KorNaPrava { get; set; }
 
-    public virtual float AG_KorNaDatuProdazhi { get; set; }
+    public virtual Nullable<float> AG_KorNaDatuProdazhi { get; set; }
 
-    public virtual float AG_KorNaMesto { get; set; }
+    public virtual Nullable<float> AG_KorNaMesto { get; set; }
 
     public virtual string AG_VozmognostPodklucheniaGas { get; set; }
 
-    public virtual float AG_KorNaGas { get; set; }
+    public virtual Nullable<float> AG_KorNaGas { get; set; }
 
     public virtual string AG_VozmognostPodklucheniaVoda { get; set; }
 
-    public virtual float AG_KorNaVoda { get; set; }
+    public virtual Nullable<float> AG_KorNaVoda { get; set; }
 
     public virtual string AG_VozmognostPodklucheniaElectric { get; set; }
 
-    public virtual float AG_KorNaElecric { get; set; }
+    public virtual Nullable<float> AG_KorNaElecric { get; set; }
 
     public virtual string AG_CategoriaZemel { get; set; }
 
@@ -58,7 +58,7 @@ public partial class AnalogiGround
 
     public virtual byte[] AG_Photo { get; set; }
 
-    public int OG_ID { get; set; }
+    public Nullable<int> OG_ID { get; set; }
 
 
 

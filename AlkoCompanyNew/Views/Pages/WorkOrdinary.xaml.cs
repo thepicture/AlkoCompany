@@ -2,7 +2,6 @@
 using AlkoCompanyNew.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace AlkoCompanyNew.Views.Pages
 {
@@ -18,7 +17,7 @@ namespace AlkoCompanyNew.Views.Pages
             DataContext = new WorkViewModel(zayavka);
             Loaded += (_, __) =>
             {
-                ((dynamic)DataContext).UpdatePercentOfCompletion();
+                ((dynamic)DataContext).UpdateHousePercentOfCompletion();
             };
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
@@ -36,16 +35,17 @@ namespace AlkoCompanyNew.Views.Pages
             ButtonClose.Visibility = Visibility.Collapsed;
         }
 
-        private void OnCalculatingClick(object sender, RoutedEventArgs e)
+        private void OnHouseGridToggled(object sender, RoutedEventArgs e)
         {
-            if (CalculatingControl.Visibility == Visibility.Visible)
+            if (HouseGrid.Visibility == Visibility.Visible)
             {
-                CalculatingControl.Visibility = Visibility.Collapsed;
+                HouseGrid.Visibility = Visibility.Collapsed;
             }
             else
             {
                 ClientInformationControl.Visibility = Visibility.Collapsed;
-                CalculatingControl.Visibility = Visibility.Visible;
+                GroundGrid.Visibility = Visibility.Collapsed;
+                HouseGrid.Visibility = Visibility.Visible;
             }
 
         }
@@ -58,8 +58,23 @@ namespace AlkoCompanyNew.Views.Pages
             }
             else
             {
-                CalculatingControl.Visibility = Visibility.Collapsed;
+                HouseGrid.Visibility = Visibility.Collapsed;
+                GroundGrid.Visibility = Visibility.Collapsed;
                 ClientInformationControl.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OnGroundGridToggled(object sender, RoutedEventArgs e)
+        {
+            if (GroundGrid.Visibility == Visibility.Visible)
+            {
+                GroundGrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ClientInformationControl.Visibility = Visibility.Collapsed;
+                HouseGrid.Visibility = Visibility.Collapsed;
+                GroundGrid.Visibility = Visibility.Visible;
             }
         }
     }

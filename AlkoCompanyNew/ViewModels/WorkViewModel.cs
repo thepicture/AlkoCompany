@@ -96,6 +96,13 @@ namespace AlkoCompanyNew.ViewModels
                     "Простая отделка",
                     "Без отделки"
                 });
+            TypesOfGround = new ObservableCollection<string>(
+              new string[]
+              {
+                    "ЗНП",
+                    "Тип земли 2",
+                    "Тип земли 3"
+              });
 
             if (zayavka.ObjectAssessmentHouse == null)
             {
@@ -115,7 +122,26 @@ namespace AlkoCompanyNew.ViewModels
                     Debug.WriteLine(ex.Message);
                 }
             }
+            if (zayavka.ObjectAssessmentGround == null)
+            {
+                try
+                {
+                    zayavka.ObjectAssessmentGround =
+                        new ObjectAssessmentGround();
+                    for (int i = 0; i < 3; i++)
+                    {
+                        zayavka.ObjectAssessmentGround.AnalogiGround.Add(
+                            new AnalogiGround());
+                    }
+                    AppData.Context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
             AssessmentObject = zayavka.ObjectAssessmentHouse;
+            AssessmentGround = zayavka.ObjectAssessmentGround;
             AnalogueHouses = new ObservableCollection<AnalogiHouse>
                 (AssessmentObject.AnalogiHouse);
             foreach (AnalogiHouse analogueHouse in AnalogueHouses)
@@ -134,6 +160,24 @@ namespace AlkoCompanyNew.ViewModels
                             .GetMethod(
                                 nameof(PerformChangeContext))));
             }
+            AnalogueGrounds = new ObservableCollection<AnalogiGround>
+                (AssessmentGround.AnalogiGround);
+            foreach (AnalogiGround analogueGround in AnalogueGrounds)
+            {
+                analogueGround.NumberOfAnalogue
+                    = AnalogueGrounds.IndexOf(analogueGround) + 1;
+                EventInfo analogueHouseEventInfo = analogueGround
+                    .GetType()
+                    .GetEvent(
+                        nameof(PropertyChanged));
+                analogueHouseEventInfo.AddEventHandler(analogueGround,
+                    Delegate.CreateDelegate(
+                        analogueHouseEventInfo.EventHandlerType,
+                        this,
+                        GetType()
+                            .GetMethod(
+                                nameof(PerformChangeContext))));
+            }
             EventInfo assessmentObjectEventInfo = AssessmentObject
                     .GetType()
                     .GetEvent(
@@ -141,6 +185,17 @@ namespace AlkoCompanyNew.ViewModels
             assessmentObjectEventInfo.AddEventHandler(AssessmentObject,
                 Delegate.CreateDelegate(
                     assessmentObjectEventInfo.EventHandlerType,
+                    this,
+                    GetType()
+                        .GetMethod(
+                            nameof(PerformChangeContext))));
+            EventInfo assessmentGroundEventInfo = AssessmentGround
+                   .GetType()
+                   .GetEvent(
+                       nameof(PropertyChanged));
+            assessmentGroundEventInfo.AddEventHandler(AssessmentGround,
+                Delegate.CreateDelegate(
+                    assessmentGroundEventInfo.EventHandlerType,
                     this,
                     GetType()
                         .GetMethod(
@@ -266,7 +321,12 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueHouses[2].NewKwm = AnalogueHouses[2].AH_CenaProdazhiKvm;
             #endregion
 
-            UpdatePercentOfCompletion();
+            UpdateHousePercentOfCompletion();
+            UpdateGroundPercentOfCompletion();
+            if (IsAbleToPerformRequest())
+            {
+                SetStatusOfRequest();
+            }
             try
             {
                 AppData.Context.SaveChanges();
@@ -278,15 +338,85 @@ namespace AlkoCompanyNew.ViewModels
             IsUpdating = false;
         }
 
+        private void UpdateGroundPercentOfCompletion()
+        {
+            IEnumerable<ListViewItem> analogueGroundsDependencyObjects =
+                App.WorkOrdinary.GroundCalculationView.Find<ListViewItem>();
+            List<TextBox> analogueGroundTextBoxes = new List<TextBox>();
+            List<ComboBox> analogueGroundComboBoxes = new List<ComboBox>();
+            foreach (ListViewItem dependencyObject in analogueGroundsDependencyObjects)
+            {
+                analogueGroundTextBoxes.AddRange(
+                   LogicalChildrenFinder.Find<TextBox>(dependencyObject));
+                analogueGroundComboBoxes.AddRange(
+                   LogicalChildrenFinder.Find<ComboBox>(dependencyObject));
+            }
+
+            IEnumerable<TextBox> textBoxes = App.WorkOrdinary.GroundSecondColumn
+                .Find<TextBox>()
+                .Union(analogueGroundTextBoxes)
+                .Where(tb =>
+                {
+                    if (tb.TemplatedParent == null)
+                    {
+                        return true;
+                    }
+                    return tb.TemplatedParent.GetType() != typeof(ComboBox);
+                });
+            IEnumerable<ComboBox> comboBoxes = App.WorkOrdinary.GroundSecondColumn
+                .Find<ComboBox>()
+                .Union(analogueGroundComboBoxes);
+            int filledControlsCount = textBoxes.Count(tb =>
+            {
+                return !string.IsNullOrWhiteSpace(tb.Text);
+            })
+                + comboBoxes.Count(cb => cb.SelectedItem != null);
+            int totalControlsCount = textBoxes.Count()
+                + comboBoxes.Count();
+
+            GroundPercentOfCompletion = 1.0 * filledControlsCount
+                / totalControlsCount
+                * 100;
+
+            if (GroundPercentOfCompletion > 100)
+            {
+                GroundPercentOfCompletion = 100;
+            }
+        }
+
+        private void SetStatusOfRequest()
+        {
+            Zayavka.Z_StatusId = ZayavkaStatuses.Vypolnena;
+            try
+            {
+                AppData.Context.SaveChanges();
+                MessageBox.Show("Заявка выполнена. Её статус изменён");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Статус заявки не изменён, " +
+                    "но она выполнена. " +
+                    "Проверьте подключение к базе данных");
+            }
+        }
+
+        private bool IsAbleToPerformRequest()
+        {
+            return GroundPercentOfCompletion == 100
+                && HousePercentOfCompletion == 100
+                && Zayavka.Klient.IsInflated
+                && Zayavka.Z_StatusId == ZayavkaStatuses.V_Obrabotke;
+        }
+
         /// <summary>
-        /// Обновляет процент выполнения заявки. 
+        /// Обновляет процент выполнения заявки дома. 
         /// В случае достижения ста процентов обновляет 
         /// статус заявки на <see langword="Выполнено"/>.
         /// </summary>
-        public void UpdatePercentOfCompletion()
+        public void UpdateHousePercentOfCompletion()
         {
             IEnumerable<ListViewItem> analogueDependencyObjects =
-            App.WorkOrdinary.CalculationView.Find<ListViewItem>();
+            App.WorkOrdinary.AnalogueHouseCalculationView.Find<ListViewItem>();
             List<TextBox> analogueTextBoxes = new List<TextBox>();
             List<ComboBox> analogueComboBoxes = new List<ComboBox>();
             foreach (ListViewItem dependencyObject in analogueDependencyObjects)
@@ -297,7 +427,7 @@ namespace AlkoCompanyNew.ViewModels
                    LogicalChildrenFinder.Find<ComboBox>(dependencyObject));
             }
 
-            IEnumerable<TextBox> textBoxes = App.WorkOrdinary.SecondColumn
+            IEnumerable<TextBox> textBoxes = App.WorkOrdinary.HouseSecondColumn
                 .Find<TextBox>()
                 .Union(analogueTextBoxes)
                 .Where(tb =>
@@ -308,7 +438,7 @@ namespace AlkoCompanyNew.ViewModels
                     }
                     return tb.TemplatedParent.GetType() != typeof(ComboBox);
                 });
-            IEnumerable<ComboBox> comboBoxes = App.WorkOrdinary.SecondColumn
+            IEnumerable<ComboBox> comboBoxes = App.WorkOrdinary.HouseSecondColumn
                 .Find<ComboBox>()
                 .Union(analogueComboBoxes);
             int filledControlsCount = textBoxes.Count(tb =>
@@ -319,29 +449,13 @@ namespace AlkoCompanyNew.ViewModels
             int totalControlsCount = textBoxes.Count()
                 + comboBoxes.Count();
 
-            PercentOfCompletion = 1.0 * filledControlsCount
+            HousePercentOfCompletion = 1.0 * filledControlsCount
                 / totalControlsCount
                 * 100;
 
-            if (PercentOfCompletion > 100)
+            if (HousePercentOfCompletion > 100)
             {
-                PercentOfCompletion = 100;
-            }
-            if (PercentOfCompletion == 100
-                && Zayavka.Z_StatusId == ZayavkaStatuses.V_Obrabotke)
-            {
-                Zayavka.Z_StatusId = ZayavkaStatuses.Vypolnena;
-                try
-                {
-                    AppData.Context.SaveChanges();
-                    MessageBox.Show("Заявка выполнена. Её статус изменён");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Статус заявки не изменён, " +
-                        "но она выполнена. " +
-                        "Проверьте подключение к базе данных");
-                }
+                HousePercentOfCompletion = 100;
             }
         }
 
@@ -360,7 +474,7 @@ namespace AlkoCompanyNew.ViewModels
             get => assessmentObject;
             set => SetProperty(ref assessmentObject, value);
         }
-
+        public ObjectAssessmentGround AssessmentGround { get; private set; }
         public ObservableCollection<AnalogiHouse> AnalogueHouses
         {
             get => analogueHouses;
@@ -446,17 +560,91 @@ namespace AlkoCompanyNew.ViewModels
             {
                 (parameter as AnalogiHouse).AH_Photo = File
                    .ReadAllBytes(fileName);
-                _ = MessageBox.Show("Фото аналога изменено");
+                MessageBox.Show("Фото аналога изменено");
             }
         }
 
         private double percentOfCompletion;
+        private ObservableCollection<AnalogiGround> analogueGrounds;
 
-        public double PercentOfCompletion
+        public double HousePercentOfCompletion
         {
             get => percentOfCompletion;
             set => SetProperty(ref percentOfCompletion, value);
         }
         public bool IsUpdating { get; private set; }
+        public ObservableCollection<AnalogiGround> AnalogueGrounds
+        {
+            get => analogueGrounds;
+            set => SetProperty(ref analogueGrounds, value);
+        }
+
+        private double groundPercentOfCompletion;
+
+        public double GroundPercentOfCompletion
+        {
+            get => groundPercentOfCompletion;
+            set => SetProperty(ref groundPercentOfCompletion, value);
+        }
+
+        private Command changeAssessmentGroundPictureCommand;
+
+        public ICommand ChangeAssessmentGroundPictureCommand
+        {
+            get
+            {
+                if (changeAssessmentGroundPictureCommand == null)
+                {
+                    changeAssessmentGroundPictureCommand = new Command(ChangeAssessmentGroundPicture);
+                }
+
+                return changeAssessmentGroundPictureCommand;
+            }
+        }
+
+        private void ChangeAssessmentGroundPicture()
+        {
+            bool? result = GetImageFromWindowsOS(out string fileName);
+            if (result.HasValue && result.Value)
+            {
+                AssessmentGround.OG_Photo = File
+                    .ReadAllBytes(fileName);
+                MessageBox.Show("Фото объекта оценки изменено");
+            }
+        }
+
+        private ObservableCollection<string> typesOfGround;
+
+        public ObservableCollection<string> TypesOfGround
+        {
+            get => typesOfGround;
+            set => SetProperty(ref typesOfGround, value);
+        }
+
+        private Command changeAnalogueGroundPictureCommand;
+
+        public ICommand ChangeAnalogueGroundPictureCommand
+        {
+            get
+            {
+                if (changeAnalogueGroundPictureCommand == null)
+                {
+                    changeAnalogueGroundPictureCommand = new Command(ChangeAnalogueGroundPicture);
+                }
+
+                return changeAnalogueGroundPictureCommand;
+            }
+        }
+
+        private void ChangeAnalogueGroundPicture(object parameter)
+        {
+            bool? result = GetImageFromWindowsOS(out string fileName);
+            if (result.HasValue && result.Value)
+            {
+                (parameter as AnalogiGround).AG_Photo = File
+                   .ReadAllBytes(fileName);
+                MessageBox.Show("Фото земельного аналога изменено");
+            }
+        }
     }
 }
