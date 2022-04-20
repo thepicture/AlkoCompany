@@ -403,7 +403,7 @@
                                     <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAll}" />
+                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAll, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                             </StackPanel>
                             <ListView ItemsSource="{Binding AnalogueHouses}"
