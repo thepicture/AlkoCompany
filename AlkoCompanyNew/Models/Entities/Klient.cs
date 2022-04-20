@@ -51,8 +51,6 @@ public partial class Klient
 
 
 
-    public virtual ObjectAssessmentAll ObjectAssessmentAll { get; set; }
-
     public virtual Sotrudnick Sotrudnick { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -262,6 +262,9 @@
                                 <Border>
                                     <TextBlock Text="Корректировка на наружную отделку" />
                                 </Border>
+                                <Border>
+                                    <TextBlock Text="Общая сумма (дом+земля)" />
+                                </Border>
                             </StackPanel>
                             <StackPanel Grid.Column="1"
                                         Name="HouseSecondColumn">
@@ -398,6 +401,9 @@
                                 </Border>
                                 <Border>
                                     <TextBox />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAll}" />
                                 </Border>
                             </StackPanel>
                             <ListView ItemsSource="{Binding AnalogueHouses}"
@@ -804,10 +810,10 @@
                                     <TextBlock Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="1.05"/>
+                                    <TextBlock Text="1.05" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="{Binding AssessmentGround.OG_PriceKvmAfter}"/>
+                                    <TextBlock Text="{Binding AssessmentGround.OG_PriceKvmAfter}" />
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentGround.OG_C_TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />

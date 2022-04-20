@@ -40,11 +40,15 @@ public partial class Zayavka
 
     public Nullable<int> OAH_ID { get; set; }
 
+    public Nullable<int> OAA_ID { get; set; }
+
     public int Z_StatusId { get; set; }
 
 
 
     public virtual Klient Klient { get; set; }
+
+    public virtual ObjectAssessmentAll ObjectAssessmentAll { get; set; }
 
     public virtual ObjectAssessmentGround ObjectAssessmentGround { get; set; }
 

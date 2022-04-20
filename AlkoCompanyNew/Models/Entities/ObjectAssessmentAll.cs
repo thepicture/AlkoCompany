@@ -22,7 +22,7 @@ public partial class ObjectAssessmentAll
     public ObjectAssessmentAll()
     {
 
-        this.Klient = new HashSet<Klient>();
+        this.Zayavka = new HashSet<Zayavka>();
 
     }
 
@@ -31,25 +31,25 @@ public partial class ObjectAssessmentAll
 
     public virtual string OA_Adress { get; set; }
 
-    public virtual float OA_PloshadZemli { get; set; }
+    public virtual Nullable<float> OA_PloshadZemli { get; set; }
 
-    public virtual float OA_PloshadDom { get; set; }
+    public virtual Nullable<float> OA_PloshadDom { get; set; }
 
-    public virtual float OA_CenaZemliKvm { get; set; }
+    public virtual Nullable<float> OA_CenaZemliKvm { get; set; }
 
-    public virtual float OA_CenaZemliVse { get; set; }
+    public virtual Nullable<float> OA_CenaZemliVse { get; set; }
 
-    public virtual float OA_CenaDomKvm { get; set; }
+    public virtual Nullable<float> OA_CenaDomKvm { get; set; }
 
-    public virtual float OA_CenaDomVse { get; set; }
+    public virtual Nullable<float> OA_CenaDomVse { get; set; }
 
-    public virtual float OA_CenaAll { get; set; }
+    public virtual Nullable<float> OA_CenaAll { get; set; }
 
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Klient> Klient { get; set; }
+    public virtual ICollection<Zayavka> Zayavka { get; set; }
 
 }
 

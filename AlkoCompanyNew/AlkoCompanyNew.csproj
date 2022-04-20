@@ -124,6 +124,7 @@
     <Compile Include="Models\Partial\PartialAnalogiGround.cs" />
     <Compile Include="Models\Partial\PartialAnalogiHouse.cs" />
     <Compile Include="Models\Partial\PartialKlient.cs" />
+    <Compile Include="Models\Partial\PartialObjectAssessmentAll.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentGround.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
     <Compile Include="Services\LogicalChildrenFinder.cs" />

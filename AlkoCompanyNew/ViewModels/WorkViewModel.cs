@@ -147,8 +147,22 @@ namespace AlkoCompanyNew.ViewModels
                     Debug.WriteLine(ex.Message);
                 }
             }
+            if (zayavka.ObjectAssessmentAll == null)
+            {
+                try
+                {
+                    zayavka.ObjectAssessmentAll =
+                        new ObjectAssessmentAll();
+                    AppData.Context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
             AssessmentObject = zayavka.ObjectAssessmentHouse;
             AssessmentGround = zayavka.ObjectAssessmentGround;
+            AssessmentAll = zayavka.ObjectAssessmentAll;
             AnalogueHouses = new ObservableCollection<AnalogiHouse>
                 (AssessmentObject.AnalogiHouse);
             foreach (AnalogiHouse analogueHouse in AnalogueHouses)
@@ -203,6 +217,17 @@ namespace AlkoCompanyNew.ViewModels
             assessmentGroundEventInfo.AddEventHandler(AssessmentGround,
                 Delegate.CreateDelegate(
                     assessmentGroundEventInfo.EventHandlerType,
+                    this,
+                    GetType()
+                        .GetMethod(
+                            nameof(PerformChangeContext))));
+            EventInfo assessmentAllEventInfo = AssessmentAll
+                 .GetType()
+                 .GetEvent(
+                     nameof(PropertyChanged));
+            assessmentAllEventInfo.AddEventHandler(AssessmentAll,
+                Delegate.CreateDelegate(
+                    assessmentAllEventInfo.EventHandlerType,
                     this,
                     GetType()
                         .GetMethod(
@@ -345,6 +370,10 @@ namespace AlkoCompanyNew.ViewModels
             AssessmentGround.OG_CenaKvm = AssessmentGround.OG_CenaVse / AssessmentGround.OG_Ploshad;
             AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
             AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
+            #endregion
+            #region allCalculation
+            // Сложить суммы земельного участка и дома
+            AssessmentAll.OA_CenaAll = AssessmentGround.OG_C_TotalPrice + AssessmentGround.OG_C_TotalPrice;
             #endregion
 
             UpdateHousePercentOfCompletion();
@@ -500,7 +529,16 @@ namespace AlkoCompanyNew.ViewModels
             get => assessmentObject;
             set => SetProperty(ref assessmentObject, value);
         }
-        public ObjectAssessmentGround AssessmentGround { get; private set; }
+        public ObjectAssessmentGround AssessmentGround
+        {
+            get => assessmentGround;
+            set => SetProperty(ref assessmentGround, value);
+        }
+        public ObjectAssessmentAll AssessmentAll
+        {
+            get => assessmentAll;
+            set => SetProperty(ref assessmentAll, value);
+        }
         public ObservableCollection<AnalogiHouse> AnalogueHouses
         {
             get => analogueHouses;
@@ -649,6 +687,8 @@ namespace AlkoCompanyNew.ViewModels
         public ObservableCollection<string> AllowedUsages { get; set; }
 
         private Command changeAnalogueGroundPictureCommand;
+        private ObjectAssessmentGround assessmentGround;
+        private ObjectAssessmentAll assessmentAll;
 
         public ICommand ChangeAnalogueGroundPictureCommand
         {
