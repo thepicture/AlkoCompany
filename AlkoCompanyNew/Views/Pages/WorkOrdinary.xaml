@@ -272,14 +272,13 @@
                                                Text="Объект оценки" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentObject.OH_Adress, UpdateSourceTrigger=PropertyChanged}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentObject.OH_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <Image Width="120"
@@ -299,33 +298,32 @@
                                     </Image>
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentObject.OH_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentObject.OH_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
                                               SelectedItem="{Binding AssessmentObject.OH_DopPosroyki, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeBlagoustroistva}"
@@ -333,7 +331,7 @@
                                 </Border>
                                 <!--благоустройство участка-->
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMebel}"
@@ -341,66 +339,65 @@
                                 </Border>
                                 <!--мебель-->
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentObject.OH_Etagi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentObject.OH_Etagi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMaterialSten}"
                                               SelectedItem="{Binding AssessmentObject.OH_MaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeOtoplenia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Otoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVoda}"
                                               SelectedItem="{Binding AssessmentObject.OH_Voda, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeKanalizacia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Kanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeFizSostoyanie}"
                                               SelectedItem="{Binding AssessmentObject.OH_FizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVnutrOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeNarugOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_NarugnayaOtdelka, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                             </StackPanel>
                             <ListView ItemsSource="{Binding AnalogueHouses}"
@@ -500,7 +497,7 @@
                                             <Border Background="LightGray">
                                                 <TextBlock FontStyle="Italic"
                                                            FontWeight="Bold"
-                                                           Text="{Binding NumberOfAnalogue, StringFormat={}Аналог {0}, UpdateSourceTrigger=PropertyChanged}" />
+                                                           Text="{Binding NumberOfAnalogue, UpdateSourceTrigger=PropertyChanged, StringFormat={}Аналог {0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}" />
@@ -546,8 +543,7 @@
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                                         HorizontalAlignment="Stretch" />
+                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -558,7 +554,7 @@
                                                           SelectedItem="{Binding AH_TypeDopPostroyki, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaDopPostroyki, StringFormat={}{0:F2}, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AH_KorNaDopPostroyki, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -782,39 +778,32 @@
                                                Text="Объект оценки" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_Adress, UpdateSourceTrigger=PropertyChanged}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_KadNomer, UpdateSourceTrigger=PropertyChanged}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_KadNomer, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypesOfGround}"
                                               SelectedItem="{Binding AssessmentGround.OG_KategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox HorizontalAlignment="Stretch" />
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_C_TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"
-                                             HorizontalAlignment="Stretch" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_C_TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
                                     <Image Width="120"
@@ -940,7 +929,7 @@
                                                 <TextBox />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -951,16 +940,16 @@
                                                 <TextBox Text="{Binding AG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AG_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_C_PriceAfter, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AG_C_PriceAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <Image Width="120"
