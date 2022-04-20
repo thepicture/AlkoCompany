@@ -1,10 +1,8 @@
 ﻿using AlkoCompanyNew.Models.Entities;
 using AlkoCompanyNew.ViewModels;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace AlkoCompanyNew.Views.Pages
 {
@@ -18,24 +16,6 @@ namespace AlkoCompanyNew.Views.Pages
             InitializeComponent();
             App.WorkOrdinary = this;
             DataContext = new WorkViewModel(zayavka);
-
-            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Normal)
-            {
-                Interval = TimeSpan.FromSeconds(1)
-            };
-            timer.Tick += (_, __) =>
-            {
-                ((dynamic)DataContext).PerformChangeContext();
-            };
-            timer.Start();
-            Unloaded += (_, __) =>
-            {
-                if (timer.IsEnabled)
-                {
-                    timer.Stop();
-                }
-            };
-
             Loaded += (_, __) =>
             {
                 ((dynamic)DataContext).UpdatePercentOfCompletion();
@@ -68,16 +48,6 @@ namespace AlkoCompanyNew.Views.Pages
                 CalculatingControl.Visibility = Visibility.Visible;
             }
 
-        }
-
-        private void OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ((dynamic)DataContext).PerformChangeContext();
-        }
-
-        private void OnKeyUp(object sender, KeyEventArgs e)
-        {
-            ((dynamic)DataContext).PerformChangeContext();
         }
 
         private void OnClientInformationClick(object sender, RoutedEventArgs e)

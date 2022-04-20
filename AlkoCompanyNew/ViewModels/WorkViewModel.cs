@@ -7,9 +7,11 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -120,7 +122,42 @@ namespace AlkoCompanyNew.ViewModels
             {
                 analogueHouse.NumberOfAnalogue
                     = AnalogueHouses.IndexOf(analogueHouse) + 1;
+                EventInfo analogueHouseEventInfo = analogueHouse
+                    .GetType()
+                    .GetEvent(
+                        nameof(PropertyChanged));
+                analogueHouseEventInfo.AddEventHandler(analogueHouse,
+                    Delegate.CreateDelegate(
+                        analogueHouseEventInfo.EventHandlerType,
+                        this,
+                        GetType()
+                            .GetMethod(
+                                nameof(PerformChangeContext))));
             }
+            EventInfo assessmentObjectEventInfo = AssessmentObject
+                    .GetType()
+                    .GetEvent(
+                        nameof(PropertyChanged));
+            assessmentObjectEventInfo.AddEventHandler(AssessmentObject,
+                Delegate.CreateDelegate(
+                    assessmentObjectEventInfo.EventHandlerType,
+                    this,
+                    GetType()
+                        .GetMethod(
+                            nameof(PerformChangeContext))));
+            EventInfo clientEventInfo = Zayavka.Klient
+                   .GetType()
+                   .GetEvent(
+                       nameof(PropertyChanged));
+            clientEventInfo.AddEventHandler(Zayavka.Klient,
+                Delegate.CreateDelegate(
+                    clientEventInfo.EventHandlerType,
+                    this,
+                    GetType()
+                        .GetMethod(
+                            nameof(PerformChangeContext))));
+            PerformChangeContext(this,
+                                 new PropertyChangedEventArgs(""));
         }
 
         /// <summary>
@@ -158,8 +195,10 @@ namespace AlkoCompanyNew.ViewModels
         ///      + AnalogueHouses[2].AH_Correction;
         ///  #endregion
         /// </example>
-        public void PerformChangeContext()
+        public void PerformChangeContext(object sender, PropertyChangedEventArgs e)
         {
+            if (IsUpdating) return;
+            IsUpdating = true;
             #region calculation
             // цена кв.м
             AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
@@ -222,25 +261,21 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaNarugnyuOtdelky == 0 ? 1 : AnalogueHouses[1].AH_KorNaNarugnyuOtdelky);
             AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaNarugnyuOtdelky == 0 ? 1 : AnalogueHouses[2].AH_KorNaNarugnyuOtdelky);
             // новая цена (атрибута в бд нет)
-            AnalogueHouses[0].NewCena = AnalogueHouses[0].AH_CenaProdazhiKvm;
-            AnalogueHouses[1].NewCena = AnalogueHouses[1].AH_CenaProdazhiKvm;
-            AnalogueHouses[2].NewCena = AnalogueHouses[2].AH_CenaProdazhiKvm;
-            // новая цена (атрибута в бд нет)
             AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
             AnalogueHouses[1].NewKwm = AnalogueHouses[1].AH_CenaProdazhiKvm;
             AnalogueHouses[2].NewKwm = AnalogueHouses[2].AH_CenaProdazhiKvm;
             #endregion
 
             UpdatePercentOfCompletion();
-
             try
             {
                 AppData.Context.SaveChanges();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
+            IsUpdating = false;
         }
 
         /// <summary>
@@ -422,5 +457,6 @@ namespace AlkoCompanyNew.ViewModels
             get => percentOfCompletion;
             set => SetProperty(ref percentOfCompletion, value);
         }
+        public bool IsUpdating { get; private set; }
     }
 }

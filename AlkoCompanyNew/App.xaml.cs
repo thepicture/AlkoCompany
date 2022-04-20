@@ -1,6 +1,5 @@
 ﻿using AlkoCompanyNew.Views.Pages;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace AlkoCompanyNew
 {
@@ -10,5 +9,10 @@ namespace AlkoCompanyNew
     public partial class App : Application
     {
         public static WorkOrdinary WorkOrdinary { get; set; }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            FrameworkCompatibilityPreferences.KeepTextBoxDisplaySynchronizedWithTextProperty = false;
+        }
     }
 }
