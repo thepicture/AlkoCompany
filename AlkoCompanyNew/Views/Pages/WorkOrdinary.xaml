@@ -534,7 +534,7 @@
                                                 <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_CenaProdazhiKvm, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -745,6 +745,9 @@
                                     <TextBlock Text="Кадровый номер" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена продажи (всё)" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Площадь" />
                                 </Border>
                                 <Border>
@@ -784,23 +787,27 @@
                                     <TextBox Text="{Binding AssessmentGround.OG_KadNomer, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
+                                    <TextBox Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                </Border>
+                                <Border>
                                     <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypesOfGround}"
                                               SelectedItem="{Binding AssessmentGround.OG_KategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
-                                <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                <Border Background="LightGray">
+                                    <ComboBox ItemsSource="{Binding AllowedUsages}"
+                                              SelectedItem="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                    <TextBlock Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock Text="1.05"/>
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                    <TextBlock Text="{Binding AssessmentGround.OG_PriceKvmAfter}"/>
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentGround.OG_C_TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -929,6 +936,9 @@
                                                 <TextBox />
                                             </Border>
                                             <Border>
+                                                <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
                                                 <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
@@ -936,11 +946,13 @@
                                                                             Path=DataContext.TypesOfGround}"
                                                           SelectedItem="{Binding AG_CategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
-                                            <Border>
-                                                <TextBox Text="{Binding AG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Border Background="LightGray">
+                                                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.AllowedUsages}"
+                                                          SelectedItem="{Binding AG_CategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AG_CenaProdazhiKvm, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />

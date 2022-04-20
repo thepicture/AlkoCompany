@@ -103,6 +103,13 @@ namespace AlkoCompanyNew.ViewModels
                     "Тип земли 2",
                     "Тип земли 3"
               });
+            AllowedUsages = new ObservableCollection<string>(
+             new string[]
+             {
+                    "ИЖС",
+                    "Тип разрешённого использования 2",
+                    "Тип разрешённого использования 3"
+             });
 
             if (zayavka.ObjectAssessmentHouse == null)
             {
@@ -254,7 +261,7 @@ namespace AlkoCompanyNew.ViewModels
         {
             if (IsUpdating) return;
             IsUpdating = true;
-            #region calculation
+            #region houseCalculation
             // цена кв.м
             AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
             AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
@@ -319,6 +326,25 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
             AnalogueHouses[1].NewKwm = AnalogueHouses[1].AH_CenaProdazhiKvm;
             AnalogueHouses[2].NewKwm = AnalogueHouses[2].AH_CenaProdazhiKvm;
+            #endregion
+            #region groundCalculation
+            // цена кв.м
+            AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / AnalogueGrounds[0].AG_Ploshad;
+            AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / AnalogueGrounds[1].AG_Ploshad;
+            AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / AnalogueGrounds[2].AG_Ploshad;
+            // корректировка на торг
+            AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiKvm * (AnalogueGrounds[0].AG_KorTorg == 0 ? 1 : AnalogueGrounds[0].AG_KorTorg);
+            AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiKvm * (AnalogueGrounds[1].AG_KorTorg == 0 ? 1 : AnalogueGrounds[1].AG_KorTorg);
+            AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiKvm * (AnalogueGrounds[2].AG_KorTorg == 0 ? 1 : AnalogueGrounds[2].AG_KorTorg);
+            // новая цена (атрибута в бд нет)
+            AnalogueGrounds[0].AG_C_PriceAfter = AnalogueGrounds[0].AG_CenaProdazhiKvm;
+            AnalogueGrounds[1].AG_C_PriceAfter = AnalogueGrounds[1].AG_CenaProdazhiKvm;
+            AnalogueGrounds[2].AG_C_PriceAfter = AnalogueGrounds[2].AG_CenaProdazhiKvm;
+            // расчёт финальной стоимости земельного участка (атрибута в бд нет)
+            const float nonSenseCoefficient = 1.05f;
+            AssessmentGround.OG_CenaKvm = AssessmentGround.OG_CenaVse / AssessmentGround.OG_Ploshad;
+            AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
+            AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
             #endregion
 
             UpdateHousePercentOfCompletion();
@@ -620,6 +646,7 @@ namespace AlkoCompanyNew.ViewModels
             get => typesOfGround;
             set => SetProperty(ref typesOfGround, value);
         }
+        public ObservableCollection<string> AllowedUsages { get; set; }
 
         private Command changeAnalogueGroundPictureCommand;
 
