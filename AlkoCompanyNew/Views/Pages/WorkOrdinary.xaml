@@ -917,12 +917,27 @@
                                     Height="Auto"
                                     FontFamily="Dubai Light"
                                     x:Name="Raschet"
-                                    Content="Дом"
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Margin="0,22,180,22" />
+                                    Margin="0,22,180,22">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Content"
+                                                Value="Дом" />
+                                        <Setter Property="FontWeight"
+                                                Value="Medium" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding PercentOfCompletion}"
+                                                         Value="100">
+                                                <Setter Property="Content"
+                                                        Value="Дом ✅" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
                         </Grid>
                     </Border>
 
