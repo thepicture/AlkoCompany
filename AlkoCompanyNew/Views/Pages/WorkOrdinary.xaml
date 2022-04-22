@@ -171,7 +171,13 @@
                                     <TextBlock Text="Корректировка на дату продажи" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Корректировка на месторасположение" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Доп.постройки"
@@ -181,6 +187,9 @@
                                 <Border>
                                     <TextBlock Text="Корректировка на доп. постройки" />
                                 </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Благоустройство участка"
                                                FontStyle="Italic"
@@ -188,6 +197,9 @@
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Корректировка на благоустройство" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Мебель"
@@ -198,10 +210,42 @@
                                     <TextBlock Text="Корректировка мебель" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена после приминения корректировки" />
+                                </Border>
+
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Площадь земельного участка" />
+                                </Border>
+                                <Border BorderBrush="Red"> 
+                                    <TextBlock Text="Цена 1 кв.м земельного участка" />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Корректировка на масштаб зм. участка" />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Цена 1 кв.м зм. участка после" />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Стоимость земельного участка" />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Стоимость объекта кап. строительства" />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="Стоимость 1 кв.м объекта кап. строительства" />
+                                </Border>
+                                
+                                <Border>
                                     <TextBlock Text="Количество этажей" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Корректировка на этажность" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Материал стен"
@@ -211,6 +255,9 @@
                                 <Border>
                                     <TextBlock Text="Корректировка на материал стен" />
                                 </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип отопления"
                                                FontStyle="Italic"
@@ -218,6 +265,9 @@
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Корректировка на отопление" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип водоснабжения"
@@ -227,6 +277,9 @@
                                 <Border>
                                     <TextBlock Text="Корректировка на водоснабжение" />
                                 </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип канализации"
                                                FontStyle="Italic"
@@ -234,6 +287,9 @@
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Корректировка на канализацию" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Физическое состояние"
@@ -244,7 +300,13 @@
                                     <TextBlock Text="Корректировка на физ. состояние" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Корректировка на площадь" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип внутренней отделки"
@@ -254,6 +316,9 @@
                                 <Border>
                                     <TextBlock Text="Корректировка внутренней отделки" />
                                 </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Тип наружной отделки"
                                                FontStyle="Italic"
@@ -261,6 +326,9 @@
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Корректировка на наружную отделку" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Общая сумма (дом+земля)" />
@@ -321,9 +389,18 @@
                                 <Border>
                                     <TextBox />
                                 </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
                                               SelectedItem="{Binding AssessmentObject.OH_DopPosroyki, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox />
@@ -332,7 +409,9 @@
                                     <ComboBox ItemsSource="{Binding TypeBlagoustroistva}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeBlogoustroistva, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
-                                <!--благоустройство участка-->
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border>
                                     <TextBox />
                                 </Border>
@@ -340,12 +419,41 @@
                                     <ComboBox ItemsSource="{Binding TypeMebel}"
                                               SelectedItem="{Binding AssessmentObject.OH_Mebel, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
-                                <!--мебель-->
                                 <Border>
                                     <TextBox />
                                 </Border>
                                 <Border>
+                                    <TextBox />
+                                </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBlock Text="{Binding AssessmentGround.OG_Ploshad}" /> <!--В этом текстбоксе добавляется площадь земельного участка (объекта) из расчетов, когда мы считаем землю-->
+                                </Border>
+                                <Border BorderBrush="Red">
+                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm}"/> <!--В этом текстбоксе добавляется цена за квадратный метр земельного участка, когда мы уже посчитали и получилась готовая стоимость земельного участка. Также эта цена будет распространятся на аналоги, т.е земля аналогов будет стоить также перед тем как мы применим корректировку-->
+                                </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
+                                <Border>
+                                    <TextBox /> 
+                                </Border>
+                                <Border>
+                                    <TextBox /> 
+                                </Border>
+                                <Border>
+                                    <TextBox /> 
+                                </Border>
+                                <Border>
+                                    <TextBox /> 
+                                </Border>
+                                <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Etagi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                </Border>
+                                <Border>
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox />
@@ -357,9 +465,15 @@
                                 <Border>
                                     <TextBox />
                                 </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeOtoplenia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Otoplenie, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox />
@@ -371,9 +485,15 @@
                                 <Border>
                                     <TextBox />
                                 </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeKanalizacia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Kanalizacia, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox />
@@ -388,6 +508,12 @@
                                 <Border>
                                     <TextBox />
                                 </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVnutrOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
@@ -395,9 +521,15 @@
                                 <Border>
                                     <TextBox />
                                 </Border>
+                                <Border>
+                                    <TextBox />
+                                </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeNarugOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_NarugnayaOtdelka, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox />
@@ -552,7 +684,13 @@
                                                 <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -562,6 +700,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaDopPostroyki, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeBlagoustroistva}"
@@ -570,6 +711,9 @@
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -581,10 +725,41 @@
                                                 <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="" /> <!--тут должна быть цена после приминения всех корректировок до мебели, чтобы потом можно было вычесть эту стоиомсть и стоимость земельного участка аналога -->
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="{Binding AH_PloshadZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.AssessmentGround.OG_CenaKvm}" /> <!--Цена квм земельного участка одинакова, как цена квм земельного участка объекта-->
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" /> <!--корректировка--> 
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="" /> <!--тут должна быть цена квм земли аналога после применения корректировка--> 
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="" /> <!--тут должна быть цена земли аналога которая находится: стоимость квм земли аналога после корректировки (которую я прописасл выше) * на площадь земельного участка аналога-->
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="" /> <!--тут должна быть цена дома аналога аналога которая находится: стоимость дома аналога (последняя цена перед красным блоком) стоимость земли аналога--> 
+                                            </Border>
+                                            <Border BorderBrush="Red">
+                                                <TextBox Text="" /> <!--тут должна быть цена 1 квм дома аналога, и после этой цены мы продолжаем считать дома аналоги-->
+                                            </Border>
+                                            <Border>
                                                 <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -594,6 +769,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeOtoplenia}"
@@ -602,7 +780,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
-
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeVoda}"
@@ -611,7 +791,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
-
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeKanalizacia}"
@@ -620,7 +802,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
-
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeFizSostoyanie}"
@@ -630,7 +814,13 @@
                                                 <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
                                                 <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -640,6 +830,9 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypeNarugOtdelki}"
@@ -647,6 +840,9 @@
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                         </StackPanel>
                                     </DataTemplate>
@@ -748,13 +944,10 @@
                                     <TextBlock Text="Адрес" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Кадровый номер" />
+                                    <TextBlock Text="Источник информации" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена продажи (всё)" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Площадь" />
+                                    <TextBlock Text="Контакт" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Категория земель" />
@@ -763,10 +956,67 @@
                                     <TextBlock Text="Разрешенное использование" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="Цена продажи (всё)" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Площадь" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Цена за 1 кв.м" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Поправка на торг" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка передаваемые права" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка дату продажи" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка на местоположение" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Подключение газа" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка на подключение газа" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Подключение воды" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка на подключение воды" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Подключение электричества" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка на подключение электричества" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Поправка на масштаб" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Цена за квм после" />
@@ -790,13 +1040,10 @@
                                     <TextBox Text="{Binding AssessmentGround.OG_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_KadNomer, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock/>
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
-                                </Border>
-                                <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                    <TextBlock/>
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypesOfGround}"
@@ -807,13 +1054,73 @@
                                               SelectedItem="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                    <TextBox Text="" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="1.05" />
+                                    <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="{Binding AssessmentGround.OG_PriceKvmAfter}" />
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
+                                              SelectedItem="{Binding AssessmentGround.ОG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBlock/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
+                                              SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBlock/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
+                                              SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                                <Border>
+                                    <TextBlock/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="-0.127" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentGround.OG_C_TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -939,13 +1246,10 @@
                                                 <TextBox Text="{Binding AG_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox />
+                                                <TextBox Text="{Binding AG_IstochnickInf, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
-                                            </Border>
-                                            <Border>
-                                                <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_Contact, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -955,16 +1259,80 @@
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.AllowedUsages}"
-                                                          SelectedItem="{Binding AG_CategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
+                                                          SelectedItem="{Binding AG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AG_CenaProdazhiKvm, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding AG_StartKvm, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_C_PriceAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_TorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaPrava, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaPravaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaMesto, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.VozmognostPodkluchenia}"
+                                                          SelectedItem="{Binding AG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaGas, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaGasCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.VozmognostPodkluchenia}"
+                                                          SelectedItem="{Binding AG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaVoda, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+
+                                            <Border>
+                                                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
+                                                                            Path=DataContext.VozmognostPodkluchenia}"
+                                                          SelectedItem="{Binding AG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_KorNaElecric, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />

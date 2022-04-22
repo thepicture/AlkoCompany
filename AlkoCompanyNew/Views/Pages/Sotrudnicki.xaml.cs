@@ -25,6 +25,13 @@ namespace AlkoCompanyNew.Views.Pages
 
             DataContext = sotr;
             AppData.Sotrudnicki_ = this;
+            Reload();
+        }
+
+        public void Reload()
+        {
+            AppData.Context.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            ListViewAddSotr.ItemsSource = AppData.Context.Sotrudnick.ToList();
         }
         private void OpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -36,6 +43,11 @@ namespace AlkoCompanyNew.Views.Pages
         {
             OpenMenu.Visibility = Visibility.Visible;
             CloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(new AddSotrudnick(null));
         }
     }
 }

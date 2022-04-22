@@ -110,6 +110,12 @@ namespace AlkoCompanyNew.ViewModels
                     "Тип разрешённого использования 2",
                     "Тип разрешённого использования 3"
              });
+            VozmognostPodkluchenia = new ObservableCollection<string>(
+             new string[]
+             {
+                    "Да",
+                    "Нет"
+             });
 
             if (zayavka.ObjectAssessmentHouse == null)
             {
@@ -354,22 +360,60 @@ namespace AlkoCompanyNew.ViewModels
             #endregion
             #region groundCalculation
             // цена кв.м
-            AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / AnalogueGrounds[0].AG_Ploshad;
-            AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / AnalogueGrounds[1].AG_Ploshad;
-            AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / AnalogueGrounds[2].AG_Ploshad;
-            // корректировка на торг
-            AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiKvm * (AnalogueGrounds[0].AG_KorTorg == 0 ? 1 : AnalogueGrounds[0].AG_KorTorg);
-            AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiKvm * (AnalogueGrounds[1].AG_KorTorg == 0 ? 1 : AnalogueGrounds[1].AG_KorTorg);
-            AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiKvm * (AnalogueGrounds[2].AG_KorTorg == 0 ? 1 : AnalogueGrounds[2].AG_KorTorg);
-            // новая цена (атрибута в бд нет)
-            AnalogueGrounds[0].AG_C_PriceAfter = AnalogueGrounds[0].AG_CenaProdazhiKvm;
-            AnalogueGrounds[1].AG_C_PriceAfter = AnalogueGrounds[1].AG_CenaProdazhiKvm;
-            AnalogueGrounds[2].AG_C_PriceAfter = AnalogueGrounds[2].AG_CenaProdazhiKvm;
-            // расчёт финальной стоимости земельного участка (атрибута в бд нет)
-            const float nonSenseCoefficient = 1.05f;
-            AssessmentGround.OG_CenaKvm = AssessmentGround.OG_CenaVse / AssessmentGround.OG_Ploshad;
+            AnalogueGrounds[0].AG_StartKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / (AnalogueGrounds[0].AG_Ploshad == 0 ? 1 : AnalogueGrounds[0].AG_Ploshad);
+            AnalogueGrounds[1].AG_StartKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / (AnalogueGrounds[1].AG_Ploshad == 0 ? 1 : AnalogueGrounds[1].AG_Ploshad);
+            AnalogueGrounds[2].AG_StartKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / (AnalogueGrounds[2].AG_Ploshad == 0 ? 1 : AnalogueGrounds[2].AG_Ploshad);
+            // Поправка на торг
+            AnalogueGrounds[0].AG_TorgCenaAfter = AnalogueGrounds[0].AG_StartKvm * (AnalogueGrounds[0].AG_KorTorg == 0 ? 1 : AnalogueGrounds[0].AG_KorTorg);
+            AnalogueGrounds[1].AG_TorgCenaAfter = AnalogueGrounds[1].AG_StartKvm * (AnalogueGrounds[1].AG_KorTorg == 0 ? 1 : AnalogueGrounds[1].AG_KorTorg);
+            AnalogueGrounds[2].AG_TorgCenaAfter = AnalogueGrounds[2].AG_StartKvm * (AnalogueGrounds[2].AG_KorTorg == 0 ? 1 : AnalogueGrounds[2].AG_KorTorg);
+            // корректировка на права
+            AnalogueGrounds[0].AG_NaPravaCenaAfter = AnalogueGrounds[0].AG_TorgCenaAfter * (AnalogueGrounds[0].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[0].AG_KorNaPrava);
+            AnalogueGrounds[1].AG_NaPravaCenaAfter = AnalogueGrounds[1].AG_TorgCenaAfter * (AnalogueGrounds[1].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[1].AG_KorNaPrava);
+            AnalogueGrounds[2].AG_NaPravaCenaAfter = AnalogueGrounds[2].AG_TorgCenaAfter * (AnalogueGrounds[2].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[2].AG_KorNaPrava);
+            // корректировка на дату продажи
+            AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[0].AG_NaPravaCenaAfter * (AnalogueGrounds[0].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[0].AG_KorNaDatuProdazhi);
+            AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[1].AG_NaPravaCenaAfter * (AnalogueGrounds[1].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[1].AG_KorNaDatuProdazhi);
+            AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[2].AG_NaPravaCenaAfter * (AnalogueGrounds[2].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[2].AG_KorNaDatuProdazhi);
+            // корректировка на место
+            AnalogueGrounds[0].AG_NaMestoCenaAfter = AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[0].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[0].AG_KorNaMesto);
+            AnalogueGrounds[1].AG_NaMestoCenaAfter = AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[1].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[1].AG_KorNaMesto);
+            AnalogueGrounds[2].AG_NaMestoCenaAfter = AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[2].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[2].AG_KorNaMesto);
+            // корректировка на газ
+            AnalogueGrounds[0].AG_NaGasCenaAfter = AnalogueGrounds[0].AG_NaMestoCenaAfter * (AnalogueGrounds[0].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[0].AG_KorNaGas);
+            AnalogueGrounds[1].AG_NaGasCenaAfter = AnalogueGrounds[1].AG_NaMestoCenaAfter * (AnalogueGrounds[1].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[1].AG_KorNaGas);
+            AnalogueGrounds[2].AG_NaGasCenaAfter = AnalogueGrounds[2].AG_NaMestoCenaAfter * (AnalogueGrounds[2].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[2].AG_KorNaGas);
+            // корректировка на воду
+            AnalogueGrounds[0].AG_NaVodaCenaAfter = AnalogueGrounds[0].AG_NaGasCenaAfter * (AnalogueGrounds[0].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[0].AG_KorNaVoda);
+            AnalogueGrounds[1].AG_NaVodaCenaAfter = AnalogueGrounds[1].AG_NaGasCenaAfter * (AnalogueGrounds[1].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[1].AG_KorNaVoda);
+            AnalogueGrounds[2].AG_NaVodaCenaAfter = AnalogueGrounds[2].AG_NaGasCenaAfter * (AnalogueGrounds[2].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[2].AG_KorNaVoda);
+            // корректировка на электричество
+            AnalogueGrounds[0].AG_NaElectricCenaAfter = AnalogueGrounds[0].AG_NaVodaCenaAfter * (AnalogueGrounds[0].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[0].AG_KorNaElecric);
+            AnalogueGrounds[1].AG_NaElectricCenaAfter = AnalogueGrounds[1].AG_NaVodaCenaAfter * (AnalogueGrounds[1].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[1].AG_KorNaElecric);
+            AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * (AnalogueGrounds[2].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[2].AG_KorNaElecric);
+            // корректировка на масштаб
+            const float nonSenseCoefficient = -0.127f;
+            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = Math.Pow(AssessmentGround.OG_Ploshad / (AnalogueGrounds[0].AG_Ploshad == 0 ? 1 : AnalogueGrounds[0].AG_Ploshad), nonSenseCoefficient) ;
             AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
             AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
+
+
+
+            //// корректировка на торг
+            //AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiKvm * (AnalogueGrounds[0].AG_KorTorg == 0 ? 1 : AnalogueGrounds[0].AG_KorTorg);
+            //AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiKvm * (AnalogueGrounds[1].AG_KorTorg == 0 ? 1 : AnalogueGrounds[1].AG_KorTorg);
+            //AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiKvm * (AnalogueGrounds[2].AG_KorTorg == 0 ? 1 : AnalogueGrounds[2].AG_KorTorg);
+            //// новая цена (атрибута в бд нет)
+            //AnalogueGrounds[0].AG_C_PriceAfter = AnalogueGrounds[0].AG_CenaProdazhiKvm;
+            //AnalogueGrounds[1].AG_C_PriceAfter = AnalogueGrounds[1].AG_CenaProdazhiKvm;
+            //AnalogueGrounds[2].AG_C_PriceAfter = AnalogueGrounds[2].AG_CenaProdazhiKvm;
+            //// расчёт финальной стоимости земельного участка (атрибута в бд нет)
+            //const float nonSenseCoefficient = 1.05f;
+            //AssessmentGround.OG_CenaKvm = AssessmentGround.OG_CenaVse / AssessmentGround.OG_Ploshad;
+            //AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
+            //AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
+            //// корректировка на права
+            //AnalogueGrounds[0].Torg = AnalogueGrounds[0].AG_CenaProdazhiKvm * (AnalogueGrounds[0].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[0].AG_KorNaDatuProdazhi); 
             #endregion
             #region allCalculation
             // Сложить суммы земельного участка и дома
@@ -393,7 +437,7 @@ namespace AlkoCompanyNew.ViewModels
             IsUpdating = false;
         }
 
-        private void UpdateGroundPercentOfCompletion()
+        public void UpdateGroundPercentOfCompletion()
         {
             IEnumerable<ListViewItem> analogueGroundsDependencyObjects =
                 App.WorkOrdinary.GroundCalculationView.Find<ListViewItem>();
@@ -685,6 +729,7 @@ namespace AlkoCompanyNew.ViewModels
             set => SetProperty(ref typesOfGround, value);
         }
         public ObservableCollection<string> AllowedUsages { get; set; }
+        public ObservableCollection<string> VozmognostPodkluchenia { get; private set; }
 
         private Command changeAnalogueGroundPictureCommand;
         private ObjectAssessmentGround assessmentGround;

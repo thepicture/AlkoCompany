@@ -130,6 +130,9 @@
     <Compile Include="Services\LogicalChildrenFinder.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />
+    <Compile Include="Views\Pages\AddSotrudnick.xaml.cs">
+      <DependentUpon>AddSotrudnick.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\AddZayvki.xaml.cs">
       <DependentUpon>AddZayvki.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
     <Compile Include="Views\Pages\Zayavki.xaml.cs">
       <DependentUpon>Zayavki.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Pages\AddSotrudnick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\AddZayvki.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

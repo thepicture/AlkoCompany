@@ -71,6 +71,9 @@
           <Property Name="AH_Photo" Type="varbinary(max)" />
           <Property Name="OH_ID" Type="int" Nullable="false" />
           <Property Name="AH_Correction" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="AH_PloshadZemli" Type="real" />
+          <Property Name="AH_KorNaMashtabZemli" Type="real" />
+          <Property Name="AH_StoimostZemliAnaloga" Type="real" />
         </EntityType>
         <EntityType Name="Klient">
           <Key>
@@ -108,12 +111,14 @@
           </Key>
           <Property Name="OG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OG_Adress" Type="nvarchar" MaxLength="100" />
-          <Property Name="OG_KadNomer" Type="nvarchar" MaxLength="100" />
           <Property Name="OG_Ploshad" Type="real" />
           <Property Name="OG_KategoriaZemel" Type="nvarchar" MaxLength="100" />
           <Property Name="OG_RazreshennoeIspolzovanie" Type="nvarchar" MaxLength="100" />
           <Property Name="OG_CenaKvm" Type="real" />
           <Property Name="OG_CenaVse" Type="real" />
+          <Property Name="ОG_VozmognostPodklucheniaGas" Type="nvarchar" MaxLength="100" />
+          <Property Name="OG_VozmognostPodklucheniaVoda" Type="nvarchar" MaxLength="100" />
+          <Property Name="OG_VozmognostPodklucheniaElectric" Type="nvarchar" MaxLength="100" />
           <Property Name="OG_Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ObjectAssessmentHouse">
@@ -453,6 +458,9 @@
           <Property Name="AH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OH_ID" Type="Int32" Nullable="false" />
           <Property Name="AH_Correction" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="AH_PloshadZemli" Type="Single" />
+          <Property Name="AH_KorNaMashtabZemli" Type="Single" />
+          <Property Name="AH_StoimostZemliAnaloga" Type="Single" />
           <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" FromRole="AnalogiHouse" ToRole="ObjectAssessmentHouse" />
         </EntityType>
         <EntityType Name="Klient">
@@ -494,12 +502,14 @@
           </Key>
           <Property Name="OG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OG_Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="OG_KadNomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="OG_Ploshad" Type="Single" />
           <Property Name="OG_KategoriaZemel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="OG_RazreshennoeIspolzovanie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="OG_CenaKvm" Type="Single" />
           <Property Name="OG_CenaVse" Type="Single" />
+          <Property Name="ОG_VozmognostPodklucheniaGas" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OG_VozmognostPodklucheniaVoda" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OG_VozmognostPodklucheniaElectric" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="OG_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="AnalogiGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A" FromRole="ObjectAssessmentGround" ToRole="AnalogiGround" />
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentGround" FromRole="ObjectAssessmentGround" ToRole="Zayavka" />
@@ -723,6 +733,9 @@
           <EntitySetMapping Name="AnalogiHouse">
             <EntityTypeMapping TypeName="AlkoCompanyModel.AnalogiHouse">
               <MappingFragment StoreEntitySet="AnalogiHouse">
+                <ScalarProperty Name="AH_StoimostZemliAnaloga" ColumnName="AH_StoimostZemliAnaloga" />
+                <ScalarProperty Name="AH_KorNaMashtabZemli" ColumnName="AH_KorNaMashtabZemli" />
+                <ScalarProperty Name="AH_PloshadZemli" ColumnName="AH_PloshadZemli" />
                 <ScalarProperty Name="AH_Correction" ColumnName="AH_Correction" />
                 <ScalarProperty Name="OH_ID" ColumnName="OH_ID" />
                 <ScalarProperty Name="AH_Photo" ColumnName="AH_Photo" />
@@ -798,12 +811,14 @@
             <EntityTypeMapping TypeName="AlkoCompanyModel.ObjectAssessmentGround">
               <MappingFragment StoreEntitySet="ObjectAssessmentGround">
                 <ScalarProperty Name="OG_Photo" ColumnName="OG_Photo" />
+                <ScalarProperty Name="OG_VozmognostPodklucheniaElectric" ColumnName="OG_VozmognostPodklucheniaElectric" />
+                <ScalarProperty Name="OG_VozmognostPodklucheniaVoda" ColumnName="OG_VozmognostPodklucheniaVoda" />
+                <ScalarProperty Name="ОG_VozmognostPodklucheniaGas" ColumnName="ОG_VozmognostPodklucheniaGas" />
                 <ScalarProperty Name="OG_CenaVse" ColumnName="OG_CenaVse" />
                 <ScalarProperty Name="OG_CenaKvm" ColumnName="OG_CenaKvm" />
                 <ScalarProperty Name="OG_RazreshennoeIspolzovanie" ColumnName="OG_RazreshennoeIspolzovanie" />
                 <ScalarProperty Name="OG_KategoriaZemel" ColumnName="OG_KategoriaZemel" />
                 <ScalarProperty Name="OG_Ploshad" ColumnName="OG_Ploshad" />
-                <ScalarProperty Name="OG_KadNomer" ColumnName="OG_KadNomer" />
                 <ScalarProperty Name="OG_Adress" ColumnName="OG_Adress" />
                 <ScalarProperty Name="OG_ID" ColumnName="OG_ID" />
               </MappingFragment>

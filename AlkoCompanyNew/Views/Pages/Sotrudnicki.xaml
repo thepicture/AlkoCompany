@@ -98,7 +98,7 @@
             </Button>
 
             <Grid x:Name="grid" Grid.Column="1" Width="Auto">
-                <Button Grid.Column="1" x:Name="Add" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" >
+                <Button Grid.Column="1" x:Name="Add" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" Click="Add_Click">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Plus" Width="Auto" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
                         <TextBlock x:Name="textBlockAdd" Text="Добавить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
@@ -152,7 +152,7 @@
         </Grid>
 
 
-        <ListView x:Name="ListViewAddZayvka"
+        <ListView x:Name="ListViewAddSotr"
                   Grid.Row="1"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.CanContentScroll="False"
@@ -185,20 +185,20 @@
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Text="{Binding S_Post}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
 
                             <Border Grid.Row="1" CornerRadius="15" 
                                         Margin="20,0,0,20">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="" />
+                                    <ImageBrush ImageSource="{Binding S_Photo}" />
                                 </Border.Background>
                             </Border>
 
-                            <TextBlock Grid.Row="0" Text="" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Text="{Binding S_Fio}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Text="{Binding S_TelNumber}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Text="{Binding S_Email}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Text="{Binding S_Born}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
 
 
@@ -211,7 +211,7 @@
         <Grid Grid.Row="1"
               HorizontalAlignment="Center"
               VerticalAlignment="Top">
-            <Frame  x:Name="AddZayvkaForm"
+            <Frame  x:Name="Frame"
                     NavigationUIVisibility="Hidden" />
         </Grid>
 

@@ -18,6 +18,7 @@ namespace AlkoCompanyNew.Views.Pages
             Loaded += (_, __) =>
             {
                 ((dynamic)DataContext).UpdateHousePercentOfCompletion();
+                ((dynamic)DataContext).UpdateGroundPercentOfCompletion();
             };
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
