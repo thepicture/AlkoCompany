@@ -11,3 +11,9 @@ dotnet_diagnostic.IDE0058.severity = none
 
 # IDE0044: Add readonly modifier
 dotnet_style_readonly_field = false
+
+# IDE0046: Convert to conditional expression
+dotnet_style_prefer_conditional_expression_over_return = false
+
+# IDE0011: Add braces
+csharp_prefer_braces = when_multiline

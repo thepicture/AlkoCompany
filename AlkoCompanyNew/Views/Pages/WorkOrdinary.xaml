@@ -219,7 +219,7 @@
                                 <Border BorderBrush="Red">
                                     <TextBlock Text="Площадь земельного участка" />
                                 </Border>
-                                <Border BorderBrush="Red"> 
+                                <Border BorderBrush="Red">
                                     <TextBlock Text="Цена 1 кв.м земельного участка" />
                                 </Border>
                                 <Border BorderBrush="Red">
@@ -237,7 +237,7 @@
                                 <Border BorderBrush="Red">
                                     <TextBlock Text="Стоимость 1 кв.м объекта кап. строительства" />
                                 </Border>
-                                
+
                                 <Border>
                                     <TextBlock Text="Количество этажей" />
                                 </Border>
@@ -429,25 +429,27 @@
                                     <TextBox />
                                 </Border>
                                 <Border BorderBrush="Red">
-                                    <TextBlock Text="{Binding AssessmentGround.OG_Ploshad}" /> <!--В этом текстбоксе добавляется площадь земельного участка (объекта) из расчетов, когда мы считаем землю-->
+                                    <TextBlock Text="{Binding AssessmentGround.OG_Ploshad}" />
+                                    <!--В этом текстбоксе добавляется площадь земельного участка (объекта) из расчетов, когда мы считаем землю-->
                                 </Border>
                                 <Border BorderBrush="Red">
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm}"/> <!--В этом текстбоксе добавляется цена за квадратный метр земельного участка, когда мы уже посчитали и получилась готовая стоимость земельного участка. Также эта цена будет распространятся на аналоги, т.е земля аналогов будет стоить также перед тем как мы применим корректировку-->
+                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm}" />
+                                    <!--В этом текстбоксе добавляется цена за квадратный метр земельного участка, когда мы уже посчитали и получилась готовая стоимость земельного участка. Также эта цена будет распространятся на аналоги, т.е земля аналогов будет стоить также перед тем как мы применим корректировку-->
                                 </Border>
                                 <Border>
                                     <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox /> 
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox /> 
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox /> 
+                                    <TextBox />
                                 </Border>
                                 <Border>
-                                    <TextBox /> 
+                                    <TextBox />
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Etagi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -612,6 +614,8 @@
                                                         Value="5" />
                                                 <Setter Property="Panel.ZIndex"
                                                         Value="1" />
+                                                <Setter Property="Validation.ErrorTemplate"
+                                                        Value="{StaticResource RussianErrorTemplate}" />
                                             </Style>
                                             <Style TargetType="ComboBox"
                                                    BasedOn="{StaticResource MaterialDesignComboBox}">
@@ -681,7 +685,7 @@
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=##.##}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -728,29 +732,36 @@
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="" /> <!--тут должна быть цена после приминения всех корректировок до мебели, чтобы потом можно было вычесть эту стоиомсть и стоимость земельного участка аналога -->
+                                                <TextBlock Text="" />
+                                                <!--тут должна быть цена после приминения всех корректировок до мебели, чтобы потом можно было вычесть эту стоиомсть и стоимость земельного участка аналога -->
                                             </Border>
                                             <Border BorderBrush="Red">
                                                 <TextBox Text="{Binding AH_PloshadZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border BorderBrush="Red">
                                                 <TextBox Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
-                                                                            Path=DataContext.AssessmentGround.OG_CenaKvm}" /> <!--Цена квм земельного участка одинакова, как цена квм земельного участка объекта-->
+                                                                            Path=DataContext.AssessmentGround.OG_CenaKvm}" />
+                                                <!--Цена квм земельного участка одинакова, как цена квм земельного участка объекта-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" /> <!--корректировка--> 
+                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <!--корректировка-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="" /> <!--тут должна быть цена квм земли аналога после применения корректировка--> 
+                                                <TextBox Text="" />
+                                                <!--тут должна быть цена квм земли аналога после применения корректировка-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="" /> <!--тут должна быть цена земли аналога которая находится: стоимость квм земли аналога после корректировки (которую я прописасл выше) * на площадь земельного участка аналога-->
+                                                <TextBox Text="" />
+                                                <!--тут должна быть цена земли аналога которая находится: стоимость квм земли аналога после корректировки (которую я прописасл выше) * на площадь земельного участка аналога-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="" /> <!--тут должна быть цена дома аналога аналога которая находится: стоимость дома аналога (последняя цена перед красным блоком) стоимость земли аналога--> 
+                                                <TextBox Text="" />
+                                                <!--тут должна быть цена дома аналога аналога которая находится: стоимость дома аналога (последняя цена перед красным блоком) стоимость земли аналога-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="" /> <!--тут должна быть цена 1 квм дома аналога, и после этой цены мы продолжаем считать дома аналоги-->
+                                                <TextBox Text="" />
+                                                <!--тут должна быть цена 1 квм дома аналога, и после этой цены мы продолжаем считать дома аналоги-->
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1040,10 +1051,10 @@
                                     <TextBox Text="{Binding AssessmentGround.OG_Adress, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock/>
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock/>
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypesOfGround}"
@@ -1091,7 +1102,7 @@
                                               SelectedItem="{Binding AssessmentGround.ОG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock/>
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="" />
@@ -1101,7 +1112,7 @@
                                               SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock/>
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="" />
@@ -1111,7 +1122,7 @@
                                               SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock/>
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="" />
@@ -1329,10 +1340,10 @@
                                                 <TextBox Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="" />
+                                                <TextBlock Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />

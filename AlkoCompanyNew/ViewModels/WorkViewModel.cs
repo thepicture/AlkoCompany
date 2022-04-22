@@ -193,13 +193,13 @@ namespace AlkoCompanyNew.ViewModels
             {
                 analogueGround.NumberOfAnalogue
                     = AnalogueGrounds.IndexOf(analogueGround) + 1;
-                EventInfo analogueHouseEventInfo = analogueGround
+                EventInfo analogueGroundEventInfo = analogueGround
                     .GetType()
                     .GetEvent(
                         nameof(PropertyChanged));
-                analogueHouseEventInfo.AddEventHandler(analogueGround,
+                analogueGroundEventInfo.AddEventHandler(analogueGround,
                     Delegate.CreateDelegate(
-                        analogueHouseEventInfo.EventHandlerType,
+                        analogueGroundEventInfo.EventHandlerType,
                         this,
                         GetType()
                             .GetMethod(
@@ -293,66 +293,82 @@ namespace AlkoCompanyNew.ViewModels
             if (IsUpdating) return;
             IsUpdating = true;
             #region houseCalculation
+            // GetNonZero вернёт 1, если корректировка была равна 0 или была равна null, чтоб результат не занулялся, иначе саму корректировку
+            // то есть 0 станет 1,
+            // null станет 1
+            // 0.8 станет 0.8
+
             // цена кв.м
             AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
             AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
             AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
-            // корректировка на торг
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorTorg == 0 ? 1 : AnalogueHouses[0].AH_KorTorg);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorTorg == 0 ? 1 : AnalogueHouses[1].AH_KorTorg);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorTorg == 0 ? 1 : AnalogueHouses[2].AH_KorTorg);
+            //
+            // корректировка на торг (в одну строчку)
+            // может использоваться, если формула остаётся неизменной и изменяются только индексы от 0 до 2
+            // i меняется от 0 до 2
+            //
+            //Execute(i => AnalogueHouses[i].AH_CenaProdazhiKvm = AnalogueHouses[i].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[i].AH_KorTorg));
+            //
+            // или ещё короче с использованием оператора *=
+            // x *= y это то же самое что x = x * y, можно использовать, если результат надо на что-то домножить
+            //Execute(i => AnalogueHouses[i].AH_CenaProdazhiKvm *= ПолучитьКорректировку(AnalogueHouses[i].AH_KorTorg));
+
+            // корректировка на торг (как было)
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorTorg);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorTorg);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorTorg);
             // корректировка на дату продажи
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaDatuProdazhi == 0 ? 1 : AnalogueHouses[0].AH_KorNaDatuProdazhi);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaDatuProdazhi == 0 ? 1 : AnalogueHouses[1].AH_KorNaDatuProdazhi);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaDatuProdazhi == 0 ? 1 : AnalogueHouses[2].AH_KorNaDatuProdazhi);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDatuProdazhi);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDatuProdazhi);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDatuProdazhi);
             // корректировка на месторасположение
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaMesto == 0 ? 1 : AnalogueHouses[0].AH_KorNaMesto);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaMesto == 0 ? 1 : AnalogueHouses[1].AH_KorNaMesto);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaMesto == 0 ? 1 : AnalogueHouses[2].AH_KorNaMesto);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMesto);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMesto);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMesto);
             // корректировка на дополнительные постройки 
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaDopPostroyki == 0 ? 1 : AnalogueHouses[0].AH_KorNaDopPostroyki);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaDopPostroyki == 0 ? 1 : AnalogueHouses[1].AH_KorNaDopPostroyki);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaDopPostroyki == 0 ? 1 : AnalogueHouses[2].AH_KorNaDopPostroyki);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDopPostroyki);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDopPostroyki);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDopPostroyki);
             // корректировка на благоустройство участка
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaBlagoustroistvo == 0 ? 1 : AnalogueHouses[0].AH_KorNaBlagoustroistvo);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaBlagoustroistvo == 0 ? 1 : AnalogueHouses[1].AH_KorNaBlagoustroistvo);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaBlagoustroistvo == 0 ? 1 : AnalogueHouses[2].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaBlagoustroistvo);
             // корректировка на мебель
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaMebel == 0 ? 1 : AnalogueHouses[0].AH_KorNaMebel);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaMebel == 0 ? 1 : AnalogueHouses[1].AH_KorNaMebel);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaMebel == 0 ? 1 : AnalogueHouses[2].AH_KorNaMebel);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMebel);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMebel);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMebel);
             // корректировка на этажность
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaEtage == 0 ? 1 : AnalogueHouses[0].AH_KorNaEtage);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaEtage == 0 ? 1 : AnalogueHouses[1].AH_KorNaEtage);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaEtage == 0 ? 1 : AnalogueHouses[2].AH_KorNaEtage);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaEtage);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaEtage);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaEtage);
             // корректировка на материал стен
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaMaterialSten == 0 ? 1 : AnalogueHouses[0].AH_KorNaMaterialSten);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaMaterialSten == 0 ? 1 : AnalogueHouses[1].AH_KorNaMaterialSten);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaMaterialSten == 0 ? 1 : AnalogueHouses[2].AH_KorNaMaterialSten);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMaterialSten);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMaterialSten);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMaterialSten);
             // корректировка на тип отопления
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaOtoplenie == 0 ? 1 : AnalogueHouses[0].AH_KorNaOtoplenie);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaOtoplenie == 0 ? 1 : AnalogueHouses[1].AH_KorNaOtoplenie);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaOtoplenie == 0 ? 1 : AnalogueHouses[2].AH_KorNaOtoplenie);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaOtoplenie);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaOtoplenie);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaOtoplenie);
             // корректировка на тип воды
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaVoda == 0 ? 1 : AnalogueHouses[0].AH_KorNaVoda);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaVoda == 0 ? 1 : AnalogueHouses[1].AH_KorNaVoda);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaVoda == 0 ? 1 : AnalogueHouses[2].AH_KorNaVoda);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVoda);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVoda);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVoda);
             // корректировка на тип канализации
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaKanalizacia == 0 ? 1 : AnalogueHouses[0].AH_KorNaKanalizacia);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaKanalizacia == 0 ? 1 : AnalogueHouses[1].AH_KorNaKanalizacia);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaKanalizacia == 0 ? 1 : AnalogueHouses[2].AH_KorNaKanalizacia);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaKanalizacia);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaKanalizacia);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaKanalizacia);
             // корректировка на физическое состояние
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaFizSostoyanie == 0 ? 1 : AnalogueHouses[0].AH_KorNaFizSostoyanie);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaFizSostoyanie == 0 ? 1 : AnalogueHouses[1].AH_KorNaFizSostoyanie);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaFizSostoyanie == 0 ? 1 : AnalogueHouses[2].AH_KorNaFizSostoyanie);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaFizSostoyanie);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaFizSostoyanie);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaFizSostoyanie);
             // корректировка на внутреннюю отделку
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky == 0 ? 1 : AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky == 0 ? 1 : AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky == 0 ? 1 : AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky);
             // корректировка на наружную отделку
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * (AnalogueHouses[0].AH_KorNaNarugnyuOtdelky == 0 ? 1 : AnalogueHouses[0].AH_KorNaNarugnyuOtdelky);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * (AnalogueHouses[1].AH_KorNaNarugnyuOtdelky == 0 ? 1 : AnalogueHouses[1].AH_KorNaNarugnyuOtdelky);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * (AnalogueHouses[2].AH_KorNaNarugnyuOtdelky == 0 ? 1 : AnalogueHouses[2].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaNarugnyuOtdelky);
             // новая цена (атрибута в бд нет)
             AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
             AnalogueHouses[1].NewKwm = AnalogueHouses[1].AH_CenaProdazhiKvm;
@@ -360,40 +376,49 @@ namespace AlkoCompanyNew.ViewModels
             #endregion
             #region groundCalculation
             // цена кв.м
-            AnalogueGrounds[0].AG_StartKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / (AnalogueGrounds[0].AG_Ploshad == 0 ? 1 : AnalogueGrounds[0].AG_Ploshad);
-            AnalogueGrounds[1].AG_StartKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / (AnalogueGrounds[1].AG_Ploshad == 0 ? 1 : AnalogueGrounds[1].AG_Ploshad);
-            AnalogueGrounds[2].AG_StartKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / (AnalogueGrounds[2].AG_Ploshad == 0 ? 1 : AnalogueGrounds[2].AG_Ploshad);
+            AnalogueGrounds[0].AG_StartKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad);
+            AnalogueGrounds[1].AG_StartKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad);
+            AnalogueGrounds[2].AG_StartKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad);
             // Поправка на торг
-            AnalogueGrounds[0].AG_TorgCenaAfter = AnalogueGrounds[0].AG_StartKvm * (AnalogueGrounds[0].AG_KorTorg == 0 ? 1 : AnalogueGrounds[0].AG_KorTorg);
-            AnalogueGrounds[1].AG_TorgCenaAfter = AnalogueGrounds[1].AG_StartKvm * (AnalogueGrounds[1].AG_KorTorg == 0 ? 1 : AnalogueGrounds[1].AG_KorTorg);
-            AnalogueGrounds[2].AG_TorgCenaAfter = AnalogueGrounds[2].AG_StartKvm * (AnalogueGrounds[2].AG_KorTorg == 0 ? 1 : AnalogueGrounds[2].AG_KorTorg);
+            AnalogueGrounds[0].AG_TorgCenaAfter = AnalogueGrounds[0].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorTorg);
+            AnalogueGrounds[1].AG_TorgCenaAfter = AnalogueGrounds[1].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorTorg);
+            AnalogueGrounds[2].AG_TorgCenaAfter = AnalogueGrounds[2].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorTorg);
             // корректировка на права
-            AnalogueGrounds[0].AG_NaPravaCenaAfter = AnalogueGrounds[0].AG_TorgCenaAfter * (AnalogueGrounds[0].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[0].AG_KorNaPrava);
-            AnalogueGrounds[1].AG_NaPravaCenaAfter = AnalogueGrounds[1].AG_TorgCenaAfter * (AnalogueGrounds[1].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[1].AG_KorNaPrava);
-            AnalogueGrounds[2].AG_NaPravaCenaAfter = AnalogueGrounds[2].AG_TorgCenaAfter * (AnalogueGrounds[2].AG_KorNaPrava == 0 ? 1 : AnalogueGrounds[2].AG_KorNaPrava);
+            AnalogueGrounds[0].AG_NaPravaCenaAfter = AnalogueGrounds[0].AG_TorgCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaPrava);
+            AnalogueGrounds[1].AG_NaPravaCenaAfter = AnalogueGrounds[1].AG_TorgCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaPrava);
+            AnalogueGrounds[2].AG_NaPravaCenaAfter = AnalogueGrounds[2].AG_TorgCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaPrava);
             // корректировка на дату продажи
-            AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[0].AG_NaPravaCenaAfter * (AnalogueGrounds[0].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[0].AG_KorNaDatuProdazhi);
-            AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[1].AG_NaPravaCenaAfter * (AnalogueGrounds[1].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[1].AG_KorNaDatuProdazhi);
-            AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[2].AG_NaPravaCenaAfter * (AnalogueGrounds[2].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[2].AG_KorNaDatuProdazhi);
+            AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[0].AG_NaPravaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaDatuProdazhi);
+            AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[1].AG_NaPravaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaDatuProdazhi);
+            AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter = AnalogueGrounds[2].AG_NaPravaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaDatuProdazhi);
             // корректировка на место
-            AnalogueGrounds[0].AG_NaMestoCenaAfter = AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[0].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[0].AG_KorNaMesto);
-            AnalogueGrounds[1].AG_NaMestoCenaAfter = AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[1].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[1].AG_KorNaMesto);
-            AnalogueGrounds[2].AG_NaMestoCenaAfter = AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter * (AnalogueGrounds[2].AG_KorNaMesto == 0 ? 1 : AnalogueGrounds[2].AG_KorNaMesto);
+            AnalogueGrounds[0].AG_NaMestoCenaAfter = AnalogueGrounds[0].AG_NaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaMesto);
+            AnalogueGrounds[1].AG_NaMestoCenaAfter = AnalogueGrounds[1].AG_NaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaMesto);
+            AnalogueGrounds[2].AG_NaMestoCenaAfter = AnalogueGrounds[2].AG_NaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaMesto);
             // корректировка на газ
-            AnalogueGrounds[0].AG_NaGasCenaAfter = AnalogueGrounds[0].AG_NaMestoCenaAfter * (AnalogueGrounds[0].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[0].AG_KorNaGas);
-            AnalogueGrounds[1].AG_NaGasCenaAfter = AnalogueGrounds[1].AG_NaMestoCenaAfter * (AnalogueGrounds[1].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[1].AG_KorNaGas);
-            AnalogueGrounds[2].AG_NaGasCenaAfter = AnalogueGrounds[2].AG_NaMestoCenaAfter * (AnalogueGrounds[2].AG_KorNaGas == 0 ? 1 : AnalogueGrounds[2].AG_KorNaGas);
+            AnalogueGrounds[0].AG_NaGasCenaAfter = AnalogueGrounds[0].AG_NaMestoCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaGas);
+            AnalogueGrounds[1].AG_NaGasCenaAfter = AnalogueGrounds[1].AG_NaMestoCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaGas);
+            AnalogueGrounds[2].AG_NaGasCenaAfter = AnalogueGrounds[2].AG_NaMestoCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaGas);
             // корректировка на воду
-            AnalogueGrounds[0].AG_NaVodaCenaAfter = AnalogueGrounds[0].AG_NaGasCenaAfter * (AnalogueGrounds[0].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[0].AG_KorNaVoda);
-            AnalogueGrounds[1].AG_NaVodaCenaAfter = AnalogueGrounds[1].AG_NaGasCenaAfter * (AnalogueGrounds[1].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[1].AG_KorNaVoda);
-            AnalogueGrounds[2].AG_NaVodaCenaAfter = AnalogueGrounds[2].AG_NaGasCenaAfter * (AnalogueGrounds[2].AG_KorNaVoda == 0 ? 1 : AnalogueGrounds[2].AG_KorNaVoda);
+            AnalogueGrounds[0].AG_NaVodaCenaAfter = AnalogueGrounds[0].AG_NaGasCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaVoda);
+            AnalogueGrounds[1].AG_NaVodaCenaAfter = AnalogueGrounds[1].AG_NaGasCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaVoda);
+            AnalogueGrounds[2].AG_NaVodaCenaAfter = AnalogueGrounds[2].AG_NaGasCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaVoda);
             // корректировка на электричество
-            AnalogueGrounds[0].AG_NaElectricCenaAfter = AnalogueGrounds[0].AG_NaVodaCenaAfter * (AnalogueGrounds[0].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[0].AG_KorNaElecric);
-            AnalogueGrounds[1].AG_NaElectricCenaAfter = AnalogueGrounds[1].AG_NaVodaCenaAfter * (AnalogueGrounds[1].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[1].AG_KorNaElecric);
-            AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * (AnalogueGrounds[2].AG_KorNaElecric == 0 ? 1 : AnalogueGrounds[2].AG_KorNaElecric);
+            AnalogueGrounds[0].AG_NaElectricCenaAfter = AnalogueGrounds[0].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaElecric);
+            AnalogueGrounds[1].AG_NaElectricCenaAfter = AnalogueGrounds[1].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaElecric);
+            AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
             // корректировка на масштаб
             const float nonSenseCoefficient = -0.127f;
-            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = Math.Pow(AssessmentGround.OG_Ploshad / (AnalogueGrounds[0].AG_Ploshad == 0 ? 1 : AnalogueGrounds[0].AG_Ploshad), nonSenseCoefficient) ;
+
+            //если надо возвести в степень переменной
+            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient,
+                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+
+            //если надо возвести в степень числа
+            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
+            //                                                     аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+
+            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = Math.Pow(AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad), nonSenseCoefficient);
             AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
             AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
 
@@ -432,9 +457,60 @@ namespace AlkoCompanyNew.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
             IsUpdating = false;
+        }
+
+        private float? ВозвестиВ(int степеньЧисла, float? аргумент)
+        {
+            return (float?)Math.Pow((double)аргумент, степеньЧисла);
+        }
+
+        private float? ВозвестиВСтепень(float? переменной, float? аргумент)
+        {
+            if (переменной == null)
+            {
+                return аргумент;
+            }
+
+            return (float?)Math.Pow((double)аргумент, (double)переменной);
+        }
+
+        /// <summary>
+        /// Вычисляет значение для индексов 0, 1 и 2, 
+        /// используя единственную формулу.
+        /// </summary>
+        /// <param name="callback">Функция, вычисляющее значение по формуле.</param>
+        /// <example>
+        /// </example>
+        private void Execute(Func<int, float?> callback)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                callback(i);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает значение корректировки, 
+        /// которая была передана аргументом, 
+        /// или 1, если корректировка была равна 0 или не определена.
+        /// </summary>
+        /// <param name="value">Корректировка для преобразования.</param>
+        /// <returns>Значение корректировки, 
+        /// которая была передана аргументом, 
+        /// или 1, если корректировка была равна 0 или не определена.</returns>
+        public float? ПолучитьКорректировку(float? value)
+        {
+            if (!value.HasValue || value == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return value;
+            }
         }
 
         public void UpdateGroundPercentOfCompletion()
