@@ -59,6 +59,7 @@
                 <!--House markup.-->
                 <Grid Background="White"
                       Name="HouseGrid"
+                      Visibility="Collapsed"
                       Grid.Row="1"
                       Margin="50,58,50,222"
                       Panel.ZIndex="1">
@@ -679,19 +680,19 @@
                                                 <TextBlock Text="{Binding AH_CenaProdazhiKvm, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=##.##}" />
+                                                <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -702,7 +703,7 @@
                                                           SelectedItem="{Binding AH_TypeDopPostroyki, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaDopPostroyki, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaDopPostroyki, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -714,7 +715,7 @@
                                                 <!--благоустройство участка-->
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -726,7 +727,7 @@
                                                 <!--мебель-->
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -744,7 +745,7 @@
                                                 <!--Цена квм земельного участка одинакова, как цена квм земельного участка объекта-->
                                             </Border>
                                             <Border BorderBrush="Red">
-                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged}" />
                                                 <!--корректировка-->
                                             </Border>
                                             <Border BorderBrush="Red">
@@ -767,7 +768,7 @@
                                                 <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -778,7 +779,7 @@
                                                           SelectedItem="{Binding AH_TypeMaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -789,7 +790,7 @@
                                                           SelectedItem="{Binding AH_TypeOtoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -800,7 +801,7 @@
                                                           SelectedItem="{Binding AH_TypeVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -811,7 +812,7 @@
                                                           SelectedItem="{Binding AH_TypeKanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -822,13 +823,13 @@
                                                           SelectedItem="{Binding AH_TypeFizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -839,7 +840,7 @@
                                                           SelectedItem="{Binding AH_TypeVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -850,7 +851,7 @@
                                                           SelectedItem="{Binding AH_TypeNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBlock Text="{Binding NewKwm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1282,25 +1283,25 @@
                                                 <TextBlock Text="{Binding AG_StartKvm, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_TorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaPrava, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaPrava, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaPravaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaMesto, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1311,7 +1312,7 @@
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaGas, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaGas, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaGasCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1322,7 +1323,7 @@
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaVoda, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1334,7 +1335,7 @@
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_KorNaElecric, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_KorNaElecric, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -1378,7 +1379,7 @@
                 <!--Client markup.-->
                 <Grid Name="ClientInformationControl"
                       Background="White"
-                      Visibility="Collapsed"
+                      Visibility="Visible"
                       Grid.Row="1"
                       Margin="50,58,50,222"
                       Panel.ZIndex="1">
