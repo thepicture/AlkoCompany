@@ -409,10 +409,18 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
             // корректировка на масштаб
             const float nonSenseCoefficient = -0.127f;
+            const float power = 3;
 
+            //если надо возвести в степень числа
+            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
+                                                                 аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
             //если надо возвести в степень переменной
-            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient,
-                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+            AnalogueGrounds[1].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: power,
+                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
+
+            // здесь будет 1
+            AnalogueGrounds[2].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient,
+                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad));
 
             //если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
