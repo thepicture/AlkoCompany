@@ -1,6 +1,8 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -92,49 +94,73 @@ namespace AlkoCompanyNew.Views.Pages
                 AppData.Context.ObjectAssessmentAll.Remove(
                     AppData.Context.ObjectAssessmentAll.Find(objectAll.OA_ID));
             }
-            AppData.Context.Zayavka.Remove(
-                AppData.Context.Zayavka.Find(zayavkaToDelete.Z_ID));
-            AppData.Context.Zayavka.RemoveRange(
-                AppData.Context.Klient.Find(zayavkaToDelete.K_ID).Zayavka);
             AppData.Context.Klient.Remove(
                 AppData.Context.Klient.Find(zayavkaToDelete.K_ID));
-
-
             AppData.Context.SaveChanges();
 
             if (App.IsRemoveRequestOrphans)
             {
                 RemoveRequestOrphans();
             }
-
             Reload();
+
             MessageBox.Show("Удалена заявка и её расчёты");
         }
 
         private void RemoveRequestOrphans()
         {
-            foreach (ObjectAssessmentHouse house in AppData.Context.ObjectAssessmentHouse)
+            try
             {
-                if (house.Zayavka.Count == 0)
+                using (Entities entities = new Entities())
                 {
-                    AppData.Context.ObjectAssessmentHouse.Remove(house);
+                    foreach (Klient klient
+                       in entities.Klient.ToList())
+                    {
+                        if (klient.Zayavka.Count == 0)
+                        {
+                            entities.Entry(
+                                entities.Klient.Find(klient.K_ID))
+                                .State = EntityState.Deleted;
+                        }
+                    }
+                    foreach (ObjectAssessmentHouse house
+                        in entities.ObjectAssessmentHouse.ToList())
+                    {
+                        if (house.Zayavka.Count == 0)
+                        {
+                            entities.Entry(
+                                entities.ObjectAssessmentHouse.Find(house.OH_ID))
+                                .State = EntityState.Deleted;
+                        }
+                    }
+                    foreach (ObjectAssessmentGround ground
+                        in entities.ObjectAssessmentGround.ToList())
+                    {
+                        if (ground.Zayavka.Count == 0)
+                        {
+                            entities.Entry(
+                                entities.ObjectAssessmentGround.Find(ground.OG_ID))
+                                .State = EntityState.Deleted;
+                        }
+                    }
+                    foreach (ObjectAssessmentAll objectAll
+                        in entities.ObjectAssessmentAll.ToList())
+                    {
+                        if (objectAll.Zayavka.Count == 0)
+                        {
+                            entities.Entry(
+                                entities.ObjectAssessmentAll.Find(objectAll.OA_ID))
+                                .State = EntityState.Deleted;
+                        }
+                    }
+                    entities.SaveChanges();
                 }
             }
-            foreach (ObjectAssessmentGround ground in AppData.Context.ObjectAssessmentGround)
+            catch (Exception ex)
             {
-                if (ground.Zayavka.Count == 0)
-                {
-                    AppData.Context.ObjectAssessmentGround.Remove(ground);
-                }
+                MessageBox.Show("Не удалось удалить " +
+                    "объекты без заявок. " + ex);
             }
-            foreach (ObjectAssessmentAll objectAll in AppData.Context.ObjectAssessmentAll)
-            {
-                if (objectAll.Zayavka.Count == 0)
-                {
-                    AppData.Context.ObjectAssessmentAll.Remove(objectAll);
-                }
-            }
-            AppData.Context.SaveChanges();
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
