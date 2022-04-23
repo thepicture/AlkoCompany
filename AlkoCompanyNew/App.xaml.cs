@@ -1,7 +1,6 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Views.Pages;
 using System;
-using System.Diagnostics;
 using System.Windows;
 
 namespace AlkoCompanyNew
@@ -11,7 +10,18 @@ namespace AlkoCompanyNew
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Устанавливает состояние, характеризующее, 
+        /// следует ли авторизоваться автоматически при 
+        /// запуске приложения.
+        /// </summary>
         public static bool IsLoginOnStartup = true;
+        /// <summary>
+        /// Устанавливает состояние, характеризующее, следует ли 
+        /// обнаруживать и удалять объекты оценки и аналоги, 
+        /// не связанные с заявками.
+        /// </summary>
+        public static bool IsRemoveRequestOrphans = true;
         public static WorkOrdinary WorkOrdinary { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {

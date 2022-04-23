@@ -191,7 +191,9 @@
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK__AnalogiGr__OG_ID__114A936A">
-          <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="0..1" />
+          <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="AnalogiGround" Type="Self.AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentGround">
@@ -241,7 +243,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_Klient">
-          <End Role="Klient" Type="Self.Klient" Multiplicity="1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Klient">
@@ -253,7 +257,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentAll">
-          <End Role="ObjectAssessmentAll" Type="Self.ObjectAssessmentAll" Multiplicity="0..1" />
+          <End Role="ObjectAssessmentAll" Type="Self.ObjectAssessmentAll" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentAll">
@@ -265,7 +271,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentGround">
-          <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="0..1" />
+          <End Role="ObjectAssessmentGround" Type="Self.ObjectAssessmentGround" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentGround">
@@ -277,7 +285,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentHouse">
-          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="0..1" />
+          <End Role="ObjectAssessmentHouse" Type="Self.ObjectAssessmentHouse" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentHouse">
@@ -626,7 +636,9 @@
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ZayavkaStatus" FromRole="ZayavkaStatus" ToRole="Zayavka" />
         </EntityType>
         <Association Name="FK__AnalogiGr__OG_ID__114A936A">
-          <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="0..1" />
+          <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.AnalogiGround" Role="AnalogiGround" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentGround">
@@ -664,7 +676,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_Klient">
-          <End Type="AlkoCompanyModel.Klient" Role="Klient" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Klient" Role="Klient" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Klient">
@@ -676,7 +690,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentAll">
-          <End Type="AlkoCompanyModel.ObjectAssessmentAll" Role="ObjectAssessmentAll" Multiplicity="0..1" />
+          <End Type="AlkoCompanyModel.ObjectAssessmentAll" Role="ObjectAssessmentAll" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentAll">
@@ -688,7 +704,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentGround">
-          <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="0..1" />
+          <End Type="AlkoCompanyModel.ObjectAssessmentGround" Role="ObjectAssessmentGround" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentGround">
@@ -700,7 +718,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_ObjectAssessmentHouse">
-          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="0..1" />
+          <End Type="AlkoCompanyModel.ObjectAssessmentHouse" Role="ObjectAssessmentHouse" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ObjectAssessmentHouse">
