@@ -116,6 +116,8 @@
                                             Value="5" />
                                     <Setter Property="Panel.ZIndex"
                                             Value="1" />
+                                    <Setter Property="Validation.ErrorTemplate"
+                                            Value="{StaticResource RussianErrorTemplate}" />
                                 </Style>
                                 <Style TargetType="ComboBox"
                                        BasedOn="{StaticResource MaterialDesignComboBox}">
@@ -927,6 +929,8 @@
                                             Value="5" />
                                     <Setter Property="Panel.ZIndex"
                                             Value="1" />
+                                    <Setter Property="Validation.ErrorTemplate"
+                                            Value="{StaticResource RussianErrorTemplate}" />
                                 </Style>
                                 <Style TargetType="ComboBox"
                                        BasedOn="{StaticResource MaterialDesignComboBox}">
@@ -1241,6 +1245,8 @@
                                                         Value="5" />
                                                 <Setter Property="Panel.ZIndex"
                                                         Value="1" />
+                                                <Setter Property="Validation.ErrorTemplate"
+                                                        Value="{StaticResource RussianErrorTemplate}" />
                                             </Style>
                                             <Style TargetType="ComboBox"
                                                    BasedOn="{StaticResource MaterialDesignComboBox}">
@@ -1435,6 +1441,8 @@
                                     Value="1" />
                             <Setter Property="Width"
                                     Value="500" />
+                            <Setter Property="Validation.ErrorTemplate"
+                                    Value="{StaticResource RussianErrorTemplate}" />
                         </Style>
                         <Style TargetType="ComboBox"
                                BasedOn="{StaticResource MaterialDesignComboBox}">
