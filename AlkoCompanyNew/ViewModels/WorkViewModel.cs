@@ -420,8 +420,8 @@ namespace AlkoCompanyNew.ViewModels
 
             // весовой коэффициент
             float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[0].AG_NaMashtabCenaAfter) * AnalogueGrounds[0].AG_TorgCenaAfter;
-            float? x = ПолучитьАбсолютноеЗначение(AnalogueGrounds[0].AG_TorgCenaAfter - torgCenaAfterAfter);
-            AnalogueGrounds[0].AG_VesovoyKoef = 1 - (x / torgCenaAfterAfter);
+            float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueGrounds[0].AG_TorgCenaAfter - torgCenaAfterAfter);
+            AnalogueGrounds[0].AG_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
 
             //если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
@@ -498,7 +498,7 @@ namespace AlkoCompanyNew.ViewModels
         /// <param name="callback">Функция, вычисляющее значение по формуле.</param>
         /// <example>
         /// </example>
-        private void Execute(Func<int, float?> callback)
+        private void Execute(Action<int> callback)
         {
             for (int i = 0; i < 3; i++)
             {

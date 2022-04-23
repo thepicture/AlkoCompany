@@ -3,6 +3,7 @@ using AlkoCompanyNew.Models.Entities;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace AlkoCompanyNew.Views.Windows
 {
@@ -17,6 +18,12 @@ namespace AlkoCompanyNew.Views.Windows
         public MainWindow()
         {
             InitializeComponent();
+            if (App.IsLoginOnStartup)
+            {
+                TextBoxLogin.Text = "1";
+                PasswordBoxPassword.Password = "1";
+                ButtonVhod.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }

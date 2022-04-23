@@ -1,17 +1,12 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
-using AlkoCompanyNew.Models.Enums;
 using Microsoft.Win32;
-using PropertyChanged;
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace AlkoCompanyNew.Views.Pages
 {
