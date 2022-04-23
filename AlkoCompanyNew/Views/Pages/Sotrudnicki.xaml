@@ -1,10 +1,10 @@
 ﻿<Page x:Class="AlkoCompanyNew.Views.Pages.Sotrudnicki"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AlkoCompanyNew.Views.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Width="1920"
       Height="1080"
@@ -12,51 +12,90 @@
 
     <Page.Resources>
         <Storyboard x:Key="Storyboard1">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Add">
-                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Add">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Add">
-                <SplineThicknessKeyFrame KeyTime="0:0:0.3" Value="0,0,600,0" KeySpline="0.49,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Add">
+                <SplineThicknessKeyFrame KeyTime="0:0:0.3"
+                                         Value="0,0,600,0"
+                                         KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Edit">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                        Value="{x:Static Visibility.Visible}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Edit">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0"/>
-                <SplineThicknessKeyFrame KeyTime="0:0:0.7" Value="0,0,350,0" KeySpline="0.49,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Edit">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4"
+                                         Value="0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.7"
+                                         Value="0,0,350,0"
+                                         KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Del">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Del">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.8"
+                                        Value="{x:Static Visibility.Visible}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Del">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.8" Value="0"/>
-                <SplineThicknessKeyFrame KeyTime="0:0:1.1" Value="0,0,150,0" KeySpline="0.49,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Del">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.8"
+                                         Value="0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:1.1"
+                                         Value="0,0,150,0"
+                                         KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="Storyboard_Copy1">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Add">
-                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Add">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                        Value="{x:Static Visibility.Hidden}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Add">
-                <SplineThicknessKeyFrame KeySpline="0.49,0,1,1" KeyTime="0" Value="0,0,600,0"/>
-                <SplineThicknessKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Add">
+                <SplineThicknessKeyFrame KeySpline="0.49,0,1,1"
+                                         KeyTime="0"
+                                         Value="0,0,600,0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.3"
+                                         Value="0"
+                                         KeySpline="0,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Hidden}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Edit">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                        Value="{x:Static Visibility.Visible}" />
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.6"
+                                        Value="{x:Static Visibility.Hidden}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Edit">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,350,0"/>
-                <SplineThicknessKeyFrame KeyTime="0:0:0.7" Value="0" KeySpline="0.49,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Edit">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.4"
+                                         Value="0,0,350,0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.7"
+                                         Value="0"
+                                         KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Del">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:1.0" Value="{x:Static Visibility.Hidden}"/>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="Del">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.8"
+                                        Value="{x:Static Visibility.Visible}" />
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.0"
+                                        Value="{x:Static Visibility.Hidden}" />
             </ObjectAnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Del">
-                <EasingThicknessKeyFrame KeyTime="0:0:0.8" Value="0,0,150,0"/>
-                <SplineThicknessKeyFrame KeyTime="0:0:1.1" Value="0" KeySpline="0.49,0,0,1"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="Del">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.8"
+                                         Value="0,0,150,0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:1.1"
+                                         Value="0"
+                                         KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
 
@@ -81,7 +120,7 @@
         <Grid Grid.Row="0"
               Background="#FFEAEAEA">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -90,30 +129,118 @@
 
 
 
-            <Button HorizontalAlignment="Right" Name="OpenMenu" Click="OpenMenu_Click"  Grid.Column="1" VerticalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FF4F4F4F">
-                <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FF939393"/>
+            <Button HorizontalAlignment="Right"
+                    Name="OpenMenu"
+                    Click="OpenMenu_Click"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Background="#00000000"
+                    BorderBrush="#00000000"
+                    Foreground="#FF4F4F4F">
+                <materialDesign:PackIcon Kind="DotsHorizontal"
+                                         Width="60"
+                                         Height="60"
+                                         VerticalAlignment="Center"
+                                         Foreground="#FF939393" />
             </Button>
-            <Button HorizontalAlignment="Right"  Name="CloseMenu" Click="CloseMenu_Click"  Grid.Column="1" VerticalAlignment="Center" Background="#00000000" BorderBrush="#00000000" Foreground="#FF4F4F4F" Visibility="Hidden">
-                <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FF939393"/>
+            <Button HorizontalAlignment="Right"
+                    Name="CloseMenu"
+                    Click="CloseMenu_Click"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Background="#00000000"
+                    BorderBrush="#00000000"
+                    Foreground="#FF4F4F4F"
+                    Visibility="Hidden">
+                <materialDesign:PackIcon Kind="DotsHorizontal"
+                                         Width="60"
+                                         Height="60"
+                                         VerticalAlignment="Center"
+                                         Foreground="#FF939393" />
             </Button>
 
-            <Grid x:Name="grid" Grid.Column="1" Width="Auto">
-                <Button Grid.Column="1" x:Name="Add" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" Click="Add_Click">
+            <Grid x:Name="grid"
+                  Grid.Column="1"
+                  Width="Auto">
+                <Button Grid.Column="1"
+                        x:Name="Add"
+                        Height="40"
+                        Width="Auto"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Visibility="Hidden"
+                        Click="Add_Click">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Plus" Width="Auto" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
-                        <TextBlock x:Name="textBlockAdd" Text="Добавить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <materialDesign:PackIcon Kind="Plus"
+                                                 Width="Auto"
+                                                 Height="35"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="#FFCB0000" />
+                        <Button x:Name="textBlockAdd"
+                                Content="Добавить"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="#FF252525"
+                                FontSize="20"
+                                FontFamily="Dubai Light"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="1" x:Name="Edit" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden">
+                <Button Grid.Column="1"
+                        x:Name="Edit"
+                        Height="40"
+                        Width="Auto"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Visibility="Hidden">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Edit" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
-                        <TextBlock x:Name="textBlockEdit" Text="Редактировать" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <materialDesign:PackIcon Kind="Edit"
+                                                 Width="35"
+                                                 Height="35"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="#FFCB0000" />
+                        <Button Click="OnEditClick"
+                                x:Name="textBlockEdit"
+                                Content="Редактировать"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="#FF252525"
+                                FontSize="20"
+                                FontFamily="Dubai Light"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="1" x:Name="Del" Height="40" Width="Auto" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden">
+                <Button Grid.Column="1"
+                        x:Name="Del"
+                        Height="40"
+                        Width="Auto"
+                        Background="{x:Null}"
+                        BorderBrush="{x:Null}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Visibility="Hidden">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Delete" Width="35" Height="35" VerticalAlignment="Center" Foreground="#FFCB0000" />
-                        <TextBlock x:Name="textBlockDel" Text="Удалить" Foreground="#FF252525" FontSize="20" FontFamily="Dubai Light" VerticalAlignment="Center" Margin="10,0,0,0" />
+                        <materialDesign:PackIcon Kind="Delete"
+                                                 Width="35"
+                                                 Height="35"
+                                                 VerticalAlignment="Center"
+                                                 Foreground="#FFCB0000" />
+                        <Button Click="OnDeleteClick"
+                                x:Name="textBlockDel"
+                                Content="Удалить"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Foreground="#FF252525"
+                                FontSize="20"
+                                FontFamily="Dubai Light"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
                     </StackPanel>
                 </Button>
             </Grid>
@@ -147,8 +274,7 @@
                      Background="Transparent"
                      Foreground="Black"
                      FontFamily="Dubai Light"
-                     Margin="0,0,30,0"
-                       />
+                     Margin="0,0,30,0" />
         </Grid>
 
 
@@ -163,7 +289,7 @@
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"
-                               HorizontalAlignment="Center"></WrapPanel>
+                               HorizontalAlignment="Center" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
@@ -177,31 +303,56 @@
                         <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="250"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="{Binding S_Post}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-
-                            <Border Grid.Row="1" CornerRadius="15" 
-                                        Margin="20,0,0,20">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="{Binding S_Photo}" />
-                                </Border.Background>
+                            <TextBlock Grid.Row="0"
+                                       Text="{Binding SotrudnickRole.Title}"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <Border Grid.Row="1"
+                                    CornerRadius="15">
+                                <Image>
+                                    <Image.Source>
+                                        <Binding Path="S_Photo">
+                                            <Binding.TargetNullValue>
+                                                <DrawingImage>
+                                                    <DrawingImage.Drawing>
+                                                        <GeometryDrawing Geometry="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                                                         Brush="Gray" />
+                                                    </DrawingImage.Drawing>
+                                                </DrawingImage>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
                             </Border>
-
-                            <TextBlock Grid.Row="2" Text="{Binding S_Fio}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="3" Text="{Binding S_TelNumber}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="4" Text="{Binding S_Email}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="5" Text="{Binding S_Born}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-
-
+                            <TextBlock Grid.Row="2"
+                                       Text="{Binding S_Fio}"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="3"
+                                       Text="{Binding S_TelNumber}"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="4"
+                                       Text="{Binding S_Email}"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="5"
+                                       Text="{Binding S_Born}"
+                                       FontSize="20"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" />
                         </Grid>
                     </Border>
                 </DataTemplate>

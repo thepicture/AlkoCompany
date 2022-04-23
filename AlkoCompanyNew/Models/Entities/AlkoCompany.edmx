@@ -152,11 +152,18 @@
           <Property Name="S_Fio" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="S_Born" Type="date" Nullable="false" />
           <Property Name="S_TelNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="S_Post" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="S_Login" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="S_Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="S_Photo" Type="varbinary(max)" />
           <Property Name="S_Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="S_RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SotrudnickRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Zayavka">
           <Key>
@@ -169,7 +176,7 @@
           <Property Name="Z_TelNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Z_Primichania" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Z_DataSostavlenia" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="S_ID" Type="int" Nullable="false" />
+          <Property Name="S_ID" Type="int" />
           <Property Name="K_ID" Type="int" Nullable="false" />
           <Property Name="OAG_ID" Type="int" />
           <Property Name="OAH_ID" Type="int" />
@@ -218,6 +225,18 @@
             </Principal>
             <Dependent Role="Klient">
               <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudnick_SotrudnickRole">
+          <End Role="SotrudnickRole" Type="Self.SotrudnickRole" Multiplicity="1" />
+          <End Role="Sotrudnick" Type="Self.Sotrudnick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnickRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sotrudnick">
+              <PropertyRef Name="S_RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -270,7 +289,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Zayavka_Sotrudnick">
-          <End Role="Sotrudnick" Type="Self.Sotrudnick" Multiplicity="1" />
+          <End Role="Sotrudnick" Type="Self.Sotrudnick" Multiplicity="0..1" />
           <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sotrudnick">
@@ -301,6 +320,7 @@
           <EntitySet Name="ObjectAssessmentGround" EntityType="Self.ObjectAssessmentGround" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ObjectAssessmentHouse" EntityType="Self.ObjectAssessmentHouse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sotrudnick" EntityType="Self.Sotrudnick" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SotrudnickRole" EntityType="Self.SotrudnickRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZayavkaStatus" EntityType="Self.ZayavkaStatus" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="Self.FK__AnalogiGr__OG_ID__114A936A">
@@ -314,6 +334,10 @@
           <AssociationSet Name="FK__Klient__S_ID__2B3F6F97" Association="Self.FK__Klient__S_ID__2B3F6F97">
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
             <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnick_SotrudnickRole" Association="Self.FK_Sotrudnick_SotrudnickRole">
+            <End Role="SotrudnickRole" EntitySet="SotrudnickRole" />
+            <End Role="Sotrudnick" EntitySet="Sotrudnick" />
           </AssociationSet>
           <AssociationSet Name="FK_Zayavka_Klient" Association="Self.FK_Zayavka_Klient">
             <End Role="Klient" EntitySet="Klient" />
@@ -352,6 +376,7 @@
           <EntitySet Name="ObjectAssessmentGround" EntityType="AlkoCompanyModel.ObjectAssessmentGround" />
           <EntitySet Name="ObjectAssessmentHouse" EntityType="AlkoCompanyModel.ObjectAssessmentHouse" />
           <EntitySet Name="Sotrudnick" EntityType="AlkoCompanyModel.Sotrudnick" />
+          <EntitySet Name="SotrudnickRole" EntityType="AlkoCompanyModel.SotrudnickRole" />
           <EntitySet Name="Zayavka" EntityType="AlkoCompanyModel.Zayavka" />
           <EntitySet Name="ZayavkaStatus" EntityType="AlkoCompanyModel.ZayavkaStatus" />
           <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A">
@@ -381,6 +406,10 @@
           <AssociationSet Name="FK_Zayavka_ObjectAssessmentHouse" Association="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentHouse">
             <End Role="ObjectAssessmentHouse" EntitySet="ObjectAssessmentHouse" />
             <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnick_SotrudnickRole" Association="AlkoCompanyModel.FK_Sotrudnick_SotrudnickRole">
+            <End Role="SotrudnickRole" EntitySet="SotrudnickRole" />
+            <End Role="Sotrudnick" EntitySet="Sotrudnick" />
           </AssociationSet>
           <AssociationSet Name="FK_Zayavka_Sotrudnick" Association="AlkoCompanyModel.FK_Zayavka_Sotrudnick">
             <End Role="Sotrudnick" EntitySet="Sotrudnick" />
@@ -547,13 +576,22 @@
           <Property Name="S_Fio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="S_Born" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="S_TelNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="S_Post" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="S_Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="S_Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="S_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="S_Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="S_RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Klient" Relationship="AlkoCompanyModel.FK__Klient__S_ID__2B3F6F97" FromRole="Sotrudnick" ToRole="Klient" />
+          <NavigationProperty Name="SotrudnickRole" Relationship="AlkoCompanyModel.FK_Sotrudnick_SotrudnickRole" FromRole="Sotrudnick" ToRole="SotrudnickRole" />
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_Sotrudnick" FromRole="Sotrudnick" ToRole="Zayavka" />
+        </EntityType>
+        <EntityType Name="SotrudnickRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK_Sotrudnick_SotrudnickRole" FromRole="SotrudnickRole" ToRole="Sotrudnick" />
         </EntityType>
         <EntityType Name="Zayavka">
           <Key>
@@ -566,7 +604,7 @@
           <Property Name="Z_TelNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Z_Primichania" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Z_DataSostavlenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="S_ID" Type="Int32" Nullable="false" />
+          <Property Name="S_ID" Type="Int32" />
           <Property Name="K_ID" Type="Int32" Nullable="false" />
           <Property Name="OAG_ID" Type="Int32" />
           <Property Name="OAH_ID" Type="Int32" />
@@ -673,8 +711,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sotrudnick_SotrudnickRole">
+          <End Type="AlkoCompanyModel.SotrudnickRole" Role="SotrudnickRole" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Sotrudnick" Role="Sotrudnick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SotrudnickRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sotrudnick">
+              <PropertyRef Name="S_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Zayavka_Sotrudnick">
-          <End Type="AlkoCompanyModel.Sotrudnick" Role="Sotrudnick" Multiplicity="1" />
+          <End Type="AlkoCompanyModel.Sotrudnick" Role="Sotrudnick" Multiplicity="0..1" />
           <End Type="AlkoCompanyModel.Zayavka" Role="Zayavka" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sotrudnick">
@@ -851,15 +901,23 @@
           <EntitySetMapping Name="Sotrudnick">
             <EntityTypeMapping TypeName="AlkoCompanyModel.Sotrudnick">
               <MappingFragment StoreEntitySet="Sotrudnick">
+                <ScalarProperty Name="S_RoleId" ColumnName="S_RoleId" />
                 <ScalarProperty Name="S_Email" ColumnName="S_Email" />
                 <ScalarProperty Name="S_Photo" ColumnName="S_Photo" />
                 <ScalarProperty Name="S_Password" ColumnName="S_Password" />
                 <ScalarProperty Name="S_Login" ColumnName="S_Login" />
-                <ScalarProperty Name="S_Post" ColumnName="S_Post" />
                 <ScalarProperty Name="S_TelNumber" ColumnName="S_TelNumber" />
                 <ScalarProperty Name="S_Born" ColumnName="S_Born" />
                 <ScalarProperty Name="S_Fio" ColumnName="S_Fio" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SotrudnickRole">
+            <EntityTypeMapping TypeName="AlkoCompanyModel.SotrudnickRole">
+              <MappingFragment StoreEntitySet="SotrudnickRole">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

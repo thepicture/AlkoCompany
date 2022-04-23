@@ -15,41 +15,27 @@ namespace AlkoCompanyNew.Models.Entities
 using System;
     using System.Collections.Generic;
     
-public partial class ObjectAssessmentAll
+public partial class SotrudnickRole
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public ObjectAssessmentAll()
+    public SotrudnickRole()
     {
 
-        this.Zayavka = new HashSet<Zayavka>();
+        this.Sotrudnick = new HashSet<Sotrudnick>();
 
     }
 
 
-    public int OA_ID { get; set; }
+    public int Id { get; set; }
 
-    public virtual string OA_Adress { get; set; }
-
-    public virtual Nullable<float> OA_PloshadZemli { get; set; }
-
-    public virtual Nullable<float> OA_PloshadDom { get; set; }
-
-    public virtual Nullable<float> OA_CenaZemliKvm { get; set; }
-
-    public virtual Nullable<float> OA_CenaZemliVse { get; set; }
-
-    public virtual Nullable<float> OA_CenaDomKvm { get; set; }
-
-    public virtual Nullable<float> OA_CenaDomVse { get; set; }
-
-    public virtual Nullable<float> OA_CenaAll { get; set; }
+    public virtual string Title { get; set; }
 
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Zayavka> Zayavka { get; set; }
+    public virtual ICollection<Sotrudnick> Sotrudnick { get; set; }
 
 }
 

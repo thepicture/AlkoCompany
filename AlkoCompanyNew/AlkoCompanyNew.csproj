@@ -114,6 +114,9 @@
     <Compile Include="Models\Entities\Sotrudnick.cs">
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\SotrudnickRole.cs">
+      <DependentUpon>AlkoCompany.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Zayavka.cs">
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>
@@ -127,6 +130,7 @@
     <Compile Include="Models\Partial\PartialObjectAssessmentAll.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentGround.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
+    <Compile Include="Models\Partial\PartialSotrudnick.cs" />
     <Compile Include="Services\LogicalChildrenFinder.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />

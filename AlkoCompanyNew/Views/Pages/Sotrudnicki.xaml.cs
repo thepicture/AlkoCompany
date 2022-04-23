@@ -1,6 +1,5 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +47,40 @@ namespace AlkoCompanyNew.Views.Pages
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(new AddSotrudnick(null));
+        }
+
+        private void OnEditClick(object sender, RoutedEventArgs e)
+        {
+            if (ListViewAddSotr.SelectedItem is Sotrudnick selectedSotrudnick)
+            {
+                Frame.Navigate(new AddSotrudnick(selectedSotrudnick));
+            }
+            else
+            {
+                MessageBox.Show("Выберите сотрудника в списке для редактирования");
+            }
+        }
+
+        private void OnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            if (ListViewAddSotr.SelectedItem is Sotrudnick selectedSotrudnick)
+            {
+                if (MessageBox.Show("Удалить сотрудника?",
+                                   "Вопрос",
+                                   MessageBoxButton.YesNo,
+                                   MessageBoxImage.Question) != MessageBoxResult.Yes)
+                {
+                    return;
+                }
+                AppData.Context.Sotrudnick.Remove(
+                    AppData.Context.Sotrudnick.Find(selectedSotrudnick.S_ID));
+                AppData.Context.SaveChanges();
+                Reload();
+            }
+            else
+            {
+                MessageBox.Show("Выберите сотрудника в списке для удаления");
+            }
         }
     }
 }

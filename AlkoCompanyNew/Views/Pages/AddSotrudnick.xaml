@@ -24,19 +24,29 @@
 
             <Border BorderThickness="0,0,0,1"
                     BorderBrush="#FF970000"
-                    Width="320"
                     Height="44"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
                     Margin="20,0,0,0">
                 <TextBlock Grid.Row="0"
-                           Text="Добавление сотрудника"
                            FontSize="30"
                            Foreground="#FF575757"
-                           FontFamily="Dubai Light" />
+                           FontFamily="Dubai Light">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Text"
+                                    Value="Редактирование сотрудника" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Sotrudnick.S_ID}"
+                                             Value="0">
+                                    <Setter Property="Text"
+                                            Value="Добавление сотрудника" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Border>
-
-
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -77,8 +87,7 @@
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
                             <DatePicker Grid.Row="1"
-                                        Loaded="DateBorn_Loaded"
-                                        Text="{Binding Sotrudnick.S_Born}"
+                                        SelectedDate="{Binding Sotrudnick.S_Born}"
                                         Name="DateBorn"
                                         Height="60"
                                         Width="350"
@@ -96,7 +105,7 @@
                                      Width="350"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
-                                     materialDesign:HintAssist.Hint="Должность"
+                                     materialDesign:HintAssist.Hint="Должноcть"
                                      materialDesign:HintAssist.IsFloating="True"
                                      FontSize="20"
                                      FontFamily="Dubai Light">
@@ -108,8 +117,7 @@
                             </ComboBox>-->
 
                             <ComboBox Grid.Row="2"
-                                      Text="{Binding Sotrudnick.S_Post}"
-                                      Name="TextBoxPost"
+                                      Name="ComboRoles"
                                       Height="60"
                                       Width="350"
                                       HorizontalAlignment="Left"
@@ -117,9 +125,9 @@
                                       materialDesign:HintAssist.Hint="Должность"
                                       materialDesign:HintAssist.IsFloating="True"
                                       FontSize="20"
-                                      FontFamily="Dubai Light" />
-
-
+                                      FontFamily="Dubai Light"
+                                      DisplayMemberPath="Title"
+                                      SelectedItem="{Binding Sotrudnick.SotrudnickRole}" />
                         </Grid>
                         <Grid Grid.Column="1"
                               MouseLeftButtonDown="Photo_MouseLeftButtonDown">
@@ -246,7 +254,8 @@
                             Background="{x:Null}"
                             BorderBrush="{x:Null}"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left">
+                            HorizontalAlignment="Left"
+                            Click="OnBackClick">
                         <materialDesign:PackIcon Kind="ArrowBack"
                                                  Width="40"
                                                  Height="40"

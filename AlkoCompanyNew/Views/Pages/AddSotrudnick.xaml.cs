@@ -2,8 +2,10 @@
 using AlkoCompanyNew.Models.Entities;
 using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,13 +18,18 @@ namespace AlkoCompanyNew.Views.Pages
     public partial class AddSotrudnick : Page
     {
         public Sotrudnick Sotrudnick { get; set; } = new Sotrudnick();
-        public Sotrudnick sotr = new Sotrudnick();
-        public AddSotrudnick(Sotrudnick settersotr)
+        public AddSotrudnick(Sotrudnick inputSotrudnick)
         {
             InitializeComponent();
-            if (settersotr != null)
-                sotr = settersotr;
-
+            ComboRoles.ItemsSource = AppData.Context.SotrudnickRole.ToList();
+            Sotrudnick.S_Born = DateTime.Now;
+            if (inputSotrudnick != null)
+            {
+                Sotrudnick = inputSotrudnick;
+                ComboRoles.SelectedItem = ComboRoles.Items
+                    .Cast<SotrudnickRole>()
+                    .First(r => r.Id == inputSotrudnick.SotrudnickRole.Id);
+            }
             DataContext = this;
         }
         private void Photo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -34,41 +41,43 @@ namespace AlkoCompanyNew.Views.Pages
             };
             if (file.ShowDialog() == true)
             {
-
                 Sotrudnick.S_Photo = File.ReadAllBytes(file.FileName);
             }
         }
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            if (sotr.S_ID == 0)
+            if (string.IsNullOrWhiteSpace(Sotrudnick.S_Email)
+                || !Regex.IsMatch(Sotrudnick.S_Email, @"\w+@\w+\.\w{2,3}"))
             {
-
-                AppData.Context.Sotrudnick.Add(sotr);
+                MessageBox.Show("Введите корректную электронную почту");
+                return;
+            }
+            if (Sotrudnick.S_ID == 0)
+            {
+                AppData.Context.Sotrudnick.Add(Sotrudnick);
             }
             try
             {
-                AppData.Context.Entry(AppData.Context.Sotrudnick.Find(sotr.S_ID)).CurrentValues.SetValues(sotr);
                 AppData.Context.SaveChanges();
                 MessageBox.Show("Данные внесены");
                 AppData.Context.ChangeTracker.Entries().ToList().ForEach(entry => entry.Reload());
                 AppData.Context.ChangeTracker.Entries().ToList().ForEach(i => i.Reload());
                 AppData.Sotrudnicki_.Reload();
-
-
             }
             catch (Exception ex)
             {
-
-                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                MessageBox.Show(ex.ToString(),
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                Debug.WriteLine(ex);
             }
         }
 
-
-
-        private void DateBorn_Loaded(object sender, RoutedEventArgs e)
+        private void OnBackClick(object sender, RoutedEventArgs e)
         {
-            DateBorn.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            NavigationService.Navigate(null);
         }
     }
 }
