@@ -182,10 +182,9 @@
                                     <Grid Grid.Row="4">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-
                                         <Button Grid.Column="1"
                                                 Width="Auto"
                                                 Height="Auto"
@@ -211,7 +210,7 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock x:Name="TextBlockStart"
                                                            Text="Начать"
-                                                           Foreground="#FF535353"
+                                                           Foreground="Green"
                                                            FontSize="13"
                                                            FontFamily="Dubai Light"
                                                            VerticalAlignment="Center"
@@ -220,7 +219,7 @@
                                                                          Width="25"
                                                                          Height="25"
                                                                          VerticalAlignment="Center"
-                                                                         Foreground="#FFCB0000" />
+                                                                         Foreground="Green" />
                                             </StackPanel>
                                         </Button>
                                     </Grid>
