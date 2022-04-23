@@ -195,10 +195,10 @@
                                 </Border.Background>
                             </Border>
 
-                            <TextBlock Grid.Row="0" Text="{Binding S_Fio}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="{Binding S_TelNumber}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="{Binding S_Email}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Row="0" Text="{Binding S_Born}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Text="{Binding S_Fio}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="3" Text="{Binding S_TelNumber}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="4" Text="{Binding S_Email}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="5" Text="{Binding S_Born}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
 
 

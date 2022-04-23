@@ -16,5 +16,6 @@ namespace AlkoCompanyNew.Models.Entities
         public float? AG_NaVodaCenaAfter { get; set; }
         public float? AG_NaElectricCenaAfter { get; set; }
         public float? AG_NaMashtabCenaAfter { get; set; }
+        public float? AG_VesovoyKoef { get; set; }
     }
 }

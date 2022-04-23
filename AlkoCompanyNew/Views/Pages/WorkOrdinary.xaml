@@ -1031,6 +1031,12 @@
                                     <TextBlock Text="Поправка на масштаб" />
                                 </Border>
                                 <Border>
+                                    <TextBlock Text="%" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Весовые коэффициенты" />
+                                </Border>
+                                <Border>
                                     <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border>
@@ -1130,6 +1136,12 @@
                                 </Border>
                                 <Border>
                                     <TextBlock Text="-0.127" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="" />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="" />
@@ -1341,7 +1353,13 @@
                                                 <TextBox Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#.##}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="{Binding AG_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
+                                            </Border>
+                                            <Border>
+                                                <TextBox Text="" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_CenaProdazhiKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />

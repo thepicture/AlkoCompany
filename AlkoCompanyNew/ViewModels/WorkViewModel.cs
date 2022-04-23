@@ -407,28 +407,29 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueGrounds[0].AG_NaElectricCenaAfter = AnalogueGrounds[0].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaElecric);
             AnalogueGrounds[1].AG_NaElectricCenaAfter = AnalogueGrounds[1].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaElecric);
             AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
+
             // корректировка на масштаб
             const float nonSenseCoefficient = -0.127f;
-            const float power = 3;
-
-            //если надо возвести в степень числа
-            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
-                                                                 аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
-            //если надо возвести в степень переменной
-            AnalogueGrounds[1].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: power,
-                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
+            ////если надо возвести в степень числа
+            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+            ////если надо возвести в степень переменной
+            //AnalogueGrounds[1].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: power, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
 
             // здесь будет 1
-            AnalogueGrounds[2].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient,
-                                                                        аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad));
+            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+
+            // весовой коэффициент
+            float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[0].AG_NaMashtabCenaAfter) * AnalogueGrounds[0].AG_TorgCenaAfter;
+            float? x = ПолучитьАбсолютноеЗначение(AnalogueGrounds[0].AG_TorgCenaAfter - torgCenaAfterAfter);
+            AnalogueGrounds[0].AG_VesovoyKoef = 1 - (x / torgCenaAfterAfter);
 
             //если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
             //                                                     аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
 
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = Math.Pow(AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad), nonSenseCoefficient);
-            AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
-            AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
+            //AssessmentGround.OG_PriceKvmAfter = AssessmentGround.OG_CenaKvm * nonSenseCoefficient;
+            //AssessmentGround.OG_C_TotalPrice = AssessmentGround.OG_PriceKvmAfter * AssessmentObject.OH_Ploshad * nonSenseCoefficient;
 
 
 
@@ -470,17 +471,22 @@ namespace AlkoCompanyNew.ViewModels
             IsUpdating = false;
         }
 
+        public float? ПолучитьАбсолютноеЗначение(float? аргумент)
+        {
+            if (аргумент == null) return аргумент;
+            return (float?)Math.Abs((double)аргумент);
+        }
+
         private float? ВозвестиВ(int степеньЧисла, float? аргумент)
         {
+            if (аргумент == null) return аргумент;
             return (float?)Math.Pow((double)аргумент, степеньЧисла);
         }
 
         private float? ВозвестиВСтепень(float? переменной, float? аргумент)
         {
-            if (переменной == null)
-            {
-                return аргумент;
-            }
+            if (переменной == null) return аргумент;
+            if (аргумент == null) return аргумент;
 
             return (float?)Math.Pow((double)аргумент, (double)переменной);
         }
