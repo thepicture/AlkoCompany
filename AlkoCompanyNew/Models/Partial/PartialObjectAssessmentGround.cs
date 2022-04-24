@@ -7,5 +7,6 @@ namespace AlkoCompanyNew.Models.Entities
     {
         public float? OG_PriceKvmAfter { get; set; }
         public float? OG_C_TotalPrice { get; set; }
+        public float? OG_GeneralProcent { get; set; }
     }
 }

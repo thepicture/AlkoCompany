@@ -15,13 +15,13 @@ namespace AlkoCompanyNew
         /// следует ли авторизоваться автоматически при 
         /// запуске приложения.
         /// </summary>
-        public static bool IsLoginOnStartup = true;
+        public static bool IsLoginOnStartup = false;
         /// <summary>
         /// Устанавливает состояние, характеризующее, следует ли 
         /// обнаруживать и удалять объекты оценки и аналоги, 
         /// не связанные с заявками.
         /// </summary>
-        public static bool IsRemoveRequestOrphans = true;
+        public static bool IsRemoveRequestOrphans = false;
         public static WorkOrdinary WorkOrdinary { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {

@@ -28,6 +28,7 @@
           <Property Name="AG_KorNaElecric" Type="real" />
           <Property Name="AG_CategoriaZemel" Type="nvarchar" MaxLength="100" />
           <Property Name="AG_RazreshennoeIspolzovanie" Type="nvarchar" MaxLength="100" />
+          <Property Name="AG_KorNaMashtab" Type="real" />
           <Property Name="AG_Photo" Type="varbinary(max)" />
           <Property Name="OG_ID" Type="int" />
         </EntityType>
@@ -68,12 +69,12 @@
           <Property Name="AH_KorNaNarugnyuOtdelky" Type="real" />
           <Property Name="AH_TypeVnutrenyuOtdelky" Type="nvarchar" MaxLength="100" />
           <Property Name="AH_KorNaVnutrenyuOtdelky" Type="real" />
-          <Property Name="AH_Photo" Type="varbinary(max)" />
-          <Property Name="OH_ID" Type="int" Nullable="false" />
-          <Property Name="AH_Correction" Type="decimal" Precision="20" Scale="2" />
           <Property Name="AH_PloshadZemli" Type="real" />
           <Property Name="AH_KorNaMashtabZemli" Type="real" />
           <Property Name="AH_StoimostZemliAnaloga" Type="real" />
+          <Property Name="AH_Photo" Type="varbinary(max)" />
+          <Property Name="OH_ID" Type="int" Nullable="false" />
+          <Property Name="AH_Correction" Type="decimal" Precision="20" Scale="2" />
         </EntityType>
         <EntityType Name="Klient">
           <Key>
@@ -453,6 +454,7 @@
           <Property Name="AG_KorNaElecric" Type="Single" />
           <Property Name="AG_CategoriaZemel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AG_RazreshennoeIspolzovanie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AG_KorNaMashtab" Type="Single" />
           <Property Name="AG_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OG_ID" Type="Int32" />
           <NavigationProperty Name="ObjectAssessmentGround" Relationship="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A" FromRole="AnalogiGround" ToRole="ObjectAssessmentGround" />
@@ -494,12 +496,12 @@
           <Property Name="AH_KorNaNarugnyuOtdelky" Type="Single" />
           <Property Name="AH_TypeVnutrenyuOtdelky" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AH_KorNaVnutrenyuOtdelky" Type="Single" />
-          <Property Name="AH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="OH_ID" Type="Int32" Nullable="false" />
-          <Property Name="AH_Correction" Type="Decimal" Precision="20" Scale="2" />
           <Property Name="AH_PloshadZemli" Type="Single" />
           <Property Name="AH_KorNaMashtabZemli" Type="Single" />
           <Property Name="AH_StoimostZemliAnaloga" Type="Single" />
+          <Property Name="AH_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OH_ID" Type="Int32" Nullable="false" />
+          <Property Name="AH_Correction" Type="Decimal" Precision="20" Scale="2" />
           <NavigationProperty Name="ObjectAssessmentHouse" Relationship="AlkoCompanyModel.FK__AnalogiHo__OH_ID__31EC6D26" FromRole="AnalogiHouse" ToRole="ObjectAssessmentHouse" />
         </EntityType>
         <EntityType Name="Klient">
@@ -778,6 +780,7 @@
               <MappingFragment StoreEntitySet="AnalogiGround">
                 <ScalarProperty Name="OG_ID" ColumnName="OG_ID" />
                 <ScalarProperty Name="AG_Photo" ColumnName="AG_Photo" />
+                <ScalarProperty Name="AG_KorNaMashtab" ColumnName="AG_KorNaMashtab" />
                 <ScalarProperty Name="AG_RazreshennoeIspolzovanie" ColumnName="AG_RazreshennoeIspolzovanie" />
                 <ScalarProperty Name="AG_CategoriaZemel" ColumnName="AG_CategoriaZemel" />
                 <ScalarProperty Name="AG_KorNaElecric" ColumnName="AG_KorNaElecric" />
@@ -803,12 +806,12 @@
           <EntitySetMapping Name="AnalogiHouse">
             <EntityTypeMapping TypeName="AlkoCompanyModel.AnalogiHouse">
               <MappingFragment StoreEntitySet="AnalogiHouse">
-                <ScalarProperty Name="AH_StoimostZemliAnaloga" ColumnName="AH_StoimostZemliAnaloga" />
-                <ScalarProperty Name="AH_KorNaMashtabZemli" ColumnName="AH_KorNaMashtabZemli" />
-                <ScalarProperty Name="AH_PloshadZemli" ColumnName="AH_PloshadZemli" />
                 <ScalarProperty Name="AH_Correction" ColumnName="AH_Correction" />
                 <ScalarProperty Name="OH_ID" ColumnName="OH_ID" />
                 <ScalarProperty Name="AH_Photo" ColumnName="AH_Photo" />
+                <ScalarProperty Name="AH_StoimostZemliAnaloga" ColumnName="AH_StoimostZemliAnaloga" />
+                <ScalarProperty Name="AH_KorNaMashtabZemli" ColumnName="AH_KorNaMashtabZemli" />
+                <ScalarProperty Name="AH_PloshadZemli" ColumnName="AH_PloshadZemli" />
                 <ScalarProperty Name="AH_KorNaVnutrenyuOtdelky" ColumnName="AH_KorNaVnutrenyuOtdelky" />
                 <ScalarProperty Name="AH_TypeVnutrenyuOtdelky" ColumnName="AH_TypeVnutrenyuOtdelky" />
                 <ScalarProperty Name="AH_KorNaNarugnyuOtdelky" ColumnName="AH_KorNaNarugnyuOtdelky" />

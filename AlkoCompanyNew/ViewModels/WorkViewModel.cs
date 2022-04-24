@@ -299,9 +299,9 @@ namespace AlkoCompanyNew.ViewModels
             // 0.8 станет 0.8
 
             // цена кв.м
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
+            AnalogueHouses[0].AH_StartKwm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
+            AnalogueHouses[1].AH_StartKwm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
+            AnalogueHouses[2].AH_StartKwm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
             //
             // корректировка на торг (в одну строчку)
             // может использоваться, если формула остаётся неизменной и изменяются только индексы от 0 до 2
@@ -314,65 +314,126 @@ namespace AlkoCompanyNew.ViewModels
             //Execute(i => AnalogueHouses[i].AH_CenaProdazhiKvm *= ПолучитьКорректировку(AnalogueHouses[i].AH_KorTorg));
 
             // корректировка на торг (как было)
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorTorg);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorTorg);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorTorg);
+            AnalogueHouses[0].AH_KorTorgCenaAfter = AnalogueHouses[0].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorTorg);
+            AnalogueHouses[1].AH_KorTorgCenaAfter = AnalogueHouses[1].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorTorg);
+            AnalogueHouses[2].AH_KorTorgCenaAfter = AnalogueHouses[2].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorTorg);
             // корректировка на дату продажи
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDatuProdazhi);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDatuProdazhi);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDatuProdazhi);
+            AnalogueHouses[0].AH_KorNaDatuProdazhiCenaAfter = AnalogueHouses[0].AH_KorTorgCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDatuProdazhi);
+            AnalogueHouses[1].AH_KorNaDatuProdazhiCenaAfter = AnalogueHouses[1].AH_KorTorgCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDatuProdazhi);
+            AnalogueHouses[2].AH_KorNaDatuProdazhiCenaAfter = AnalogueHouses[2].AH_KorTorgCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDatuProdazhi);
             // корректировка на месторасположение
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMesto);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMesto);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMesto);
+            AnalogueHouses[0].AH_KorNaMestoCenaAfter = AnalogueHouses[0].AH_KorNaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMesto);
+            AnalogueHouses[1].AH_KorNaMestoCenaAfter = AnalogueHouses[1].AH_KorNaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMesto);
+            AnalogueHouses[2].AH_KorNaMestoCenaAfter = AnalogueHouses[2].AH_KorNaDatuProdazhiCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMesto);
             // корректировка на дополнительные постройки 
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDopPostroyki);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDopPostroyki);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDopPostroyki);
+            AnalogueHouses[0].AH_KorNaDopPostroykiCenaAfter = AnalogueHouses[0].AH_KorNaMestoCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDopPostroyki);
+            AnalogueHouses[1].AH_KorNaDopPostroykiCenaAfter = AnalogueHouses[1].AH_KorNaMestoCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDopPostroyki);
+            AnalogueHouses[2].AH_KorNaDopPostroykiCenaAfter = AnalogueHouses[2].AH_KorNaMestoCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaDopPostroyki);
             // корректировка на благоустройство участка
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaBlagoustroistvo);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaBlagoustroistvo);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[0].AH_KorNaBlagoustroistvoCenaAfter = AnalogueHouses[0].AH_KorNaDopPostroykiCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[1].AH_KorNaBlagoustroistvoCenaAfter = AnalogueHouses[1].AH_KorNaDopPostroykiCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaBlagoustroistvo);
+            AnalogueHouses[2].AH_KorNaBlagoustroistvoCenaAfter = AnalogueHouses[2].AH_KorNaDopPostroykiCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaBlagoustroistvo);
             // корректировка на мебель
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMebel);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMebel);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMebel);
+            AnalogueHouses[0].AH_KorNaMebelCenaAfter = AnalogueHouses[0].AH_KorNaBlagoustroistvoCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMebel);
+            AnalogueHouses[1].AH_KorNaMebelCenaAfter = AnalogueHouses[1].AH_KorNaBlagoustroistvoCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMebel);
+            AnalogueHouses[2].AH_KorNaMebelCenaAfter = AnalogueHouses[2].AH_KorNaBlagoustroistvoCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMebel);
+            // полная цена для вычета стоимости земли
+            AnalogueHouses[0].AH_OrdinaryCenaAfter = AnalogueHouses[0].AH_KorNaMebelCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_Ploshad);
+            AnalogueHouses[1].AH_OrdinaryCenaAfter = AnalogueHouses[1].AH_KorNaMebelCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_Ploshad);
+            AnalogueHouses[2].AH_OrdinaryCenaAfter = AnalogueHouses[2].AH_KorNaMebelCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_Ploshad);
+            // корректировка на масштаб
+            const float nonSenseCoefficient = -0.127f;
+            ////если надо возвести в степень числа
+            //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+            ////если надо возвести в степень переменной
+            //AnalogueGrounds[1].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: power, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
+
+            // здесь будет 1
+            AnalogueHouses[0].AH_KorNaMashtabZemli = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AnalogueHouses[0].AH_PloshadZemli / ПолучитьКорректировку(AssessmentGround.OG_Ploshad));
+            AnalogueHouses[1].AH_KorNaMashtabZemli = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AnalogueHouses[1].AH_PloshadZemli / ПолучитьКорректировку(AssessmentGround.OG_Ploshad));
+            AnalogueHouses[2].AH_KorNaMashtabZemli = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AnalogueHouses[2].AH_PloshadZemli / ПолучитьКорректировку(AssessmentGround.OG_Ploshad));
+            // корректировка на масштаб цена после
+            AnalogueHouses[0].AH_KorNaMashtabCenaAfter = AnalogueHouses[0].AH_KorNaMashtabZemli * ПолучитьКорректировку(AssessmentGround.OG_CenaKvm);
+            AnalogueHouses[1].AH_KorNaMashtabCenaAfter = AnalogueHouses[1].AH_KorNaMashtabZemli * ПолучитьКорректировку(AssessmentGround.OG_CenaKvm);
+            AnalogueHouses[2].AH_KorNaMashtabCenaAfter = AnalogueHouses[2].AH_KorNaMashtabZemli * ПолучитьКорректировку(AssessmentGround.OG_CenaKvm);
+            // стоимость земли аналога
+            AnalogueHouses[0].AH_StoimostZemliAnaloga = AnalogueHouses[0].AH_KorNaMashtabCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_PloshadZemli);
+            AnalogueHouses[1].AH_StoimostZemliAnaloga = AnalogueHouses[1].AH_KorNaMashtabCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_PloshadZemli);
+            AnalogueHouses[2].AH_StoimostZemliAnaloga = AnalogueHouses[2].AH_KorNaMashtabCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_PloshadZemli);
+            // стоимость объекта капитального строительства
+            AnalogueHouses[0].AH_StoimostObjectaCapStroy = AnalogueHouses[0].AH_OrdinaryCenaAfter - ПолучитьКорректировку(AnalogueHouses[0].AH_StoimostZemliAnaloga);
+            AnalogueHouses[1].AH_StoimostObjectaCapStroy = AnalogueHouses[1].AH_OrdinaryCenaAfter - ПолучитьКорректировку(AnalogueHouses[1].AH_StoimostZemliAnaloga);
+            AnalogueHouses[2].AH_StoimostObjectaCapStroy = AnalogueHouses[2].AH_OrdinaryCenaAfter - ПолучитьКорректировку(AnalogueHouses[2].AH_StoimostZemliAnaloga);
+            // стоимость объекта капитального строительства кв.м
+            AnalogueHouses[0].AH_StoimostObjectaCapStroyKvm = AnalogueHouses[0].AH_StoimostObjectaCapStroy / ПолучитьКорректировку(AnalogueHouses[0].AH_Ploshad);
+            AnalogueHouses[1].AH_StoimostObjectaCapStroyKvm = AnalogueHouses[1].AH_StoimostObjectaCapStroy / ПолучитьКорректировку(AnalogueHouses[1].AH_Ploshad);
+            AnalogueHouses[2].AH_StoimostObjectaCapStroyKvm = AnalogueHouses[2].AH_StoimostObjectaCapStroy / ПолучитьКорректировку(AnalogueHouses[2].AH_Ploshad);
             // корректировка на этажность
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaEtage);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaEtage);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaEtage);
+            AnalogueHouses[0].AH_KorNaEtageCenaAfter = AnalogueHouses[0].AH_StoimostObjectaCapStroyKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaEtage);
+            AnalogueHouses[1].AH_KorNaEtageCenaAfter = AnalogueHouses[1].AH_StoimostObjectaCapStroyKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaEtage);
+            AnalogueHouses[2].AH_KorNaEtageCenaAfter = AnalogueHouses[2].AH_StoimostObjectaCapStroyKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaEtage);
             // корректировка на материал стен
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMaterialSten);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMaterialSten);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMaterialSten);
+            AnalogueHouses[0].AH_KorNaMaterialStenCenaAfter = AnalogueHouses[0].AH_KorNaEtageCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaMaterialSten);
+            AnalogueHouses[1].AH_KorNaMaterialStenCenaAfter = AnalogueHouses[1].AH_KorNaEtageCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaMaterialSten);
+            AnalogueHouses[2].AH_KorNaMaterialStenCenaAfter = AnalogueHouses[2].AH_KorNaEtageCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaMaterialSten);
             // корректировка на тип отопления
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaOtoplenie);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaOtoplenie);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaOtoplenie);
+            AnalogueHouses[0].AH_KorNaOtoplenieCenaAfter = AnalogueHouses[0].AH_KorNaMaterialStenCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaOtoplenie);
+            AnalogueHouses[1].AH_KorNaOtoplenieCenaAfter = AnalogueHouses[1].AH_KorNaMaterialStenCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaOtoplenie);
+            AnalogueHouses[2].AH_KorNaOtoplenieCenaAfter = AnalogueHouses[2].AH_KorNaMaterialStenCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaOtoplenie);
             // корректировка на тип воды
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVoda);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVoda);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVoda);
+            AnalogueHouses[0].AH_KorNaVodaCenaAfter = AnalogueHouses[0].AH_KorNaOtoplenieCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVoda);
+            AnalogueHouses[1].AH_KorNaVodaCenaAfter = AnalogueHouses[1].AH_KorNaOtoplenieCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVoda);
+            AnalogueHouses[2].AH_KorNaVodaCenaAfter = AnalogueHouses[2].AH_KorNaOtoplenieCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVoda);
             // корректировка на тип канализации
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaKanalizacia);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaKanalizacia);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaKanalizacia);
+            AnalogueHouses[0].AH_KorNaKanalizaciaCenaAfter = AnalogueHouses[0].AH_KorNaVodaCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaKanalizacia);
+            AnalogueHouses[1].AH_KorNaKanalizaciaCenaAfter = AnalogueHouses[1].AH_KorNaVodaCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaKanalizacia);
+            AnalogueHouses[2].AH_KorNaKanalizaciaCenaAfter = AnalogueHouses[2].AH_KorNaVodaCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaKanalizacia);
             // корректировка на физическое состояние
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaFizSostoyanie);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaFizSostoyanie);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaFizSostoyanie);
+            AnalogueHouses[0].AH_KorNaFizSostoyanieCenaAfter = AnalogueHouses[0].AH_KorNaKanalizaciaCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaFizSostoyanie);
+            AnalogueHouses[1].AH_KorNaFizSostoyanieCenaAfter = AnalogueHouses[1].AH_KorNaKanalizaciaCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaFizSostoyanie);
+            AnalogueHouses[2].AH_KorNaFizSostoyanieCenaAfter = AnalogueHouses[2].AH_KorNaKanalizaciaCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaFizSostoyanie);
+            // корректировка на площадь
+            const float nonPloshadCoefficient = -0.16f;
+            AnalogueHouses[0].AH_KorNaPloshad = ВозвестиВСтепень(переменной: nonPloshadCoefficient, аргумент: AssessmentObject.OH_Ploshad / ПолучитьКорректировку(AnalogueHouses[0].AH_Ploshad));
+            AnalogueHouses[1].AH_KorNaPloshad = ВозвестиВСтепень(переменной: nonPloshadCoefficient, аргумент: AssessmentObject.OH_Ploshad / ПолучитьКорректировку(AnalogueHouses[1].AH_Ploshad));
+            AnalogueHouses[2].AH_KorNaPloshad = ВозвестиВСтепень(переменной: nonPloshadCoefficient, аргумент: AssessmentObject.OH_Ploshad / ПолучитьКорректировку(AnalogueHouses[2].AH_Ploshad));
+            // корректировка на площадь цена после
+            AnalogueHouses[0].AH_KorNaPloshadCenaAfter = AnalogueHouses[0].AH_KorNaPloshad * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaFizSostoyanieCenaAfter);
+            AnalogueHouses[1].AH_KorNaPloshadCenaAfter = AnalogueHouses[1].AH_KorNaPloshad * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaFizSostoyanieCenaAfter);
+            AnalogueHouses[2].AH_KorNaPloshadCenaAfter = AnalogueHouses[2].AH_KorNaPloshad * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaFizSostoyanieCenaAfter);
             // корректировка на внутреннюю отделку
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[0].AH_KorNaVnutrenyuOtdelkyCenaAfter = AnalogueHouses[0].AH_KorNaPloshadCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[1].AH_KorNaVnutrenyuOtdelkyCenaAfter = AnalogueHouses[1].AH_KorNaPloshadCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaVnutrenyuOtdelky);
+            AnalogueHouses[2].AH_KorNaVnutrenyuOtdelkyCenaAfter = AnalogueHouses[2].AH_KorNaPloshadCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaVnutrenyuOtdelky);
             // корректировка на наружную отделку
-            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaNarugnyuOtdelky);
-            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaNarugnyuOtdelky);
-            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[0].AH_KorNaNarugnyuOtdelkyCenaAfter = AnalogueHouses[0].AH_KorNaVnutrenyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[1].AH_KorNaNarugnyuOtdelkyCenaAfter = AnalogueHouses[1].AH_KorNaVnutrenyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaNarugnyuOtdelky);
+            AnalogueHouses[2].AH_KorNaNarugnyuOtdelkyCenaAfter = AnalogueHouses[2].AH_KorNaVnutrenyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaNarugnyuOtdelky);
+            // скорр. цена улучшений
+            AnalogueHouses[0].AH_ScorrCenaUlucheniy = AnalogueHouses[0].AH_KorNaNarugnyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_Ploshad);
+            AnalogueHouses[1].AH_ScorrCenaUlucheniy = AnalogueHouses[1].AH_KorNaNarugnyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_Ploshad);
+            AnalogueHouses[2].AH_ScorrCenaUlucheniy = AnalogueHouses[2].AH_KorNaNarugnyuOtdelkyCenaAfter * ПолучитьКорректировку(AnalogueHouses[2].AH_Ploshad);
+            // скорр. цена объектов
+            AnalogueHouses[0].AH_ScorrCenaObjects = AnalogueHouses[0].AH_ScorrCenaUlucheniy + ПолучитьКорректировку(AnalogueHouses[0].AH_StoimostZemliAnaloga);
+            AnalogueHouses[1].AH_ScorrCenaObjects = AnalogueHouses[1].AH_ScorrCenaUlucheniy + ПолучитьКорректировку(AnalogueHouses[1].AH_StoimostZemliAnaloga);
+            AnalogueHouses[2].AH_ScorrCenaObjects = AnalogueHouses[2].AH_ScorrCenaUlucheniy + ПолучитьКорректировку(AnalogueHouses[2].AH_StoimostZemliAnaloga);
+            // скорр. цена объектов за 1 квм
+            AnalogueHouses[0].AH_ScorrCenaObjectsKvm = AnalogueHouses[0].AH_ScorrCenaObjects / ПолучитьКорректировку(AnalogueHouses[0].AH_Ploshad);
+            AnalogueHouses[1].AH_ScorrCenaObjectsKvm = AnalogueHouses[1].AH_ScorrCenaObjects / ПолучитьКорректировку(AnalogueHouses[1].AH_Ploshad);
+            AnalogueHouses[2].AH_ScorrCenaObjectsKvm = AnalogueHouses[2].AH_ScorrCenaObjects / ПолучитьКорректировку(AnalogueHouses[2].AH_Ploshad);
+            // процент весового коэффициента
+            Execute(i =>
+            {
+                float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueHouses[i].AH_ScorrCenaObjectsKvm) * AnalogueHouses[i].AH_KorTorgCenaAfter;
+                float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueHouses[i].AH_KorTorgCenaAfter - torgCenaAfterAfter);
+                AnalogueHouses[i].AH_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
+            });
+            
+
             // новая цена (атрибута в бд нет)
-            AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
-            AnalogueHouses[1].NewKwm = AnalogueHouses[1].AH_CenaProdazhiKvm;
-            AnalogueHouses[2].NewKwm = AnalogueHouses[2].AH_CenaProdazhiKvm;
+            //AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
+            //AnalogueHouses[1].NewKwm = AnalogueHouses[1].AH_CenaProdazhiKvm;
+            //AnalogueHouses[2].NewKwm = AnalogueHouses[2].AH_CenaProdazhiKvm;
             #endregion
             #region groundCalculation
             // цена кв.м
@@ -409,19 +470,46 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
 
             // корректировка на масштаб
-            const float nonSenseCoefficient = -0.127f;
+            
             ////если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
             ////если надо возвести в степень переменной
             //AnalogueGrounds[1].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: power, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
 
             // здесь будет 1
-            AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+            AnalogueGrounds[0].AG_KorNaMashtab = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
+            AnalogueGrounds[1].AG_KorNaMashtab = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad));
+            AnalogueGrounds[2].AG_KorNaMashtab = ВозвестиВСтепень(переменной: nonSenseCoefficient, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad));
+
+            // корректировка на масштаб цена после
+            AnalogueGrounds[0].AG_NaMashtabCenaAfter2 = AnalogueGrounds[0].AG_NaElectricCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaMashtab);
+            AnalogueGrounds[1].AG_NaMashtabCenaAfter2 = AnalogueGrounds[1].AG_NaElectricCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaMashtab);
+            AnalogueGrounds[2].AG_NaMashtabCenaAfter2 = AnalogueGrounds[2].AG_NaElectricCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaMashtab);
+            // весовой коэффициент в процентах
+            Execute(i =>
+            {
+                float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[i].AG_NaMashtabCenaAfter) * AnalogueGrounds[i].AG_TorgCenaAfter;
+                float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueGrounds[i].AG_TorgCenaAfter - torgCenaAfterAfter);
+                AnalogueGrounds[i].AG_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
+
+
+            });
+
+            // общий процент
+            AssessmentGround.OG_GeneralProcent = AnalogueGrounds[0].AG_VesovoyKoef + AnalogueGrounds[1].AG_VesovoyKoef + AnalogueGrounds[2].AG_VesovoyKoef;
 
             // весовой коэффициент
-            float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[0].AG_NaMashtabCenaAfter) * AnalogueGrounds[0].AG_TorgCenaAfter;
-            float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueGrounds[0].AG_TorgCenaAfter - torgCenaAfterAfter);
-            AnalogueGrounds[0].AG_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
+            AnalogueGrounds[0].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
+            AnalogueGrounds[1].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
+            AnalogueGrounds[2].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
+            // цена после весовых коэффициентов
+            AnalogueGrounds[0].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[0].AG_NaMashtabCenaAfter2);
+            AnalogueGrounds[1].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[1].AG_NaMashtabCenaAfter2);
+            AnalogueGrounds[2].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[2].AG_NaMashtabCenaAfter2);
+            // цена за квадратный метр земельного участка
+            AssessmentGround.OG_CenaKvm = AnalogueGrounds[0].AG_VesovoyKoef2CenaAfter + AnalogueGrounds[1].AG_VesovoyKoef2CenaAfter + AnalogueGrounds[2].AG_VesovoyKoef2CenaAfter;
+            // цена весь земельный участок
+            AssessmentGround.OG_CenaVse = AssessmentGround.OG_CenaKvm * AssessmentGround.OG_Ploshad;
 
             //если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2,
