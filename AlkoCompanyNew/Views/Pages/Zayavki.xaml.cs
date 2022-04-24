@@ -1,5 +1,6 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,6 +69,16 @@ namespace AlkoCompanyNew.Views.Pages
                 (sender as Button).DataContext as Zayavka);
             AddZayvkaForm.Content = currentWorkOrdinary;
             Reload();
+        }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Tips.SelectedItem != null)
+            {
+                IEnumerable<Zayavka> currentZayavki = AppData.Context.Zayavka.ToList();
+                currentZayavki = currentZayavki.Where(z => z.Z_Adress.Contains(Tips.SelectedItem.ToString()));
+                ListViewAddZayvka.ItemsSource = currentZayavki;
+            }
         }
     }
 }

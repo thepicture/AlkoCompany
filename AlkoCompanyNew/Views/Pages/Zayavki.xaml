@@ -44,6 +44,7 @@
                 </MenuItem.ContextMenu>
             </MenuItem>-->
             <ComboBox Grid.Column="2"
+                      SelectionChanged="OnSelectionChanged"
                       x:Name="Tips"
                       Width="200"
                       Height="35"

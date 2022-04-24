@@ -424,11 +424,11 @@ namespace AlkoCompanyNew.ViewModels
             // процент весового коэффициента
             Execute(i =>
             {
-                float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueHouses[i].AH_ScorrCenaObjectsKvm) * AnalogueHouses[i].AH_KorTorgCenaAfter;
-                float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueHouses[i].AH_KorTorgCenaAfter - torgCenaAfterAfter);
-                AnalogueHouses[i].AH_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
+                float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueHouses[i].AH_ScorrCenaObjectsKvm - AnalogueHouses[i].AH_KorTorgCenaAfter);
+                float? dividedTorgCena = absoluteTorgCenaDifference / AnalogueHouses[i].AH_KorTorgCenaAfter;
+                AnalogueHouses[i].AH_VesovoyKoef = 1 - dividedTorgCena;
             });
-            
+
 
             // новая цена (атрибута в бд нет)
             //AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
@@ -470,7 +470,7 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
 
             // корректировка на масштаб
-            
+
             ////если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
             ////если надо возвести в степень переменной
@@ -491,8 +491,6 @@ namespace AlkoCompanyNew.ViewModels
                 float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[i].AG_NaMashtabCenaAfter) * AnalogueGrounds[i].AG_TorgCenaAfter;
                 float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueGrounds[i].AG_TorgCenaAfter - torgCenaAfterAfter);
                 AnalogueGrounds[i].AG_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
-
-
             });
 
             // общий процент

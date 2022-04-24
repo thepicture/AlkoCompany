@@ -1445,7 +1445,7 @@
                                                 <TextBox Text="{Binding AG_KorNaMashtab, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter2, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
