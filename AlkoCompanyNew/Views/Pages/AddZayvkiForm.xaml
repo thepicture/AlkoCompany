@@ -148,22 +148,6 @@
                                      VerticalAlignment="Top"
                                      FontFamily="Dubai Light" />
 
-                             
-                            <ComboBox Grid.Column="1"
-                                     Height="60"
-                                     DisplayMemberPath="S_Fio"
-                                     SelectedIndex="0"
-                                     Width="350"
-                                     HorizontalAlignment="Left"
-                                     Name="ComboBoxSotrudnick"
-                                     materialDesign:HintAssist.Hint="Сотрудник"
-                                     materialDesign:HintAssist.IsFloating="True"
-                                     FontSize="20"
-                                     VerticalAlignment="Bottom"
-                                     FontFamily="Dubai Light" 
-                                     Visibility="Hidden"/>
-
-                            <!--<TextBox Text="{Binding Path=Z_DataSostavlenia, Source={x:Static sys:DateTime.Now}, Mode=OneWay,  StringFormat='yyyy-MM-dd'}" Grid.Column="1" Height="60" Width="350" HorizontalAlignment="Left" Name="TextBoxData1" materialDesign:HintAssist.Hint="Дата"   materialDesign:HintAssist.IsFloating="True" FontSize="20" VerticalAlignment="Bottom" FontFamily="Dubai Light"/>-->
                             <TextBox Text="{Binding Zayavka.Z_DataSostavlenia}"
                                      Grid.Column="1"
                                      Height="60"

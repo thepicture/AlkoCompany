@@ -1,14 +1,13 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
 using AlkoCompanyNew.Models.Enums;
+using AlkoCompanyNew.Views.Windows;
 using Microsoft.Win32;
 using System;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 
@@ -21,21 +20,15 @@ namespace AlkoCompanyNew.Views.Pages
     {
         public Zayavka Zayavka { get; set; } = new Zayavka();
         public Klient CurrentClient { get; set; } = new Klient();
-        public ObservableCollection<Sotrudnick> Sotrudnicks { get; set; }
 
-        public AddZayvkiForm(Zayavka setterzayvka)
+        public AddZayvkiForm(Zayavka setterRequest)
         {
             InitializeComponent();
             DataContext = this;
-            ComboBoxSotrudnick.ItemsSource = new ObservableCollection<Sotrudnick>(
-                AppData.Context.Sotrudnick.ToList());
-            if (setterzayvka != null)
+            if (setterRequest != null)
             {
-                Zayavka = setterzayvka;
-                ComboBoxSotrudnick.SelectedItem = ComboBoxSotrudnick.Items
-                    .Cast<Sotrudnick>()
-                    .First(s => s.S_ID == Zayavka.S_ID);
-                CurrentClient = setterzayvka.Klient;
+                Zayavka = setterRequest;
+                CurrentClient = setterRequest.Klient;
             }
 
         }
@@ -52,7 +45,7 @@ namespace AlkoCompanyNew.Views.Pages
                 Zayavka.Z_PhotoPreview = File.ReadAllBytes(file.FileName);
             }
         }
-       
+
 
         private void TextBoxData1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -75,18 +68,13 @@ namespace AlkoCompanyNew.Views.Pages
                 MessageBox.Show("Введите ФИО клиента");
                 return;
             }
-            else if (ComboBoxSotrudnick.SelectedItem == null)
-            {
-                MessageBox.Show("Укажите сотрудника");
-                return;
-            }
             else if (string.IsNullOrEmpty(tel))
             {
                 MessageBox.Show("Введите номер телефона клиента");
                 return;
             }
 
-            Zayavka.S_ID = (ComboBoxSotrudnick.SelectedItem as Sotrudnick).S_ID;
+            Zayavka.S_ID = MainWindow.PublicEmployee.S_ID;
             Zayavka.Z_StatusId = ZayavkaStatuses.V_Obrabotke;
 
             if (Zayavka.Z_ID == 0)
@@ -149,7 +137,5 @@ namespace AlkoCompanyNew.Views.Pages
         {
             NavigationService.Navigate(null);
         }
-
-        
     }
 }

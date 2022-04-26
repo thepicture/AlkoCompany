@@ -12,10 +12,8 @@ namespace AlkoCompanyNew.Views.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Sotrudnick pubsotr;
+        public static Sotrudnick PublicEmployee { get; set; }
         public static string fio;
- 
-
 
         public MainWindow()
         {
@@ -77,9 +75,9 @@ namespace AlkoCompanyNew.Views.Windows
             }
             else
             {
-                pubsotr = sotrudnick;
+                PublicEmployee = sotrudnick;
                 fio = $"{sotrudnick.S_Fio}";
-                
+
                 MessageBox.Show("Пользователь авторизован");
                 BaseWindowSotrudnick Form = new BaseWindowSotrudnick();
                 Form.Show();
