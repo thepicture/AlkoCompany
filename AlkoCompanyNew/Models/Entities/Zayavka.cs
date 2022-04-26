@@ -26,13 +26,13 @@ public partial class Zayavka
 
     public virtual byte[] Z_PhotoPreview { get; set; }
 
-    public virtual string Z_TelNumber { get; set; }
-
     public virtual string Z_Primichania { get; set; }
 
     public virtual string Z_DataSostavlenia { get; set; }
 
     public Nullable<int> S_ID { get; set; }
+
+    public virtual string S_Sotrudnick { get; set; }
 
     public int K_ID { get; set; }
 

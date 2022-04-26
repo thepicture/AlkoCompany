@@ -21,7 +21,7 @@ namespace AlkoCompanyNew
         /// обнаруживать и удалять объекты оценки и аналоги, 
         /// не связанные с заявками.
         /// </summary>
-        public static bool IsRemoveRequestOrphans = false;
+        public static bool IsRemoveRequestOrphans = true;
         public static WorkOrdinary WorkOrdinary { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {

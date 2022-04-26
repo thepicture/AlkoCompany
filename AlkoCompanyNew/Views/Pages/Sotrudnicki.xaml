@@ -20,7 +20,7 @@
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
                                               Storyboard.TargetName="Add">
                 <SplineThicknessKeyFrame KeyTime="0:0:0.3"
-                                         Value="0,0,600,0"
+                                         Value="0,0,500,0"
                                          KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
@@ -33,7 +33,7 @@
                 <EasingThicknessKeyFrame KeyTime="0:0:0.4"
                                          Value="0" />
                 <SplineThicknessKeyFrame KeyTime="0:0:0.7"
-                                         Value="0,0,350,0"
+                                         Value="0,0,280,0"
                                          KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
@@ -46,7 +46,7 @@
                 <EasingThicknessKeyFrame KeyTime="0:0:0.8"
                                          Value="0" />
                 <SplineThicknessKeyFrame KeyTime="0:0:1.1"
-                                         Value="0,0,150,0"
+                                         Value="0,0,100,0"
                                          KeySpline="0.49,0,0,1" />
             </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
@@ -62,7 +62,7 @@
                                               Storyboard.TargetName="Add">
                 <SplineThicknessKeyFrame KeySpline="0.49,0,1,1"
                                          KeyTime="0"
-                                         Value="0,0,600,0" />
+                                         Value="0,0,500,0" />
                 <SplineThicknessKeyFrame KeyTime="0:0:0.3"
                                          Value="0"
                                          KeySpline="0,0,0,1" />
@@ -77,7 +77,7 @@
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
                                               Storyboard.TargetName="Edit">
                 <EasingThicknessKeyFrame KeyTime="0:0:0.4"
-                                         Value="0,0,350,0" />
+                                         Value="0,0,280,0" />
                 <SplineThicknessKeyFrame KeyTime="0:0:0.7"
                                          Value="0"
                                          KeySpline="0.49,0,0,1" />
@@ -92,7 +92,7 @@
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
                                               Storyboard.TargetName="Del">
                 <EasingThicknessKeyFrame KeyTime="0:0:0.8"
-                                         Value="0,0,150,0" />
+                                         Value="0,0,100,0" />
                 <SplineThicknessKeyFrame KeyTime="0:0:1.1"
                                          Value="0"
                                          KeySpline="0.49,0,0,1" />
@@ -112,24 +112,43 @@
     </Page.Triggers>
 
     <Grid Background="#FFEAEAEA">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0"
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0"
               Background="#FFEAEAEA">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="1"
+                    Height="Auto"
+                    Width="Auto"
+                    CornerRadius="30"
+                    Background="White"
+                    Margin="0,15,0,0">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
 
 
 
-            <Button HorizontalAlignment="Right"
+                    <Button HorizontalAlignment="Right"
                     Name="OpenMenu"
                     Click="OpenMenu_Click"
                     Grid.Column="1"
@@ -137,13 +156,13 @@
                     Background="#00000000"
                     BorderBrush="#00000000"
                     Foreground="#FF4F4F4F">
-                <materialDesign:PackIcon Kind="DotsHorizontal"
+                        <materialDesign:PackIcon Kind="DotsHorizontal"
                                          Width="60"
                                          Height="60"
                                          VerticalAlignment="Center"
                                          Foreground="#FF939393" />
-            </Button>
-            <Button HorizontalAlignment="Right"
+                    </Button>
+                    <Button HorizontalAlignment="Right"
                     Name="CloseMenu"
                     Click="CloseMenu_Click"
                     Grid.Column="1"
@@ -152,17 +171,17 @@
                     BorderBrush="#00000000"
                     Foreground="#FF4F4F4F"
                     Visibility="Hidden">
-                <materialDesign:PackIcon Kind="DotsHorizontal"
+                        <materialDesign:PackIcon Kind="DotsHorizontal"
                                          Width="60"
                                          Height="60"
                                          VerticalAlignment="Center"
                                          Foreground="#FF939393" />
-            </Button>
+                    </Button>
 
-            <Grid x:Name="grid"
+                    <Grid x:Name="grid"
                   Grid.Column="1"
                   Width="Auto">
-                <Button Grid.Column="1"
+                        <Button Grid.Column="1"
                         x:Name="Add"
                         Height="40"
                         Width="Auto"
@@ -172,24 +191,23 @@
                         HorizontalAlignment="Right"
                         Visibility="Hidden"
                         Click="Add_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Plus"
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus"
                                                  Width="Auto"
-                                                 Height="35"
+                                                 Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                        <Button x:Name="textBlockAdd"
-                                Content="Добавить"
+                                <TextBlock x:Name="textBlockAdd"
+                                Text="Добавить"
                                 Background="Transparent"
-                                BorderThickness="0"
                                 Foreground="#FF252525"
-                                FontSize="20"
+                                FontSize="18"
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
-                                Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
-                <Button Grid.Column="1"
+                                Margin="8,0,0,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1"
                         x:Name="Edit"
                         Height="40"
                         Width="Auto"
@@ -197,26 +215,26 @@
                         BorderBrush="{x:Null}"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        Visibility="Hidden">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Edit"
-                                                 Width="35"
-                                                 Height="35"
+                        Visibility="Hidden"
+                        Click="OnEditClick">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Edit"
+                                                 Width="Auto"
+                                                 Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                        <Button Click="OnEditClick"
+                                <TextBlock 
                                 x:Name="textBlockEdit"
-                                Content="Редактировать"
+                                Text="Редактировать"
                                 Background="Transparent"
-                                BorderThickness="0"
                                 Foreground="#FF252525"
-                                FontSize="20"
+                                FontSize="18"
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
-                                Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
-                <Button Grid.Column="1"
+                                Margin="8,0,0,0" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="1"
                         x:Name="Del"
                         Height="40"
                         Width="Auto"
@@ -224,43 +242,44 @@
                         BorderBrush="{x:Null}"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        Visibility="Hidden">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Delete"
-                                                 Width="35"
-                                                 Height="35"
+                        Visibility="Hidden"
+                        Click="OnDeleteClick">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Delete"
+                                                 Width="Auto"
+                                                 Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                        <Button Click="OnDeleteClick"
+                                <TextBlock 
                                 x:Name="textBlockDel"
-                                Content="Удалить"
+                                Text="Удалить"
                                 Background="Transparent"
-                                BorderBrush="Transparent"
                                 Foreground="#FF252525"
-                                FontSize="20"
+                                FontSize="18"
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
-                                Margin="10,0,0,0" />
-                    </StackPanel>
-                </Button>
-            </Grid>
+                                Margin="8,0,0,0" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
 
 
 
 
-            <ComboBox Grid.Column="2"
+                    <ComboBox Grid.Column="2"
                       x:Name="Tips"
                       Width="200"
                       Height="35"
                       HorizontalAlignment="Right"
                       VerticalAlignment="Bottom"
                       Margin="0,0,0,5">
-                <TextBlock>Тюмень</TextBlock>
-                <TextBlock>Екатеринбург</TextBlock>
-                <TextBlock>Сургут</TextBlock>
-                <TextBlock>Нижневартовск</TextBlock>
-            </ComboBox>
-            <TextBox x:Name="TextBoxSearch"
+                        <TextBlock>Тюмень</TextBlock>
+                        <TextBlock>Екатеринбург</TextBlock>
+                        <TextBlock>Сургут</TextBlock>
+                        <TextBlock>Нижневартовск</TextBlock>
+                    </ComboBox>
+                    <TextBox x:Name="TextBoxSearch"
+                             TextChanged="TextBoxSearch_TextChanged"
                      Grid.Column="3"
                      materialDesign:HintAssist.Hint="Поиск"
                      materialDesign:HintAssist.IsFloating="True"
@@ -275,8 +294,10 @@
                      Foreground="Black"
                      FontFamily="Dubai Light"
                      Margin="0,0,30,0" />
-        </Grid>
-
+                    </Grid>
+                </Border>
+            </Grid>
+        
 
         <ListView x:Name="ListViewAddSotr"
                   Grid.Row="1"
@@ -316,9 +337,13 @@
                                        FontSize="20"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center" />
-                            <Border Grid.Row="1"
+
+
+                                 
+
+                                <!--<Border Grid.Row="1"
                                     CornerRadius="15">
-                                <Image>
+                                    <Image>
                                     <Image.Source>
                                         <Binding Path="S_Photo">
                                             <Binding.TargetNullValue>
@@ -332,8 +357,53 @@
                                         </Binding>
                                     </Image.Source>
                                 </Image>
-                            </Border>
-                            <TextBlock Grid.Row="2"
+                            </Border>-->
+
+
+                                <!--<Border CornerRadius="15"
+                                        Margin="20,0,0,20" Grid.Row="1">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding S_Photo}" />
+                                    </Border.Background>
+                                    <Image Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <Binding>
+                                                <Binding.TargetNullValue>
+                                                    <DrawingImage>
+                                                        <DrawingImage.Drawing>
+                                                            <GeometryDrawing Geometry="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                                                         Brush="Gray" />
+                                                        </DrawingImage.Drawing>
+                                                    </DrawingImage>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
+                                </Border>-->
+
+
+
+                                <Border Grid.Row="1"
+                                    CornerRadius="15" Width="300">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill">
+                                            <ImageBrush.ImageSource>
+                                                <Binding Path="S_Photo">
+                                                    <Binding.TargetNullValue>
+                                                        <DrawingImage>
+                                                            <DrawingImage.Drawing>
+                                                                <GeometryDrawing Geometry="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                                                         Brush="Gray" />
+                                                            </DrawingImage.Drawing>
+                                                        </DrawingImage>
+                                                    </Binding.TargetNullValue>
+                                                </Binding>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Border.Background>
+                                </Border>
+                            
+                                <TextBlock Grid.Row="2"
                                        Text="{Binding S_Fio}"
                                        FontSize="20"
                                        VerticalAlignment="Center"
@@ -366,6 +436,6 @@
                     NavigationUIVisibility="Hidden" />
         </Grid>
 
-
+        </Grid>
     </Grid>
 </Page>

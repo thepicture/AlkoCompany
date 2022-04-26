@@ -129,6 +129,7 @@
                                       DisplayMemberPath="Title"
                                       SelectedItem="{Binding Sotrudnick.SotrudnickRole}" />
                         </Grid>
+                        
                         <Grid Grid.Column="1"
                               MouseLeftButtonDown="Photo_MouseLeftButtonDown">
                             <Image>

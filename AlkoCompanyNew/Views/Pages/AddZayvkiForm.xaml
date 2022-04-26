@@ -79,6 +79,7 @@
                                      FontFamily="Dubai Light" />
                             <TextBox Grid.Row="1"
                                      Text="{Binding CurrentClient.K_Fio}"
+                                     Name="TextBoxFIO"
                                      Height="60"
                                      Width="350"
                                      HorizontalAlignment="Left"
@@ -88,7 +89,7 @@
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
                             <TextBox Grid.Row="2"
-                                     Text="{Binding Zayavka.Z_TelNumber}"
+                                     Text="{Binding CurrentClient.K_TelNumber}"
                                      Name="TextBoxTelNumber"
                                      Height="60"
                                      Width="350"
@@ -99,11 +100,29 @@
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
                         </Grid>
-                        <Image Grid.Column="1"
+                   
+                        <Grid Grid.Column="1"
+                              MouseLeftButtonDown ="Grid_MouseLeftButtonDown">
+                            <Image>
+                                <Image.Source>
+                                    <Binding Path="Zayavka.Z_PhotoPreview">
+                                        <Binding.TargetNullValue>
+                                            <DrawingImage>
+                                                <DrawingImage.Drawing>
+                                                    <GeometryDrawing Geometry="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                                                                     Brush="Gray" />
+                                                </DrawingImage.Drawing>
+                                            </DrawingImage>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+                        <!--<Image Grid.Column="1"
                                x:Name="Photo"
                                Source="{Binding Zayavka.Z_PhotoPreview}"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center" />
+                               HorizontalAlignment="Center" />-->
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -129,29 +148,7 @@
                                      VerticalAlignment="Top"
                                      FontFamily="Dubai Light" />
 
-                            <Button Grid.Column="1"
-                                    x:Name="AddOnePhoto"
-                                    Height="40"
-                                    Background="{x:Null}"
-                                    BorderBrush="{x:Null}"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Center"
-                                    Click="AddOnePhoto_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Plus"
-                                                             Width="35"
-                                                             Height="35"
-                                                             VerticalAlignment="Center"
-                                                             Foreground="#FFCB0000" />
-                                    <TextBlock x:Name="textBlockAddOnePhoto"
-                                               Text="Добавить фото"
-                                               Foreground="#FF252525"
-                                               FontSize="20"
-                                               FontFamily="Dubai Light"
-                                               VerticalAlignment="Center"
-                                               Margin="10,0,0,0" />
-                                </StackPanel>
-                            </Button>
+                             
                             <ComboBox Grid.Column="1"
                                      Height="60"
                                      DisplayMemberPath="S_Fio"

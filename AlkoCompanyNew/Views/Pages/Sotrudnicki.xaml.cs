@@ -82,5 +82,14 @@ namespace AlkoCompanyNew.Views.Pages
                 MessageBox.Show("Выберите сотрудника в списке для удаления");
             }
         }
+
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var poisk = AppData.Context.Sotrudnick.ToList();
+            poisk = poisk.Where(d => d.S_RoleId.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
+            || d.S_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
+            || d.S_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            ListViewAddSotr.ItemsSource = poisk;
+        }
     }
 }

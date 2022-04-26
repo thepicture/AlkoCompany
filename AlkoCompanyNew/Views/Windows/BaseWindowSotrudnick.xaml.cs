@@ -14,6 +14,7 @@ namespace AlkoCompanyNew.Views.Windows
         {
             InitializeComponent();
             Hi.Text += $", {MainWindow.fio}";
+           
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }
@@ -45,6 +46,9 @@ namespace AlkoCompanyNew.Views.Windows
             _ = Frame.Navigate(new Sotrudnicki(null));
         }
 
-       
+        private void ElementZayvkiProsmotr_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _ = Frame.Navigate(new Prosmotr(null));
+        }
     }
 }

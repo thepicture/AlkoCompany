@@ -30,6 +30,13 @@ namespace AlkoCompanyNew.Models.Entities
         public float? AH_ScorrCenaObjects { get; set; }
         public float? AH_ScorrCenaObjectsKvm { get; set; }
         public float? AH_VesovoyKoef { get; set; }
+        public float? AH_VesovoyKoef2 { get; set; }
+        public float? AH_VesovoyKoef2CenaAfter { get; set; }
+
+
+
+
+
 
     }
 }

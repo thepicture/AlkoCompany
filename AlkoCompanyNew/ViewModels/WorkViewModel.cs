@@ -299,9 +299,9 @@ namespace AlkoCompanyNew.ViewModels
             // 0.8 станет 0.8
 
             // цена кв.м
-            AnalogueHouses[0].AH_StartKwm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
-            AnalogueHouses[1].AH_StartKwm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
-            AnalogueHouses[2].AH_StartKwm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
+            AnalogueHouses[0].AH_CenaProdazhiKvm = AnalogueHouses[0].AH_CenaProdazhiVse / AnalogueHouses[0].AH_Ploshad;
+            AnalogueHouses[1].AH_CenaProdazhiKvm = AnalogueHouses[1].AH_CenaProdazhiVse / AnalogueHouses[1].AH_Ploshad;
+            AnalogueHouses[2].AH_CenaProdazhiKvm = AnalogueHouses[2].AH_CenaProdazhiVse / AnalogueHouses[2].AH_Ploshad;
             //
             // корректировка на торг (в одну строчку)
             // может использоваться, если формула остаётся неизменной и изменяются только индексы от 0 до 2
@@ -314,9 +314,9 @@ namespace AlkoCompanyNew.ViewModels
             //Execute(i => AnalogueHouses[i].AH_CenaProdazhiKvm *= ПолучитьКорректировку(AnalogueHouses[i].AH_KorTorg));
 
             // корректировка на торг (как было)
-            AnalogueHouses[0].AH_KorTorgCenaAfter = AnalogueHouses[0].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorTorg);
-            AnalogueHouses[1].AH_KorTorgCenaAfter = AnalogueHouses[1].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorTorg);
-            AnalogueHouses[2].AH_KorTorgCenaAfter = AnalogueHouses[2].AH_StartKwm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorTorg);
+            AnalogueHouses[0].AH_KorTorgCenaAfter = AnalogueHouses[0].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[0].AH_KorTorg);
+            AnalogueHouses[1].AH_KorTorgCenaAfter = AnalogueHouses[1].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[1].AH_KorTorg);
+            AnalogueHouses[2].AH_KorTorgCenaAfter = AnalogueHouses[2].AH_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueHouses[2].AH_KorTorg);
             // корректировка на дату продажи
             AnalogueHouses[0].AH_KorNaDatuProdazhiCenaAfter = AnalogueHouses[0].AH_KorTorgCenaAfter * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaDatuProdazhi);
             AnalogueHouses[1].AH_KorNaDatuProdazhiCenaAfter = AnalogueHouses[1].AH_KorTorgCenaAfter * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaDatuProdazhi);
@@ -428,7 +428,21 @@ namespace AlkoCompanyNew.ViewModels
                 float? dividedTorgCena = absoluteTorgCenaDifference / AnalogueHouses[i].AH_KorTorgCenaAfter;
                 AnalogueHouses[i].AH_VesovoyKoef = 1 - dividedTorgCena;
             });
-
+            // общий процент
+            AssessmentObject.OH_GeneralProcent = AnalogueHouses[0].AH_VesovoyKoef + AnalogueHouses[1].AH_VesovoyKoef + AnalogueHouses[2].AH_VesovoyKoef;
+            // весовой коэффициент
+            AnalogueHouses[0].AH_VesovoyKoef2 = AnalogueHouses[0].AH_VesovoyKoef / ПолучитьКорректировку(AssessmentObject.OH_GeneralProcent);
+            AnalogueHouses[1].AH_VesovoyKoef2 = AnalogueHouses[1].AH_VesovoyKoef / ПолучитьКорректировку(AssessmentObject.OH_GeneralProcent);
+            AnalogueHouses[2].AH_VesovoyKoef2 = AnalogueHouses[2].AH_VesovoyKoef / ПолучитьКорректировку(AssessmentObject.OH_GeneralProcent);
+            // цена после весового коэффициента
+            AnalogueHouses[0].AH_VesovoyKoef2CenaAfter = AnalogueHouses[0].AH_VesovoyKoef2 * ПолучитьКорректировку(AnalogueHouses[0].AH_KorNaNarugnyuOtdelkyCenaAfter);
+            AnalogueHouses[1].AH_VesovoyKoef2CenaAfter = AnalogueHouses[1].AH_VesovoyKoef2 * ПолучитьКорректировку(AnalogueHouses[1].AH_KorNaNarugnyuOtdelkyCenaAfter);
+            AnalogueHouses[2].AH_VesovoyKoef2CenaAfter = AnalogueHouses[2].AH_VesovoyKoef2 * ПолучитьКорректировку(AnalogueHouses[2].AH_KorNaNarugnyuOtdelkyCenaAfter);
+            // цена за квадратный метр дома 
+            AssessmentObject.OH_CenaKvm = AnalogueHouses[0].AH_VesovoyKoef2CenaAfter + AnalogueHouses[1].AH_VesovoyKoef2CenaAfter + AnalogueHouses[2].AH_VesovoyKoef2CenaAfter;
+            // цена дома 
+            AssessmentObject.OH_CenaVse = AssessmentObject.OH_CenaKvm * AssessmentObject.OH_Ploshad;
+            
 
             // новая цена (атрибута в бд нет)
             //AnalogueHouses[0].NewKwm = AnalogueHouses[0].AH_CenaProdazhiKvm;
@@ -437,13 +451,13 @@ namespace AlkoCompanyNew.ViewModels
             #endregion
             #region groundCalculation
             // цена кв.м
-            AnalogueGrounds[0].AG_StartKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad);
-            AnalogueGrounds[1].AG_StartKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad);
-            AnalogueGrounds[2].AG_StartKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad);
+            AnalogueGrounds[0].AG_CenaProdazhiKvm = AnalogueGrounds[0].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad);
+            AnalogueGrounds[1].AG_CenaProdazhiKvm = AnalogueGrounds[1].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[1].AG_Ploshad);
+            AnalogueGrounds[2].AG_CenaProdazhiKvm = AnalogueGrounds[2].AG_CenaProdazhiVse / ПолучитьКорректировку(AnalogueGrounds[2].AG_Ploshad);
             // Поправка на торг
-            AnalogueGrounds[0].AG_TorgCenaAfter = AnalogueGrounds[0].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorTorg);
-            AnalogueGrounds[1].AG_TorgCenaAfter = AnalogueGrounds[1].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorTorg);
-            AnalogueGrounds[2].AG_TorgCenaAfter = AnalogueGrounds[2].AG_StartKvm * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorTorg);
+            AnalogueGrounds[0].AG_TorgCenaAfter = AnalogueGrounds[0].AG_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorTorg);
+            AnalogueGrounds[1].AG_TorgCenaAfter = AnalogueGrounds[1].AG_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorTorg);
+            AnalogueGrounds[2].AG_TorgCenaAfter = AnalogueGrounds[2].AG_CenaProdazhiKvm * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorTorg);
             // корректировка на права
             AnalogueGrounds[0].AG_NaPravaCenaAfter = AnalogueGrounds[0].AG_TorgCenaAfter * ПолучитьКорректировку(AnalogueGrounds[0].AG_KorNaPrava);
             AnalogueGrounds[1].AG_NaPravaCenaAfter = AnalogueGrounds[1].AG_TorgCenaAfter * ПолучитьКорректировку(AnalogueGrounds[1].AG_KorNaPrava);
@@ -470,7 +484,7 @@ namespace AlkoCompanyNew.ViewModels
             AnalogueGrounds[2].AG_NaElectricCenaAfter = AnalogueGrounds[2].AG_NaVodaCenaAfter * ПолучитьКорректировку(AnalogueGrounds[2].AG_KorNaElecric);
 
             // корректировка на масштаб
-
+            
             ////если надо возвести в степень числа
             //AnalogueGrounds[0].AG_NaMashtabCenaAfter = ВозвестиВ(степеньЧисла: 2, аргумент: AssessmentGround.OG_Ploshad / ПолучитьКорректировку(AnalogueGrounds[0].AG_Ploshad));
             ////если надо возвести в степень переменной
@@ -488,9 +502,11 @@ namespace AlkoCompanyNew.ViewModels
             // весовой коэффициент в процентах
             Execute(i =>
             {
-                float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[i].AG_NaMashtabCenaAfter) * AnalogueGrounds[i].AG_TorgCenaAfter;
+                float? torgCenaAfterAfter = ПолучитьКорректировку(AnalogueGrounds[i].AG_KorNaMashtab) * AnalogueGrounds[i].AG_TorgCenaAfter;
                 float? absoluteTorgCenaDifference = ПолучитьАбсолютноеЗначение(AnalogueGrounds[i].AG_TorgCenaAfter - torgCenaAfterAfter);
                 AnalogueGrounds[i].AG_VesovoyKoef = 1 - (absoluteTorgCenaDifference / torgCenaAfterAfter);
+
+
             });
 
             // общий процент
@@ -498,12 +514,12 @@ namespace AlkoCompanyNew.ViewModels
 
             // весовой коэффициент
             AnalogueGrounds[0].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
-            AnalogueGrounds[1].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
-            AnalogueGrounds[2].AG_VesovoyKoef2 = AnalogueGrounds[0].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
+            AnalogueGrounds[1].AG_VesovoyKoef2 = AnalogueGrounds[1].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
+            AnalogueGrounds[2].AG_VesovoyKoef2 = AnalogueGrounds[2].AG_VesovoyKoef / ПолучитьКорректировку(AssessmentGround.OG_GeneralProcent);
             // цена после весовых коэффициентов
             AnalogueGrounds[0].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[0].AG_NaMashtabCenaAfter2);
-            AnalogueGrounds[1].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[1].AG_NaMashtabCenaAfter2);
-            AnalogueGrounds[2].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[0].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[2].AG_NaMashtabCenaAfter2);
+            AnalogueGrounds[1].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[1].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[1].AG_NaMashtabCenaAfter2);
+            AnalogueGrounds[2].AG_VesovoyKoef2CenaAfter = AnalogueGrounds[2].AG_VesovoyKoef2 * ПолучитьКорректировку(AnalogueGrounds[2].AG_NaMashtabCenaAfter2);
             // цена за квадратный метр земельного участка
             AssessmentGround.OG_CenaKvm = AnalogueGrounds[0].AG_VesovoyKoef2CenaAfter + AnalogueGrounds[1].AG_VesovoyKoef2CenaAfter + AnalogueGrounds[2].AG_VesovoyKoef2CenaAfter;
             // цена весь земельный участок
@@ -536,8 +552,19 @@ namespace AlkoCompanyNew.ViewModels
             //AnalogueGrounds[0].Torg = AnalogueGrounds[0].AG_CenaProdazhiKvm * (AnalogueGrounds[0].AG_KorNaDatuProdazhi == 0 ? 1 : AnalogueGrounds[0].AG_KorNaDatuProdazhi); 
             #endregion
             #region allCalculation
-            // Сложить суммы земельного участка и дома
-            AssessmentAll.OA_CenaAll = AssessmentGround.OG_C_TotalPrice + AssessmentGround.OG_C_TotalPrice;
+            // стоимость объекта оценки все
+            AssessmentAll.OA_CenaAll = AssessmentGround.OG_CenaVse + AssessmentObject.OH_CenaVse;
+            // стоимость за квадратный метр
+            AssessmentAll.OA_CenaAllKvm = AssessmentAll.OA_CenaAll / AssessmentObject.OH_Ploshad;
+            // 
+            AssessmentAll.OA_PloshadZemli = AssessmentGround.OG_Ploshad;
+            AssessmentAll.OA_PloshadDom = AssessmentObject.OH_Ploshad;
+            AssessmentAll.OA_CenaDomVse = AssessmentObject.OH_CenaVse;
+            AssessmentAll.OA_CenaDomKvm = AssessmentObject.OH_CenaKvm;
+            AssessmentAll.OA_CenaZemliKvm = AssessmentGround.OG_CenaKvm;
+            AssessmentAll.OA_CenaZemliVse = AssessmentGround.OG_CenaVse;
+            AssessmentAll.OA_Adress = AssessmentObject.OH_Adress;
+            AssessmentAll.OA_Photo = AssessmentObject.OH_Photo;
             #endregion
 
             UpdateHousePercentOfCompletion();

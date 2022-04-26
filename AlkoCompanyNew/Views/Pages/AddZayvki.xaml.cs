@@ -39,7 +39,7 @@ namespace AlkoCompanyNew.Views.Pages
                 {
                     p.Reload();
                 });
-            ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList();
+            ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList().OrderBy(z => z.Z_StatusId);
         }
         private void AddZayvki_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +57,7 @@ namespace AlkoCompanyNew.Views.Pages
                     {
                         p.Reload();
                     });
-                ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList();
+                ListViewAddZayvka.ItemsSource = AppData.Context.Zayavka.ToList().OrderBy(z => z.Z_StatusId);
             }
         }
 
@@ -168,12 +168,10 @@ namespace AlkoCompanyNew.Views.Pages
             List<Zayavka> poisk = AppData.Context.Zayavka.ToList();
             poisk = poisk.Where(d =>
             {
-                return d.Z_Adress.ToLower().Contains(TextBoxSearch.Text.ToLower())
-                            || d.Klient.K_Fio.ToLower()
-                            .Contains(TextBoxSearch.Text.ToLower())
-                            || d.Z_TelNumber.ToLower().Contains(TextBoxSearch.Text.ToLower());
-            }).ToList();
-            ListViewAddZayvka.ItemsSource = poisk;
+                return d.Z_Adress.ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Klient.K_Fio.ToLower().Contains(TextBoxSearch.Text.ToLower()) || d. Klient.K_TelNumber.ToLower().Contains(TextBoxSearch.Text.ToLower());}).ToList();
+            ListViewAddZayvka.ItemsSource = poisk.OrderBy(z => z.Z_StatusId);
         }
+
+         
     }
 }

@@ -14,6 +14,8 @@ namespace AlkoCompanyNew.Views.Windows
     {
         public static Sotrudnick pubsotr;
         public static string fio;
+ 
+
 
         public MainWindow()
         {
@@ -77,6 +79,7 @@ namespace AlkoCompanyNew.Views.Windows
             {
                 pubsotr = sotrudnick;
                 fio = $"{sotrudnick.S_Fio}";
+                
                 MessageBox.Show("Пользователь авторизован");
                 BaseWindowSotrudnick Form = new BaseWindowSotrudnick();
                 Form.Show();

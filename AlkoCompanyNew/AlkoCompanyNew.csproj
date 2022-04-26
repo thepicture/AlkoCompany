@@ -131,6 +131,7 @@
     <Compile Include="Models\Partial\PartialObjectAssessmentGround.cs" />
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
     <Compile Include="Models\Partial\PartialSotrudnick.cs" />
+    <Compile Include="Models\Partial\PartialZayavka.cs" />
     <Compile Include="Services\LogicalChildrenFinder.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="Views\Pages\AddZayvkiForm.xaml.cs">
       <DependentUpon>AddZayvkiForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Prosmotr.xaml.cs">
+      <DependentUpon>Prosmotr.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Sotrudnicki.xaml.cs">
       <DependentUpon>Sotrudnicki.xaml</DependentUpon>
@@ -168,6 +172,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Pages\AddZayvkiForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Prosmotr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

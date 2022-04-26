@@ -105,6 +105,8 @@
           <Property Name="OA_CenaDomKvm" Type="real" />
           <Property Name="OA_CenaDomVse" Type="real" />
           <Property Name="OA_CenaAll" Type="real" />
+          <Property Name="OA_CenaAllKvm" Type="real" />
+          <Property Name="OA_Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ObjectAssessmentGround">
           <Key>
@@ -174,10 +176,10 @@
           <Property Name="Z_Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_Hotelka" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_PhotoPreview" Type="varbinary(max)" Nullable="false" />
-          <Property Name="Z_TelNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Z_Primichania" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Z_DataSostavlenia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="S_ID" Type="int" />
+          <Property Name="S_Sotrudnick" Type="nvarchar" MaxLength="100" />
           <Property Name="K_ID" Type="int" Nullable="false" />
           <Property Name="OAG_ID" Type="int" />
           <Property Name="OAH_ID" Type="int" />
@@ -535,6 +537,8 @@
           <Property Name="OA_CenaDomKvm" Type="Single" />
           <Property Name="OA_CenaDomVse" Type="Single" />
           <Property Name="OA_CenaAll" Type="Single" />
+          <Property Name="OA_CenaAllKvm" Type="Single" />
+          <Property Name="OA_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Zayavka" Relationship="AlkoCompanyModel.FK_Zayavka_ObjectAssessmentAll" FromRole="ObjectAssessmentAll" ToRole="Zayavka" />
         </EntityType>
         <EntityType Name="ObjectAssessmentGround">
@@ -613,10 +617,10 @@
           <Property Name="Z_Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_Hotelka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_PhotoPreview" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="Z_TelNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Z_Primichania" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Z_DataSostavlenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="S_ID" Type="Int32" />
+          <Property Name="S_Sotrudnick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="K_ID" Type="Int32" Nullable="false" />
           <Property Name="OAG_ID" Type="Int32" />
           <Property Name="OAH_ID" Type="Int32" />
@@ -868,6 +872,8 @@
           <EntitySetMapping Name="ObjectAssessmentAll">
             <EntityTypeMapping TypeName="AlkoCompanyModel.ObjectAssessmentAll">
               <MappingFragment StoreEntitySet="ObjectAssessmentAll">
+                <ScalarProperty Name="OA_Photo" ColumnName="OA_Photo" />
+                <ScalarProperty Name="OA_CenaAllKvm" ColumnName="OA_CenaAllKvm" />
                 <ScalarProperty Name="OA_CenaAll" ColumnName="OA_CenaAll" />
                 <ScalarProperty Name="OA_CenaDomVse" ColumnName="OA_CenaDomVse" />
                 <ScalarProperty Name="OA_CenaDomKvm" ColumnName="OA_CenaDomKvm" />
@@ -952,10 +958,10 @@
                 <ScalarProperty Name="OAH_ID" ColumnName="OAH_ID" />
                 <ScalarProperty Name="OAG_ID" ColumnName="OAG_ID" />
                 <ScalarProperty Name="K_ID" ColumnName="K_ID" />
+                <ScalarProperty Name="S_Sotrudnick" ColumnName="S_Sotrudnick" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
                 <ScalarProperty Name="Z_DataSostavlenia" ColumnName="Z_DataSostavlenia" />
                 <ScalarProperty Name="Z_Primichania" ColumnName="Z_Primichania" />
-                <ScalarProperty Name="Z_TelNumber" ColumnName="Z_TelNumber" />
                 <ScalarProperty Name="Z_PhotoPreview" ColumnName="Z_PhotoPreview" />
                 <ScalarProperty Name="Z_Hotelka" ColumnName="Z_Hotelka" />
                 <ScalarProperty Name="Z_Adress" ColumnName="Z_Adress" />

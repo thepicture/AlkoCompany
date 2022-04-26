@@ -45,6 +45,10 @@ public partial class ObjectAssessmentAll
 
     public virtual Nullable<float> OA_CenaAll { get; set; }
 
+    public virtual Nullable<float> OA_CenaAllKvm { get; set; }
+
+    public virtual byte[] OA_Photo { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

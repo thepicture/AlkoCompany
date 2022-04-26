@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
+
 namespace AlkoCompanyNew.Views.Pages
 {
     /// <summary>
@@ -39,19 +40,19 @@ namespace AlkoCompanyNew.Views.Pages
 
         }
 
-        private void AddOnePhoto_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog
             {
                 Filter = "Image files (*.JPG, *.PNG)| *jpg; *.png;",
-                Multiselect = true
+
             };
             if (file.ShowDialog() == true)
             {
-                Photo.Source = new BitmapImage(new Uri(file.FileName));
                 Zayavka.Z_PhotoPreview = File.ReadAllBytes(file.FileName);
             }
         }
+       
 
         private void TextBoxData1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -138,6 +139,7 @@ namespace AlkoCompanyNew.Views.Pages
             }
 
             TextBoxAdress.Clear();
+            TextBoxFIO.Clear();
             TextBoxHotelka.Clear();
             TextBoxPrimichania.Clear();
             TextBoxTelNumber.Clear();
@@ -147,5 +149,7 @@ namespace AlkoCompanyNew.Views.Pages
         {
             NavigationService.Navigate(null);
         }
+
+        
     }
 }

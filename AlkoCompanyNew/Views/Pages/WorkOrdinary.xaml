@@ -57,27 +57,46 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <!--House markup.-->
-                <Grid Background="White"
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="200"/>
+                        </Grid.RowDefinitions>
+                        
+                        
+                    <Grid Grid.Row="1">
+                    <Grid Background="White"
                       Name="HouseGrid"
                       Visibility="Collapsed"
-                      Grid.Row="1"
-                      Margin="50,58,50,222"
                       Panel.ZIndex="1">
+                        
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="{Binding HousePercentOfCompletion, StringFormat='Заполнено на {0:F2}%'}"
+                        
+                    <Grid Background="#FF5F5F5F">
+                        <TextBlock Text="{Binding HousePercentOfCompletion, StringFormat='Заполнено на {0:F2}%'}"
                                FontFamily="Dubai Light"
+                               Foreground="White"
                                FontSize="19"
                                Margin="5" />
-                    <ScrollViewer Grid.Row="1"
-                                  HorizontalScrollBarVisibility="Visible">
+                    </Grid>
+                        
+                    <ScrollViewer Grid.Row="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
                                 <Style TargetType="Border">
@@ -96,7 +115,7 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Foreground"
                                             Value="#FF252525" />
                                     <Setter Property="Margin"
@@ -109,7 +128,7 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Foreground"
                                             Value="#FF252525" />
                                     <Setter Property="Margin"
@@ -126,11 +145,20 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Margin"
                                             Value="5" />
                                 </Style>
-                                <Style TargetType="Button"
+                                            <Style x:Key="BorderStyle" TargetType="Border" BasedOn="{StaticResource {x:Type Border}}">
+                                                <Setter Property="Height" Value="200" />
+                                            </Style>
+                                            <Style x:Key="MarginStyle" TargetType="Image">
+                                                <Setter Property="Margin" Value="10" />
+                                                <Setter Property="Width" Value="200" />
+                                            </Style>
+                                
+                                
+                                            <Style TargetType="Button"
                                        BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
                                     <Setter Property="Panel.ZIndex"
                                             Value="1" />
@@ -139,244 +167,245 @@
                             <StackPanel Name="HouseFirstColumn">
                                 <!--1 колонка-->
                                 <Border Background="LightGray">
-                                    <TextBlock FontStyle="Italic"
+                                    <TextBlock 
                                                FontWeight="Bold"
                                                Text="Критерий" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Местоположение" />
+                                    <TextBlock Text="Местоположение" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Ссылка" />
+                                    <TextBlock Text="Ссылка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Контакт" />
+                                    <TextBlock Text="Контакт" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Style="{StaticResource BorderStyle}">
+                                    <TextBlock Text="Фото" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Фото" />
+                                    <TextBlock Text="Площадь" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Площадь" />
+                                    <TextBlock Text="Цена продажи весь объект" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена продажи весь объект" />
+                                    <TextBlock Text="Цена за 1 кв.м" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за 1 кв.м" />
+                                    <TextBlock Text="Поправка на торг" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на торг" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Корректировка на дату продажи" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на дату продажи" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Корректировка на месторасположение" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на месторасположение" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Доп.постройки"
-                                               FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на доп. постройки" />
+                                    <TextBlock Text="Корректировка на доп. постройки" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Благоустройство участка"
-                                               FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на благоустройство" />
+                                    <TextBlock Text="Корректировка на благоустройство" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border Background="LightGray">
                                     <TextBlock Text="Мебель"
-                                               FontStyle="Italic"
                                                FontWeight="Bold" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка мебель" />
+                                    <TextBlock Text="Корректировка мебель" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена после приминения корректировки" />
+                                    <TextBlock Text="Цена после приминения корректировки" TextWrapping="Wrap"/>
                                 </Border>
 
                                 <Border>
-                                    <TextBlock Text="Площадь земельного участка" />
+                                    <TextBlock Text="Площадь земельного участка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена 1 кв.м земельного участка" />
+                                    <TextBlock Text="Цена 1 кв.м земельного участка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на масштаб зм. участка" />
+                                    <TextBlock Text="Корректировка на масштаб зм. участка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена 1 кв.м зм. участка после" />
+                                    <TextBlock Text="Цена 1 кв.м зм. участка после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Стоимость земельного участка" />
+                                    <TextBlock Text="Стоимость земельного участка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Стоимость объекта кап. строительства" />
+                                    <TextBlock Text="Стоимость объекта кап. строительства" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Стоимость 1 кв.м объекта кап. строительства" />
+                                    <TextBlock Text="Стоимость 1 кв.м объекта кап. строительства" TextWrapping="Wrap"/>
                                 </Border>
 
                                 <Border>
-                                    <TextBlock Text="Количество этажей" />
+                                    <TextBlock Text="Количество этажей" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на этажность" />
+                                    <TextBlock Text="Корректировка на этажность" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Материал стен" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на материал стен" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Тип отопления" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на отопление" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Тип водоснабжения" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на водоснабжение" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Тип канализации" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на канализацию" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Физическое состояние" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на физ. состояние" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка на площадь" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Тип внутренней отделки" TextWrapping="Wrap"
+                                               FontWeight="Bold" />
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="Корректировка внутренней отделки" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
                                     <TextBlock Text="Цена за квм после" />
                                 </Border>
                                 <Border Background="LightGray">
-                                    <TextBlock Text="Материал стен"
-                                               FontStyle="Italic"
+                                    <TextBlock Text="Тип наружной отделки" TextWrapping="Wrap"
                                                FontWeight="Bold" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на материал стен" />
+                                    <TextBlock Text="Корректировка на наружную отделку" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Тип отопления"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на отопление" />
+                                    <TextBlock Text="Скорр. цена улучшений" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Тип водоснабжения"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
+                                    <TextBlock Text="Скорр. цена объектов" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на водоснабжение" />
+                                    <TextBlock Text="Скорр. цена объекта за 1 кв.м" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Тип канализации"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
+                                    <TextBlock Text="Процент" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на канализацию" />
+                                    <TextBlock Text="Весовые коэффициенты" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Физическое состояние"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на физ. состояние" />
+                                    <TextBlock Text="Стоимость 1 кв.м объекта оценки" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Стоимость всего объекта оценки без учета стоимости земельного участка" TextWrapping="Wrap" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка на площадь" />
+                                    <TextBlock Text="Стоимость земельного участка" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Тип внутренней отделки"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
+                                    <TextBlock Text="Итого стоимость объекта оценки" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Корректировка внутренней отделки" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border Background="LightGray">
-                                    <TextBlock Text="Тип наружной отделки"
-                                               FontStyle="Italic"
-                                               FontWeight="Bold" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Корректировка на наружную отделку" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Скорр. цена улучшений" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Скорр. цена объектов" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Скорр. цена объекта за 1 кв.м" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="%" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Весовые коэффициенты" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                
-                                <Border>
-                                    <TextBlock Text="Общая сумма (дом+земля)" />
+                                    <TextBlock Text="Стоимость за кв.м" TextWrapping="Wrap"/>
                                 </Border>
                             </StackPanel>
                             <StackPanel Grid.Column="1"
                                         Name="HouseSecondColumn">
                                 <!--2 колонка-->
                                 <Border Background="LightGray">
-                                    <TextBlock FontStyle="Italic"
+                                    <TextBlock
                                                FontWeight="Bold"
-                                               Text="Объект оценки" />
+                                               Text="Объект оценки" FontSize="17" />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentObject.OH_Adress, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBox Text="{Binding AssessmentObject.OH_Adress, UpdateSourceTrigger=PropertyChanged}"/>
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
-                                <Border>
-                                    <Image Width="120"
+                                <Border Style="{StaticResource BorderStyle}">
+                                    <Image Style="{StaticResource MarginStyle}"
                                            Stretch="UniformToFill"
-                                           Margin="5">
+                                           >
                                         <Image.InputBindings>
                                             <MouseBinding Gesture="LeftClick"
                                                           Command="{Binding ChangeAssessmentObjectPictureCommand}" />
@@ -394,196 +423,210 @@
                                     <TextBox Text="{Binding AssessmentObject.OH_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding AdditionalBuildingTypes}"
                                               SelectedItem="{Binding AssessmentObject.OH_DopPosroyki, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeBlagoustroistva}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeBlogoustroistva, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMebel}"
                                               SelectedItem="{Binding AssessmentObject.OH_Mebel, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
-                                <Border BorderBrush="Red">
-                                    <TextBlock Text="{Binding AssessmentGround.OG_Ploshad}" />
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentGround.OG_Ploshad, StringFormat={}{0:N0}}" />
                                     <!--В этом текстбоксе добавляется площадь земельного участка (объекта) из расчетов, когда мы считаем землю-->
                                 </Border>
-                                <Border BorderBrush="Red">
-                                    <TextBox Text="{Binding AssessmentGround.OG_CenaKvm}" />
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentGround.OG_CenaKvm, StringFormat={}{0:N0}}" />
                                     <!--В этом текстбоксе добавляется цена за квадратный метр земельного участка, когда мы уже посчитали и получилась готовая стоимость земельного участка. Также эта цена будет распространятся на аналоги, т.е земля аналогов будет стоить также перед тем как мы применим корректировку-->
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentObject.OH_Etagi, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeMaterialSten}"
                                               SelectedItem="{Binding AssessmentObject.OH_MaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeOtoplenia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Otoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVoda}"
                                               SelectedItem="{Binding AssessmentObject.OH_Voda, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeKanalizacia}"
                                               SelectedItem="{Binding AssessmentObject.OH_Kanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeFizSostoyanie}"
                                               SelectedItem="{Binding AssessmentObject.OH_FizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeVnutrOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_TypeVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding TypeNarugOtdelki}"
                                               SelectedItem="{Binding AssessmentObject.OH_NarugnayaOtdelka, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock Text="{Binding AssessmentObject.OH_GeneralProcent,  UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox />
+                                    <TextBlock />
+                                </Border>
+
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentObject.OH_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAll, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                    <TextBlock Text="{Binding AssessmentObject.OH_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentGround.OG_CenaVse, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAll, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="{Binding AssessmentAll.OA_CenaAllKvm, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
                                 </Border>
                             </StackPanel>
                             <ListView ItemsSource="{Binding AnalogueHouses}"
                                       VerticalAlignment="Top"
                                       Name="AnalogueHouseCalculationView"
-                                      Grid.Column="2">
+                                      Grid.Column="2"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Template">
@@ -630,7 +673,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Foreground"
                                                         Value="#FF252525" />
                                                 <Setter Property="Margin"
@@ -647,7 +690,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Foreground"
                                                         Value="#FF252525" />
                                                 <Setter Property="Margin"
@@ -664,7 +707,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Margin"
                                                         Value="5" />
                                             </Style>
@@ -677,12 +720,12 @@
                                         <StackPanel>
                                             <!--3 колонка-->
                                             <Border Background="LightGray">
-                                                <TextBlock FontStyle="Italic"
+                                                <TextBlock
                                                            FontWeight="Bold"
                                                            Text="{Binding NumberOfAnalogue, UpdateSourceTrigger=PropertyChanged, StringFormat={}Аналог {0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AH_Adress, UpdateSourceTrigger=PropertyChanged}"/>
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_IstochnickInf, UpdateSourceTrigger=PropertyChanged}" />
@@ -690,8 +733,8 @@
                                             <Border>
                                                 <TextBox Text="{Binding AH_Contact, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
-                                            <Border>
-                                                <Image Width="120"
+                                            <Border Style="{StaticResource BorderStyle}">
+                                            <Image Style="{StaticResource MarginStyle}"
                                                        Stretch="UniformToFill">
                                                     <Image.InputBindings>
                                                         <MouseBinding Gesture="LeftClick"
@@ -710,31 +753,31 @@
                                                 </Image>
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_CenaProdazhiVse, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_StartKwm, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_CenaProdazhiKvm, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorTorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorTorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -745,7 +788,7 @@
                                                 <TextBox Text="{Binding AH_KorNaDopPostroyki, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaDopPostroykiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaDopPostroykiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -757,7 +800,7 @@
                                                 <TextBox Text="{Binding AH_KorNaBlagoustroistvo, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaBlagoustroistvoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaBlagoustroistvoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -769,32 +812,32 @@
                                                 <TextBox Text="{Binding AH_KorNaMebel, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaMebelCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaMebelCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_OrdinaryCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" /> 
+                                                <TextBlock Text="{Binding AH_OrdinaryCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_PloshadZemli, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBox Text="{Binding AH_PloshadZemli, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
-                                                                            Path=DataContext.AssessmentGround.OG_CenaKvm, StringFormat=#}" />
+                                                                            Path=DataContext.AssessmentGround.OG_CenaKvm, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
+                                                <TextBlock Text="{Binding AH_KorNaMashtabZemli, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
                                             </Border>
                                             <Border >
-                                                <TextBox Text="{Binding AH_KorNaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBlock Text="{Binding AH_KorNaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_StoimostZemliAnaloga, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBlock Text="{Binding AH_StoimostZemliAnaloga, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_StoimostObjectaCapStroy, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBlock Text="{Binding AH_StoimostObjectaCapStroy, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_StoimostObjectaCapStroyKvm, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBlock Text="{Binding AH_StoimostObjectaCapStroyKvm, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AH_TypeEtage, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
@@ -803,7 +846,7 @@
                                                 <TextBox Text="{Binding AH_KorNaEtage, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaEtageCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaEtageCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -814,7 +857,7 @@
                                                 <TextBox Text="{Binding AH_KorNaMaterialSten, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaMaterialStenCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaMaterialStenCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -825,7 +868,7 @@
                                                 <TextBox Text="{Binding AH_KorNaOtoplenie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaOtoplenieCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaOtoplenieCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -836,7 +879,7 @@
                                                 <TextBox Text="{Binding AH_KorNaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -847,7 +890,7 @@
                                                 <TextBox Text="{Binding AH_KorNaKanalizacia, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaKanalizaciaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaKanalizaciaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -858,13 +901,13 @@
                                                 <TextBox Text="{Binding AH_KorNaFizSostoyanie, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaFizSostoyanieCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaFizSostoyanieCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged}" />
+                                                <TextBox Text="{Binding AH_KorNaPloshad, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaPloshadCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaPloshadCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -875,7 +918,7 @@
                                                 <TextBox Text="{Binding AH_KorNaVnutrenyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaVnutrenyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaVnutrenyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
@@ -886,27 +929,27 @@
                                                 <TextBox Text="{Binding AH_KorNaNarugnyuOtdelky, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AH_KorNaNarugnyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                                <TextBlock Text="{Binding AH_KorNaNarugnyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
-                                            
-                                            
+
+
                                             <Border>
-                                                <TextBox Text="{Binding AH_ScorrCenaUlucheniy, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
-                                            </Border>
-                                            <Border>
-                                                <TextBox Text="{Binding AH_ScorrCenaObjects, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"/>
+                                                <TextBlock Text="{Binding AH_ScorrCenaUlucheniy, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_ScorrCenaObjectsKvm, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"/>
+                                                <TextBlock Text="{Binding AH_ScorrCenaObjects, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
+                                                <TextBlock Text="{Binding AH_ScorrCenaObjectsKvm, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"/>
+                                                <TextBlock Text="{Binding AH_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AH_KorNaNarugnyuOtdelkyCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat=#}"/>
+                                                <TextBlock Text="{Binding AH_VesovoyKoef2, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F4}}"/>
+                                            </Border>
+                                            <Border>
+                                                <TextBlock Text="{Binding AH_VesovoyKoef2CenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
                                             </Border>
                                         </StackPanel>
                                     </DataTemplate>
@@ -915,32 +958,36 @@
                         </Grid>
                     </ScrollViewer>
 
-
-
-                </Grid>
-                <!--End of house markup.-->
-                <!--Ground markup.-->
+                            </Grid>
+                        </Grid>
+                        <!--End of house markup.-->
+                        <!--Ground markup.-->
+                   
+                
+                
                 <Grid Background="White"
                       Name="GroundGrid"
                       Visibility="Collapsed"
                       Grid.Row="1"
-                      Margin="50,58,50,222"
                       Panel.ZIndex="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+                    <Grid Background="#FF5F5F5F">
                     <TextBlock Text="{Binding GroundPercentOfCompletion, StringFormat='Заполнено на {0:F2}%'}"
                                FontFamily="Dubai Light"
+                               Foreground="White"
                                FontSize="19"
                                Margin="5" />
+                    </Grid>
                     <ScrollViewer Grid.Row="1"
-                                  HorizontalScrollBarVisibility="Visible">
+                                 >
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
                                 <Style TargetType="Border">
@@ -959,7 +1006,7 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Foreground"
                                             Value="#FF252525" />
                                     <Setter Property="Margin"
@@ -972,7 +1019,7 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Foreground"
                                             Value="#FF252525" />
                                     <Setter Property="Margin"
@@ -989,7 +1036,7 @@
                                     <Setter Property="FontFamily"
                                             Value="Dubai Light" />
                                     <Setter Property="FontSize"
-                                            Value="19" />
+                                            Value="17" />
                                     <Setter Property="Margin"
                                             Value="5" />
                                 </Style>
@@ -1002,7 +1049,7 @@
                             <StackPanel Name="GroundFirstColumn">
                                 <!--1 колонка-->
                                 <Border Background="LightGray">
-                                    <TextBlock FontStyle="Italic"
+                                    <TextBlock
                                                FontWeight="Bold"
                                                Text="Критерий" />
                                 </Border>
@@ -1010,100 +1057,100 @@
                                     <TextBlock Text="Адрес" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Источник информации" />
+                                    <TextBlock Text="Источник информации" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Контакт" />
+                                    <TextBlock Text="Контакт" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Категория земель" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Разрешенное использование" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Категория земель" />
+                                    <TextBlock Text="Фото" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Разрешенное использование" />
+                                    <TextBlock Text="Цена продажи (всё)" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Фото" />
+                                    <TextBlock Text="Площадь" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена продажи (всё)" />
+                                    <TextBlock Text="Цена за 1 кв.м" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Площадь" />
+                                    <TextBlock Text="Поправка на торг" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за 1 кв.м" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на торг" />
+                                    <TextBlock Text="Поправка передаваемые права" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка передаваемые права" />
+                                    <TextBlock Text="Поправка дату продажи" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка дату продажи" />
+                                    <TextBlock Text="Поправка на местоположение" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Подключение газа" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на местоположение" />
+                                    <TextBlock Text="Поправка на подключение газа" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Подключение воды" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Подключение газа" />
+                                    <TextBlock Text="Поправка на подключение воды" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на подключение газа" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
+                                </Border>
+                                <Border Background="LightGray">
+                                    <TextBlock Text="Подключение электричества" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Поправка на подключение электричества" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Подключение воды" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на подключение воды" />
+                                    <TextBlock Text="Поправка на масштаб" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Подключение электричества" />
+                                    <TextBlock Text="Процент" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на подключение электричества" />
+                                    <TextBlock Text="Весовые коэффициенты" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
+                                    <TextBlock Text="Цена за квм после" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Поправка на масштаб" />
+                                    <TextBlock Text="Стоимость за кв.м" TextWrapping="Wrap"/>
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="%" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Весовые коэффициенты" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Цена за квм после" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Стоимость за кв.м" />
-                                </Border>
-                                <Border>
-                                    <TextBlock Text="Стоимость всего зем.участка" />
+                                    <TextBlock Text="Стоимость всего зем.участка" TextWrapping="Wrap"/>
                                 </Border>
                                 
                             </StackPanel>
@@ -1111,7 +1158,7 @@
                                         Name="GroundSecondColumn">
                                 <!--2 колонка-->
                                 <Border Background="LightGray">
-                                    <TextBlock FontStyle="Italic"
+                                    <TextBlock
                                                FontWeight="Bold"
                                                Text="Объект оценки" />
                                 </Border>
@@ -1132,8 +1179,8 @@
                                     <ComboBox ItemsSource="{Binding AllowedUsages}"
                                               SelectedItem="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
-                                <Border>
-                                    <Image Width="120"
+                                <Border Height="200" Margin="0,10">
+                                    <Image Width="200"
                                            Stretch="UniformToFill"
                                            Margin="5">
                                         <Image.InputBindings>
@@ -1150,39 +1197,39 @@
                                     </Image>
                                 </Border>
                                 <Border>
-                                    <TextBox Text="" />
+                                    <TextBlock/>
                                 </Border>
                                 <Border>
                                     <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
-                                <Border>
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
                                               SelectedItem="{Binding AssessmentGround.ОG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
@@ -1190,9 +1237,9 @@
                                     <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
-                                <Border>
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
                                               SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
@@ -1200,9 +1247,9 @@
                                     <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
-                                <Border>
+                                <Border Background="LightGray">
                                     <ComboBox ItemsSource="{Binding VozmognostPodkluchenia}"
                                               SelectedItem="{Binding AssessmentGround.OG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
                                 </Border>
@@ -1210,22 +1257,22 @@
                                     <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="-0.127" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBox Text="{Binding AssessmentGround.OG_GeneralProcent, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
+                                    <TextBlock Text="{Binding AssessmentGround.OG_GeneralProcent, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
-                                    <TextBlock Text="" />
+                                    <TextBlock />
                                 </Border>
                                 <Border>
                                     <TextBlock Text="{Binding AssessmentGround.OG_CenaKvm, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}"/>
@@ -1238,7 +1285,8 @@
                             <ListView ItemsSource="{Binding AnalogueGrounds}"
                                       VerticalAlignment="Top"
                                       Name="GroundCalculationView"
-                                      Grid.Column="2">
+                                      Grid.Column="2"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Template">
@@ -1285,7 +1333,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Foreground"
                                                         Value="#FF252525" />
                                                 <Setter Property="Margin"
@@ -1302,7 +1350,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Foreground"
                                                         Value="#FF252525" />
                                                 <Setter Property="Margin"
@@ -1319,7 +1367,7 @@
                                                 <Setter Property="FontFamily"
                                                         Value="Dubai Light" />
                                                 <Setter Property="FontSize"
-                                                        Value="19" />
+                                                        Value="17" />
                                                 <Setter Property="Margin"
                                                         Value="5" />
                                             </Style>
@@ -1332,7 +1380,7 @@
                                         <StackPanel>
                                             <!--3 колонка-->
                                             <Border Background="LightGray">
-                                                <TextBlock FontStyle="Italic"
+                                                <TextBlock 
                                                            FontWeight="Bold"
                                                            Text="{Binding NumberOfAnalogue, StringFormat={}Аналог {0}, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
@@ -1381,44 +1429,44 @@
                                                 <TextBox Text="{Binding AG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBlock Text="{Binding AG_StartKvm, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_CenaProdazhiKvm, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorTorg, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_TorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_TorgCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorNaPrava, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaPravaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaPravaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorNaDatuProdazhi, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaDatuProdazhiCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorNaMesto, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaMestoCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
-                                            <Border>
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.VozmognostPodkluchenia}"
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaGas, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
-                                            <Border>
+                                            <Border >
                                                 <TextBox Text="{Binding AG_KorNaGas, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaGasCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaGasCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
-                                            <Border>
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.VozmognostPodkluchenia}"
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaVoda, UpdateSourceTrigger=PropertyChanged}" />
@@ -1427,10 +1475,10 @@
                                                 <TextBox Text="{Binding AG_KorNaVoda, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaVodaCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
 
-                                            <Border>
+                                            <Border Background="LightGray">
                                                 <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.VozmognostPodkluchenia}"
                                                           SelectedItem="{Binding AG_VozmognostPodklucheniaElectric, UpdateSourceTrigger=PropertyChanged}" />
@@ -1439,22 +1487,22 @@
                                                 <TextBox Text="{Binding AG_KorNaElecric, UpdateSourceTrigger=PropertyChanged}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaElectricCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
                                                 <TextBox Text="{Binding AG_KorNaMashtab, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_NaMashtabCenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_NaMashtabCenaAfter2, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
+                                                <TextBlock Text="{Binding AG_VesovoyKoef, UpdateSourceTrigger=PropertyChanged, StringFormat=#%}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_VesovoyKoef2, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F4}}" />
+                                                <TextBlock Text="{Binding AG_VesovoyKoef2, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F4}}" />
                                             </Border>
                                             <Border>
-                                                <TextBox Text="{Binding AG_VesovoyKoef2CenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
+                                                <TextBlock Text="{Binding AG_VesovoyKoef2CenaAfter, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                             </Border>
                                         </StackPanel>
                                     </DataTemplate>
@@ -1465,34 +1513,18 @@
                 </Grid>
                 <!--End of ground markup.-->
                 <!--Client markup.-->
-                <Grid Name="ClientInformationControl"
+                        <Border Name="ClientInformationControl" CornerRadius="30"
                       Background="White"
                       Visibility="Visible"
                       Grid.Row="1"
-                      Margin="50,58,50,222"
-                      Panel.ZIndex="1">
+                      Panel.ZIndex="1"
+                      Margin="200,0,200,0">
+                <Grid>
                     <Grid.Resources>
-                        <Style TargetType="TextBlock"
-                               x:Key="CommonBlock">
-                            <Setter Property="TextAlignment"
-                                    Value="Right" />
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center" />
-                            <Setter Property="FontFamily"
-                                    Value="Dubai Light" />
-                            <Setter Property="FontSize"
-                                    Value="19" />
-                            <Setter Property="Foreground"
-                                    Value="#FF252525" />
-                            <Setter Property="Margin"
-                                    Value="5" />
-                            <Setter Property="Width"
-                                    Value="200" />
-                        </Style>
                         <Style TargetType="TextBox"
-                               BasedOn="{StaticResource MaterialDesignFilledTextBox}">
-                            <Setter Property="TextAlignment"
-                                    Value="Center" />
+                               BasedOn="{StaticResource MaterialDesignTextBox}">
+                            <Setter Property="Background"
+                                    Value="#0000" />
                             <Setter Property="FontFamily"
                                     Value="Dubai Light" />
                             <Setter Property="FontSize"
@@ -1500,7 +1532,7 @@
                             <Setter Property="Foreground"
                                     Value="#FF252525" />
                             <Setter Property="Margin"
-                                    Value="5" />
+                                    Value="7" />
                             <Setter Property="Panel.ZIndex"
                                     Value="1" />
                             <Setter Property="Width"
@@ -1517,7 +1549,7 @@
                             <Setter Property="FontSize"
                                     Value="19" />
                             <Setter Property="Margin"
-                                    Value="5" />
+                                    Value="7" />
                             <Setter Property="Width"
                                     Value="500" />
                         </Style>
@@ -1530,7 +1562,7 @@
                             <Setter Property="FontSize"
                                     Value="19" />
                             <Setter Property="Margin"
-                                    Value="5" />
+                                    Value="7" />
                             <Setter Property="Width"
                                     Value="500" />
                         </Style>
@@ -1542,47 +1574,36 @@
                     </Grid.Resources>
                     <StackPanel HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="ФИО"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_Fio, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Дата рождения"
-                                       Style="{StaticResource CommonBlock}" />
-                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_Born}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Номер телефона"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_TelNumber, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Серия паспорта"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_SeriaPasporta, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Номер паспорта"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_NomerPasporta, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Прописка"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_Propiska, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Дата выдачи паспорта"
-                                       Style="{StaticResource CommonBlock}" />
-                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_DataVidachiPasporta}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Электронная почта"
-                                       Style="{StaticResource CommonBlock}" />
-                            <TextBox Text="{Binding Zayavka.Klient.K_Email, UpdateSourceTrigger=PropertyChanged}" />
-                        </StackPanel>
+                        
+                                        <TextBox Text="{Binding Zayavka.Klient.K_Fio, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="ФИО" materialDesign:HintAssist.IsFloating="True"/>
+                        
+                        
+                            
+                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_Born}" materialDesign:HintAssist.Hint="Дата рождения" materialDesign:HintAssist.IsFloating="True"/>
+                        
+                       
+                            <TextBox Text="{Binding Zayavka.Klient.K_TelNumber, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Номер телефона" materialDesign:HintAssist.IsFloating="True"/>
+                     
+                        
+                            <TextBox Text="{Binding Zayavka.Klient.K_SeriaPasporta, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Серия паспорта" materialDesign:HintAssist.IsFloating="True"/>
+                        
+                       
+                            <TextBox Text="{Binding Zayavka.Klient.K_NomerPasporta, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Номер паспорта" materialDesign:HintAssist.IsFloating="True"/>
+                   
+                        
+                            <TextBox Text="{Binding Zayavka.Klient.K_Propiska, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Прописка" materialDesign:HintAssist.IsFloating="True"/>
+                   
+                        
+                            <DatePicker SelectedDate="{Binding Zayavka.Klient.K_DataVidachiPasporta}" materialDesign:HintAssist.Hint="Дата выдачи паспорта" materialDesign:HintAssist.IsFloating="True"/>
+                      
+                        
+                            <TextBox Text="{Binding Zayavka.Klient.K_Email, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Электонная почта" materialDesign:HintAssist.IsFloating="True"/>
+                       
                     </StackPanel>
+                </Grid>
+                        </Border>
+                    </Grid>
+
                 </Grid>
                 <!--End of client markup.-->
 
@@ -1657,7 +1678,11 @@
                                                Margin="7,0,0,0" />
                                 </StackPanel>
                             </Button>
-                            <Button Grid.Column="0"
+                            
+                            
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <Button Grid.Column="0"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Width="Auto"
@@ -1668,23 +1693,27 @@
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Click="OnClientInformationClick">
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="FontWeight"
+                                    Click="OnClientInformationClick" Cursor="Hand"
+                                    >
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="FontWeight"
                                                 Value="Medium" />
-                                        <Setter Property="Content"
+                                            <Setter Property="Content"
                                                 Value="Сведения о клиенте" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Zayavka.Klient.IsInflated}"
-                                                         Value="True">
-                                                <Setter Property="Content"
-                                                        Value="Сведения о клиенте ✅" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
+
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <materialDesign:PackIcon Kind="Plus"
+                                             Opacity="{Binding Zayavka.Klient.IsInflated}"
+                                             Width="Auto"
+                                             Height="Auto"
+                                             VerticalAlignment="Center"
+                                             Foreground="#FFCB0000" />
+                            </StackPanel>
+
+
                             <Button Click="OnGroundGridToggled"
                                     Grid.Column="1"
                                     VerticalAlignment="Center"
@@ -1696,7 +1725,8 @@
                                     FontSize="19"
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
-                                    BorderBrush="{x:Null}">
+                                    BorderBrush="{x:Null}"
+                                    Cursor="Hand">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Content"
@@ -1725,7 +1755,8 @@
                                     Foreground="#FF252525"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Margin="0,22,180,22">
+                                    Margin="0,22,180,22"
+                                    Cursor="Hand">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Content"
@@ -1779,10 +1810,10 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="2*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="1"
+                            <TextBlock Grid.Row="4"
                                        Text="{Binding Zayavka.Z_Adress, StringFormat={} Адрес: {0}}"
                                        TextWrapping="Wrap"
                                        Name="TextBoxAdress"
@@ -1794,8 +1825,8 @@
                                        materialDesign:HintAssist.IsFloating="True"
                                        FontSize="17"
                                        FontFamily="Dubai Light"
-                                       Foreground="#FF575757" />
-                            <TextBlock Grid.Row="2"
+                                       Foreground="#FF575757" Margin="0,0,15,0" />
+                            <TextBlock Grid.Row="1"
                                        Text="{Binding Zayavka.Klient.K_Fio, StringFormat={} Клиент: {0}}"
                                        Name="TextBoxklient"
                                        Height="Auto"
@@ -1807,8 +1838,8 @@
                                        FontSize="17"
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
-                            <TextBlock Grid.Row="3"
-                                       Text="{Binding Zayavka.Z_TelNumber, StringFormat={} Номер телефона: {0}}"
+                            <TextBlock Grid.Row="2"
+                                       Text="{Binding Zayavka.Klient.K_TelNumber, StringFormat={} Номер телефона: {0}}"
                                        Name="TextBoxTelNumber"
                                        Height="Auto"
                                        Width="Auto"
@@ -1819,7 +1850,7 @@
                                        FontSize="17"
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
-                            <TextBlock Grid.Row="4"
+                            <TextBlock Grid.Row="3"
                                        Text="{Binding Zayavka.Z_Hotelka, StringFormat={} Клиент хочет: {0}}"
                                        Name="TextBoxHotelka"
                                        materialDesign:HintAssist.Hint="Клиент хочет:"

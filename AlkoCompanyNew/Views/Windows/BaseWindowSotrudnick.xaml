@@ -104,7 +104,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="Hi"
+                
+            
+                <TextBlock x:Name="Hi"
                        Text="Здравствуйте "
                        FontSize="20"
                        Width="Auto"
@@ -114,6 +116,7 @@
                        Foreground="#FFBDBDBD"
                        Margin="20,0,0,0"
                        FontFamily="Dubai Light" />
+
             <Image Grid.Column="2"
                    Width="200"
                    HorizontalAlignment="Right"
@@ -251,7 +254,7 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvkiProsmotr"
-                                  Height="90">
+                                  Height="90" PreviewMouseDown="ElementZayvkiProsmotr_PreviewMouseDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Eye"
                                                      Width="50"
