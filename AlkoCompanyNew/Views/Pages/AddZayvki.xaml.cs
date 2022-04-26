@@ -100,67 +100,11 @@ namespace AlkoCompanyNew.Views.Pages
 
             if (App.IsRemoveRequestOrphans)
             {
-                RemoveRequestOrphans();
+                App.TableGarbageCollector.Collect();
             }
             Reload();
 
             MessageBox.Show("Удалена заявка и её расчёты");
-        }
-
-        private void RemoveRequestOrphans()
-        {
-            try
-            {
-                using (Entities entities = new Entities())
-                {
-                    foreach (Klient klient
-                       in entities.Klient.ToList())
-                    {
-                        if (klient.Zayavka.Count == 0)
-                        {
-                            entities.Entry(
-                                entities.Klient.Find(klient.K_ID))
-                                .State = EntityState.Deleted;
-                        }
-                    }
-                    foreach (ObjectAssessmentHouse house
-                        in entities.ObjectAssessmentHouse.ToList())
-                    {
-                        if (house.Zayavka.Count == 0)
-                        {
-                            entities.Entry(
-                                entities.ObjectAssessmentHouse.Find(house.OH_ID))
-                                .State = EntityState.Deleted;
-                        }
-                    }
-                    foreach (ObjectAssessmentGround ground
-                        in entities.ObjectAssessmentGround.ToList())
-                    {
-                        if (ground.Zayavka.Count == 0)
-                        {
-                            entities.Entry(
-                                entities.ObjectAssessmentGround.Find(ground.OG_ID))
-                                .State = EntityState.Deleted;
-                        }
-                    }
-                    foreach (ObjectAssessmentAll objectAll
-                        in entities.ObjectAssessmentAll.ToList())
-                    {
-                        if (objectAll.Zayavka.Count == 0)
-                        {
-                            entities.Entry(
-                                entities.ObjectAssessmentAll.Find(objectAll.OA_ID))
-                                .State = EntityState.Deleted;
-                        }
-                    }
-                    entities.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Не удалось удалить " +
-                    "объекты без заявок. " + ex);
-            }
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -171,7 +115,5 @@ namespace AlkoCompanyNew.Views.Pages
                 return d.Z_Adress.ToLower().Contains(TextBoxSearch.Text.ToLower()) || d.Klient.K_Fio.ToLower().Contains(TextBoxSearch.Text.ToLower()) || d. Klient.K_TelNumber.ToLower().Contains(TextBoxSearch.Text.ToLower());}).ToList();
             ListViewAddZayvka.ItemsSource = poisk.OrderBy(z => z.Z_StatusId);
         }
-
-         
     }
 }

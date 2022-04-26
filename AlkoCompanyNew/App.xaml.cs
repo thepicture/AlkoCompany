@@ -1,4 +1,5 @@
 ﻿using AlkoCompanyNew.Models;
+using AlkoCompanyNew.Services;
 using AlkoCompanyNew.Views.Pages;
 using System;
 using System.Windows;
@@ -23,6 +24,8 @@ namespace AlkoCompanyNew
         /// </summary>
         public static bool IsRemoveRequestOrphans = true;
         public static WorkOrdinary WorkOrdinary { get; set; }
+        public static IGarbageCollector TableGarbageCollector = new TableGarbageCollector();
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

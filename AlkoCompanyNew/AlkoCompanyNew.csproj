@@ -132,7 +132,9 @@
     <Compile Include="Models\Partial\PartialObjectAssessmentHouse.cs" />
     <Compile Include="Models\Partial\PartialSotrudnick.cs" />
     <Compile Include="Models\Partial\PartialZayavka.cs" />
+    <Compile Include="Services\IGarbageCollector.cs" />
     <Compile Include="Services\LogicalChildrenFinder.cs" />
+    <Compile Include="Services\TableGarbageCollector.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />
     <Compile Include="Views\Pages\AddSotrudnick.xaml.cs">
