@@ -12,19 +12,18 @@
       IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="#FFEAEAEA">
-         
 
-      
-            
-            <Border Height="75"
-                    Width="Auto"
-                    VerticalAlignment="Top"
-                    CornerRadius="30"
-                    Background="White"
-                    Margin="120,15,50,0">
-                <Grid 
-              Width="Auto">
-                    <Grid.ColumnDefinitions>
+
+
+
+        <Border Height="75"
+                Width="Auto"
+                VerticalAlignment="Top"
+                CornerRadius="30"
+                Background="White"
+                Margin="120,15,50,0">
+            <Grid Width="Auto">
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="300" />
                     <ColumnDefinition Width="300" />
@@ -51,124 +50,112 @@
                 </MenuItem.ContextMenu>
             </MenuItem>-->
                 <ComboBox Grid.Column="2"
-                      x:Name="Tips"
-                      Width="200"
-                      Height="35"
-                      HorizontalAlignment="Right"
-                      VerticalAlignment="Bottom"
-                      Margin="0,0,0,5">
+                          x:Name="Tips"
+                          Width="200"
+                          Height="35"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom"
+                          Margin="0,0,0,5">
                     <TextBlock>Тюмень</TextBlock>
                     <TextBlock>Екатеринбург</TextBlock>
                     <TextBlock>Сургут</TextBlock>
                     <TextBlock>Нижневартовск</TextBlock>
                 </ComboBox>
                 <TextBox x:Name="TextBoxSearch"
-                     Grid.Column="3"
-                     materialDesign:HintAssist.Hint="Поиск"
-                     materialDesign:HintAssist.IsFloating="True"
-                     Width="300"
-                     Height="60"
-                     FontSize="20"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Center"
-                     BorderBrush="#FFAEAEAE"
-                     CaretBrush="Black"
-                     Background="Transparent"
-                     Foreground="Black"
-                     FontFamily="Dubai Light"
-                     Margin="0,0,30,0"
-                     TextChanged="TextBoxSearch_TextChanged" />
+                         Grid.Column="3"
+                         materialDesign:HintAssist.Hint="Поиск"
+                         materialDesign:HintAssist.IsFloating="True"
+                         Width="300"
+                         Height="60"
+                         FontSize="20"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Center"
+                         BorderBrush="#FFAEAEAE"
+                         CaretBrush="Black"
+                         Background="Transparent"
+                         Foreground="Black"
+                         FontFamily="Dubai Light"
+                         Margin="0,0,30,0"
+                         TextChanged="TextBoxSearch_TextChanged" />
             </Grid>
-            </Border>
+        </Border>
 
-            <ListView x:Name="ListViewAddZayvka"
+        <ListView x:Name="ListViewAddZayvka"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.CanContentScroll="False"
                   Background="#00000000"
                   Margin="70,140,0,200">
 
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"
                                HorizontalAlignment="Center"></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
 
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
 
-                        <Border Width="800"
+                    <Border Width="800"
                             Height="330"
                             CornerRadius="20"
                             Background="White">
-                            <Grid>
+                        <Grid>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60" />
-                                    <RowDefinition Height="270" />
-                                </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="270" />
+                            </Grid.RowDefinitions>
 
-                                <Border CornerRadius="15"
+                            <Border CornerRadius="15"
                                     Width="160"
                                     Height="30">
-                                    <TextBlock Text="{Binding ZayavkaStatus.Title}"
+                                <TextBlock Text="{Binding ZayavkaStatus.Title}"
                                            Grid.Row="0"
                                            FontSize="15"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
-                                    <Border.Style>
-                                        <Style TargetType="Border">
-                                            <Setter Property="Background"
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background"
                                                 Value="#FFFFCD75" />
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ZayavkaStatus.Title}"
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ZayavkaStatus.Title}"
                                                          Value="Выполнена">
-                                                    <Setter Property="Background"
+                                                <Setter Property="Background"
                                                         Value="#FFA3FF88" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Style>
-                                </Border>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
 
-                                <Grid Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="300" />
-                                        <ColumnDefinition Width="450" />
-                                    </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300" />
+                                    <ColumnDefinition Width="450" />
+                                </Grid.ColumnDefinitions>
 
 
-                                    <Border Grid.Column="0"
+                                <Border Grid.Column="0"
                                         CornerRadius="15"
                                         Margin="20,0,0,20">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="{Binding Z_PhotoPreview}" />
-                                        </Border.Background>
-                                    </Border>
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Z_PhotoPreview}" />
+                                    </Border.Background>
+                                </Border>
 
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="40" />
-                                            <RowDefinition Height="40" />
-                                            <RowDefinition Height="70" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-
-                                        <TextBlock Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
-                                               TextWrapping="Wrap"
-                                               LineStackingStrategy="BlockLineHeight"
-                                               LineHeight="30"
-                                               Grid.Row="3"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
-                                               Height="60"
-                                               FontSize="17"
-                                               Margin="15,0,0,0"
-                                               Foreground="#FF535353"
-                                               FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
                                                TextWrapping="Wrap"
                                                Grid.Row="1"
                                                VerticalAlignment="Center"
@@ -177,7 +164,7 @@
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"
                                                FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Z_TelNumber, StringFormat={} Номер телефона: {0}}"
+                                    <TextBlock Text="{Binding Klient.K_TelNumber, StringFormat={} Номер телефона: {0}}"
                                                TextWrapping="Wrap"
                                                Grid.Row="2"
                                                VerticalAlignment="Center"
@@ -186,14 +173,34 @@
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"
                                                FontFamily="Dubai Light" />
+                                    <TextBlock Text="{Binding Sotrudnick.S_Fio, StringFormat={} Сотрудник: {0}, TargetNullValue={}Сотрудник: не указан}"
+                                               TextWrapping="Wrap"
+                                               Grid.Row="3"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               FontSize="17"
+                                               Margin="15,0,0,0"
+                                               Foreground="#FF535353"
+                                               FontFamily="Dubai Light" />
 
-                                        <Grid Grid.Row="4">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Button Grid.Column="1"
+                                    <TextBlock Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
+                                               TextWrapping="Wrap"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               Grid.Row="4"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               FontSize="17"
+                                               Margin="15,0,0,0"
+                                               Foreground="#FF535353"
+                                               FontFamily="Dubai Light" />
+
+                                    <Grid Grid.Row="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="1"
                                                 Width="Auto"
                                                 Height="Auto"
                                                 x:Name="PodrobnyProsmotr"
@@ -206,7 +213,7 @@
                                                 Background="{x:Null}"
                                                 BorderBrush="{x:Null}"
                                                 Click="PodrobnyProsmotr_Click" />
-                                            <Button Grid.Column="2"
+                                        <Button Grid.Column="2"
                                                 x:Name="Start"
                                                 Width="Auto"
                                                 Height="Auto"
@@ -215,36 +222,36 @@
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Left"
                                                 Click="Start_Click">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock x:Name="TextBlockStart"
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock x:Name="TextBlockStart"
                                                            Text="Начать"
                                                            Foreground="#FF535353"
                                                            FontSize="13"
                                                            FontFamily="Dubai Light"
                                                            VerticalAlignment="Center"
                                                            Margin="0,0,5,0" />
-                                                    <materialDesign:PackIcon Kind="ArrowRight"
+                                                <materialDesign:PackIcon Kind="ArrowRight"
                                                                          Width="25"
                                                                          Height="25"
                                                                          VerticalAlignment="Center"
                                                                          Foreground="#FFCB0000" />
-                                                </StackPanel>
-                                            </Button>
-                                        </Grid>
+                                            </StackPanel>
+                                        </Button>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-            <Grid Grid.Row="1"
+        <Grid Grid.Row="1"
               HorizontalAlignment="Center"
               VerticalAlignment="Top">
-                <Frame  x:Name="AddZayvkaForm"
+            <Frame  x:Name="AddZayvkaForm"
                     NavigationUIVisibility="Hidden" />
-            </Grid>
-  
+        </Grid>
+
     </Grid>
 </Page>

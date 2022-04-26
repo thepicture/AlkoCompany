@@ -179,7 +179,6 @@
           <Property Name="Z_Primichania" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Z_DataSostavlenia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="S_ID" Type="int" />
-          <Property Name="S_Sotrudnick" Type="nvarchar" MaxLength="100" />
           <Property Name="K_ID" Type="int" Nullable="false" />
           <Property Name="OAG_ID" Type="int" />
           <Property Name="OAH_ID" Type="int" />
@@ -620,7 +619,6 @@
           <Property Name="Z_Primichania" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Z_DataSostavlenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="S_ID" Type="Int32" />
-          <Property Name="S_Sotrudnick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="K_ID" Type="Int32" Nullable="false" />
           <Property Name="OAG_ID" Type="Int32" />
           <Property Name="OAH_ID" Type="Int32" />
@@ -958,7 +956,6 @@
                 <ScalarProperty Name="OAH_ID" ColumnName="OAH_ID" />
                 <ScalarProperty Name="OAG_ID" ColumnName="OAG_ID" />
                 <ScalarProperty Name="K_ID" ColumnName="K_ID" />
-                <ScalarProperty Name="S_Sotrudnick" ColumnName="S_Sotrudnick" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
                 <ScalarProperty Name="Z_DataSostavlenia" ColumnName="Z_DataSostavlenia" />
                 <ScalarProperty Name="Z_Primichania" ColumnName="Z_Primichania" />

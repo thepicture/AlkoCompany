@@ -48,7 +48,7 @@ namespace AlkoCompanyNew.Views.Windows
 
         private void ElementZayvkiProsmotr_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            _ = Frame.Navigate(new Prosmotr(null));
+            _ = Frame.Navigate(new Prosmotr());
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,17 +12,9 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class Prosmotr : Page
     {
-        public Zayavka Zayavka { get; set; }
-        public ObjectAssessmentAll OAA { get; set; } = new ObjectAssessmentAll();
-        public Prosmotr(ObjectAssessmentAll setteroaa)
+        public Prosmotr()
         {
             InitializeComponent();
-            if (setteroaa != null)
-            {
-                OAA = setteroaa;
-                Zayavka = OAA.Zayavka.First();
-            }
-
             DataContext = this;
             AppData.Prosmotr_ = this;
             Reload();

@@ -16,93 +16,93 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
+
         <Grid Grid.Column="1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="90" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              Background="#FFEAEAEA">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="50" />
-            </Grid.ColumnDefinitions>
-
-            <Border Grid.Column="1"
-                    Height="Auto"
-                    Width="Auto"
-                    CornerRadius="30"
-                    Background="White"
-                    Margin="0,15,0,0">
-                <Grid>
+            <Grid Grid.Row="0"
+                  Background="#FFEAEAEA">
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="1"
-                    x:Name="ElementZayvki"
-                    Height="40"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}"
-                    VerticalAlignment="Center"
-                    Click="AddZayvki_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Plus"
-                                             Width="Auto"
-                                             Height="Auto"
-                                             VerticalAlignment="Center"
-                                             Foreground="#FFCB0000" />
-                        <TextBlock x:Name="textBlock1"
-                               Text="Добавить заявку"
-                               Foreground="#FF252525"
-                               FontSize="18"
-                               FontFamily="Dubai Light"
-                               VerticalAlignment="Center"
-                               Margin="8,0,0,0"/>
-                    </StackPanel>
-                </Button>
+                <Border Grid.Column="1"
+                        Height="Auto"
+                        Width="Auto"
+                        CornerRadius="30"
+                        Background="White"
+                        Margin="0,15,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="1"
+                                x:Name="ElementZayvki"
+                                Height="40"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                VerticalAlignment="Center"
+                                Click="AddZayvki_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus"
+                                                         Width="Auto"
+                                                         Height="Auto"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="#FFCB0000" />
+                                <TextBlock x:Name="textBlock1"
+                                           Text="Добавить заявку"
+                                           Foreground="#FF252525"
+                                           FontSize="18"
+                                           FontFamily="Dubai Light"
+                                           VerticalAlignment="Center"
+                                           Margin="8,0,0,0" />
+                            </StackPanel>
+                        </Button>
 
 
 
-                
-                <TextBox x:Name="TextBoxSearch"
-                     Grid.Column="3"
-                     materialDesign:HintAssist.Hint="Поиск"
-                     materialDesign:HintAssist.IsFloating="True"
-                     Width="300"
-                     Height="60"
-                     FontSize="20"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Center"
-                     BorderBrush="#FFAEAEAE"
-                     CaretBrush="Black"
-                     Background="Transparent"
-                     Foreground="Black"
-                     FontFamily="Dubai Light"
-                     Margin="0,0,30,0"
-                     TextChanged="TextBoxSearch_TextChanged" />
-                </Grid>
-            </Border>
+
+                        <TextBox x:Name="TextBoxSearch"
+                                 Grid.Column="3"
+                                 materialDesign:HintAssist.Hint="Поиск"
+                                 materialDesign:HintAssist.IsFloating="True"
+                                 Width="300"
+                                 Height="60"
+                                 FontSize="20"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 BorderBrush="#FFAEAEAE"
+                                 CaretBrush="Black"
+                                 Background="Transparent"
+                                 Foreground="Black"
+                                 FontFamily="Dubai Light"
+                                 Margin="0,0,30,0"
+                                 TextChanged="TextBoxSearch_TextChanged" />
+                    </Grid>
+                </Border>
             </Grid>
 
             <ListView x:Name="ListViewAddZayvka"
-                  Grid.Row="1"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.CanContentScroll="False"
-                  Background="#00000000"
-                  Margin="0,50,0,200">
+                      Grid.Row="1"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.CanContentScroll="False"
+                      Background="#00000000"
+                      Margin="0,50,0,200">
 
 
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"
-                               HorizontalAlignment="Center"></WrapPanel>
+                                   HorizontalAlignment="Center"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
 
@@ -111,9 +111,9 @@
                     <DataTemplate>
 
                         <Border Width="800"
-                            Height="330"
-                            CornerRadius="20"
-                            Background="White">
+                                Height="330"
+                                CornerRadius="20"
+                                Background="White">
                             <Grid>
 
                                 <Grid.RowDefinitions>
@@ -122,22 +122,22 @@
                                 </Grid.RowDefinitions>
 
                                 <Border CornerRadius="15"
-                                    Width="Auto"
-                                    Height="Auto">
+                                        Width="Auto"
+                                        Height="Auto">
                                     <TextBlock Text="{Binding ZayavkaStatus.Title}"
-                                           Grid.Row="0"
-                                           FontSize="15"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
+                                               Grid.Row="0"
+                                               FontSize="15"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background"
-                                                Value="#FFFFCD75" />
+                                                    Value="#FFFFCD75" />
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding ZayavkaStatus.Title}"
-                                                         Value="Выполнена">
+                                                             Value="Выполнена">
                                                     <Setter Property="Background"
-                                                        Value="#FFA3FF88" />
+                                                            Value="#FFA3FF88" />
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
@@ -158,7 +158,7 @@
 
 
                                     <Border CornerRadius="15"
-                                        Margin="20,0,0,20">
+                                            Margin="20,0,0,20">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding Z_PhotoPreview}" />
                                         </Border.Background>
@@ -166,48 +166,57 @@
 
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="40" />
-                                            <RowDefinition Height="40" />
-                                            <RowDefinition Height="70" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
-                                               TextWrapping="Wrap"
-                                               LineStackingStrategy="BlockLineHeight"
-                                               LineHeight="30"
-                                               Grid.Row="3"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
-                                               Height="60"
-                                               FontSize="17"
-                                               Margin="15,0,0,0"
-                                               Foreground="#FF535353"
-                                               FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
-                                               TextWrapping="Wrap"
-                                               Grid.Row="1"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
-                                               FontSize="17"
-                                               Margin="15,0,0,0"
-                                               Foreground="#FF535353"
-                                               FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Z_TelNumber, StringFormat={} Номер телефона: {0}}"
-                                               TextWrapping="Wrap"
-                                               Grid.Row="2"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
-                                               FontSize="17"
-                                               Margin="15,0,0,0"
-                                               Foreground="#FF535353"
-                                               FontFamily="Dubai Light" />
+
+                                        <TextBlock Text="{Binding Klient.K_Fio, StringFormat={}Клиент: {0}}"
+                                                   TextWrapping="Wrap"
+                                                   Grid.Row="0"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="17"
+                                                   Margin="15,0,0,0"
+                                                   Foreground="#FF535353"
+                                                   FontFamily="Dubai Light" />
+                                        <TextBlock Text="{Binding Klient.K_TelNumber, StringFormat={}Номер телефона: {0}, TargetNullValue={}Номер телефона: не указан}"
+                                                   TextWrapping="Wrap"
+                                                   Grid.Row="1"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="17"
+                                                   Margin="15,0,0,0"
+                                                   Foreground="#FF535353"
+                                                   FontFamily="Dubai Light" />
+                                        <TextBlock Text="{Binding Sotrudnick.S_Fio, StringFormat={}Сотрудник: {0}, TargetNullValue={}Сотрудник: не указан}"
+                                                   TextWrapping="Wrap"
+                                                   Grid.Row="2"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Left"
+                                                   FontSize="17"
+                                                   Margin="15,0,0,0"
+                                                   Foreground="#FF535353"
+                                                   FontFamily="Dubai Light" />
+                                        <TextBlock Text="{Binding Z_Adress, StringFormat={}Адрес: {0}}"
+                                                   TextWrapping="Wrap"
+                                                   LineStackingStrategy="BlockLineHeight"
+                                                   LineHeight="30"
+                                                   Grid.Row="3"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Left"
+                                                   Height="60"
+                                                   FontSize="17"
+                                                   Margin="15,0,0,0"
+                                                   Foreground="#FF535353"
+                                                   FontFamily="Dubai Light" />
 
                                     </Grid>
 
-                                    <Grid Grid.Column="3">
-
+                                    <Grid Grid.Column="4">
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -215,33 +224,33 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Button Grid.Column="0"
-                                            x:Name="EditButton"
-                                            Height="40"
-                                            Width="Auto"
-                                            Background="{x:Null}"
-                                            BorderBrush="{x:Null}"
-                                            VerticalAlignment="Top"
-                                            HorizontalAlignment="Right"
-                                            Click="EditButton_Click">
+                                                x:Name="EditButton"
+                                                Height="40"
+                                                Width="Auto"
+                                                Background="{x:Null}"
+                                                BorderBrush="{x:Null}"
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Right"
+                                                Click="EditButton_Click">
                                             <materialDesign:PackIcon Kind="Edit"
-                                                                 Width="25"
-                                                                 Height="25"
-                                                                 VerticalAlignment="Center"
-                                                                 Foreground="#FF7C0000" />
+                                                                     Width="25"
+                                                                     Height="25"
+                                                                     VerticalAlignment="Center"
+                                                                     Foreground="#FF7C0000" />
                                         </Button>
                                         <Button Grid.Column="1"
-                                            x:Name="DelButton"
-                                            Height="40"
-                                            Width="Auto"
-                                            Background="{x:Null}"
-                                            BorderBrush="{x:Null}"
-                                            VerticalAlignment="Top"
-                                            Click="DelButton_Click">
+                                                x:Name="DelButton"
+                                                Height="40"
+                                                Width="Auto"
+                                                Background="{x:Null}"
+                                                BorderBrush="{x:Null}"
+                                                VerticalAlignment="Top"
+                                                Click="DelButton_Click">
                                             <materialDesign:PackIcon Kind="Delete"
-                                                                 Width="25"
-                                                                 Height="25"
-                                                                 VerticalAlignment="Center"
-                                                                 Foreground="#FF7C0000" />
+                                                                     Width="25"
+                                                                     Height="25"
+                                                                     VerticalAlignment="Center"
+                                                                     Foreground="#FF7C0000" />
                                         </Button>
                                     </Grid>
 
@@ -261,14 +270,14 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            
 
-            
+
+
             <Grid Grid.Row="1"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Top">
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top">
                 <Frame  x:Name="AddZayvkaForm"
-                    NavigationUIVisibility="Hidden" />
+                        NavigationUIVisibility="Hidden" />
             </Grid>
         </Grid>
     </Grid>
