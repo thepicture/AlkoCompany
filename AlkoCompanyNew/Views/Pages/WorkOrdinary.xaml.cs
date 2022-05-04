@@ -10,11 +10,11 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class WorkOrdinary : Page
     {
-        public WorkOrdinary(Zayavka zayavka)
+        public WorkOrdinary(Zayavka zayavka, bool isEditing)
         {
             InitializeComponent();
             App.WorkOrdinary = this;
-            DataContext = new WorkViewModel(zayavka);
+            DataContext = new WorkViewModel(zayavka, isEditing);
             Loaded += (_, __) =>
             {
                 ((dynamic)DataContext).UpdateHousePercentOfCompletion();
@@ -76,6 +76,14 @@ namespace AlkoCompanyNew.Views.Pages
                 ClientInformationControl.Visibility = Visibility.Collapsed;
                 HouseGrid.Visibility = Visibility.Collapsed;
                 GroundGrid.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void GroundGrid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if((DataContext as WorkViewModel).IsEditing == false)
+            {
+                e.Handled = true;
             }
         }
     }

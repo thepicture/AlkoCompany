@@ -122,7 +122,7 @@
                 <RowDefinition Height="90" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            
+
             <Grid Grid.Row="0"
               Background="#FFEAEAEA">
                 <Grid.ColumnDefinitions>
@@ -138,50 +138,52 @@
                     Background="White"
                     Margin="0,15,0,0">
                     <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
 
 
 
 
-                    <Button HorizontalAlignment="Right"
+                        <Button HorizontalAlignment="Right"
                     Name="OpenMenu"
                     Click="OpenMenu_Click"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     VerticalAlignment="Center"
                     Background="#00000000"
                     BorderBrush="#00000000"
-                    Foreground="#FF4F4F4F">
-                        <materialDesign:PackIcon Kind="DotsHorizontal"
+                    Foreground="#FF4F4F4F" 
+                    Visibility="Hidden"
+                                >
+                            <materialDesign:PackIcon Kind="DotsHorizontal"
                                          Width="60"
                                          Height="60"
                                          VerticalAlignment="Center"
                                          Foreground="#FF939393" />
-                    </Button>
-                    <Button HorizontalAlignment="Right"
+                        </Button>
+                        <Button HorizontalAlignment="Right"
                     Name="CloseMenu"
                     Click="CloseMenu_Click"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     VerticalAlignment="Center"
                     Background="#00000000"
                     BorderBrush="#00000000"
                     Foreground="#FF4F4F4F"
                     Visibility="Hidden">
-                        <materialDesign:PackIcon Kind="DotsHorizontal"
+                            <materialDesign:PackIcon Kind="DotsHorizontal"
                                          Width="60"
                                          Height="60"
                                          VerticalAlignment="Center"
                                          Foreground="#FF939393" />
-                    </Button>
+                        </Button>
 
-                    <Grid x:Name="grid"
-                  Grid.Column="1"
+                        <Grid x:Name="grid"
+                  Grid.Column="2"
                   Width="Auto">
-                        <Button Grid.Column="1"
+                            <Button Grid.Column="1"
                         x:Name="Add"
                         Height="40"
                         Width="Auto"
@@ -191,13 +193,13 @@
                         HorizontalAlignment="Right"
                         Visibility="Hidden"
                         Click="Add_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Plus"
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Plus"
                                                  Width="Auto"
                                                  Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                                <TextBlock x:Name="textBlockAdd"
+                                    <TextBlock x:Name="textBlockAdd"
                                 Text="Добавить"
                                 Background="Transparent"
                                 Foreground="#FF252525"
@@ -205,9 +207,9 @@
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
                                 Margin="8,0,0,0" />
-                            </StackPanel>
-                        </Button>
-                        <Button Grid.Column="1"
+                                </StackPanel>
+                            </Button>
+                            <Button Grid.Column="1"
                         x:Name="Edit"
                         Height="40"
                         Width="Auto"
@@ -217,13 +219,13 @@
                         HorizontalAlignment="Right"
                         Visibility="Hidden"
                         Click="OnEditClick">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Edit"
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Edit"
                                                  Width="Auto"
                                                  Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                                <TextBlock 
+                                    <TextBlock 
                                 x:Name="textBlockEdit"
                                 Text="Редактировать"
                                 Background="Transparent"
@@ -232,9 +234,9 @@
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
                                 Margin="8,0,0,0" />
-                            </StackPanel>
-                        </Button>
-                        <Button Grid.Column="1"
+                                </StackPanel>
+                            </Button>
+                            <Button Grid.Column="1"
                         x:Name="Del"
                         Height="40"
                         Width="Auto"
@@ -244,13 +246,13 @@
                         HorizontalAlignment="Right"
                         Visibility="Hidden"
                         Click="OnDeleteClick">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Delete"
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Delete"
                                                  Width="Auto"
                                                  Height="Auto"
                                                  VerticalAlignment="Center"
                                                  Foreground="#FFCB0000" />
-                                <TextBlock 
+                                    <TextBlock 
                                 x:Name="textBlockDel"
                                 Text="Удалить"
                                 Background="Transparent"
@@ -259,26 +261,15 @@
                                 FontFamily="Dubai Light"
                                 VerticalAlignment="Center"
                                 Margin="8,0,0,0" />
-                            </StackPanel>
-                        </Button>
-                    </Grid>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
 
 
 
 
-                    <ComboBox Grid.Column="2"
-                      x:Name="Tips"
-                      Width="200"
-                      Height="35"
-                      HorizontalAlignment="Right"
-                      VerticalAlignment="Bottom"
-                      Margin="0,0,0,5">
-                        <TextBlock>Тюмень</TextBlock>
-                        <TextBlock>Екатеринбург</TextBlock>
-                        <TextBlock>Сургут</TextBlock>
-                        <TextBlock>Нижневартовск</TextBlock>
-                    </ComboBox>
-                    <TextBox x:Name="TextBoxSearch"
+                        
+                        <TextBox x:Name="TextBoxSearch"
                              TextChanged="TextBoxSearch_TextChanged"
                      Grid.Column="3"
                      materialDesign:HintAssist.Hint="Поиск"
@@ -297,49 +288,47 @@
                     </Grid>
                 </Border>
             </Grid>
-        
 
-        <ListView x:Name="ListViewAddSotr"
+
+            <ListView x:Name="ListViewAddSotr"
                   Grid.Row="1"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.CanContentScroll="False"
                   Background="#00000000"
-                  Margin="100,50,0,200">
+                  Margin="100,50,0,200" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
 
 
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
                                HorizontalAlignment="Center" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
 
-                    <Border Width="500"
-                            CornerRadius="20"
-                            Background="White">
-                        <Grid>
+                        
+                            <Grid Width="400" Background="#0000">
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="60" />
-                                <RowDefinition Height="250" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="30" />
-                            </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="300" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0"
+                                <TextBlock Grid.Row="0"
                                        Text="{Binding SotrudnickRole.Title}"
-                                       FontSize="20"
+                                       FontSize="24"
+                                       Foreground="#FF292929"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
+                                       HorizontalAlignment="Center" FontFamily="Dubai Light" />
 
 
-                                 
+
 
                                 <!--<Border Grid.Row="1"
                                     CornerRadius="15">
@@ -382,11 +371,15 @@
                                 </Border>-->
 
 
-
-                                <Border Grid.Row="1"
-                                    CornerRadius="15" Width="300">
+                            <!--<Image Stretch="UniformToFill" Grid.Row="1" HorizontalAlignment="Center" Margin="10" Width="300">
+                                <Image.Source>
+                                    <Binding Path="S_Photo"/>
+                                </Image.Source>
+                            </Image>-->
+                            <Border Grid.Row="1" 
+                                    CornerRadius="15" Width="300" Margin="10" >
                                     <Border.Background>
-                                        <ImageBrush Stretch="UniformToFill">
+                                        <ImageBrush  Stretch="UniformToFill">
                                             <ImageBrush.ImageSource>
                                                 <Binding Path="S_Photo">
                                                     <Binding.TargetNullValue>
@@ -402,39 +395,47 @@
                                         </ImageBrush>
                                     </Border.Background>
                                 </Border>
-                            
+
                                 <TextBlock Grid.Row="2"
                                        Text="{Binding S_Fio}"
-                                       FontSize="20"
+                                       FontSize="18"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
-                            <TextBlock Grid.Row="3"
-                                       Text="{Binding S_TelNumber}"
-                                       FontSize="20"
+                                       HorizontalAlignment="Center" 
+                                       FontFamily="Dubai Light" 
+                                       Foreground="#FF292929"/>
+                                <TextBlock Grid.Row="3"
+                                       Text="{Binding S_TelNumber, StringFormat={}Номер телефона: {0}}"
+                                       FontSize="18"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
-                            <TextBlock Grid.Row="4"
-                                       Text="{Binding S_Email}"
-                                       FontSize="20"
+                                       HorizontalAlignment="Center" 
+                                       FontFamily="Dubai Light" 
+                                       Foreground="#FF292929"/>
+                                <TextBlock Grid.Row="4"
+                                       Text="{Binding S_Email, StringFormat={}Электронная почта: {0}}"
+                                       FontSize="18"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
-                            <TextBlock Grid.Row="5"
-                                       Text="{Binding S_Born}"
-                                       FontSize="20"
+                                       HorizontalAlignment="Center" 
+                                       FontFamily="Dubai Light"
+                                       Foreground="#FF292929"/>
+                                <TextBlock Grid.Row="5"
+                                       Text="{Binding S_Born, StringFormat='{} Дата рождения: {0:dd/MM/yyyy}'}"
+                                       FontSize="18"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center" />
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                       HorizontalAlignment="Center" 
+                                       FontFamily="Dubai Light" 
+                                       Foreground="#FF292929"/>
+                            </Grid>
+                    
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <Grid Grid.Row="1"
+            <Grid Grid.Row="1"
               HorizontalAlignment="Center"
               VerticalAlignment="Top">
-            <Frame  x:Name="Frame"
+                <Frame  x:Name="Frame"
                     NavigationUIVisibility="Hidden" />
-        </Grid>
+            </Grid>
 
         </Grid>
     </Grid>

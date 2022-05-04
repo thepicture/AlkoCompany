@@ -22,9 +22,10 @@ namespace AlkoCompanyNew.ViewModels
     {
         private Zayavka zayavka;
 
-        public WorkViewModel(Zayavka zayavka)
+        public WorkViewModel(Zayavka zayavka, bool isEditing)
         {
             Zayavka = zayavka;
+            IsEditing = isEditing;
             AdditionalBuildingTypes = new ObservableCollection<string>(
                 new string[]
                 {
@@ -766,7 +767,7 @@ namespace AlkoCompanyNew.ViewModels
             get => zayavka;
             set => SetProperty(ref zayavka, value);
         }
-
+        public bool IsEditing { get; }
 
         private ObjectAssessmentHouse assessmentObject;
         private ObservableCollection<AnalogiHouse> analogueHouses;

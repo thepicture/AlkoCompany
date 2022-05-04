@@ -12,6 +12,7 @@ namespace AlkoCompanyNew.Views.Pages
     /// </summary>
     public partial class Prosmotr : Page
     {
+
         public Prosmotr()
         {
             InitializeComponent();
@@ -38,7 +39,9 @@ namespace AlkoCompanyNew.Views.Pages
         }
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            var poisk = AppData.Context.ObjectAssessmentAll.ToList();
+            poisk = poisk.Where(d => d.OA_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            ListViewProsmotr.ItemsSource = poisk;
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -51,6 +54,14 @@ namespace AlkoCompanyNew.Views.Pages
                 }
                 Reload();
             }
+        }
+
+        private void ProsmotrR_Click(object sender, RoutedEventArgs e)
+        {
+            WorkOrdinary currentWorkOrdinary = new WorkOrdinary(
+                ((sender as Button).DataContext as ObjectAssessmentAll).Zayavka.ToList().First(), false);
+            NavigationService.Navigate(currentWorkOrdinary);
+            Reload();
         }
     }
 }

@@ -95,6 +95,7 @@
 
                                 <Border CornerRadius="15"
                                         Background="#FFA3FF88"
+                                        Grid.Row="0"
                                         Width="160"
                                         Height="30">
                                     <TextBlock Text="Готово"
@@ -107,7 +108,7 @@
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="300" />
-                                        <ColumnDefinition Width="350" />
+                                        <ColumnDefinition Width="500" />
                                     </Grid.ColumnDefinitions>
 
                                     <Border CornerRadius="15"
@@ -120,13 +121,11 @@
 
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="40" />
+                                            <RowDefinition Height="70" />
                                             <RowDefinition Height="*" />
+                                            <RowDefinition Height="30" />
                                         </Grid.RowDefinitions>
                                         <TextBlock Text="{Binding FirstRequest.Klient.K_Fio, StringFormat={}Клиент: {0}}"
                                                    TextWrapping="Wrap"
@@ -137,7 +136,7 @@
                                                    Margin="15,0,0,0"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding FirstRequest.Sotrudnick.S_Fio, StringFormat={}Сотрудник: {0}, TargetNullValue={}Сотрудник: не указан}"
+                                        <TextBlock Text="{Binding OA_Adress, StringFormat={}Адрес: {0}}"
                                                    TextWrapping="Wrap"
                                                    Grid.Row="2"
                                                    VerticalAlignment="Center"
@@ -146,35 +145,39 @@
                                                    Margin="15,0,0,0"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding OA_Adress, StringFormat={}Адрес: {0}}"
-                                                   TextWrapping="Wrap"
-                                                   Grid.Row="3"
+                                        <Button x:Name="ProsmotrR" Grid.Row="4" Content="Просмотреть расчеты" Width="Auto" Height="Auto" Click="ProsmotrR_Click"/>
+
+                                        <Grid Grid.Row="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="1" Margin="0,15,0,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Text="{Binding OA_CenaAll, StringFormat={}Общая цена: {0:N0}}"
+                                                   Grid.Row="0"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Left"
                                                    FontSize="17"
-                                                   Margin="15,0,0,0"
                                                    Foreground="#FF535353"
-                                                   FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding OA_CenaAll, StringFormat={}Общая цена: {0}}"
-                                                   TextWrapping="Wrap"
-                                                   Grid.Row="4"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="17"
-                                                   Margin="15,0,0,0"
-                                                   Foreground="#FF535353"
-                                                   FontFamily="Dubai Light"
+                                                   FontFamily="Dubai Medium"
                                                    FontWeight="Bold" />
-                                        <TextBlock Text="{Binding OA_CenaAllKvm, StringFormat={}Цена за кв.м: {0}}"
-                                                   TextWrapping="Wrap"
-                                                   Grid.Row="5"
-                                                   VerticalAlignment="Center"
+                                                <TextBlock Text="{Binding OA_CenaAllKvm, StringFormat={}Цена за кв.м: {0:N0}}"
+                                                   Grid.Row="1"
+                                                   VerticalAlignment="Top"
                                                    HorizontalAlignment="Left"
                                                    FontSize="17"
-                                                   Margin="15,0,0,0"
                                                    Foreground="#FF535353"
-                                                   FontFamily="Dubai Light"
+                                                   FontFamily="Dubai Medium"
                                                    FontWeight="Bold" />
+                                               
+                                            </Grid>
+                                            
+                                        </Grid>
+                                        
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -183,5 +186,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
+         
+            <Frame Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="AddZayvkaForm" NavigationUIVisibility="Hidden" />
+      
     </Grid>
 </Page>

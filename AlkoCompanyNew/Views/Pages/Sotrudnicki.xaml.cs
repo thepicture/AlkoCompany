@@ -1,5 +1,6 @@
 ﻿using AlkoCompanyNew.Models;
 using AlkoCompanyNew.Models.Entities;
+using AlkoCompanyNew.Views.Windows;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,10 @@ namespace AlkoCompanyNew.Views.Pages
         public Sotrudnicki(Sotrudnick settersotr)
         {
             InitializeComponent();
+            if (MainWindow.PublicEmployee.SotrudnickRole.Title == "Администратор")
+            {
+                OpenMenu.Visibility = Visibility.Visible;
+            }
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             if (settersotr != null)
@@ -46,7 +51,9 @@ namespace AlkoCompanyNew.Views.Pages
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            
             Frame.Navigate(new AddSotrudnick(null));
+
         }
 
         private void OnEditClick(object sender, RoutedEventArgs e)
@@ -88,7 +95,8 @@ namespace AlkoCompanyNew.Views.Pages
             var poisk = AppData.Context.Sotrudnick.ToList();
             poisk = poisk.Where(d => d.S_RoleId.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
             || d.S_Fio.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
-            || d.S_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            || d.S_TelNumber.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())
+            || d.SotrudnickRole.Title.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
             ListViewAddSotr.ItemsSource = poisk;
         }
     }

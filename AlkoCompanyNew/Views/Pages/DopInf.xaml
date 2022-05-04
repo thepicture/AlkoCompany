@@ -66,7 +66,7 @@
                                        Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
                                        TextWrapping="Wrap"
                                        Name="TextBoxAdress"
-                                       Height="60"
+                                       Height="Auto"
                                        Width="350"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Top"
@@ -81,7 +81,7 @@
                                        Height="60"
                                        Width="350"
                                        HorizontalAlignment="Left"
-                                       VerticalAlignment="Top"
+                                       VerticalAlignment="Center"
                                        materialDesign:HintAssist.Hint="Клиент"
                                        materialDesign:HintAssist.IsFloating="True"
                                        FontSize="20"
@@ -100,11 +100,14 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                         </Grid>
-                        <Image Grid.Column="1"
-                               x:Name="Photo"
-                               Source="{Binding Z_PhotoPreview}"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center" />
+                         
+                        <Border Grid.Column="1"
+                                        CornerRadius="15"
+                                        Margin="40,0" >
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Z_PhotoPreview}" Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -127,19 +130,14 @@
                                    FontFamily="Dubai Light"
                                    Foreground="#FF575757" />
                         <Border Grid.Row="1"
-                                VerticalAlignment="Bottom"
-                                Width="Auto"
-                                Height="Auto"
                                 BorderThickness="0,1"
-                                Margin="20,0"
+                                Margin="20,20,20,0"
                                 BorderBrush="#FF515151">
-                            <ScrollViewer Margin="0">
+                            <ScrollViewer >
                                 <TextBlock x:Name="TextBoxOpisanie"
-                                           Text="{Binding Z_Primichania, StringFormat={}Примечания {0}}"
-                                           TextWrapping="Wrap"
-                                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                                           ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                           Text="{Binding Z_Primichania, StringFormat={}Примечания: {0}}"
                                            FontSize="20"
+                                           TextWrapping="Wrap"
                                            ScrollViewer.CanContentScroll="True"
                                            FontFamily="Dubai Light"
                                            Foreground="#FF575757" />

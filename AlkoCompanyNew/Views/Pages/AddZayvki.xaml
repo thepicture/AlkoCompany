@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="400" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="1"
+                        <Button Grid.Column="2"
                                 x:Name="ElementZayvki"
                                 Height="40"
                                 Background="{x:Null}"
@@ -122,8 +122,8 @@
                                 </Grid.RowDefinitions>
 
                                 <Border CornerRadius="15"
-                                        Width="Auto"
-                                        Height="Auto">
+                                        Width="160"
+                                        Height="30">
                                     <TextBlock Text="{Binding ZayavkaStatus.Title}"
                                                Grid.Row="0"
                                                FontSize="15"
@@ -158,7 +158,7 @@
 
 
                                     <Border CornerRadius="15"
-                                            Margin="20,0,0,20">
+                                            Margin="20,0,0,20" Grid.Column="0">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding Z_PhotoPreview}" />
                                         </Border.Background>
@@ -166,24 +166,15 @@
 
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
-                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="40" />
+                                            <RowDefinition Height="40" />
+                                            <RowDefinition Height="70" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
 
 
                                         <TextBlock Text="{Binding Klient.K_Fio, StringFormat={}Клиент: {0}}"
-                                                   TextWrapping="Wrap"
-                                                   Grid.Row="0"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Left"
-                                                   FontSize="17"
-                                                   Margin="15,0,0,0"
-                                                   Foreground="#FF535353"
-                                                   FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Klient.K_TelNumber, StringFormat={}Номер телефона: {0}, TargetNullValue={}Номер телефона: не указан}"
                                                    TextWrapping="Wrap"
                                                    Grid.Row="1"
                                                    VerticalAlignment="Center"
@@ -192,7 +183,7 @@
                                                    Margin="15,0,0,0"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Light" />
-                                        <TextBlock Text="{Binding Sotrudnick.S_Fio, StringFormat={}Сотрудник: {0}, TargetNullValue={}Сотрудник: не указан}"
+                                        <TextBlock Text="{Binding Klient.K_TelNumber, StringFormat={}Номер телефона: {0}, TargetNullValue={}Номер телефона: не указан}"
                                                    TextWrapping="Wrap"
                                                    Grid.Row="2"
                                                    VerticalAlignment="Center"
@@ -202,17 +193,17 @@
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Light" />
                                         <TextBlock Text="{Binding Z_Adress, StringFormat={}Адрес: {0}}"
-                                                   TextWrapping="Wrap"
-                                                   LineStackingStrategy="BlockLineHeight"
-                                                   LineHeight="30"
-                                                   Grid.Row="3"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Left"
-                                                   Height="60"
-                                                   FontSize="17"
-                                                   Margin="15,0,0,0"
-                                                   Foreground="#FF535353"
-                                                   FontFamily="Dubai Light" />
+                                               TextWrapping="Wrap"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               LineHeight="30"
+                                               Grid.Row="3"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"
+                                               Height="60"
+                                               FontSize="17"
+                                               Margin="15,0,0,0"
+                                               Foreground="#FF535353"
+                                               FontFamily="Dubai Light" />
 
                                     </Grid>
 

@@ -100,24 +100,38 @@
                                      FontSize="20"
                                      FontFamily="Dubai Light" />
                         </Grid>
-                   
-                        <Grid Grid.Column="1"
-                              MouseLeftButtonDown ="Grid_MouseLeftButtonDown">
-                            <Image>
-                                <Image.Source>
-                                    <Binding Path="Zayavka.Z_PhotoPreview">
-                                        <Binding.TargetNullValue>
-                                            <DrawingImage>
-                                                <DrawingImage.Drawing>
-                                                    <GeometryDrawing Geometry="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                                                                     Brush="Gray" />
-                                                </DrawingImage.Drawing>
-                                            </DrawingImage>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-                        </Grid>
+
+
+
+                        <!--<Border Grid.Column="1"
+                                        CornerRadius="15"
+                                        Margin="40,0" >
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Z_PhotoPreview}" Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>-->
+                        <Border Grid.Column="1"
+                              MouseLeftButtonDown ="Grid_MouseLeftButtonDown"
+                                    CornerRadius="15" Margin="40,0">
+                            <Border.Background>
+                                <ImageBrush Stretch="UniformToFill">
+                                    <ImageBrush.ImageSource>
+                                        <Binding Path="Zayavka.Z_PhotoPreview">
+                                            <Binding.TargetNullValue>
+                                                <DrawingImage>
+                                                    <DrawingImage.Drawing>
+                                                        <GeometryDrawing Geometry="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                                                                         Brush="Gray" />
+                                                    </DrawingImage.Drawing>
+                                                </DrawingImage>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Border.Background>
+                        </Border>
+
+                        
                         <!--<Image Grid.Column="1"
                                x:Name="Photo"
                                Source="{Binding Zayavka.Z_PhotoPreview}"
@@ -162,6 +176,10 @@
                                      Loaded="TextBoxData1_Loaded" />
 
                         </Grid>
+
+                         
+                        
+                        
                         <TextBox Grid.Row="1"
                                  Text="{Binding Zayavka.Z_Primichania}"
                                  Name="TextBoxPrimichania"

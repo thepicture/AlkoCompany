@@ -49,18 +49,7 @@
                     </ContextMenu>
                 </MenuItem.ContextMenu>
             </MenuItem>-->
-                <ComboBox Grid.Column="2"
-                          x:Name="Tips"
-                          Width="200"
-                          Height="35"
-                          HorizontalAlignment="Right"
-                          VerticalAlignment="Bottom"
-                          Margin="0,0,0,5">
-                    <TextBlock>Тюмень</TextBlock>
-                    <TextBlock>Екатеринбург</TextBlock>
-                    <TextBlock>Сургут</TextBlock>
-                    <TextBlock>Нижневартовск</TextBlock>
-                </ComboBox>
+                 
                 <TextBox x:Name="TextBoxSearch"
                          Grid.Column="3"
                          materialDesign:HintAssist.Hint="Поиск"
@@ -134,7 +123,7 @@
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="300" />
-                                    <ColumnDefinition Width="450" />
+                                    <ColumnDefinition Width="500" />
                                 </Grid.ColumnDefinitions>
 
 
@@ -148,11 +137,10 @@
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="70" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <TextBlock Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
@@ -173,22 +161,14 @@
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"
                                                FontFamily="Dubai Light" />
-                                    <TextBlock Text="{Binding Sotrudnick.S_Fio, StringFormat={} Сотрудник: {0}, TargetNullValue={}Сотрудник: не указан}"
-                                               TextWrapping="Wrap"
-                                               Grid.Row="3"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Left"
-                                               FontSize="17"
-                                               Margin="15,0,0,0"
-                                               Foreground="#FF535353"
-                                               FontFamily="Dubai Light" />
-
                                     <TextBlock Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
                                                TextWrapping="Wrap"
                                                LineStackingStrategy="BlockLineHeight"
-                                               Grid.Row="4"
+                                               LineHeight="30"
+                                               Grid.Row="3"
                                                VerticalAlignment="Center"
                                                HorizontalAlignment="Left"
+                                               Height="60"
                                                FontSize="17"
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"
