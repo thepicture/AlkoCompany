@@ -122,22 +122,22 @@
                                 </Grid.RowDefinitions>
 
                                 <Border CornerRadius="15"
-                                        Width="160"
-                                        Height="30">
-                                    <TextBlock Text="{Binding ZayavkaStatus.Title}"
-                                               Grid.Row="0"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center" />
+                                    Width="160"
+                                    Height="30">
+                                    <TextBlock Text="{Binding IsCompleteString}"
+                                           Grid.Row="0"
+                                           FontSize="15"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background"
-                                                    Value="#FFFFCD75" />
+                                                Value="#FFFFCD75" />
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ZayavkaStatus.Title}"
-                                                             Value="Выполнена">
+                                                <DataTrigger Binding="{Binding IsComplete}"
+                                                         Value="True">
                                                     <Setter Property="Background"
-                                                            Value="#FFA3FF88" />
+                                                        Value="#FFA3FF88" />
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
@@ -157,19 +157,39 @@
                                     </Grid.ColumnDefinitions>
 
 
-                                    <Border CornerRadius="15"
-                                            Margin="20,0,0,20" Grid.Column="0">
+                                    <Border
+                                    CornerRadius="15" Margin="20,0,0,20" >
+                                        <Border.Background>
+                                            <ImageBrush  Stretch="UniformToFill">
+                                                <ImageBrush.ImageSource>
+                                                    <Binding Path="Z_PhotoPreview">
+                                                        <Binding.TargetNullValue>
+                                                            <DrawingImage>
+                                                                <DrawingImage.Drawing>
+                                                                    <GeometryDrawing Geometry="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
+                                                                         Brush="Gray" />
+                                                                </DrawingImage.Drawing>
+                                                            </DrawingImage>
+                                                        </Binding.TargetNullValue>
+                                                    </Binding>
+                                                </ImageBrush.ImageSource>
+                                            </ImageBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    
+                                    <!--<Border CornerRadius="15"
+                                            Margin="20,0,0,20" Grid.Column="0" Cursor="Hand">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding Z_PhotoPreview}" />
                                         </Border.Background>
-                                    </Border>
+                                    </Border>-->
 
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="20" />
                                             <RowDefinition Height="40" />
                                             <RowDefinition Height="40" />
-                                            <RowDefinition Height="70" />
+                                            <RowDefinition Height="2*" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
 
@@ -197,9 +217,9 @@
                                                LineStackingStrategy="BlockLineHeight"
                                                LineHeight="30"
                                                Grid.Row="3"
-                                               VerticalAlignment="Center"
+                                               VerticalAlignment="Top"
                                                HorizontalAlignment="Left"
-                                               Height="60"
+                                               Height="Auto"
                                                FontSize="17"
                                                Margin="15,0,0,0"
                                                Foreground="#FF535353"

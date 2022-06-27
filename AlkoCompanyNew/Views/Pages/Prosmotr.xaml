@@ -12,26 +12,9 @@
       IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="#FFEAEAEA">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        
 
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0"
-                  Background="#FFEAEAEA">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="50" />
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="1"
+                <!--<Border Grid.Column="1"
                         Height="Auto"
                         Width="Auto"
                         CornerRadius="30"
@@ -62,15 +45,67 @@
                                  Margin="0,0,30,0"
                                  TextChanged="TextBoxSearch_TextChanged" />
                     </Grid>
+                </Border>-->
+                <Border Height="75"
+                Width="Auto"
+                VerticalAlignment="Top"
+                CornerRadius="30"
+                Background="White"
+                Margin="120,15,50,0">
+                    <Grid Width="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="400" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--<Button Grid.Column="3" Background="#00000000" Width="50" Height="50" Name="ListButtonOpen" HorizontalAlignment="Right" BorderBrush="#00000000" Foreground="#00000000"  Padding="0,0,0,0"   Margin="0,0,30,0"   >
+                <Button.ContentTemplate >
+                    <DataTemplate >
+                        <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FFCDCDCD"  />
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>-->
+                        <!--<MenuItem Grid.Column="3" x:Name="AddPresetButton" Click="AddPresetButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right"   >
+                <MenuItem.Header>
+                    <materialDesign:PackIcon Kind="DotsHorizontal" Width="60" Height="60" VerticalAlignment="Center" Foreground="#FFCDCDCD"/>
+                </MenuItem.Header>
+                <MenuItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" HorizontalAlignment="Right"/>
+                        <MenuItem Header="Редактировать" HorizontalAlignment="Right"/>
+                        <MenuItem Header="Удалить" HorizontalAlignment="Right"/>
+                    </ContextMenu>
+                </MenuItem.ContextMenu>
+            </MenuItem>-->
+
+                <TextBox x:Name="TextBoxSearch"
+                                 Grid.Column="3"
+                                 materialDesign:HintAssist.Hint="Поиск"
+                                 materialDesign:HintAssist.IsFloating="True"
+                                 Width="300"
+                                 Height="60"
+                                 FontSize="20"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 BorderBrush="#FFAEAEAE"
+                                 CaretBrush="Black"
+                                 Background="Transparent"
+                                 Foreground="Black"
+                                 FontFamily="Dubai Light"
+                                 Margin="0,0,30,0"
+                                 TextChanged="TextBoxSearch_TextChanged" />
+                    </Grid>
                 </Border>
-            </Grid>
+      
 
             <ListView x:Name="ListViewProsmotr"
                       Grid.Row="1"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.CanContentScroll="False"
                       Background="#00000000"
-                      Margin="0,50,0,200">
+                      Margin="70,140,0,200">
 
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -98,7 +133,7 @@
                                         Grid.Row="0"
                                         Width="160"
                                         Height="30">
-                                    <TextBlock Text="Готово"
+                                    <TextBlock Text="Выполнена"
                                                Grid.Row="0"
                                                FontSize="15"
                                                VerticalAlignment="Center"
@@ -145,13 +180,14 @@
                                                    Margin="15,0,0,0"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Light" />
-                                        <Button x:Name="ProsmotrR" Grid.Row="4" Content="Просмотреть расчеты" Width="Auto" Height="Auto" Click="ProsmotrR_Click"/>
+                                        
 
                                         <Grid Grid.Row="3">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
+                                            <Button x:Name="ProsmotrR" Grid.Column="0" Content="Просмотреть расчеты" VerticalAlignment="Bottom"   HorizontalAlignment="Left" Foreground="#FF535353" FontSize="15" FontFamily="Dubai Light" Width="Auto" Height="Auto" Click="ProsmotrR_Click" BorderBrush="#00000000" Background="#00000000"/>
                                             <Grid Grid.Column="1" Margin="0,15,0,0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition/>
@@ -161,7 +197,7 @@
                                                    Grid.Row="0"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Left"
-                                                   FontSize="17"
+                                                   FontSize="19"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Medium"
                                                    FontWeight="Bold" />
@@ -169,7 +205,7 @@
                                                    Grid.Row="1"
                                                    VerticalAlignment="Top"
                                                    HorizontalAlignment="Left"
-                                                   FontSize="17"
+                                                   FontSize="19"
                                                    Foreground="#FF535353"
                                                    FontFamily="Dubai Medium"
                                                    FontWeight="Bold" />
@@ -185,9 +221,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Grid>
+     
          
-            <Frame Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="AddZayvkaForm" NavigationUIVisibility="Hidden" />
+            <Frame x:Name="AddZayvkaForm" NavigationUIVisibility="Hidden" />
       
     </Grid>
 </Page>

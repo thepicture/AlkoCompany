@@ -168,6 +168,16 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Zayavka">
           <Key>
             <PropertyRef Name="Z_ID" />
@@ -175,7 +185,7 @@
           <Property Name="Z_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Z_Adress" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Z_Hotelka" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Z_PhotoPreview" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Z_PhotoPreview" Type="varbinary(max)" />
           <Property Name="Z_Primichania" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Z_DataSostavlenia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="S_ID" Type="int" />
@@ -333,6 +343,7 @@
           <EntitySet Name="ObjectAssessmentHouse" EntityType="Self.ObjectAssessmentHouse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sotrudnick" EntityType="Self.Sotrudnick" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SotrudnickRole" EntityType="Self.SotrudnickRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZayavkaStatus" EntityType="Self.ZayavkaStatus" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="Self.FK__AnalogiGr__OG_ID__114A936A">
@@ -389,6 +400,7 @@
           <EntitySet Name="ObjectAssessmentHouse" EntityType="AlkoCompanyModel.ObjectAssessmentHouse" />
           <EntitySet Name="Sotrudnick" EntityType="AlkoCompanyModel.Sotrudnick" />
           <EntitySet Name="SotrudnickRole" EntityType="AlkoCompanyModel.SotrudnickRole" />
+          <EntitySet Name="sysdiagrams" EntityType="AlkoCompanyModel.sysdiagrams" />
           <EntitySet Name="Zayavka" EntityType="AlkoCompanyModel.Zayavka" />
           <EntitySet Name="ZayavkaStatus" EntityType="AlkoCompanyModel.ZayavkaStatus" />
           <AssociationSet Name="FK__AnalogiGr__OG_ID__114A936A" Association="AlkoCompanyModel.FK__AnalogiGr__OG_ID__114A936A">
@@ -608,6 +620,16 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sotrudnick" Relationship="AlkoCompanyModel.FK_Sotrudnick_SotrudnickRole" FromRole="SotrudnickRole" ToRole="Sotrudnick" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Zayavka">
           <Key>
             <PropertyRef Name="Z_ID" />
@@ -615,7 +637,7 @@
           <Property Name="Z_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Z_Adress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Z_Hotelka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Z_PhotoPreview" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Z_PhotoPreview" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Z_Primichania" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Z_DataSostavlenia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="S_ID" Type="Int32" />
@@ -945,6 +967,17 @@
               <MappingFragment StoreEntitySet="SotrudnickRole">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AlkoCompanyModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

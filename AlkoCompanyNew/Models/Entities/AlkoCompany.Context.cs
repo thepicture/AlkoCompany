@@ -48,6 +48,8 @@ public partial class Entities : DbContext
 
     public virtual DbSet<SotrudnickRole> SotrudnickRole { get; set; }
 
+    public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+
     public virtual DbSet<Zayavka> Zayavka { get; set; }
 
     public virtual DbSet<ZayavkaStatus> ZayavkaStatus { get; set; }

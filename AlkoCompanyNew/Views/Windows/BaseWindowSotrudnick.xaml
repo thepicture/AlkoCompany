@@ -17,7 +17,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
                                            Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3"
-                                      Value="300" />
+                                      Value="270" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
                                            Storyboard.TargetName="textBlock">
@@ -49,7 +49,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
                                            Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3"
-                                      Value="70" />
+                                      Value="63" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
                                            Storyboard.TargetName="textBlock">
@@ -107,7 +107,7 @@
                 
             
                 <TextBlock x:Name="Hi"
-                       Text="Здравствуйте "
+                       Text="Здравствуйте"
                        FontSize="20"
                        Width="Auto"
                        Height="Auto"
@@ -156,20 +156,20 @@
             </Grid>-->
 
             <Grid x:Name="grid"
-                  Width="70"
+                  Width="63"
                   Height="Auto"
                   HorizontalAlignment="Left"
-                  Background="#FFC33535"
+                  Background="#FF383838"
                   Panel.ZIndex="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="55" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
                 <Button Grid.Row="0"
                         Background="#00000000"
-                        Width="50"
-                        Height="50"
+                        Width="45"
+                        Height="45"
                         Name="ListButtonOpen"
                         HorizontalAlignment="Right"
                         BorderBrush="#00000000"
@@ -180,8 +180,8 @@
                     <Button.ContentTemplate>
                         <DataTemplate>
                             <materialDesign:PackIcon Kind="Menu"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                         </DataTemplate>
@@ -190,8 +190,8 @@
                 <Button Grid.Row="0"
                         Background="#00000000"
                         Name="ListButtonClose"
-                        Width="50"
-                        Height="50"
+                        Width="45"
+                        Height="45"
                         HorizontalAlignment="Right"
                         BorderBrush="#00000000"
                         Foreground="#00000000"
@@ -202,8 +202,8 @@
                     <Button.ContentTemplate>
                         <DataTemplate>
                             <materialDesign:PackIcon Kind="Menu"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                         </DataTemplate>
@@ -217,17 +217,17 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListViewItem x:Name="ElementAddZayvki"
                                   Height="90"
-                                  PreviewMouseDown="TextBlock_PreviewMouseDown">
+                                  PreviewMouseDown="TextBlock_PreviewMouseDown" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon  Kind="Plus"
-                                                      Width="50"
-                                                      Height="50"
+                                                      Width="45"
+                                                      Height="45"
                                                       VerticalAlignment="Center"
                                                       Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock"
                                        Text="Добавить заявку"
                                        Foreground="#FFCDCDCD"
-                                       FontSize="25"
+                                       FontSize="23"
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"
@@ -235,18 +235,18 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvki"
-                                  Height="90"
-                                  PreviewMouseDown="ElementZayvki_PreviewMouseDown">
+                                  Height="80"
+                                  PreviewMouseDown="ElementZayvki_PreviewMouseDown" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BellRing"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock1"
                                        Text="Заявки"
                                        Foreground="#FFCDCDCD"
-                                       FontSize="25"
+                                       FontSize="23"
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"
@@ -254,17 +254,17 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvkiProsmotr"
-                                  Height="90" PreviewMouseDown="ElementZayvkiProsmotr_PreviewMouseDown">
+                                  Height="80" PreviewMouseDown="ElementZayvkiProsmotr_PreviewMouseDown" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Eye"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock2"
                                        Text="Просмотр"
                                        Foreground="#FFCDCDCD"
-                                       FontSize="25"
+                                       FontSize="23"
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"
@@ -272,18 +272,18 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementZayvkiSotrudnicki"
-                                  Height="90"
-                                  PreviewMouseDown="ElementZayvkiSotrudnicki_PreviewMouseDown">
+                                  Height="80"
+                                  PreviewMouseDown="ElementZayvkiSotrudnicki_PreviewMouseDown" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock3"
                                        Text="Сотрудники"
                                        Foreground="#FFCDCDCD"
-                                       FontSize="25"
+                                       FontSize="23"
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"
@@ -291,17 +291,17 @@
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ElementBack"
-                                  Height="90">
+                                  Height="80" Cursor="Hand" PreviewMouseDown="ElementBack_PreviewMouseDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ArrowBack"
-                                                     Width="50"
-                                                     Height="50"
+                                                     Width="45"
+                                                     Height="45"
                                                      VerticalAlignment="Center"
                                                      Foreground="#FFCDCDCD" />
                             <TextBlock x:Name="textBlock4"
                                        Text="Выйти"
                                        Foreground="#FFCDCDCD"
-                                       FontSize="25"
+                                       FontSize="23"
                                        FontFamily="Dubai Light"
                                        VerticalAlignment="Center"
                                        Margin="30,0,0,0"

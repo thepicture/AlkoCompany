@@ -63,8 +63,10 @@
                                 <RowDefinition />
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"
-                                       Text="{Binding Z_Adress, StringFormat={} Адрес: {0}}"
+                                       Text="{Binding Z_Adress, StringFormat={}Адрес: {0}}"
                                        TextWrapping="Wrap"
+                                       LineStackingStrategy="BlockLineHeight"
+                                       LineHeight="30"
                                        Name="TextBoxAdress"
                                        Height="Auto"
                                        Width="350"
@@ -76,8 +78,11 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="1"
-                                       Text="{Binding Klient.K_Fio, StringFormat={} Клиент: {0}}"
+                                       Text="{Binding Klient.K_Fio, StringFormat={}Клиент: {0}}"
                                        Name="TextBoxklient"
+                                       TextWrapping="Wrap"
+                                       LineStackingStrategy="BlockLineHeight"
+                                       LineHeight="30"
                                        Height="60"
                                        Width="350"
                                        HorizontalAlignment="Left"
@@ -88,7 +93,7 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="2"
-                                       Text="{Binding Klient.K_TelNumber, StringFormat={} Номер телефона: {0}}"
+                                       Text="{Binding Klient.K_TelNumber, StringFormat={}Номер телефона: {0}}"
                                        Name="TextBoxTelNumber"
                                        Height="60"
                                        Width="350"

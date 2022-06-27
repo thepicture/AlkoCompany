@@ -33,11 +33,21 @@ namespace AlkoCompanyNew.Views.Windows
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (MainWindow.PublicEmployee.SotrudnickRole.Title == "Оценщик" || MainWindow.PublicEmployee.SotrudnickRole.Title == "Администратор")
+            {
+                MessageBox.Show("Вы не можете добавить заявку");
+                return;
+            }
             _ = Frame.Navigate(new AddZayvki(null));
         }
 
         private void ElementZayvki_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (MainWindow.PublicEmployee.SotrudnickRole.Title == "Секретарь" || MainWindow.PublicEmployee.SotrudnickRole.Title == "Администратор")
+            {
+                MessageBox.Show("Вы не можете выполнить расчеты!");
+                return;
+            }
             _ = Frame.Navigate(new Zayavki(null));
         }
 
@@ -49,6 +59,13 @@ namespace AlkoCompanyNew.Views.Windows
         private void ElementZayvkiProsmotr_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             _ = Frame.Navigate(new Prosmotr());
+        }
+
+        private void ElementBack_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.Show();
+            this.Close();
         }
     }
 }

@@ -469,7 +469,7 @@
                                             <Border>
                                                 <TextBlock />
                                             </Border>
-                                            <Border Style="{StaticResource BorderStyle}">
+                                            <Border Style="{StaticResource BorderStyle}" Cursor="Hand">
                                                 <Image Style="{StaticResource MarginStyle}"
                                                        Stretch="UniformToFill">
                                                     <Image.InputBindings>
@@ -798,7 +798,7 @@
                                                         <Border>
                                                             <TextBox Text="{Binding AH_Contact, UpdateSourceTrigger=PropertyChanged}" />
                                                         </Border>
-                                                        <Border Style="{StaticResource BorderStyle}">
+                                                        <Border Style="{StaticResource BorderStyle}" Cursor="Hand">
                                                             <Image Style="{StaticResource MarginStyle}"
                                                                    Stretch="UniformToFill">
                                                                 <Image.InputBindings>
@@ -1034,7 +1034,8 @@
                               Name="GroundGrid"
                               Visibility="Collapsed"
                               Grid.Row="1"
-                              Panel.ZIndex="1">
+                              Panel.ZIndex="1"
+                              >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="*" />
@@ -1105,17 +1106,17 @@
                                                     Value="5" />
                                         </Style>
                                         <Style x:Key="BorderStyle"
-                                               TargetType="Border"
-                                               BasedOn="{StaticResource {x:Type Border}}">
+                                                   TargetType="Border"
+                                                   BasedOn="{StaticResource {x:Type Border}}">
                                             <Setter Property="Height"
-                                                    Value="200" />
+                                                        Value="200" />
                                         </Style>
                                         <Style x:Key="MarginStyle"
-                                               TargetType="Image">
+                                                   TargetType="Image">
                                             <Setter Property="Margin"
-                                                    Value="15" />
+                                                        Value="15" />
                                             <Setter Property="Width"
-                                                    Value="200" />
+                                                        Value="200" />
                                         </Style>
                                         <Style TargetType="Button"
                                                BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
@@ -1285,9 +1286,9 @@
                                             <ComboBox ItemsSource="{Binding AllowedUsages}"
                                                       SelectedItem="{Binding AssessmentGround.OG_RazreshennoeIspolzovanie, UpdateSourceTrigger=PropertyChanged}" />
                                         </Border>
-                                        <Border Style="{StaticResource BorderStyle}">
+                                        <Border Style="{StaticResource BorderStyle}" Cursor="Hand">
                                             <Image Style="{StaticResource MarginStyle}"
-                                                   Stretch="UniformToFill">
+                                                                   Stretch="UniformToFill">
                                                 <Image.InputBindings>
                                                     <MouseBinding Gesture="LeftClick"
                                                                   Command="{Binding ChangeAssessmentGroundPictureCommand}" />
@@ -1305,7 +1306,7 @@
                                             <TextBlock />
                                         </Border>
                                         <Border>
-                                            <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat=#}" />
+                                            <TextBox Text="{Binding AssessmentGround.OG_Ploshad, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N0}}" />
                                         </Border>
                                         <Border>
                                             <TextBlock />
@@ -1497,7 +1498,7 @@
                                                     <Border>
                                                         <TextBox Text="{Binding AG_Contact, UpdateSourceTrigger=PropertyChanged}" />
                                                     </Border>
-                                                    <Border Background="LightGray">
+                                                    <Border Background="LightGray" Cursor="Hand">
                                                         <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}, 
                                                                             Path=DataContext.TypesOfGround}"
                                                                   SelectedItem="{Binding AG_CategoriaZemel, UpdateSourceTrigger=PropertyChanged}" />
@@ -1509,7 +1510,7 @@
                                                     </Border>
                                                     <Border Style="{StaticResource BorderStyle}">
                                                         <Image Style="{StaticResource MarginStyle}"
-                                                               Stretch="UniformToFill">
+                                                                   Stretch="UniformToFill">
                                                             <Image.InputBindings>
                                                                 <MouseBinding Gesture="LeftClick"
                                                                               CommandParameter="{Binding .}"
@@ -1623,8 +1624,7 @@
                                 Visibility="Visible"
                                 Grid.Row="1"
                                 Panel.ZIndex="1"
-                                Margin="200,0,200,0"
-                                IsHitTestVisible="{Binding IsEditing}">
+                                Margin="200,0,200,0" IsHitTestVisible="{Binding IsEditing}">
                             <Grid>
                                 <Grid.Resources>
                                     <Style TargetType="TextBox"
@@ -1803,13 +1803,13 @@
 
 
 
-                            <StackPanel Orientation="Horizontal"
-                                        Grid.Column="0"
+                            <StackPanel Orientation="Horizontal" Grid.Column="0"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                         Width="Auto"
                                         Height="Auto">
-                                <Button FontFamily="Dubai Light"
+                                <Button
+                                        FontFamily="Dubai Light"
                                         x:Name="Svedeniaokliente"
                                         FontSize="19"
                                         Foreground="#FF252525"
@@ -1828,24 +1828,23 @@
                                                          Foreground="#FFCB0000" />
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal"
-                                        Grid.Column="1"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Width="Auto"
-                                        Height="Auto">
-                                <Button Click="OnGroundGridToggled"
-                                        FontFamily="Dubai Light"
-                                        x:Name="Svedeniaoobject"
-                                        FontSize="19"
-                                        Foreground="#FF252525"
-                                        Background="{x:Null}"
-                                        BorderBrush="{x:Null}"
-                                        Cursor="Hand"
-                                        Content="Земельный участок"
-                                        Margin="7,0,0,0">
-
-                                </Button>
+                            <StackPanel Orientation="Horizontal" Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="Auto"
+                                    Height="Auto">
+                            <Button Click="OnGroundGridToggled"                                 
+                                    FontFamily="Dubai Light"
+                                    x:Name="Svedeniaoobject"
+                                    FontSize="19"
+                                    Foreground="#FF252525"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Cursor="Hand"
+                                    Content="Земельный участок"
+                                    Margin="7,0,0,0">
+                                
+                            </Button>
                                 <materialDesign:PackIcon Kind="Tick"
                                                          Opacity="{Binding GroundPercentOfCompletion}"
                                                          Width="Auto"
@@ -1854,22 +1853,22 @@
                                                          Foreground="#FFCB0000" />
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal"
-                                        Grid.Column="2"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Width="Auto"
-                                        Height="Auto">
-                                <Button Click="OnHouseGridToggled"
-                                        FontFamily="Dubai Light"
-                                        x:Name="Raschet"
-                                        FontSize="19"
-                                        Foreground="#FF252525"
-                                        Background="{x:Null}"
-                                        BorderBrush="{x:Null}"
-                                        Cursor="Hand"
-                                        Content="Дом"
-                                        Margin="7,0,0,0">
+                            <StackPanel Orientation="Horizontal" Grid.Column="2"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="Auto"
+                                    Height="Auto">
+                                <Button 
+                                    Click="OnHouseGridToggled"
+                                    FontFamily="Dubai Light"
+                                    x:Name="Raschet"
+                                    FontSize="19"
+                                    Foreground="#FF252525"
+                                    Background="{x:Null}"
+                                    BorderBrush="{x:Null}"
+                                    Cursor="Hand"
+                                    Content="Дом"
+                                    Margin="7,0,0,0">
                                 </Button>
                                 <materialDesign:PackIcon Kind="Tick"
                                                          Opacity="{Binding HousePercentOfCompletion}"
@@ -1904,7 +1903,7 @@
                         <Border x:Name="border"
                                 Grid.Column="0"
                                 CornerRadius="15"
-                                Margin="40,20,70,20">
+                                Margin="40,20,40,20">
                             <Border.Background>
                                 <ImageBrush ImageSource="{Binding Zayavka.Z_PhotoPreview}" />
                             </Border.Background>
@@ -1919,7 +1918,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="4"
-                                       Text="{Binding Zayavka.Z_Adress, StringFormat={} Адрес: {0}}"
+                                       Text="{Binding Zayavka.Z_Adress, StringFormat={}Адрес: {0}}"
                                        TextWrapping="Wrap"
                                        Name="TextBoxAdress"
                                        Height="Auto"
@@ -1933,7 +1932,7 @@
                                        Foreground="#FF575757"
                                        Margin="0,0,15,0" />
                             <TextBlock Grid.Row="1"
-                                       Text="{Binding Zayavka.Klient.K_Fio, StringFormat={} Клиент: {0}}"
+                                       Text="{Binding Zayavka.Klient.K_Fio, StringFormat={}Клиент: {0}}"
                                        Name="TextBoxklient"
                                        Height="Auto"
                                        Width="Auto"
@@ -1945,7 +1944,7 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="2"
-                                       Text="{Binding Zayavka.Klient.K_TelNumber, StringFormat={} Номер телефона: {0}}"
+                                       Text="{Binding Zayavka.Klient.K_TelNumber, StringFormat={}Номер телефона: {0}}"
                                        Name="TextBoxTelNumber"
                                        Height="Auto"
                                        Width="Auto"
@@ -1957,7 +1956,7 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="3"
-                                       Text="{Binding Zayavka.Z_Hotelka, StringFormat={} Клиент хочет: {0}}"
+                                       Text="{Binding Zayavka.Z_Hotelka, StringFormat={}Клиент хочет: {0}}"
                                        Name="TextBoxHotelka"
                                        materialDesign:HintAssist.Hint="Клиент хочет:"
                                        materialDesign:HintAssist.IsFloating="True"
@@ -1973,14 +1972,14 @@
                                 <RowDefinition Height="2*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-
+                            
                             <Border Grid.Row="1"
                                     BorderThickness="0,1"
                                     Margin="20,0,30,0"
                                     BorderBrush="#FF515151">
                                 <ScrollViewer>
                                     <TextBlock x:Name="TextBoxOpisanie"
-                                               Text="{Binding Zayavka.Z_Primichania, StringFormat={}Примечания {0}}"
+                                               Text="{Binding Zayavka.Z_Primichania, StringFormat={}Примечания: {0}}"
                                                TextWrapping="Wrap"
                                                ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -1997,7 +1996,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"
-                                       Text="{Binding Zayavka.Sotrudnick.S_Fio, StringFormat={} Составитель заявки: {0}}"
+                                       Text="{Binding Zayavka.Sotrudnick.S_Fio, StringFormat={}Составитель заявки: {0}}"
                                        Name="TextBoxSotrudnick"
                                        TextWrapping="Wrap"
                                        materialDesign:HintAssist.IsFloating="True"
@@ -2007,7 +2006,7 @@
                                        FontFamily="Dubai Light"
                                        Foreground="#FF575757" />
                             <TextBlock Grid.Row="1"
-                                       Text="{Binding Zayavka.Z_DataSostavlenia, StringFormat={} Дата составления: {0}}"
+                                       Text="{Binding Zayavka.Z_DataSostavlenia, StringFormat={}Дата составления: {0}}"
                                        Name="TextBoxDataSostavlenia"
                                        TextWrapping="Wrap"
                                        materialDesign:HintAssist.IsFloating="True"

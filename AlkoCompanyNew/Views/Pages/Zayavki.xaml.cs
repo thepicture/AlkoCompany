@@ -65,11 +65,7 @@ namespace AlkoCompanyNew.Views.Pages
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            if(MainWindow.PublicEmployee.SotrudnickRole.Title == "Секретарь")
-            {
-                MessageBox.Show("Нет прав");
-                return;
-            }
+            
             WorkOrdinary currentWorkOrdinary = new WorkOrdinary(
                 (sender as Button).DataContext as Zayavka, true);
             AddZayvkaForm.Content = currentWorkOrdinary;

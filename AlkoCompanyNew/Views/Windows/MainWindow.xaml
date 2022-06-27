@@ -61,7 +61,7 @@
                                        Foreground="#FFD11518"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Bottom"
-                                       Margin="10,0,0,5"
+                                       Margin="20,0,0,5"
                                        FontFamily="Dubai Light" />
                         </Grid>
 
@@ -73,7 +73,7 @@
                              materialDesign:HintAssist.IsFloating="True"
                              Width="600"
                              Height="85"
-                             FontSize="30"
+                             FontSize="27"
                              VerticalAlignment="Bottom"
                              BorderBrush="#FFAEAEAE"
                              CaretBrush="Black"
@@ -88,7 +88,7 @@
                                  materialDesign:HintAssist.IsFloating="True"
                                  Width="600"
                                  Height="85"
-                                 FontSize="30"
+                                 FontSize="27"
                                  VerticalAlignment="Bottom"
                                  BorderBrush="#FFAEAEAE"
                                  CaretBrush="Black"
@@ -104,7 +104,7 @@
                              materialDesign:HintAssist.IsFloating="True"
                              Width="600"
                              Height="85"
-                             FontSize="30"
+                             FontSize="27"
                              VerticalAlignment="Bottom"
                              BorderBrush="#FFAEAEAE"
                              CaretBrush="Black"
@@ -147,7 +147,7 @@
                             FontFamily="Dubai Light"
                             FontSize="30"
                             Style="{x:Null}"
-                            Click="ButtonVhod_ClickAsync">
+                            Click="ButtonVhod_ClickAsync" Cursor="Hand">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius"

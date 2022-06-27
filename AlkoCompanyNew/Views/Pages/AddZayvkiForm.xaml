@@ -25,7 +25,7 @@
 
             <Border BorderThickness="0,0,0,1"
                     BorderBrush="#FF970000"
-                    Width="300"
+                    Width="290"
                     Height="44"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"

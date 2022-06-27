@@ -24,6 +24,7 @@
 
             <Border BorderThickness="0,0,0,1"
                     BorderBrush="#FF970000"
+                    Width="325"
                     Height="44"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left"
@@ -31,20 +32,8 @@
                 <TextBlock Grid.Row="0"
                            FontSize="30"
                            Foreground="#FF575757"
-                           FontFamily="Dubai Light">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Text"
-                                    Value="Редактирование сотрудника" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Sotrudnick.S_ID}"
-                                             Value="0">
-                                    <Setter Property="Text"
-                                            Value="Добавление сотрудника" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
+                           FontFamily="Dubai Light"
+                           Text="Добавление сотрудника">
                 </TextBlock>
             </Border>
 
@@ -131,7 +120,7 @@
                         </Grid>
                         
                         <Grid Grid.Column="1"
-                              MouseLeftButtonDown="Photo_MouseLeftButtonDown">
+                              MouseLeftButtonDown="Photo_MouseLeftButtonDown" Cursor="Hand">
                             <Image>
                                 <Image.Source>
                                     <Binding Path="Sotrudnick.S_Photo">

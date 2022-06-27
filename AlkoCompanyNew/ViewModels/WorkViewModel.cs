@@ -101,15 +101,16 @@ namespace AlkoCompanyNew.ViewModels
               new string[]
               {
                     "ЗНП",
-                    "Тип земли 2",
-                    "Тип земли 3"
+                    "ЗСН"
               });
             AllowedUsages = new ObservableCollection<string>(
              new string[]
              {
                     "ИЖС",
-                    "Тип разрешённого использования 2",
-                    "Тип разрешённого использования 3"
+                    "СНТ",
+                    "ДНП",
+                    "ЛПХ",
+                    "Для дачного хозяйства"
              });
             VozmognostPodkluchenia = new ObservableCollection<string>(
              new string[]
@@ -641,7 +642,7 @@ namespace AlkoCompanyNew.ViewModels
             }
         }
 
-        public void UpdateGroundPercentOfCompletion()
+        public void UpdateGroundPercentOfCompletion() // шкала 100, отслеживается по картинкам, текстбоксам и комбобоксам
         {
             IEnumerable<ListViewItem> analogueGroundsDependencyObjects =
                 App.WorkOrdinary.GroundCalculationView.Find<ListViewItem>();

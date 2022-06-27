@@ -117,6 +117,9 @@
     <Compile Include="Models\Entities\SotrudnickRole.cs">
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\sysdiagrams.cs">
+      <DependentUpon>AlkoCompany.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Zayavka.cs">
       <DependentUpon>AlkoCompany.tt</DependentUpon>
     </Compile>

@@ -16,6 +16,8 @@ namespace AlkoCompanyNew.Views.Pages
         public Prosmotr()
         {
             InitializeComponent();
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             DataContext = this;
             AppData.Prosmotr_ = this;
             Reload();
@@ -24,7 +26,7 @@ namespace AlkoCompanyNew.Views.Pages
         public void Reload()
         {
             AppData.Context.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            ListViewProsmotr.ItemsSource = AppData.Context.ObjectAssessmentAll.ToList().Where(a =>
+            var poisk = AppData.Context.ObjectAssessmentAll.ToList().Where(a=>
             {
                 return a.OA_PloshadZemli != null
                 && a.OA_PloshadDom != null
@@ -36,12 +38,12 @@ namespace AlkoCompanyNew.Views.Pages
                 && a.OA_CenaDomKvm != null
                 && a.OA_CenaAllKvm != null;
             });
+            poisk = poisk.Where(d => d.OA_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
+            ListViewProsmotr.ItemsSource = poisk;
         }
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var poisk = AppData.Context.ObjectAssessmentAll.ToList();
-            poisk = poisk.Where(d => d.OA_Adress.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower())).ToList();
-            ListViewProsmotr.ItemsSource = poisk;
+            Reload();
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

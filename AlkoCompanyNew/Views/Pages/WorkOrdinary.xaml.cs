@@ -1,7 +1,5 @@
 ﻿using AlkoCompanyNew.Models.Entities;
-using AlkoCompanyNew.Services;
 using AlkoCompanyNew.ViewModels;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,7 +15,6 @@ namespace AlkoCompanyNew.Views.Pages
             InitializeComponent();
             App.WorkOrdinary = this;
             DataContext = new WorkViewModel(zayavka, isEditing);
-
             Loaded += (_, __) =>
             {
                 ((dynamic)DataContext).UpdateHousePercentOfCompletion();
@@ -81,5 +78,7 @@ namespace AlkoCompanyNew.Views.Pages
                 GroundGrid.Visibility = Visibility.Visible;
             }
         }
+
+         
     }
 }
