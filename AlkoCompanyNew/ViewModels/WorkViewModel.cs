@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -686,6 +687,8 @@ namespace AlkoCompanyNew.ViewModels
             {
                 GroundPercentOfCompletion = 100;
             }
+            OnPropertyChanged(nameof(IsGroundFilled));
+            OnPropertyChanged(nameof(IsHouseCompleted));
         }
 
         private void SetStatusOfRequest()
@@ -761,6 +764,8 @@ namespace AlkoCompanyNew.ViewModels
             {
                 HousePercentOfCompletion = 100;
             }
+            OnPropertyChanged(nameof(IsGroundFilled));
+            OnPropertyChanged(nameof(IsHouseCompleted));
         }
 
         public Zayavka Zayavka
@@ -963,5 +968,8 @@ namespace AlkoCompanyNew.ViewModels
                 MessageBox.Show("Фото земельного аналога изменено");
             }
         }
+
+        public bool IsGroundFilled => GroundPercentOfCompletion == 100;
+        public bool IsHouseCompleted => HousePercentOfCompletion == 100;
     }
 }

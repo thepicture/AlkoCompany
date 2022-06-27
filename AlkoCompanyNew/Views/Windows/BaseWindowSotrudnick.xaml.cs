@@ -14,7 +14,7 @@ namespace AlkoCompanyNew.Views.Windows
         {
             InitializeComponent();
             Hi.Text += $", {MainWindow.fio}";
-           
+
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }

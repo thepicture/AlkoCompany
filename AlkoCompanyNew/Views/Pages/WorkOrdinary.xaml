@@ -1846,7 +1846,7 @@
                                 
                             </Button>
                                 <materialDesign:PackIcon Kind="Tick"
-                                                         Opacity="{Binding GroundPercentOfCompletion}"
+                                                         Opacity="{Binding IsGroundFilled}"
                                                          Width="Auto"
                                                          Height="30"
                                                          VerticalAlignment="Center"
@@ -1871,7 +1871,7 @@
                                     Margin="7,0,0,0">
                                 </Button>
                                 <materialDesign:PackIcon Kind="Tick"
-                                                         Opacity="{Binding HousePercentOfCompletion}"
+                                                         Opacity="{Binding IsHouseCompleted}"
                                                          Width="Auto"
                                                          Height="30"
                                                          VerticalAlignment="Center"
